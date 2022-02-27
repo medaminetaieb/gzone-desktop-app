@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# Tracked patterns
+!/.gitignore
+!/LICENSE
+!/README.md
+!/pom.xml
+!/src/
+!/src/**
+!/resources/
+!/resources/**
