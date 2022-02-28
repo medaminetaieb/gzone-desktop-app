@@ -1,16 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import org.controlsfx.control.Rating?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.gzone.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1219.0" stylesheets="@../Styles/table_style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClientController">
+   <children>
+      <Label layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Client" />
+      <Separator layoutX="3.0" layoutY="55.0" prefHeight="4.0" prefWidth="1213.0" />
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+      
+       <AnchorPane layoutX="14.0" layoutY="84.0" prefHeight="579.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 3; -fx-border-color: #3C8DBC; -fx-border-radius: 3; -fx-border-width: 4 0 0 0; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-padding: 4;">
+         <children>
+            <Separator layoutX="13.0" layoutY="45.0" prefHeight="4.0" prefWidth="244.0" />
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="189.0" style="-fx-text-fill: #162E3B; -fx-font-size: 16; -fx-font-weight: bold; -fx-alignment: left;" text="Fomulaire Client" />
+            <Separator layoutX="13.0" layoutY="111.0" prefHeight="4.0" prefWidth="244.0" />
+            <JFXTextField fx:id="rsLb" labelFloat="true" layoutX="18.0" layoutY="62.0" prefHeight="31.0" prefWidth="235.0" promptText="Raison Sociale" />
+            <JFXTextField fx:id="numTelLb" labelFloat="true" layoutX="18.0" layoutY="128.0" prefHeight="31.0" prefWidth="235.0" promptText="Numero Tel" />
+            <Separator layoutX="14.0" layoutY="183.0" prefHeight="4.0" prefWidth="244.0" />
+            <JFXTextField fx:id="adresseLb" labelFloat="true" layoutX="18.0" layoutY="274.0" prefHeight="31.0" prefWidth="235.0" promptText="Adresse" />
+            <JFXTextField fx:id="emailLb" labelFloat="true" layoutX="18.0" layoutY="204.0" prefHeight="31.0" prefWidth="235.0" promptText="Email" />
+            <Separator layoutX="13.0" layoutY="254.0" prefHeight="4.0" prefWidth="244.0" />
+            <JFXTextField fx:id="matFLb" labelFloat="true" layoutX="18.0" layoutY="342.0" prefHeight="31.0" prefWidth="235.0" promptText="Matricule Fiscale" />
+            <Separator layoutX="13.0" layoutY="322.0" prefHeight="4.0" prefWidth="244.0" />
+            <JFXButton fx:id="addBtn" layoutX="14.0" layoutY="448.0" onMouseClicked="#addClient" prefHeight="31.0" prefWidth="86.0" styleClass="customButton" stylesheets="@../Styles/blue_style.css" text="Ajouter " />
+            <JFXButton fx:id="updateBtn" layoutX="135.0" layoutY="448.0" onMouseClicked="#updateClient" styleClass="customUpdateButton" stylesheets="@../Styles/blue_style.css" text="Mettre A Jour" />
+            <Rating layoutX="47.0" layoutY="519.0" />
+            <JFXTextField fx:id="contactLb" labelFloat="true" layoutX="21.0" layoutY="393.0" prefHeight="31.0" prefWidth="235.0" promptText="Contact" />
+            <Separator layoutX="16.0" layoutY="373.0" prefHeight="4.0" prefWidth="244.0" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="fourTable" layoutX="320.0" layoutY="90.0" prefHeight="441.0" prefWidth="865.0">
+        <columns>
+            <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="col_rs" prefWidth="140.0" text="Raison Sociale" />
+          <TableColumn fx:id="col_numTel" prefWidth="142.0" text="Numero Tel" />
+            <TableColumn fx:id="col_email" prefWidth="172.0" text="Email" />
+            <TableColumn fx:id="col_adresse" prefWidth="128.0" text="Adresse" />
+            <TableColumn fx:id="col_mat" prefWidth="106.0" text="Matricule" />
+            <TableColumn fx:id="col_contact" prefWidth="197.0" text="Contact" />
+        </columns>
+      </TableView>
+      <HBox layoutX="3.0" layoutY="691.0" prefHeight="17.0" prefWidth="1213.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="245.0" style="-fx-alignment: center; -fx-background-color: #DD4B39; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="225.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="270.0" style="-fx-alignment: center; -fx-background-color: #00A65A; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="211.0" style="-fx-alignment: center; -fx-background-color: #3C8DBC; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="277.0" style="-fx-alignment: center; -fx-background-color: #F39C12; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </HBox>
+      <JFXButton fx:id="deleteBtn" layoutX="1036.0" layoutY="539.0" onMouseClicked="#deleteClientOnClick" prefHeight="31.0" prefWidth="141.0" styleClass="customDeleteButton" stylesheets="@../Styles/blue_style.css" text="Supprimer" />
+      <JFXButton fx:id="telechargerBtn" layoutX="899.0" layoutY="539.0" onMouseClicked="#creePdf" prefHeight="25.0" prefWidth="105.0" styleClass="customButton" stylesheets="@../Styles/blue_style.css" text="Telecharger" />
+      
+   </children>
+</AnchorPane>
