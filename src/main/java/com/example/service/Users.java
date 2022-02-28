@@ -7,8 +7,11 @@ package com.example.service;
 
 import com.example.entity.User;
 import com.example.entity.Role;
+
 import static com.example.util.EncryptPassword.cryptWithMD5;
+
 import com.example.util.MySQLValidator;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,32 +25,31 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- *
  * @author Mahdi
  */
 public class Users implements AdvancedService<User> {
 
     @Override
-    public Boolean modify(User t) {
+    public Boolean modify(User u) {
         try {
-            PreparedStatement st = connection.prepareStatement(
-                    "UPDATE `users` SET `bio`=?,`birth_date`=?,"
-                    + "`email`=?,`full_name`=?,`invitable`=?,"
-                    + "`password`=?,`photo_url`=?,"
-                    + "`role`=?,`username`=?,`join_date`=? WHERE id=?");
-            st.setString(1, t.getBio());
-            st.setDate(2, new java.sql.Date(t.getBirthDate().getTime()));
-            st.setString(3, t.getEmail());
-            st.setString(4, t.getFullName());
-            st.setObject(5, t.isInvitable(), java.sql.Types.BOOLEAN);
-            st.setString(6, t.getPassword());
-            st.setString(7, t.getPhotoURL());
-            st.setString(8, t.getRole().toString());
-            st.setString(9, t.getUsername());
-            st.setDate(10, t.getJoinDate() != null ? new java.sql.Date(t.getJoinDate().getTime()) : null);
-            st.setObject(11, t.getId(), java.sql.Types.INTEGER);
+            String req = "UPDATE `users` SET "
+                    + "`phone_number`=?, `email`=?, `username`=?, `password`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?"
+                    + " WHERE `id`=" + u.getId();
+            PreparedStatement ps = connection.prepareStatement(req);
+            int i = 0;
+            ps.setString(++i, u.getPhoneNumber());
+            ps.setString(++i, u.getEmail());
+            ps.setString(++i, u.getUsername());
+            ps.setString(++i, u.getPassword());
+            ps.setString(++i, u.getPhotoURL());
+            ps.setString(++i, u.getFullName());
+            ps.setString(++i, u.getBio());
+            ps.setDate(++i, new java.sql.Date(u.getBirthDate().getTime()));
+            ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
+            ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
+            ps.setString(++i, u.getRole().toString());
 
-            return st.executeUpdate() > 0;
+            return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -59,22 +61,22 @@ public class Users implements AdvancedService<User> {
     public Boolean insert(User u) {
         try {
             String req = "INSERT INTO `users` ("
-                    + "`id`, `email`, `username`, `password`, `photo_url`, `full_name`, `badges`, `bio`, `birth_date`, `join_date`, `invitable`, `role`"
+                    + "`id`, `phone_number`, `email`, `username`, `password`, `photo_url`, `full_name`, `bio`, `birth_date`, `join_date`, `invitable`, `role`"
                     + ") VALUES ("
                     + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                     + ")";
             PreparedStatement ps = connection.prepareStatement(req);
             Integer i = 0;
             ps.setObject(++i, u.getId(), java.sql.Types.INTEGER);
+            ps.setString(++i, u.getPhoneNumber());
             ps.setString(++i, u.getEmail());
             ps.setString(++i, u.getUsername());
             ps.setString(++i, u.getPassword());
             ps.setString(++i, u.getPhotoURL());
             ps.setString(++i, u.getFullName());
-            ps.setString(++i, u.getBadge());
             ps.setString(++i, u.getBio());
-            ps.setDate(++i, new Date(u.getBirthDate().getTime()));
-            ps.setDate(++i, new Date(u.getJoinDate().getTime()));
+            ps.setDate(++i, new java.sql.Date(u.getBirthDate().getTime()));
+            ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
             ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
             ps.setString(++i, u.getRole().toString());
 
@@ -99,20 +101,20 @@ public class Users implements AdvancedService<User> {
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(req);
             while (rs.next()) {
-                User u = new User();
-                u.setBio(rs.getString("bio"));
-                u.setBirtDate(rs.getDate("birth_date"));
-                u.setEmail(rs.getString("email"));
-                u.setId(rs.getObject("id", Integer.class));
-                u.setFullName(rs.getString("full_name"));
-                u.setInvitable(rs.getObject("invitable", Boolean.class));
-                u.setPassword(rs.getString("password"));
-                u.setPhotoURL(rs.getString("photo_url"));
-                u.setUsername(rs.getString("username"));
-                u.setRole(Role.valueOf(rs.getString("role")));
-                u.setJoinDate(rs.getDate("join_date"));
-
-                lu.add(u);
+                lu.add(new User(
+                        rs.getObject("id", Integer.class),
+                        rs.getString("phone_number"),
+                        rs.getString("email"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("photo_url"),
+                        rs.getString("full_name"),
+                        rs.getString("bio"),
+                        rs.getDate("birth_date"),
+                        rs.getDate("join_date"),
+                        rs.getObject("invitable", Boolean.class),
+                        Role.valueOf(rs.getString("role"))
+                        ));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

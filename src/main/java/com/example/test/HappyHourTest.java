@@ -20,9 +20,9 @@ public class HappyHourTest {
     private final static List<HappyHour> happyhourlist = new ArrayList<>();
     
     static {
-        happyhourlist.add(new HappyHour(null, 1, new Date(0), new Date(), "Batman"));
-        happyhourlist.add(new HappyHour(null, 2, new Date(0), new Date(), "Freestyler"));
-        happyhourlist.add(new HappyHour(null, 3, new Date(0), new Date(), "happy"));
+        happyhourlist.add(new HappyHour(null, 1, new Date(0), new Date()));
+        happyhourlist.add(new HappyHour(null, 2, new Date(0), new Date()));
+        happyhourlist.add(new HappyHour(null, 3, new Date(0), new Date()));
     }
     
     public static void insertAll() {
@@ -38,11 +38,11 @@ public class HappyHourTest {
             System.out.println(h);
         }
         
-        if (happyHours.modify(new HappyHour(4, 3, new Date(0), new Date(), "not very sad"))) {
+        if (happyHours.modify(new HappyHour(4, 3, new Date(0), new Date()))) {
             System.out.println("HappyHour updated");
         }
         
-        if (happyHours.delete("game_id=1")) {
+        if (happyHours.delete("badge_id=1")) {
             System.out.println("HappyHours deleted");
         }
     }

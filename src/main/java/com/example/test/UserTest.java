@@ -8,6 +8,7 @@ package com.example.test;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.service.Users;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,12 +19,12 @@ public class UserTest {
     private static final List<User> userlist = new ArrayList<>();
 
     static {
-        userlist.add(new User(null, "Mahdi Soussi", "", new Date(9999999), new Date(), "mahdi.soussi@gmail.com", "mahdisoussi", "mahdisoussi", true, "I am the first user", Role.admin, "batman"));
-        userlist.add(new User(null, "Mohamed Amine Taieb", "", new Date(99999999), new Date(), "mohamedamine.taieb@gmail.com", "maminetaieb", "maminetaieb", true, "I am the second user", Role.admin, "bunny hopper"));
-        userlist.add(new User(null, "Sami Ben Meshlia", "", new Date(9939999), new Date(), "samin.benmeshlia@gmail.com", "samibm", "samibm", true, "I am the third user", Role.user, "headshooter"));
-        userlist.add(new User(null, "Firas Garci", "", new Date(9999499), new Date(), "firas.garci@gmail.com", "firasgarci", "firasgarci", true, "I am the fourth user", Role.user, "silent killer"));
-        userlist.add(new User(null, "Iheb Ben Salem", "", new Date(9992999), new Date(), "iheb.bensalem@gmail.com", "ihebbensalem", "ihebbensalem", true, "I am the fifth user", Role.user, "horny devil"));
-        userlist.add(new User(null, "Chayma Dhahri", "", new Date(9992199), new Date(), "chayma.dhahri@gmail.com", "chaymadhahri", "chaymadhahri", true, "I am the sixth user", Role.user, "female gamer"));
+        userlist.add(new User(null, "+216 99 856 236", "mahdi.soussi@gamil.com", "mahdi", "mahdi", "", "Mahdi Soussi", "Xd", new Date(0), new Date(), true, Role.admin));
+        userlist.add(new User(null, "+216 23 356 236", "mamine.taieb@gamil.com", "amine", "amine", "", "M. Amine Taieb", "Oppa", new Date(32), new Date(), true, Role.admin));
+        userlist.add(new User(null, "+216 50 345 236", "sami.benmeshlia@gamil.com", "samibm", "samibm", "", "Sami Ben Meshlia", "blabla", new Date(20), new Date(), false, Role.user));
+        userlist.add(new User(null, "+216 54 825 123", "firas.garci@gamil.com", "firas", "firas", "", "Firas Garci", "dfgdfg", new Date(40), new Date(), true, Role.user));
+        userlist.add(new User(null, "+216 92 826 936", "iheb.benahmed@gamil.com", "iheb", "iheb", "", "Iheb Ben Ahmed", "dfgdfg", new Date(10), new Date(), false, Role.admin));
+        userlist.add(new User(null, "+216 70 816 222", "chayma.dhahri@gamil.com", "chayma", "chayma", "", "Chayma Dhahri", "Xsdfd", new Date(5), new Date(), true, Role.user));
     }
 
     public static void insertAll() {

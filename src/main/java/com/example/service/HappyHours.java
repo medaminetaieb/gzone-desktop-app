@@ -24,12 +24,12 @@ public class HappyHours implements AdvancedService<HappyHour> {
     public Boolean modify(HappyHour happy) {
         try {
             String req = "UPDATE `happy_hours` SET "
-                    + "`game_id`=?, `start_date`=?, `end_date`=?, `badge`=? WHERE `id`=" + happy.getId();
+                    + "`badge_id`=?, `start_date`=?, `end_date`=? WHERE `id`=" + happy.getId();
             PreparedStatement st = connection.prepareStatement(req);
-            st.setObject(1, happy.getGameId(), java.sql.Types.INTEGER);
-            st.setDate(2, new Date(happy.getStartDate().getTime()));
-            st.setDate(3, new Date(happy.getEndDate().getTime()));
-            st.setString(4, happy.getBadge());
+            int i = 0;
+            st.setObject(++i, happy.getBadgeId(), java.sql.Types.INTEGER);
+            st.setDate(++i, new Date(happy.getStartDate().getTime()));
+            st.setDate(++i, new Date(happy.getEndDate().getTime()));
 
             return st.executeUpdate() > 0;
 
@@ -41,20 +41,21 @@ public class HappyHours implements AdvancedService<HappyHour> {
     }
 
     @Override
-    public Boolean insert(HappyHour h) {
+    public Boolean insert(HappyHour happy) {
         try {
             String req = "INSERT INTO `happy_hours` ("
-                    + "`game_id`, `start_date`, `end_date`, `badge`"
+                    + "`id`, `badge_id`, `start_date`, `end_date`"
                     + ") VALUES ("
                     + "?, ?, ?, ?"
                     + ")";
-            PreparedStatement pst = connection.prepareStatement(req);
-            pst.setObject(1, h.getGameId(), java.sql.Types.INTEGER);
-            pst.setDate(2, new Date(h.getStartDate().getTime()));
-            pst.setDate(3, new Date(h.getEndDate().getTime()));
-            pst.setString(4, h.getBadge());
+            PreparedStatement ps = connection.prepareStatement(req);
+            int i = 0;
+            ps.setObject(++i, happy.getId(), java.sql.Types.INTEGER);
+            ps.setObject(++i, happy.getBadgeId(), java.sql.Types.INTEGER);
+            ps.setDate(++i, new Date(happy.getStartDate().getTime()));
+            ps.setDate(++i, new Date(happy.getEndDate().getTime()));
 
-            return pst.executeUpdate() > 0;
+            return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -76,10 +77,9 @@ public class HappyHours implements AdvancedService<HappyHour> {
             while (rs.next()) {
                 myList.add(new HappyHour(
                         rs.getObject("id", Integer.class),
-                        rs.getObject("game_id", Integer.class),
+                        rs.getObject("badge_id", Integer.class),
                         rs.getDate("start_date"),
-                        rs.getDate("end_date"),
-                        rs.getString("badge")
+                        rs.getDate("end_date")
                 ));
             }
         } catch (SQLException ex) {

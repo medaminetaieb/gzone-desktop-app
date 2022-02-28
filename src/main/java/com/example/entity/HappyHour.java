@@ -7,22 +7,19 @@ package com.example.entity;
 import java.util.Date;
 
 /**
- *
  * @author chayma
  */
 public class HappyHour {
     private Integer id;
-    private Integer gameId;
+    private Integer badgeId;
     private Date startDate;
     private Date endDate;
-    private String badge;
 
-    public HappyHour(Integer id, Integer gameId, Date startDate, Date endDate, String badge) {
+    public HappyHour(Integer id, Integer badgeId, Date startDate, Date endDate) {
         this.id = id;
-        this.gameId = gameId;
+        this.badgeId = badgeId;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.badge = badge;
     }
 
     public Integer getId() {
@@ -33,12 +30,12 @@ public class HappyHour {
         this.id = id;
     }
 
-    public Integer getGameId() {
-        return gameId;
+    public Integer getBadgeId() {
+        return badgeId;
     }
 
-    public void setGameId(Integer gameId) {
-        this.gameId = gameId;
+    public void setBadgeId(Integer badgeId) {
+        this.badgeId = badgeId;
     }
 
     public Date getStartDate() {
@@ -57,23 +54,14 @@ public class HappyHour {
         this.endDate = endDate;
     }
 
-    public String getBadge() {
-        return badge;
-    }
-
-    public void setBadge(String badge) {
-        this.badge = badge;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("HappyHour{");
         sb.append("id=").append(id);
-        sb.append(", gameId=").append(gameId);
+        sb.append(", badgeId=").append(badgeId);
         sb.append(", startDate=").append(startDate);
         sb.append(", endDate=").append(endDate);
-        sb.append(", badge=").append(badge);
         sb.append('}');
         return sb.toString();
     }

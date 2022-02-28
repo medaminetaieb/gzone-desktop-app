@@ -1,11 +1,11 @@
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `email` varchar(255) UNIQUE NOT NULL,
+  `phone_number` varchar(255) UNIQUE,
+  `email` varchar(255) UNIQUE,
   `username` varchar(255) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL,
   `photo_url` varchar(500),
   `full_name` varchar(255),
-  `badges` varchar(255),
   `bio` varchar(500),
   `birth_date` date NOT NULL,
   `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -28,10 +28,21 @@ CREATE TABLE `games` (
 
 CREATE TABLE `happy_hours` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `game_id` int NOT NULL,
+  `badge_id` int NOT NULL,
   `start_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
-  `badge` varchar(255) NOT NULL
+  `end_date` datetime NOT NULL
+);
+
+CREATE TABLE `badges` (
+    `id` int PRIMARY KEY AUTO_INCREMENT,
+    `game_id` int NOT NULL,
+    `title` varchar(50) NOT NULL
+);
+
+CREATE TABLE `badge_ships` (
+    `id` int PRIMARY KEY AUTO_INCREMENT,
+    `badge_id` int NOT NULL,
+    `user_id` int NOT NULL
 );
 
 CREATE TABLE `teams` (
@@ -165,13 +176,21 @@ CREATE TABLE `reports` (
   `report_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE `users` ADD CHECK (`phone_number` IS NOT NULL OR `email` IS NOT NULL);
+
 ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
 
-ALTER TABLE `happy_hours` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `happy_hours` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`);
 
 ALTER TABLE `happy_hours` ADD CHECK (`start_date` < `end_date`);
+
+ALTER TABLE `badges` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+
+ALTER TABLE `badge_ships` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`);
+
+ALTER TABLE `badge_ships` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `teams` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 
