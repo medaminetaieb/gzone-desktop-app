@@ -72,7 +72,7 @@ CREATE TABLE `tournaments` (
   `game_id` int,
   `name` varchar(255) NOT NULL,
   `description` varchar(500),
-  `required_teams` int NOT NULL DEFAULT 2,
+  `required_teams` int NOT NULL,
   `team_size` int NOT NULL DEFAULT 1,
   `close_requests_date` datetime NOT NULL,
   `approved` boolean NOT NULL DEFAULT false,
@@ -196,6 +196,8 @@ ALTER TABLE `join_requests` ADD CHECK ((user_id IS NOT NULL OR tournament_id IS 
 ALTER TABLE `tournaments` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `tournaments` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+
+ALTER TABLE `tournaments` ADD CHECK (`required_teams` IN (4, 8, 16, 32));
 
 ALTER TABLE `tournament_reports` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`);
 
