@@ -19,9 +19,9 @@ public class TournamentTest {
     private static final List<Tournament> tournamentlist = new ArrayList<>();
     
     static {
-        tournamentlist.add(new Tournament(0, 2, 1, "fifa tournament", "sdf", 2, 1, new Date(2323), true, new Date()));
+        tournamentlist.add(new Tournament(0, 2, 1, "fifa tournament", "sdf", 8, 1, new Date(2323), true, new Date()));
         tournamentlist.add(new Tournament(0, 1, 3, "CS GO tournament", "oppa", 4, 5, new Date(2323), true, new Date()));
-        tournamentlist.add(new Tournament(0, 1, 1, "fifa tournament", "hhxcd", 2, 1, new Date(2323), true, new Date()));
+        tournamentlist.add(new Tournament(0, 1, 1, "fifa tournament", "hhxcd", 16, 1, new Date(2323), true, new Date()));
     }
     
     public static void insertAll() {

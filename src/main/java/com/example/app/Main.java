@@ -7,7 +7,6 @@ package com.example.app;
 import com.example.test.MainTest;
 
 /**
- *
  * @author mat
  */
 public class Main {
