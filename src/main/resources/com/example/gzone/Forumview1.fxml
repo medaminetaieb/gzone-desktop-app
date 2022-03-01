@@ -96,16 +96,12 @@
             <Font name="Arial Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tfsearch" layoutX="323.0" layoutY="151.0" prefHeight="31.0" prefWidth="457.0" promptText="search here ...." />
+      <TextField fx:id="tfsearch" layoutX="200.0" layoutY="151.0" onInputMethodTextChanged="#find" prefHeight="31.0" prefWidth="328.0" promptText="search here ...." />
       <TableView fx:id="tbview" layoutX="200.0" layoutY="240.0" prefHeight="341.0" prefWidth="583.0">
         <columns>
           <TableColumn fx:id="cltitle" prefWidth="75.0" text="TITLE" />
         </columns>
       </TableView>
-      <Label layoutX="200.0" layoutY="156.0" text="Search for Title ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
+      <Button fx:id="btnrefresh" layoutX="543.0" layoutY="151.0" mnemonicParsing="false" onAction="#refresh" text="SEARCH" />
    </children>
 </AnchorPane>

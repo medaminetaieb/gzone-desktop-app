@@ -4,16 +4,22 @@
  */
 package com.example.gzone;
 
-import com.example.util.MyConnection;
+import com.example.entity.Post;
+import com.example.service.Posts;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+
 /**
  * FXML Controller class
  *
@@ -21,22 +27,26 @@ import javafx.scene.input.MouseEvent;
  */
 public class Forumview1Controller implements Initializable {
 
-
     @FXML
     private TextField tfsearch;
     @FXML
-    private TableView<?> tbview;
+    private TableView tbview;
     @FXML
-    private TableColumn<?, ?> cltitle;
+    private TableColumn<Post, String> cltitle;
+    @FXML
+    private Button btnrefresh;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        MyConnection cnct = new MyConnection();
-    }    
-    
+
+        cltitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        tbview.getColumns().add(cltitle);
+
+    }
+
     @FXML
     private void HomePage(MouseEvent event) {
     }
@@ -57,4 +67,20 @@ public class Forumview1Controller implements Initializable {
     private void Forum(MouseEvent event) {
     }
 
+    @FXML
+    private void find(InputMethodEvent event) {
+    }
+
+    @FXML
+    private void refresh(ActionEvent event) {
+        tbview.getItems().clear();
+        Posts ps = new Posts();
+        List<Post> postlist = ps.findAll("`title` REGEXP '" + tfsearch.getText() + "'");
+        for (Post p : postlist) {
+            tbview.getItems().add(p);
+
+        }
+        tbview.refresh();
+
+    }
 }
