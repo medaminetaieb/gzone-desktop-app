@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="692.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@gzone%20logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="reglb1" layoutX="293.0" layoutY="14.0" prefHeight="58.0" prefWidth="105.0" text="Sign In" textFill="#659c00">
+         <font>
+            <Font name="SansSerif Regular" size="31.0" />
+         </font>
+      </Label>
+      <Button fx:id="regbtn1" layoutX="440.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #659c00;" text="Sign In" textFill="WHITE" />
+      <PasswordField layoutX="382.0" layoutY="178.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
+      <TextField layoutX="382.0" layoutY="114.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
+      <Hyperlink layoutX="370.0" layoutY="295.0" text="Don't have an account? Register Now!" textFill="#659c00" />
+   </children>
+</AnchorPane>
