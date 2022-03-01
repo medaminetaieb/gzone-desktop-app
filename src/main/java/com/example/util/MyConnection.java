@@ -19,7 +19,7 @@ public class MyConnection {
     private Connection connection;
     private static MyConnection instance;
     
-    private MyConnection() {
+    public MyConnection() {
         try {
             connection = DriverManager.getConnection(url, login, pwd);
         } catch (SQLException ex) {
