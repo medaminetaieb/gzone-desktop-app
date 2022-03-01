@@ -27,7 +27,7 @@ public interface Service<T> {
     public Boolean delete(String filter);
 
     // Read default methods
-    public default T findById(int id) {
+    public default T findById(Integer id) {
         List<T> l = find(null, null, "`id`=" + id, null);
 
         return (!l.isEmpty()) ? l.get(0) : null;
