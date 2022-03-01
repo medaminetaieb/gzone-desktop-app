@@ -1,5 +1,4 @@
 package com.example.gzone;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

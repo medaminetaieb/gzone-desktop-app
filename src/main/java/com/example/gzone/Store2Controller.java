@@ -12,10 +12,10 @@ import java.io.IOException;
 public class Store2Controller {
 
     @FXML
-    private AnchorPane store2pane;
+    public AnchorPane store2pane;
 
     @FXML
-    private Button viewbutton;
+    public Button viewbutton;
 
     @FXML
     void Createstore(MouseEvent event) {
@@ -33,8 +33,9 @@ public class Store2Controller {
     }
 
     @FXML
-    void Store(MouseEvent event) {
-
+    void Store(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        store2pane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -49,7 +50,8 @@ public class Store2Controller {
 
     @FXML
     void viewStore(ActionEvent event) throws IOException {
-
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
+        store2pane.getChildren().setAll(pane);
     }
 
 }
