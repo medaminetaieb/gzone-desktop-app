@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="714.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
    <children>
-      <TextField editable="false" layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
+      <TextField layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
       <TextField layoutX="72.0" layoutY="188.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />
       <PasswordField layoutX="72.0" layoutY="241.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
       <TextField layoutX="72.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Full Name" />
@@ -31,7 +31,7 @@
             <Image url="@gzone%20logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="regbtn1" layoutX="475.0" layoutY="324.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: #77b700;" text="Register" textFill="WHITE" />
+      <Button fx:id="register" layoutX="475.0" layoutY="324.0" mnemonicParsing="false" onAction="#createUser" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: #77b700;" text="Register" textFill="WHITE" />
       <TextArea layoutX="380.0" layoutY="218.0" prefHeight="83.0" prefWidth="282.0" promptText="Bio" />
       <TextField layoutX="418.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Photo" />
       <Label layoutX="462.0" layoutY="143.0" opacity="0.59" text="Favorite Games :" textFill="WHITE">

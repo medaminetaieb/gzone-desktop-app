@@ -1,23 +1,31 @@
 package com.example.gzone;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.entity.Game;
+import com.example.entity.Role;
+import com.example.entity.User;
+import com.example.entity.UserGamePreference;
+import com.example.service.Games;
+import com.example.service.UserGamePreferences;
+import com.example.service.Users;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
-/**
- * FXML Controller class
- *
- * @author Mahdi
- */
+import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
+
 public class RegisterController {
 
-    ObservableList<String> GamePreferencesList = FXCollections.observableArrayList("League of Legends", "FIFA", "Minecraft", "Battlefield");
+    private Integer userId;
+    private Integer gameId;
+    private Boolean invitable;
+    private Enum role;
+    private Date joinDate;
+
     @FXML
     private TextField fullName;
     @FXML
@@ -25,9 +33,11 @@ public class RegisterController {
     @FXML
     private TextField email;
     @FXML
-    private TextField phone;
+    private TextField phoneNumber;
     @FXML
-    private TextField photo;
+    private TextField photoURL;
+    @FXML
+    private PasswordField password;
     @FXML
     private DatePicker birthDate;
     @FXML
@@ -45,8 +55,38 @@ public class RegisterController {
     @FXML
     private Hyperlink toLogin;
 
-    private void initialize() {
-
+    @FXML
+    void createUser(ActionEvent event) {
+        Users user = new Users();
+        UserGamePreferences ugp = new UserGamePreferences();
+        LocalDate ld = birthDate.getValue();
+        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+        Date crd = new Date(Date.from(instant).getTime());
+        user.insert(new User(
+                null,
+                phoneNumber.getText(),
+                email.getText(),
+                username.getText(),
+                password.getText(),
+                photoURL.getText(),
+                fullName.getText(),
+                bio.getText(),
+                new java.util.Date(),
+                crd,
+                true,
+                Role.user
+        ));
+        ugp.insert(new UserGamePreference(
+                null,
+                userId,
+                gameId
+        ));
     }
 
+    @FXML
+    public void initialize() {
+        List<Game> gameList = new Games().findAll();
+       
+       
+    }
 }
