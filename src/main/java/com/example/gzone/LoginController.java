@@ -1,26 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.example.gzone;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Mahdi
  */
-public class LoginController implements Initializable {
+public class LoginController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private Label SignIn;
+    @FXML
+    private Button SignIN;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
+@FXML
+private Hyperlink toRegister;
+@FXML
+private void toRegister(){
+}
+@FXML
+private void checkLogin(){
+}
+    public void initialize() {
+
+    }
+
 }
