@@ -104,15 +104,14 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tbView" layoutX="23.0" layoutY="121.0" prefHeight="382.0" prefWidth="578.0">
+                        <TableView fx:id="tbView" layoutX="23.0" layoutY="121.0" prefHeight="283.0" prefWidth="578.0">
                           <columns>
-                            <TableColumn fx:id="clPhoto" prefWidth="126.0" text="Photo" />
                             <TableColumn fx:id="clName" prefWidth="148.0" text="Name" />
-                              <TableColumn fx:id="clDescription" prefWidth="167.0" text="Description" />
-                              <TableColumn fx:id="clAction" prefWidth="136.0" text="Action" />
+                              <TableColumn fx:id="clDescription" prefWidth="288.0" text="Description" />
+                              <TableColumn fx:id="clAction" prefWidth="141.0" text="Action" />
                           </columns>
                         </TableView>
-                        <HBox alignment="CENTER" layoutX="23.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="327.0" stylesheets="@fxml.css">
+                        <HBox alignment="CENTER" layoutX="23.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
                            <padding>
                               <Insets left="30.0" right="30.0" />
                            </padding>
@@ -122,7 +121,7 @@
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </TextField>
-                              <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="Search">
+                              <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -136,6 +135,8 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </HBox>
+                        <Button fx:id="BTNEdit" layoutX="220.0" layoutY="439.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="61.0" text="EDIT" />
+                        <Button fx:id="btnDelete" layoutX="358.0" layoutY="439.0" mnemonicParsing="false" onAction="#delete" text="DELETE" />
                      </children>
                   </AnchorPane>
               </content>
