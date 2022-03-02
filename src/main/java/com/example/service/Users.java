@@ -139,17 +139,20 @@ public class Users implements AdvancedService<User> {
         return false;
     }
 
-    public boolean checklogin(String username, String password) {
+    public Integer checklogin(String username, String password) {
         try {
             cryptWithMD5(password);
             Statement st = connection.createStatement();
-            String query = "SELECT * FROM `users` WHERE `username`='" + username + "' AND `password`='" + password + "'";
+            String query = "SELECT `id` FROM `users` WHERE `username`='" + username + "' AND `password`='" + password + "'";
             ResultSet rs = st.executeQuery(query);
-            return rs.next();
+            if (rs.next()){
+                return rs.getObject(1,Integer.class);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return null;
     }
 
     public List<User> sortByDate() {

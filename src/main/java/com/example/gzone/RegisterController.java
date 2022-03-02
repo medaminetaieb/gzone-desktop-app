@@ -1,34 +1,26 @@
 package com.example.gzone;
 
-import com.example.entity.Game;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.entity.UserGamePreference;
-import com.example.service.Games;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 import java.util.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 public class RegisterController {
 
     private Integer userId;
-    private Integer gameId;
-    private Boolean invitable;
-    private Enum role;
-    private Date joinDate;
-    
+
     @FXML
     private TextField fullName;
     @FXML
@@ -56,9 +48,10 @@ public class RegisterController {
     @FXML
     private Button register;
     @FXML
-    private Hyperlink toLogin;
+    public Hyperlink toLogin;
+    @FXML
+    public AnchorPane registerpane;
 
-   
     @FXML
     void createUser(ActionEvent event) {
         Users user = new Users();
@@ -81,11 +74,17 @@ public class RegisterController {
                 Role.user
         ));
         ugp.insert(new UserGamePreference(
-                null,
-                null,
-                null
+                this.userId,
+                2,
+                2
         ));
 
+    }
+
+    @FXML
+    public void ToLogin(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        registerpane.getChildren().setAll(pane);
     }
 
     @FXML

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="692.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
+<AnchorPane id="AnchorPane" fx:id="signinpane" prefHeight="355.0" prefWidth="692.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,9 +22,9 @@
             <Font name="SansSerif Regular" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="checkLogin" layoutX="440.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkLogin" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #659c00;" text="Sign In" textFill="WHITE" />
+      <Button fx:id="SignIN" layoutX="440.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkUser" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #659c00;" text="Sign In" textFill="WHITE" />
       <PasswordField fx:id="password" layoutX="382.0" layoutY="178.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
       <TextField fx:id="username" layoutX="382.0" layoutY="114.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
-      <Hyperlink fx:id="toRegister" layoutX="370.0" layoutY="295.0" onAction="#toRegister" text="Don't have an account? Register Now!" textFill="#659c00" />
+      <Hyperlink fx:id="toRegister" layoutX="370.0" layoutY="295.0" onAction="#ToRegister" text="Don't have an account? Register Now!" textFill="#659c00" />
    </children>
 </AnchorPane>

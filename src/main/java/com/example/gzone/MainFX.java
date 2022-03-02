@@ -11,7 +11,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainFX.class.getResource("Register.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 714, 417);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Register Now!");
         stage.setScene(scene);
         stage.show();

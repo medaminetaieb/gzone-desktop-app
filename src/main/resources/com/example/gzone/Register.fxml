@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="714.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
+<AnchorPane id="AnchorPane" fx:id="registerpane" prefHeight="417.0" prefWidth="714.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
    <children>
       <TextField fx:id="username" layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
       <TextField fx:id="email" layoutX="72.0" layoutY="188.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />
@@ -38,10 +38,10 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Hyperlink fx:id="toLogin" layoutX="449.0" layoutY="374.0" onMouseClicked="#toLogin" text="Already have an account?" textFill="#77b700" />
       <RadioButton fx:id="minecraft" layoutX="606.0" layoutY="179.0" mnemonicParsing="false" text="Minecraft" textFill="WHITE" />
       <RadioButton fx:id="fifa" layoutX="549.0" layoutY="179.0" mnemonicParsing="false" text="FIFA" textFill="WHITE" />
       <RadioButton fx:id="leagueOfLegends" layoutX="416.0" layoutY="179.0" mnemonicParsing="false" text="League of Legends" textFill="WHITE" />
       <RadioButton fx:id="battlefield" layoutX="332.0" layoutY="179.0" mnemonicParsing="false" text="Battlefield" textFill="WHITE" />
+      <Hyperlink fx:id="toLogin" layoutX="448.0" layoutY="365.0" onAction="#ToLogin" prefHeight="24.0" prefWidth="145.0" text="Already have an account?" textFill="#77b700" />
    </children>
 </AnchorPane>
