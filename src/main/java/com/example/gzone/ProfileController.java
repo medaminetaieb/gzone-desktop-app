@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Mahdi
  */
-public class HomePageController implements Initializable {
+public class ProfileController implements Initializable {
 
     /**
      * Initializes the controller class.

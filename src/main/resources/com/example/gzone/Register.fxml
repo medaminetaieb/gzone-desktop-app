@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="registerpane" prefHeight="417.0" prefWidth="714.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
+<AnchorPane id="AnchorPane" fx:id="registerpane" prefHeight="600" prefWidth="800" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
    <children>
       <TextField fx:id="username" layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
       <TextField fx:id="email" layoutX="72.0" layoutY="188.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />

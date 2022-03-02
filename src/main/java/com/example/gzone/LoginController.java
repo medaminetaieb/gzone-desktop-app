@@ -44,7 +44,7 @@ public class LoginController {
     @FXML
     private void checkUser() throws IOException {
         if (new Users().checklogin(username.getText(), password.getText()) != null) {
-            AnchorPane panee = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
             signinpane.getChildren().setAll(panee);
         }
     }

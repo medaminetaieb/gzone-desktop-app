@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="signinpane" prefHeight="355.0" prefWidth="692.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
+<AnchorPane id="AnchorPane" fx:id="signinpane" prefHeight="600" prefWidth="800" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
          <image>
