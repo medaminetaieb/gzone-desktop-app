@@ -73,9 +73,6 @@ public class GameViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Games games = new Games();
-        tfNameUpdate.setText(g.getName());
-        tfPhotoUrlUpdate.setText(g.getPhotoUrl());
-        tfDescriptionUpdate.setText(g.getDescription());
 
         clName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbView.getColumns().add(clName);
@@ -86,6 +83,7 @@ public class GameViewController implements Initializable {
             tbView.getItems().add(g);
 
         }
+        tbView.refresh();
 
     }
 
@@ -154,6 +152,9 @@ public class GameViewController implements Initializable {
         g = new Games().findById(
                 ((Game) tbView.getSelectionModel().getSelectedItem()).getId()
                 );
+        tfNameUpdate.setText(g.getName());
+        tfPhotoUrlUpdate.setText(g.getPhotoUrl());
+        tfDescriptionUpdate.setText(g.getDescription());
     }
 
     @FXML
