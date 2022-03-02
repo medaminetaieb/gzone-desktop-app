@@ -58,8 +58,9 @@ public class RegisterController {
     @FXML
     private Hyperlink toLogin;
  @FXML
-   private void toLogin(ActionEvent event) throws IOException {
-       
+   private void toLogin(MouseEvent event) throws IOException {
+       AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        storepane.getChildren().setAll(pane);
     }
     @FXML
     void createUser(ActionEvent event) {
