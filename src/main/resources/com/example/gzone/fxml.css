@@ -1,0 +1,28 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.search-box {
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+.tranparant{
+        -fx-background-color: rgba(0,0,0,0);
+
+}
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+.right-bar{
+    -fx-background-color: #828282;
+}
+
+.top-bar{
+    -fx-background-color: #000000;
+}
+
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.8 , 0.8 , 10.8); 
+}
