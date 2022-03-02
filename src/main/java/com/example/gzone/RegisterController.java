@@ -7,6 +7,7 @@ import com.example.entity.UserGamePreference;
 import com.example.service.Games;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +18,8 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 public class RegisterController {
 
@@ -54,7 +57,10 @@ public class RegisterController {
     private Button register;
     @FXML
     private Hyperlink toLogin;
-
+ @FXML
+   private void toLogin(ActionEvent event) throws IOException {
+       
+    }
     @FXML
     void createUser(ActionEvent event) {
         Users user = new Users();
