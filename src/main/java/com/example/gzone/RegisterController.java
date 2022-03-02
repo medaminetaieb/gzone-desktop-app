@@ -76,6 +76,11 @@ public class RegisterController {
                 true,
                 Role.user
         ));
+        ugp.insert(new UserGamePreference(
+               null,
+                null,
+                null
+        ));
 
     }
 
