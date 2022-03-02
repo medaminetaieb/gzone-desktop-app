@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -29,10 +30,8 @@ import java.util.ResourceBundle;
 
 public class TeamViewController implements Initializable {
 
-    final Teams teams = new Teams();
-    private Integer gameId;
 
-    ObservableList<Team> list = FXCollections.observableArrayList(teams.findAll());
+
     @FXML
     private VBox vbox;
     @FXML
@@ -62,17 +61,24 @@ public class TeamViewController implements Initializable {
     @FXML
     private Tab vtabyourteams;
     @FXML
-    private TableView<Team> vtvteamname;
-    @FXML
-    private TableColumn<Team, String> vtv;
-    @FXML
     private Button vbtnshowprofile;
     @FXML
     private Button vbtnupdateteam;
     @FXML
     private Button vbtnselectteam;
+    @FXML
+    private SplitMenuButton yourteams;
+    @FXML
+    private ListView<Team> listview;
+    @FXML
+    private Label Label;
 
-    int i=1;
+
+    final Teams teams = new Teams();
+    private Integer gameId;
+    String namee;
+
+    //int i=1;
     @FXML
     void ActionAdd(ActionEvent event) {
         /*vbtnaddmembers.setOnAction(new EventHandler<ActionEvent>() {
@@ -89,6 +95,9 @@ public class TeamViewController implements Initializable {
     @FXML
     void ActionCreateTeam(ActionEvent event) {
 
+        Date date = new Date(System.currentTimeMillis());
+
+
         Teams team = new Teams();
         Team t = new Team();
 
@@ -98,9 +107,9 @@ public class TeamViewController implements Initializable {
         t.setPhotoURL(vtfphotourl.getText());
         t.setTeamSize(vsteamsize.getValue());
         //t.setGameId(Integer.valueOf(vmbgame.getId()));
-        t.setGameId(2);
+        t.setGameId(gameId);
         t.setDescription(vtadescription.getText());
-        t.setCreateDate(new java.util.Date());
+        t.setCreateDate(date);
         if (vrbopenforrequests.isSelected()) {
             t.setRequestable(true);
         } else {
@@ -119,6 +128,7 @@ public class TeamViewController implements Initializable {
         vtfteamname.setText("");
         vtfphotourl.setText("");
         vtadescription.setText("");
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Create Team");
 
@@ -126,12 +136,7 @@ public class TeamViewController implements Initializable {
 
     }
 
-    @FXML
-    void ActionSelectTeam(ActionEvent event) {
 
-        Team selectedteam = vtvteamname.getSelectionModel().getSelectedItem();
-
-    }
 
     @FXML
     void ActionShowProfile(ActionEvent event) {
@@ -151,29 +156,34 @@ public class TeamViewController implements Initializable {
     public void initialize() {
 
         }
-    public void showTeams(){
-List<Team> list = teams.findAll();
-vtv.setCellValueFactory(new PropertyValueFactory<Team,String>("name"));
 
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Game> gameList = new Games().findAll();
+
+       vmbgame.getItems();
+       vmbgame.setOnAction(e -> {
+            gameId = null;
+
+        });
         for (Game g : gameList) {
-            vmbgame.getItems().add(new MenuItem(g.getName()));
-            vtv.setCellValueFactory(new PropertyValueFactory<Team, String>("name"));
-            vtvteamname.setItems(list);
+        MenuItem mi = new MenuItem(g.getName());
+        mi.setOnAction(e -> {
+            gameId = g.getId();
+            vmbgame.setText(g.getName());
+        });
+        vmbgame.getItems().add(mi);
+    }
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
+        valueFactory.setValue(1);
+        vsteamsize.setValueFactory(valueFactory);
 
-            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
-            valueFactory.setValue(1);
-            vsteamsize.setValueFactory(valueFactory);
-
-            showTeams();
-
-        }
+        List <Team >teamlist =teams.findAll().stream().filter(team -> team.getId());
+        listview.getItems().addAll(teamlist);
     }
 }
+
 
 
 

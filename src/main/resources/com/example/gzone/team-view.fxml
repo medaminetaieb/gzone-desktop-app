@@ -4,16 +4,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -167,15 +167,21 @@
                   <AnchorPane prefHeight="461.0" prefWidth="665.0" style="-fx-background-color: 1f7ea1;">
                      <children>
                         <VBox layoutX="50.0" layoutY="419.0" prefHeight="22.0" prefWidth="165.0" />
-                        <Separator layoutX="17.0" layoutY="493.0" prefHeight="10.0" prefWidth="630.0" />
-                        <TableView fx:id="vtvteamname" layoutX="208.0" layoutY="35.0" onTouchMoved="#Team" prefHeight="319.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn fx:id="vtv" prefWidth="199.0" text="Team name" />
-                          </columns>
-                        </TableView>
-                        <Button fx:id="vbtnshowprofile" layoutX="197.0" layoutY="512.0" mnemonicParsing="false" onAction="#ActionShowProfile" text="Show profile" />
-                        <Button fx:id="vbtnupdateteam" layoutX="333.0" layoutY="512.0" mnemonicParsing="false" onAction="#ActionUpdateTeam" text="Update team" />
-                        <Button fx:id="vbtnselectteam" layoutX="208.0" layoutY="354.0" mnemonicParsing="false" onAction="#ActionSelectTeam" text="Select team" />
+                        <Button fx:id="vbtnshowprofile" layoutX="203.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionShowProfile" text="Show profile" />
+                        <Button fx:id="vbtnupdateteam" layoutX="333.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionUpdateTeam" text="Update team" />
+                        <SplitMenuButton fx:id="yourteams" layoutX="215.0" layoutY="360.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="198.0" text="Select a team">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                        </SplitMenuButton>
+                        <ListView fx:id="listview" layoutX="214.0" layoutY="118.0" prefHeight="222.0" prefWidth="200.0" />
+                        <Separator layoutX="31.0" layoutY="495.0" prefHeight="0.0" prefWidth="601.0" />
+                        <Label fx:id="Label" layoutX="261.0" layoutY="38.0" text="Label">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content>
