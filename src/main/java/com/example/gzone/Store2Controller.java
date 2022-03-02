@@ -1,5 +1,7 @@
 package com.example.gzone;
 
+import com.example.entity.MarketItem;
+import com.example.service.MarketItems;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Store2Controller {
 
@@ -16,6 +19,8 @@ public class Store2Controller {
 
     @FXML
     public Button viewbutton;
+
+
 
     @FXML
     void Createstore(MouseEvent event) {
@@ -52,6 +57,10 @@ public class Store2Controller {
     void viewStore(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
         store2pane.getChildren().setAll(pane);
+
+
     }
+
+
 
 }

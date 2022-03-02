@@ -30,8 +30,9 @@ public AnchorPane storepane;
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void HomePage(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        storepane.getChildren().setAll(pane);
     }
 
     @FXML
