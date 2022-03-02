@@ -6,11 +6,13 @@ package com.example.gzone;
 
 import com.example.entity.Post;
 import com.example.service.Posts;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -19,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -35,6 +38,11 @@ public class Forumview1Controller implements Initializable {
     private TableColumn<Post, String> cltitle;
     @FXML
     private Button btnrefresh;
+    @FXML
+    public AnchorPane dashforumpane;
+    @FXML
+    public Button btnaddpost;
+    
 
     /**
      * Initializes the controller class.
@@ -82,5 +90,12 @@ public class Forumview1Controller implements Initializable {
         }
         tbview.refresh();
 
+    }
+    public void AddPost(ActionEvent event) throws IOException {
+    
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview.fxml"));
+        dashforumpane.getChildren().setAll(pane);
+        
+    
     }
 }

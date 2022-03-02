@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ForumviewController">
+<AnchorPane id="AnchorPane" fx:id="dashforumback" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ForumviewController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -90,8 +90,11 @@
             </Button>
          </children>
       </VBox>
-      <TextArea fx:id="tfcontent" layoutX="228.0" layoutY="295.0" prefHeight="136.0" prefWidth="345.0" />
-      <Button fx:id="btninsert" layoutX="341.0" layoutY="460.0" mnemonicParsing="false" onAction="#addpost" prefHeight="47.0" prefWidth="104.0" text="Publish" />
+      <TextArea fx:id="tfcontent" layoutX="228.0" layoutY="295.0" prefHeight="136.0" prefWidth="345.0" promptText="Describe your problem..." />
+      <Button fx:id="btninsert" layoutX="280.0" layoutY="449.0" mnemonicParsing="false" onAction="#addpost" prefHeight="47.0" prefWidth="104.0" style="-fx-background-color: #86d300 #86d300;" text="PUBLISH" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label layoutX="316.0" layoutY="55.0" text="ASK A PUBLIC  QUESTION :" textFill="#008318">
          <font>
             <Font name="Arial Bold Italic" size="24.0" />
@@ -102,11 +105,16 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="tftitle" layoutX="228.0" layoutY="191.0" />
+      <TextField fx:id="tftitle" layoutX="228.0" layoutY="191.0" promptText="Write your title " />
       <Label layoutX="228.0" layoutY="245.0" text="CONTENT :">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
+      <Button fx:id="btncancel" layoutX="427.0" layoutY="449.0" mnemonicParsing="false" onAction="#cancel" prefHeight="47.0" prefWidth="104.0" style="-fx-background-color: #86d300;" text="CANCEL" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
