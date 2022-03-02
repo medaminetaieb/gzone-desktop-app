@@ -4,28 +4,21 @@ import com.example.entity.Game;
 import com.example.entity.Team;
 import com.example.service.Games;
 import com.example.service.Teams;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.TouchEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -75,6 +68,8 @@ public class TeamViewController implements Initializable {
     private Label Label;
     @FXML
     private Label selected;
+    @FXML
+    private AnchorPane teamviewanchor;
 
 
     final Teams teams = new Teams();
@@ -147,10 +142,23 @@ public class TeamViewController implements Initializable {
     }
 
     @FXML
-    void ActionUpdateTeam(ActionEvent event) {
+    void ActionUpdateTeam(ActionEvent event) throws IOException {
+   /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Store2.fxml"));
+        Parent root =(Parent) fxmlLoader.load();
+        Stage stage = (Stage) validatebutton.getScene().getWindow();
+        stage.setTitle("fill in");
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.close();*/
 
 
-    }
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team-update.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
+
+
+        }
+
+
 
     @FXML
     void Team(TouchEvent event) {
@@ -200,7 +208,10 @@ public class TeamViewController implements Initializable {
 
 
 
-
+        vbtnupdateteam.disableProperty()
+                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
+        vbtnshowprofile.disableProperty()
+                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
 
         showTeams();
 

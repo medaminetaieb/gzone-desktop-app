@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -63,22 +63,22 @@
                   </VBox>
                   <VBox layoutX="196.0" layoutY="101.0" prefHeight="276.0" prefWidth="351.0">
                      <children>
-                        <TextField>
+                        <TextField fx:id="teamname">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField>
+                        <TextField fx:id="photourl">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>
                         </TextField>
-                        <Spinner prefHeight="31.0" prefWidth="147.0">
+                        <Spinner fx:id="scroller" prefHeight="31.0" prefWidth="147.0">
                            <VBox.margin>
                               <Insets top="13.0" />
                            </VBox.margin>
                         </Spinner>
-                        <TextArea prefHeight="121.0" prefWidth="396.0">
+                        <TextArea fx:id="descritpion" prefHeight="121.0" prefWidth="396.0">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
@@ -107,12 +107,12 @@
                   </VBox>
                   <VBox layoutX="197.0" layoutY="347.0" prefHeight="67.0" prefWidth="27.0">
                      <children>
-                        <RadioButton mnemonicParsing="false">
+                        <RadioButton fx:id="rb1" mnemonicParsing="false">
                            <VBox.margin>
                               <Insets top="35.0" />
                            </VBox.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false">
+                        <RadioButton fx:id="rb2" mnemonicParsing="false">
                            <VBox.margin>
                               <Insets top="18.0" />
                            </VBox.margin>
@@ -133,7 +133,7 @@
                   <ScrollBar orientation="VERTICAL" prefHeight="532.0" prefWidth="18.0" />
                   <AnchorPane layoutY="531.0" prefHeight="73.0" prefWidth="661.0">
                      <children>
-                        <Button layoutX="271.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
+                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
                         <Separator layoutX="22.0" layoutY="9.0" prefHeight="10.0" prefWidth="630.0" />
                      </children>
                   </AnchorPane>

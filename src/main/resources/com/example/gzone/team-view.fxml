@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
+<AnchorPane id="AnchorPane" fx:id="teamviewanchor" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -170,12 +170,12 @@
                         <Button fx:id="vbtnupdateteam" layoutX="333.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionUpdateTeam" text="Update team" />
                         <ListView fx:id="listview" layoutX="197.0" layoutY="112.0" prefHeight="318.0" prefWidth="255.0" />
                         <Separator layoutX="31.0" layoutY="495.0" prefHeight="0.0" prefWidth="601.0" />
-                        <Label fx:id="Label" layoutX="280.0" layoutY="38.0" text="Label">
+                        <Label fx:id="Label" layoutX="274.0" layoutY="38.0">
                            <font>
                               <Font size="39.0" />
                            </font>
                         </Label>
-                        <Label fx:id="selected" layoutX="307.0" layoutY="431.0" />
+                        <Label fx:id="selected" layoutX="276.0" layoutY="431.0" text="Select a team" />
                      </children>
                   </AnchorPane>
                </content>
