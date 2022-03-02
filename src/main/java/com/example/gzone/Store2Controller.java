@@ -60,6 +60,12 @@ public class Store2Controller {
 
 
     }
+    @FXML
+    void ViewStores(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        store2pane.getChildren().setAll(pane);
+
+    }
 
 
 

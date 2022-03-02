@@ -23,9 +23,14 @@ public AnchorPane storepane;
         AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreForm.fxml"));
         storepane.getChildren().setAll(pane);
     }
-
     @FXML
-    void Forum(MouseEvent event) {
+    void ViewStores(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        storepane.getChildren().setAll(pane);
+
+    }
+    @FXML
+    void Forum (MouseEvent event) {
 
     }
 

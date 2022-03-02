@@ -18,8 +18,7 @@ public class HomePageController {
 
     @FXML
     void HomePage(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("homePage.fxml"));
-        homepagepane.getChildren().setAll(pane);
+
     }
 
     @FXML

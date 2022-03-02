@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="homepagepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HomePageController">
-    <stylesheets>
-        <URL value="@homepage.css" />
-    </stylesheets>
+   <stylesheets>
+      <URL value="@homepage.css" />
+   </stylesheets>
    <children>
       <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
          <children>

@@ -89,7 +89,7 @@
       </VBox>
       <AnchorPane layoutX="214.0" layoutY="22.0" prefHeight="136.0" prefWidth="550.0" style="-fx-background-color: #828080;">
          <children>
-            <Button layoutX="350.0" layoutY="56.0" mnemonicParsing="false" text="View Stores" />
+            <Button fx:id="viewstoresbutton" layoutX="350.0" layoutY="56.0" mnemonicParsing="false" onAction="#ViewStores" text="View Stores" />
             <Button layoutX="115.0" layoutY="56.0" mnemonicParsing="false" onAction="#Createstore" text="CreateStore" />
          </children>
       </AnchorPane>

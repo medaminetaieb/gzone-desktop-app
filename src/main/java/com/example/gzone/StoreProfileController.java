@@ -2,6 +2,7 @@ package com.example.gzone;
 
 import com.example.entity.MarketItem;
 import com.example.service.MarketItems;
+import com.example.service.Stores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,8 @@ public class StoreProfileController {
 
         @FXML
         public  AnchorPane profilepane;
+        @FXML
+        public Button deletebutton;
 
         @FXML
         void AddToStore(ActionEvent event) throws IOException {
@@ -100,6 +103,10 @@ public class StoreProfileController {
 
                 }
                 tbview.refresh();
+        }
+        @FXML
+        void DeleteYourStore(ActionEvent event) {
+             //   new Stores().deleteById(id);
         }
 
 
