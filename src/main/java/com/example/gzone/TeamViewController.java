@@ -68,17 +68,19 @@ public class TeamViewController implements Initializable {
     private Button vbtnupdateteam;
     @FXML
     private Button vbtnselectteam;
-    @FXML
-    private SplitMenuButton yourteams;
+
     @FXML
     private ListView<Team> listview;
     @FXML
     private Label Label;
+    @FXML
+    private Label selected;
 
 
     final Teams teams = new Teams();
     private Integer gameId;
     String namee;
+
 
     //int i=1;
     @FXML
@@ -108,7 +110,6 @@ public class TeamViewController implements Initializable {
         t.setName(vtfteamname.getText());
         t.setPhotoURL(vtfphotourl.getText());
         t.setTeamSize(vsteamsize.getValue());
-        //t.setGameId(Integer.valueOf(vmbgame.getId()));
         t.setGameId(gameId);
         t.setDescription(vtadescription.getText());
         t.setCreateDate(date);
@@ -148,6 +149,7 @@ public class TeamViewController implements Initializable {
     @FXML
     void ActionUpdateTeam(ActionEvent event) {
 
+
     }
 
     @FXML
@@ -159,6 +161,21 @@ public class TeamViewController implements Initializable {
 
         }
 
+        public void showTeams(){
+            final Team[] clabel = {new Team()};
+            List <Team >teamlist =teams.findAll("admin_id=2");
+            listview.getItems().addAll(teamlist);
+            listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
+                @Override
+                public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
+                    clabel[0] = listview.getSelectionModel().getSelectedItem();
+                    Label.setText(clabel[0].getName());
+                    listview.getSelectionModel().selectedItemProperty();
+                    selected.setText("Team"+clabel[0].getName() +" is selected" );
+                }
+            });
+
+        }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -181,16 +198,12 @@ public class TeamViewController implements Initializable {
         valueFactory.setValue(1);
         vsteamsize.setValueFactory(valueFactory);
 
-        final Team[] clabel = {new Team()};
-        List <Team >teamlist =teams.findAll();
-        listview.getItems().addAll(teamlist);
-        listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
-            @Override
-            public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
-            clabel[0] = listview.getSelectionModel().getSelectedItem();
-            Label.setText(clabel[0].getName());
-            }
-        });
+
+
+
+
+        showTeams();
+
     }
 }
 
