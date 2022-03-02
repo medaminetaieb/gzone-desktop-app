@@ -4,6 +4,8 @@ import com.example.entity.Game;
 import com.example.entity.Team;
 import com.example.service.Games;
 import com.example.service.Teams;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -179,8 +181,16 @@ public class TeamViewController implements Initializable {
         valueFactory.setValue(1);
         vsteamsize.setValueFactory(valueFactory);
 
-        List <Team >teamlist =teams.findAll().stream().filter(team -> team.getId());
+        final Team[] clabel = {new Team()};
+        List <Team >teamlist =teams.findAll();
         listview.getItems().addAll(teamlist);
+        listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
+            @Override
+            public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
+            clabel[0] = listview.getSelectionModel().getSelectedItem();
+            Label.setText(clabel[0].getName());
+            }
+        });
     }
 }
 
