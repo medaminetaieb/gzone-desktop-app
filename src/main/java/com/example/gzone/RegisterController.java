@@ -28,7 +28,7 @@ public class RegisterController {
     private Boolean invitable;
     private Enum role;
     private Date joinDate;
-
+    
     @FXML
     private TextField fullName;
     @FXML
@@ -57,11 +57,8 @@ public class RegisterController {
     private Button register;
     @FXML
     private Hyperlink toLogin;
- @FXML
-   private void toLogin(MouseEvent event) throws IOException {
-       AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        storepane.getChildren().setAll(pane);
-    }
+
+   
     @FXML
     void createUser(ActionEvent event) {
         Users user = new Users();
@@ -84,7 +81,7 @@ public class RegisterController {
                 Role.user
         ));
         ugp.insert(new UserGamePreference(
-               null,
+                null,
                 null,
                 null
         ));

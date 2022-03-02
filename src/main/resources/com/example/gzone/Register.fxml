@@ -38,7 +38,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Hyperlink fx:id="toLogin" layoutX="449.0" layoutY="374.0" onAction="#toLogin" onMouseClicked="#toLogin" text="Already have an account?" textFill="#77b700" />
+      <Hyperlink fx:id="toLogin" layoutX="449.0" layoutY="374.0" onMouseClicked="#toLogin" text="Already have an account?" textFill="#77b700" />
       <RadioButton fx:id="minecraft" layoutX="606.0" layoutY="179.0" mnemonicParsing="false" text="Minecraft" textFill="WHITE" />
       <RadioButton fx:id="fifa" layoutX="549.0" layoutY="179.0" mnemonicParsing="false" text="FIFA" textFill="WHITE" />
       <RadioButton fx:id="leagueOfLegends" layoutX="416.0" layoutY="179.0" mnemonicParsing="false" text="League of Legends" textFill="WHITE" />
