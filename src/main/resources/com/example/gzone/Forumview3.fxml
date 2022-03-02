@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
+<AnchorPane id="AnchorPane" fx:id="postprofile" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -93,18 +93,13 @@
             </Button>
          </children>
       </VBox>
-      <ImageView fitHeight="80.0" fitWidth="96.0" layoutX="182.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../Desktop/219983-removebg-preview.png" />
-         </image>
-      </ImageView>
       <CheckBox fx:id="cbresolved" layoutX="444.0" layoutY="42.0" mnemonicParsing="false" text="BRESOLVED" />
       <Button fx:id="btndelete" layoutX="594.0" layoutY="37.0" mnemonicParsing="false" onAction="#deletepost" style="-fx-background-color: #86d300;" text="DELETE POST" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text fx:id="txdate" layoutX="204.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE" />
+      <Text fx:id="txdate" fill="#4230ff" layoutX="204.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE" underline="true" />
       <TextArea fx:id="tfcontent" layoutX="204.0" layoutY="209.0" prefHeight="120.0" prefWidth="545.0" style="-fx-border-color: 000000;" />
       <Button fx:id="btncomment" layoutX="204.0" layoutY="346.0" mnemonicParsing="false" onAction="#addcomment" style="-fx-background-color: #86d300;" text="ADD COMMENT " textFill="WHITE">
          <font>
@@ -116,15 +111,25 @@
           <TableColumn fx:id="clcomment" prefWidth="435.0" text="Comments " />
         </columns>
       </TableView>
-      <Text fx:id="txtitle" layoutX="289.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE">
+      <Text fx:id="txtitle" fill="#026105" layoutX="204.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE" wrappingWidth="140.0000035762787">
          <font>
-            <Font size="24.0" />
+            <Font size="34.0" />
          </font>
       </Text>
       <TextField fx:id="tfcomment" layoutX="365.0" layoutY="346.0" prefHeight="31.0" prefWidth="384.0" />
-      <Button fx:id="btnrefresh" layoutX="668.0" layoutY="467.0" mnemonicParsing="false" onAction="#refresh" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #86d300;" text="REFRESH " textFill="WHITE">
+      <Button fx:id="btnrefresh" layoutX="663.0" layoutY="459.0" mnemonicParsing="false" onAction="#refresh" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #86d300;" text="REFRESH " textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnleave" layoutX="664.0" layoutY="507.0" mnemonicParsing="false" onAction="#leave" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #86d300;" text="LEAVE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btndeletecm" layoutX="664.0" layoutY="409.0" mnemonicParsing="false" onAction="#deletcomment" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #86d300;" text="DELETE COMMENT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
          </font>
       </Button>
    </children>

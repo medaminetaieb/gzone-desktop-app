@@ -102,7 +102,6 @@ public class Posts implements AdvancedService<Post> {
         return false;
     }
     
-    @Override
     public Boolean deleteById(int id) {
         try {
             String req = "DELETE FROM `posts` WHERE `id`="+id+";";

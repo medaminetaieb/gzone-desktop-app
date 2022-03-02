@@ -97,9 +97,9 @@
          </font>
       </Label>
       <TextField fx:id="tfsearch" layoutX="200.0" layoutY="151.0" onInputMethodTextChanged="#find" prefHeight="31.0" prefWidth="328.0" promptText="search here ...." />
-      <TableView fx:id="tbview" layoutX="200.0" layoutY="240.0" prefHeight="341.0" prefWidth="583.0">
+      <TableView fx:id="tbview" layoutX="200.0" layoutY="240.0" prefHeight="289.0" prefWidth="584.0">
         <columns>
-          <TableColumn fx:id="cltitle" prefWidth="582.0" text="TITLE" />
+          <TableColumn fx:id="cltitle" minWidth="0.0" prefWidth="582.0" text="TITLE" />
         </columns>
       </TableView>
       <Button fx:id="btnrefresh" layoutX="543.0" layoutY="151.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #86d300;" text="SEARCH" textFill="WHITE">
@@ -107,6 +107,11 @@
             <Font name="System Bold" size="15.0" />
          </font></Button>
       <Button fx:id="btnaddpost" layoutX="675.0" layoutY="151.0" mnemonicParsing="false" onAction="#AddPost" style="-fx-background-color: #86d300;" text="ADD POST" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnviewpost" layoutX="432.0" layoutY="540.0" mnemonicParsing="false" onAction="#view" style="-fx-background-color: #86d300;" text="VIEW POST " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

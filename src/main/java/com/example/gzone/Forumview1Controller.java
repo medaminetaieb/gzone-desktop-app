@@ -36,12 +36,16 @@ public class Forumview1Controller implements Initializable {
     private TableView tbview;
     @FXML
     private TableColumn<Post, String> cltitle;
+    
     @FXML
     private Button btnrefresh;
     @FXML
     public AnchorPane dashforumpane;
     @FXML
     public Button btnaddpost;
+     @FXML
+    private Button btnviewpost;
+    
     
 
     /**
@@ -52,6 +56,7 @@ public class Forumview1Controller implements Initializable {
 
         cltitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         tbview.getColumns().add(cltitle);
+        refresh(null);
 
     }
 
@@ -87,6 +92,7 @@ public class Forumview1Controller implements Initializable {
         for (Post p : postlist) {
             tbview.getItems().add(p);
 
+
         }
         tbview.refresh();
 
@@ -97,5 +103,13 @@ public class Forumview1Controller implements Initializable {
         dashforumpane.getChildren().setAll(pane);
         
     
+    }
+     @FXML
+    void view(ActionEvent event) throws IOException {
+        
+        Id.post = ((Post)tbview.getSelectionModel().getSelectedItem()).getId();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview3.fxml"));
+        dashforumpane.getChildren().setAll(pane);
+
     }
 }
