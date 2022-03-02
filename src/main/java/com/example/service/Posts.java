@@ -6,6 +6,7 @@
 package com.example.service;
 
 import com.example.entity.Post;
+import com.example.util.Badwords;
 import com.example.util.MySQLValidator;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,8 +34,8 @@ public class Posts implements AdvancedService<Post> {
             ps.setObject(++i, p.getId());
             ps.setObject(++i, p.getPosterId());
             ps.setObject(++i, p.isResolved());
-            ps.setString(++i, p.getTitle());
-            ps.setString(++i, p.getContent());
+            ps.setString(++i,Badwords.filter(p.getTitle()));
+            ps.setString(++i,Badwords.filter(p.getContent()));
             ps.setString(++i, p.getTags());
             ps.setDate(++i, new java.sql.Date(p.getPostDate().getTime()));
            
