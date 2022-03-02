@@ -61,7 +61,7 @@ public class RegisterController {
         UserGamePreferences ugp = new UserGamePreferences();
         LocalDate ld = birthDate.getValue();
         Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd = new Date(Date.from(instant).getTime());
+        Date crd = Date.from(instant);
         user.insert(new User(
                 null,
                 phoneNumber.getText(),
@@ -71,22 +71,16 @@ public class RegisterController {
                 photoURL.getText(),
                 fullName.getText(),
                 bio.getText(),
-                new java.util.Date(),
                 crd,
+                new java.util.Date(),
                 true,
                 Role.user
         ));
-        ugp.insert(new UserGamePreference(
-                null,
-                userId,
-                gameId
-        ));
+
     }
 
     @FXML
     public void initialize() {
-        List<Game> gameList = new Games().findAll();
-       
-       
+
     }
 }

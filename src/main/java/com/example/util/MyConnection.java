@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author mat
  */
 public class MyConnection {
-    private final String url = "jdbc:mysql://localhost:3306/gzoneDB";
+    private final String url = "jdbc:mysql://localhost:3306/gzonedb";
     private final String login = "root";
     private final String pwd = "";
     private Connection connection;

@@ -15,12 +15,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="714.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.RegisterController">
    <children>
-      <TextField layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
-      <TextField layoutX="72.0" layoutY="188.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />
-      <PasswordField layoutX="72.0" layoutY="241.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
-      <TextField layoutX="72.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Full Name" />
-      <TextField layoutX="72.0" layoutY="294.0" prefHeight="30.0" prefWidth="187.0" promptText="Phone number" />
-      <DatePicker layoutX="72.0" layoutY="347.0" prefHeight="30.0" prefWidth="187.0" promptText="Birth Date" />
+      <TextField fx:id="username" layoutX="72.0" layoutY="139.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
+      <TextField fx:id="email" layoutX="72.0" layoutY="188.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />
+      <PasswordField fx:id="password" layoutX="72.0" layoutY="241.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
+      <TextField fx:id="fullName" layoutX="72.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Full Name" />
+      <TextField fx:id="phoneNumber" layoutX="72.0" layoutY="294.0" prefHeight="30.0" prefWidth="187.0" promptText="Phone number" />
+      <DatePicker fx:id="birthDate" layoutX="72.0" layoutY="347.0" prefHeight="30.0" prefWidth="187.0" promptText="Birth Date" />
       <Label fx:id="reglb" layoutX="263.0" layoutY="16.0" prefHeight="58.0" prefWidth="187.0" text="Registration" textFill="#77b700">
          <font>
             <Font name="Arial Bold" size="31.0" />
@@ -32,16 +32,16 @@
          </image>
       </ImageView>
       <Button fx:id="register" layoutX="475.0" layoutY="324.0" mnemonicParsing="false" onAction="#createUser" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: #77b700;" text="Register" textFill="WHITE" />
-      <TextArea layoutX="380.0" layoutY="218.0" prefHeight="83.0" prefWidth="282.0" promptText="Bio" />
-      <TextField layoutX="418.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Photo" />
+      <TextArea fx:id="bio" layoutX="380.0" layoutY="218.0" prefHeight="83.0" prefWidth="282.0" promptText="Bio" />
+      <TextField fx:id="photoURL" layoutX="418.0" layoutY="95.0" prefHeight="30.0" prefWidth="187.0" promptText="Photo" />
       <Label layoutX="462.0" layoutY="143.0" opacity="0.59" text="Favorite Games :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Hyperlink layoutX="449.0" layoutY="374.0" text="Already have an account?" textFill="#77b700" />
-      <RadioButton layoutX="606.0" layoutY="179.0" mnemonicParsing="false" text="Minecraft" textFill="WHITE" />
-      <RadioButton layoutX="549.0" layoutY="179.0" mnemonicParsing="false" text="FIFA" textFill="WHITE" />
-      <RadioButton layoutX="416.0" layoutY="179.0" mnemonicParsing="false" text="League of Legends" textFill="WHITE" />
-      <RadioButton layoutX="332.0" layoutY="179.0" mnemonicParsing="false" text="Battlefield" textFill="WHITE" />
+      <Hyperlink fx:id="toLogin" layoutX="449.0" layoutY="374.0" text="Already have an account?" textFill="#77b700" />
+      <RadioButton fx:id="minecraft" layoutX="606.0" layoutY="179.0" mnemonicParsing="false" text="Minecraft" textFill="WHITE" />
+      <RadioButton fx:id="fifa" layoutX="549.0" layoutY="179.0" mnemonicParsing="false" text="FIFA" textFill="WHITE" />
+      <RadioButton fx:id="leagueOfLegends" layoutX="416.0" layoutY="179.0" mnemonicParsing="false" text="League of Legends" textFill="WHITE" />
+      <RadioButton fx:id="battlefield" layoutX="332.0" layoutY="179.0" mnemonicParsing="false" text="Battlefield" textFill="WHITE" />
    </children>
 </AnchorPane>
