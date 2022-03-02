@@ -39,7 +39,7 @@ public class Store2Controller {
 
     @FXML
     void Store(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store2.fxml"));
         store2pane.getChildren().setAll(pane);
     }
 

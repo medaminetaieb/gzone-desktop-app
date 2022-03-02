@@ -24,7 +24,7 @@ public class ViewStoresController {
     private TextField tfsearch;
 
     @FXML
-    private AnchorPane viewstorespane;
+    private AnchorPane viewstorepane;
     @FXML
     private TableView tbview;
     @FXML
@@ -38,12 +38,14 @@ public class ViewStoresController {
     @FXML
     void HomePage(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        viewstorespane.getChildren().setAll(pane);
+        viewstorepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(ActionEvent event) {
+    void Store(ActionEvent event) throws IOException{
 
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        viewstorepane.getChildren().setAll(pane);
     }
 
     @FXML
