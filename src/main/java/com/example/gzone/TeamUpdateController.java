@@ -62,18 +62,30 @@ public class TeamUpdateController implements Initializable {
 
         teams.modify(t);
     }
-    public void setatt(){
 
-
-
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Teams teams = new Teams();
+        t = teams.findById(8);
+        teamname.setText(t.getName());
+        photourl.setText(t.getPhotoURL());
+        descritpion.setText(t.getDescription());
+
+
+
+
+        if(t.isRequestable() == true){
+            rb1.fire();
+        }
+
+        if(t.isInvitable() == true){
+            rb2.fire();
+        }
 
 
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
-        valueFactory.setValue(1);
+        valueFactory.setValue(t.getTeamSize());
         scroller.setValueFactory(valueFactory);
 
     }

@@ -124,7 +124,7 @@
                   <ScrollBar orientation="VERTICAL" prefHeight="532.0" prefWidth="18.0" />
                   <AnchorPane layoutY="531.0" prefHeight="73.0" prefWidth="661.0">
                      <children>
-                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
+                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" onAction="#Update" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
                         <Separator layoutX="22.0" layoutY="9.0" prefHeight="10.0" prefWidth="630.0" />
                      </children>
                   </AnchorPane>

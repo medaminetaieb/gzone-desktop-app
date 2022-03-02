@@ -128,9 +128,9 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-profile.fxml"));
-        AnchorPane pane = loader.load();
-        TeamProfileController teamProfileController = loader.getController();
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team-profile.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
 
         teamviewanchor.getChildren().setAll(pane);
     }
