@@ -119,17 +119,8 @@
                         </RadioButton>
                      </children>
                   </VBox>
-                  <VBox layoutX="50.0" layoutY="459.0" prefHeight="22.0" prefWidth="165.0">
-                     <children>
-                        <Label prefHeight="21.0" prefWidth="134.0" text="Members" />
-                     </children>
-                  </VBox>
-                  <VBox layoutX="198.0" layoutY="453.0" prefHeight="82.0" prefWidth="348.0">
-                     <children>
-                        <TextField prefHeight="31.0" prefWidth="350.0" />
-                     </children>
-                  </VBox>
-                  <Button layoutX="546.0" layoutY="452.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="128.0" text="Delete member" />
+                  <VBox layoutX="50.0" layoutY="459.0" prefHeight="22.0" prefWidth="165.0" />
+                  <VBox layoutX="198.0" layoutY="453.0" prefHeight="82.0" prefWidth="348.0" />
                   <ScrollBar orientation="VERTICAL" prefHeight="532.0" prefWidth="18.0" />
                   <AnchorPane layoutY="531.0" prefHeight="73.0" prefWidth="661.0">
                      <children>

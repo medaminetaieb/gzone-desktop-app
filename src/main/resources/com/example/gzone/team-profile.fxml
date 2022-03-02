@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamProfileController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -97,9 +97,9 @@
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="604.0" prefWidth="673.0" style="-fx-background-color: 1f7ea1;">
                <children>
-                  <ImageView fitHeight="121.0" fitWidth="120.0" layoutX="42.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="121.0" fitWidth="120.0" layoutX="31.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../Desktop/g zone.png" />
+                        <Image url="@../../../../../../../../../Desktop/user.png" />
                      </image>
                   </ImageView>
                   <VBox layoutX="270.0" layoutY="94.0" prefHeight="182.0" prefWidth="138.0">
@@ -166,7 +166,7 @@
                       <TableColumn prefWidth="224.0" text="Names" />
                     </columns>
                   </TableView>
-                  <VBox layoutX="31.0" layoutY="234.0" prefHeight="22.0" prefWidth="83.0">
+                  <VBox layoutX="37.0" layoutY="234.0" prefHeight="22.0" prefWidth="83.0">
                      <children>
                         <Label prefHeight="21.0" prefWidth="69.0" text="Win rate:" />
                      </children>

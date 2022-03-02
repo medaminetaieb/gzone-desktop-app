@@ -1,6 +1,7 @@
 package com.example.gzone;
 
 import com.example.entity.Game;
+import com.example.entity.Membership;
 import com.example.entity.Team;
 import com.example.service.Games;
 import com.example.service.Teams;
@@ -77,17 +78,6 @@ public class TeamViewController implements Initializable {
     String namee;
 
 
-    //int i=1;
-    @FXML
-    void ActionAdd(ActionEvent event) {
-        /*vbtnaddmembers.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                vbox.getChildren().add(new TextField());
-                i++;
-            }
-        });*/
-    }
 
 
 
@@ -137,8 +127,9 @@ public class TeamViewController implements Initializable {
 
 
     @FXML
-    void ActionShowProfile(ActionEvent event) {
-
+    void ActionShowProfile(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team-profile.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
 
     @FXML
@@ -168,16 +159,19 @@ public class TeamViewController implements Initializable {
     public void initialize() {
 
         }
+        int info;
 
         public void showTeams(){
             final Team[] clabel = {new Team()};
             List <Team >teamlist =teams.findAll("admin_id=2");
             listview.getItems().addAll(teamlist);
+
             listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
                 @Override
                 public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
                     clabel[0] = listview.getSelectionModel().getSelectedItem();
                     Label.setText(clabel[0].getName());
+                    info = listview.getSelectionModel().getSelectedItem().getId();
                     listview.getSelectionModel().selectedItemProperty();
                     selected.setText("Team"+clabel[0].getName() +" is selected" );
                 }
