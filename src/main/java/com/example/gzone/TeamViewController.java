@@ -122,6 +122,8 @@ public class TeamViewController implements Initializable {
 
         alert.setContentText("Team Added!");
 
+
+
     }
 
 
@@ -145,11 +147,17 @@ public class TeamViewController implements Initializable {
         stage.show();
         stage.close();*/
 
-
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team-update.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
+        AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
+        TeamUpdateController teamUpdateController = loader.getController();
+        Integer id = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
 
-
+        teamUpdateController.getidd(id);
+        teamUpdateController.iddd(id);
+        String tname =((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        teamUpdateController.getnamee(tname);
+        teamUpdateController.teammm(tname);
         }
 
 
@@ -177,6 +185,8 @@ public class TeamViewController implements Initializable {
                     info = listview.getSelectionModel().getSelectedItem().getId();
                     listview.getSelectionModel().selectedItemProperty();
                     selected.setText("Team "+clabel[0].getName() +" is selected" );
+                    //Integer id = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+                    //System.out.println(id);
                 }
             });
 

@@ -36,6 +36,11 @@ public class TeamUpdateController implements Initializable {
     private Button updateteam;
 
     @FXML
+    private Label nameid;
+    @FXML
+    private Label nameee;
+
+    @FXML
     void Update(ActionEvent event){
         Teams teams = new Teams();
 
@@ -64,15 +69,53 @@ public class TeamUpdateController implements Initializable {
     }
 
 
+  public Integer idd ;
+        public Integer setidd(){
+            return idd ;
+    }
+    public void getidd(Integer id){
+            this.idd=id;
+
+    }
+
+
+
+    public void iddd(Integer iddd) {
+        nameid.setText(String.valueOf(idd));
+    }
+    public String textname;
+
+    public String setnamee(){
+        return textname ;
+    }
+    public void getnamee(String textname){
+        this.textname= textname;
+
+    }
+    public void teammm(String name){
+        nameee.setText(textname);
+
+    }
+
+
+    public void initialize(){
+
+
+
+
+    }
+    Integer i = setidd();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         Teams teams = new Teams();
-        t = teams.findById(8);
+        t = teams.findById(4);
         teamname.setText(t.getName());
         photourl.setText(t.getPhotoURL());
         descritpion.setText(t.getDescription());
 
 
+System.out.println(i);
 
 
         if(t.isRequestable() == true){

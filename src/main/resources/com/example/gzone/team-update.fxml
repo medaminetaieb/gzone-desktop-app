@@ -133,6 +133,8 @@
                         <Font size="34.0" />
                      </font>
                   </Label>
+                  <Label fx:id="nameid" layoutX="320.0" layoutY="64.0" text="Label" />
+                  <Label fx:id="nameee" layoutX="276.0" layoutY="64.0" text="Label" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

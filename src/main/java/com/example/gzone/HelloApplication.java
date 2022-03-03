@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //  Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-update.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         //Scene scene = new Scene(root);
         stage.setTitle("Gzone-Project");
