@@ -17,7 +17,7 @@ public class TeamUpdateController implements Initializable {
 
     public Integer idd;
     public String textname;
-    Integer i = setidd();
+
     private Team t;
     @FXML
     private TextField teamname;
@@ -81,18 +81,9 @@ public class TeamUpdateController implements Initializable {
         teams.modify(t);
     }
 
-    public Integer setidd() {
-        return idd;
-    }
 
-    public void getidd(Integer id) {
-        this.idd = id;
 
-    }
 
-    public void iddd(Integer iddd) {
-        nameid.setText(String.valueOf(idd));
-    }
 
     public String setnamee() {
         return textname;
@@ -117,13 +108,15 @@ public class TeamUpdateController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Teams teams = new Teams();
-        t = teams.findById(4);
+        t = teams.findById(id.eam);
         teamname.setText(t.getName());
         photourl.setText(t.getPhotoURL());
         descritpion.setText(t.getDescription());
 
 
-        System.out.println(i);
+        nameid.setText(String.valueOf(id.eam));
+
+
 
 
         if (t.isRequestable() == true) {

@@ -5,12 +5,15 @@
 package com.example.app;
 
 import com.example.test.MainTest;
+import com.example.test.MembershipTest;
 
 /**
  * @author mat
  */
 public class Main {
     public static void main(String[] args) {
-        MainTest.insertAll();
+       MainTest.insertAll();
+       MainTest.main();
+
     }
 }

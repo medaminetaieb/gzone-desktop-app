@@ -22,6 +22,7 @@ public class MainTest {
         JoinRequestTest.main();
         StoreTest.main();
         MarketItemTest.main();
+
     }
     
     public static void insertAll() {
@@ -37,5 +38,6 @@ public class MainTest {
         JoinRequestTest.insertAll();
         StoreTest.insertAll();
         MarketItemTest.insertAll();
+
     }
 }

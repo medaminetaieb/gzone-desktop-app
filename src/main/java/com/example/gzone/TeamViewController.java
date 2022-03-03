@@ -175,15 +175,13 @@ public class TeamViewController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
         stage.close();*/
-
+        id.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
         TeamUpdateController teamUpdateController = loader.getController();
-        Integer id = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
 
-        teamUpdateController.getidd(id);
-        teamUpdateController.iddd(id);
+
         String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
