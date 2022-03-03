@@ -100,15 +100,15 @@
       </VBox>
       <TabPane layoutX="163.0" layoutY="-1.0" prefHeight="604.0" prefWidth="638.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Untitled Tab">
+            <Tab text="Our Games">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tbView" layoutX="23.0" layoutY="121.0" prefHeight="283.0" prefWidth="578.0">
                           <columns>
-                            <TableColumn fx:id="clName" prefWidth="148.0" text="Name" />
-                              <TableColumn fx:id="clDescription" prefWidth="288.0" text="Description" />
-                              <TableColumn fx:id="clAction" prefWidth="141.0" text="Action" />
+                            <TableColumn fx:id="clName" prefWidth="177.0" text="Name" />
+                              <TableColumn fx:id="clPhotoUrl" prefWidth="142.0" text="PhotoUrl" />
+                              <TableColumn fx:id="clDescription" prefWidth="258.0" text="Description" />
                           </columns>
                         </TableView>
                         <HBox alignment="CENTER" layoutX="23.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
@@ -135,13 +135,13 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </HBox>
-                        <Button fx:id="BTNEdit" layoutX="220.0" layoutY="439.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="61.0" text="EDIT" />
-                        <Button fx:id="btnDelete" layoutX="358.0" layoutY="439.0" mnemonicParsing="false" onAction="#delete" text="DELETE" />
+                        <Button fx:id="BTNEdit" layoutX="202.0" layoutY="439.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="87.0" text="EDIT" />
+                        <Button fx:id="btnDelete" layoutX="368.0" layoutY="439.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="96.0" text="DELETE" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab text="Untitled Tab 2">
+          <Tab text="Add New Game">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -166,9 +166,9 @@
                         </VBox>
                         <VBox layoutX="256.0" layoutY="78.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="tfName" />
+                              <TextField fx:id="tfName" text="PRO" />
                               <TextField fx:id="tfPhotoUrl" />
-                              <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" />
+                              <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" text="Game5" />
                            </children>
                            <effect>
                               <BoxBlur height="0.0" iterations="0" width="0.0" />
@@ -183,7 +183,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Untitled Tab 1">
+          <Tab text="Edit Game">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -216,7 +216,7 @@
                               <BoxBlur height="0.0" iterations="0" width="0.0" />
                            </effect>
                         </VBox>
-                        <Button fx:id="btnUpdate" layoutX="319.0" layoutY="418.0" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="83.0" text="UPDATE">
+                        <Button fx:id="btnUpdate" layoutX="319.0" layoutY="418.0" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="83.0" text="EDIT">
                            <font>
                               <Font name="Cambria" size="15.0" />
                            </font>

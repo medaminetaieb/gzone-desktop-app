@@ -4,8 +4,13 @@
  */
 package com.example.gzone;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
 import com.example.entity.Game;
 import com.example.service.Games;
+import com.example.util.PhotoUrlCheck;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,7 +35,7 @@ import javafx.scene.text.Text;
  * @author chayma
  */
 public class GameViewController implements Initializable {
-
+private Integer gameId;
     @FXML
     private TextField tfName;
     @FXML
@@ -49,7 +54,6 @@ public class GameViewController implements Initializable {
     private TextField tfPhotoUrlUpdate;
     @FXML
     private TextArea tfDescriptionUpdate;
-    private Game g;
     @FXML
     private TableView tbView;
     @FXML
@@ -57,7 +61,8 @@ public class GameViewController implements Initializable {
     @FXML
     private TableColumn<Game, String> clDescription;
     @FXML
-    private TableColumn<?, ?> clAction;
+    private TableColumn<Game, String> clPhotoUrl;
+
     @FXML
     private TextField tfSearch;
     @FXML
@@ -73,19 +78,18 @@ public class GameViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Games games = new Games();
-        tfNameUpdate.setText(g.getName());
-        tfPhotoUrlUpdate.setText(g.getPhotoUrl());
-        tfDescriptionUpdate.setText(g.getDescription());
 
         clName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbView.getColumns().add(clName);
         clDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         tbView.getColumns().add(clDescription);
-
+        clPhotoUrl.setCellValueFactory(new PropertyValueFactory<>("photoUrl"));
+        tbView.getColumns().add(clPhotoUrl);
         for (Game g : games.findAll()) {
             tbView.getItems().add(g);
 
         }
+        tbView.refresh();
 
     }
 
@@ -111,24 +115,36 @@ public class GameViewController implements Initializable {
 
     @FXML
     private void Add(ActionEvent event) {
-        String name = tfName.getText();
-        String Description = tfDescription.getText();
-        String PhotoUrl = tfPhotoUrl.getText();
-        Game G = new Game(null, name, PhotoUrl, Description);
         Games GS = new Games();
-        GS.insert(G);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("success");
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        if (!tfName.getText().isBlank()
+                && PhotoUrlCheck.testImage(tfPhotoUrl.getText())
+                && !tfDescription.getText().isBlank()) {
+            GS.insert(new Game(null, tfName.getText(), tfPhotoUrl.getText(), tfDescription.getText()));
+        alert.setAlertType(AlertType.INFORMATION);
+            alert.setTitle("success");
         alert.setHeaderText("Success");
         alert.setContentText("Game is added successefully");
         alert.show();
+        find(event);
+        } else {
+            alert.setAlertType(AlertType.ERROR);
+            alert.setTitle("faild");
+        alert.setHeaderText("faild");
+        alert.setContentText("check form");
+        alert.show();
+        find(event);
+        }
+        
+
     }
 
     @FXML
     private void modify(ActionEvent event) {
+        Game g = new Games().findById(Id.game);
         g.setName(tfNameUpdate.getText());
-        g.setPhotoUrl(tfPhotoUrlUpdate.getText());
         g.setDescription(tfDescriptionUpdate.getText());
+        g.setPhotoUrl(tfPhotoUrlUpdate.getText());
         Games games = new Games();
         games.modify(g);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -136,13 +152,15 @@ public class GameViewController implements Initializable {
         alert.setHeaderText("Success");
         alert.setContentText("Game is update successefully");
         alert.show();
+        find(event);
+
     }
 
     @FXML
     private void find(ActionEvent event) {
         tbView.getItems().clear();
         Games g = new Games();
-        List<Game> gamelist = g.findAll("`name` REGEXP '" + tfSearch.getText() + "'");
+        List<Game> gamelist = g.findAll("name REGEXP '" + tfSearch.getText() + "'");
         for (Game g1 : gamelist) {
             tbView.getItems().add(g1);
         }
@@ -151,9 +169,12 @@ public class GameViewController implements Initializable {
 
     @FXML
     private void edit(ActionEvent event) {
-        g = new Games().findById(
-                ((Game) tbView.getSelectionModel().getSelectedItem()).getId()
-                );
+        Id.game = ((Game) tbView.getSelectionModel().getSelectedItem()).getId();
+        Game g = new Games().findById(Id.game);
+        tfNameUpdate.setText(g.getName());
+        tfDescriptionUpdate.setText(g.getDescription());
+        tfPhotoUrlUpdate.setText(g.getPhotoUrl());
+
     }
 
     @FXML
@@ -161,6 +182,11 @@ public class GameViewController implements Initializable {
         int id = ((Game) tbView.getSelectionModel().getSelectedItem()).getId();
         new Games().deleteById(id);
         find(event);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("success");
+        alert.setHeaderText("Success");
+        alert.setContentText("Game is delete successefully");
+        alert.show();
     }
 
 }
