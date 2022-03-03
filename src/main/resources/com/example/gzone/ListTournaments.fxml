@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="apListTournaments" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ListTournaments">
+   <children>
+      <TextField fx:id="tfSearchName" layoutX="279.0" layoutY="50.0" prefHeight="26.0" prefWidth="196.0" promptText="Filter by name" />
+      <Button fx:id="bRefresh" layoutX="501.0" layoutY="51.0" mnemonicParsing="false" onAction="#refreshList" text="Refresh" />
+      <Text layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find Tournaments" />
+      <TableView fx:id="tvList" layoutX="43.0" layoutY="83.0" prefHeight="270.0" prefWidth="514.0" />
+      <Button fx:id="bViewTournament" layoutX="43.0" layoutY="360.0" mnemonicParsing="false" onAction="#viewTournament" text="View Tournament" />
+      <MenuButton fx:id="mbGame" layoutX="75.0" layoutY="52.0" mnemonicParsing="false" text="Game">
+        <items>
+        </items>
+      </MenuButton>
+      <Button fx:id="bCreateNewTournament" layoutX="411.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToCreateTournament" text="Create New Tournament" />
+   </children>
+</AnchorPane>

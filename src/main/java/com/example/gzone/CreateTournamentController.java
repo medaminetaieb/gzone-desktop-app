@@ -6,9 +6,12 @@ import com.example.service.Games;
 import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.util.Date;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,6 +23,9 @@ public class CreateTournamentController {
     private Integer gameId;
     private Integer requiredTeams;
     private Integer teamSize;
+
+    @FXML
+    private AnchorPane apCreateTournament;
 
     @FXML
     private Button bCancel;
@@ -74,28 +80,47 @@ public class CreateTournamentController {
     }
 
     @FXML
-    void cancelCreateTournament(ActionEvent event) {
-
+    void cancelCreateTournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apCreateTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void createTournament(ActionEvent event) {
-        Tournaments tournaments = new Tournaments();
-        LocalDate ld = dpCloseRequestDate.getValue();
-        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd = new Date(Date.from(instant).getTime());
-        tournaments.insert(new Tournament(
-                null,
-                2,
-                gameId,
-                tfTournamentName.getText(),
-                taTournamentDescription.getText(),
-                requiredTeams,
-                teamSize,
-                crd,
-                cbOpenForRequests.isSelected(),
-                new java.util.Date()
-        ));
+    void createTournament(ActionEvent event) throws IOException {
+        Alert a = new Alert(Alert.AlertType.NONE);
+        if (
+                !tfTournamentName.getText().isBlank()
+                        && !taTournamentDescription.getText().isBlank()
+                        && requiredTeams != null
+                        && teamSize != null
+                        && dpCloseRequestDate.getValue() != null
+        ) {
+            Tournaments tournaments = new Tournaments();
+            tournaments.insert(new Tournament(
+                    null,
+                    Id.user,
+                    gameId,
+                    tfTournamentName.getText(),
+                    taTournamentDescription.getText(),
+                    requiredTeams,
+                    teamSize,
+                    new java.util.Date(java.sql.Date.valueOf(dpCloseRequestDate.getValue()).getTime()),
+                    cbOpenForRequests.isSelected(),
+                    new java.util.Date()
+            ));
+            a.setAlertType(Alert.AlertType.INFORMATION);
+            a.setTitle("Success");
+            a.setContentText("Tournament created");
+            a.show();
+            Id.tournament = tournaments.findAll("`name` REGEXP '"+tfTournamentName.getText()+"'").get(0).getId();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+            apCreateTournament.getChildren().setAll(pane);
+        } else {
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setTitle("Error");
+            a.setContentText("Please Fill the form");
+            a.show();
+        }
     }
 
     @FXML
