@@ -7,14 +7,17 @@ import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ListTournaments {
+public class ListTournaments implements Initializable {
 
     Tournaments tournaments;
 
@@ -99,7 +102,7 @@ public class ListTournaments {
     }
 
     @FXML
-    void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         tournaments = new Tournaments();
         List<Game> gameList = new Games().findAll();
         MenuItem mbgall = new MenuItem("Any Game");

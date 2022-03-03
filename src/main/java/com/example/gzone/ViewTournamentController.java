@@ -8,6 +8,7 @@ import com.example.util.TournamentMatches;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -15,9 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ViewTournamentController {
+public class ViewTournamentController implements Initializable {
 
     Tournament t;
 
@@ -107,13 +110,12 @@ public class ViewTournamentController {
     @FXML
     void selectWinner(ActionEvent event) {
         if (t.getAdminId().equals(Id.user) && ttvMatches.getSelectionModel().getSelectedItem() != null ) {
-            Team winnerTeam = new Teams().find(
-                    null, null,
+            Team winnerTeam = new Teams().findAll(
                     String.format(
                             "`name`='%s'",
                             ttvMatches.getSelectionModel().getSelectedItem().toString()
-                            ),
-                    null).get(0);
+                            )
+            ).get(0);
 
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);
@@ -124,7 +126,7 @@ public class ViewTournamentController {
     }
 
     @FXML
-    void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
         tTournamentName.setText(t.getName());
         tCreationDate.setText(t.getCreateDate().toString());

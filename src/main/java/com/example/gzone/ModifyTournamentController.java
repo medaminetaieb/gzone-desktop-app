@@ -6,15 +6,18 @@ import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.ZoneId;
+import java.util.ResourceBundle;
 
-public class ModifyTournamentController {
+public class ModifyTournamentController implements Initializable {
 
     Tournament t;
 
@@ -113,7 +116,7 @@ public class ModifyTournamentController {
     }
 
     @FXML
-    void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
         tGameName.setText(new Games().findById(t.getGameId()).getName());
         tfTournamentName.setText(t.getName());

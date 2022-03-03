@@ -7,18 +7,21 @@ import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class CreateTournamentController {
+public class CreateTournamentController implements Initializable {
 
     private Integer gameId;
     private Integer requiredTeams;
@@ -124,7 +127,7 @@ public class CreateTournamentController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Game> gameList = new Games().findAll();
         MenuItem smbgmi = new MenuItem("No Game");
         smbGame.getItems().add(smbgmi);

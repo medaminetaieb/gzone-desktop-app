@@ -9,13 +9,16 @@ import com.example.util.TournamentMatches;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class AddMatches {
+public class AddMatches implements Initializable {
 
     private int round;
 
@@ -83,7 +86,7 @@ public class AddMatches {
     }
 
     @FXML
-    void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         teams = new Teams();
         Tournament t = new Tournaments().findById(Id.tournament);
         tTournamentName.setText(t.getName());
