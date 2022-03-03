@@ -1,36 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.example.gzone;
 
 import com.example.entity.User;
 import com.example.entity.UserGamePreference;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javax.imageio.ImageIO;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * FXML Controller class
@@ -59,11 +58,13 @@ public class ProfileController implements Initializable {
     public TextArea bio;
     @FXML
     public TableColumn<?, ?> favorite_games;
+    @FXML
+    private Hyperlink reporthyperlink;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         User u = new Users().findById(Id.user);
-        UserGamePreference gup = new UserGamePreferences().findById(Id.usergamepreferences);
+        /*   UserGamePreference gup = new UserGamePreferences().findById(Id.usergamepreferences);*/
         fullname.setText(u.getFullName());
         try {
             profilepic.setImage(new Image(new FileInputStream(u.getPhotoURL())));
@@ -76,7 +77,18 @@ public class ProfileController implements Initializable {
         bio.setText(u.getBio());
         email.setText(u.getEmail());
         invitable.setSelected(u.isInvitable());
+        /*favorite_games.setCellValueFactory(new PropertyValueFactory<>(gup.getUserId().toString()));*/
+    }
 
+    @FXML
+    private void reportUser(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainFX.class.getResource("Report.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        StackPane secondaryLayout = new StackPane();
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report User");
+        newWindow.setScene(scene);
+        newWindow.show();
     }
 
     @FXML
@@ -97,6 +109,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void Forum(ActionEvent event) {
+
     }
 
 }

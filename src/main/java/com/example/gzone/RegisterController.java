@@ -58,20 +58,12 @@ public class RegisterController {
     @FXML
     private Label birthdatecontrol;
     @FXML
-    private Label fullnamecontrol;
-    @FXML
-    private Label usernamecontrol;
-    @FXML
-    private Label pwdcontrol;
-    @FXML
-    private Label emailcontrol;
+    private Label control;
+  ;
 
     public void initialize() {
         birthdatecontrol.setVisible(false);
-        fullnamecontrol.setVisible(false);
-        usernamecontrol.setVisible(false);
-        pwdcontrol.setVisible(false);
-        emailcontrol.setVisible(false);
+        control.setVisible(false);
     }
 
     @FXML
@@ -86,14 +78,8 @@ public class RegisterController {
             Date bdate = Date.from(instant);
             if ((bdate.after(permitted))) {
                 birthdatecontrol.setVisible(true);
-            } else if ((email.getText() != null && !email.getText().isEmpty())) {
-                emailcontrol.setVisible(true);
-            } else if ((username.getText() != null || !username.getText().isEmpty())) {
-                usernamecontrol.setVisible(true);
-            } else if ((fullName.getText() != null || !fullName.getText().isEmpty())) {
-                fullnamecontrol.setVisible(true);
-            } else if ((password.getText() != null || !password.getText().isEmpty())) {
-                pwdcontrol.setVisible(true);
+            } else if ((email.getText().isEmpty()) ||(username.getText().isEmpty())||(fullName.getText().isEmpty())||(password.getText().isEmpty())) {
+                control.setVisible(true);
             } else {
                 user.insert(new User(
                         null,
