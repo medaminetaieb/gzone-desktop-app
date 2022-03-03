@@ -1,6 +1,7 @@
 package com.example.gzone;
 
 import com.example.entity.Game;
+import com.example.util.Badwords;
 import com.example.entity.Membership;
 import com.example.entity.Team;
 import com.example.service.Games;
@@ -25,10 +26,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.example.util.Badwords.filter;
+import static com.example.util.PhotoUrlCheck.testImage;
+
 public class TeamViewController implements Initializable {
 
 
-
+    final Teams teams = new Teams();
+    String namee;
+    int info;
     @FXML
     private VBox vbox;
     @FXML
@@ -63,7 +69,6 @@ public class TeamViewController implements Initializable {
     private Button vbtnupdateteam;
     @FXML
     private Button vbtnselectteam;
-
     @FXML
     private ListView<Team> listview;
     @FXML
@@ -74,15 +79,7 @@ public class TeamViewController implements Initializable {
     private Button delete;
     @FXML
     private AnchorPane teamviewanchor;
-
-
-    final Teams teams = new Teams();
     private Integer gameId;
-    String namee;
-
-
-
-
 
     @FXML
     void ActionCreateTeam(ActionEvent event) {
@@ -95,11 +92,31 @@ public class TeamViewController implements Initializable {
 
         t.setId(null);
         t.setAdminId(2);
-        t.setName(vtfteamname.getText());
-        t.setPhotoURL(vtfphotourl.getText());
+        if (vtfteamname.getText().isBlank()){
+            vtfteamname.setPromptText("field cannot be empty");
+        } else {
+            t.setName(vtfteamname.getText());
+        }
+
+
         t.setTeamSize(vsteamsize.getValue());
-        t.setGameId(gameId);
-        t.setDescription(vtadescription.getText());
+
+
+            t.setGameId(gameId);
+
+
+
+        if (vtadescription.getText().isBlank()){
+            vtadescription.setPromptText("field cannot be empty");
+        } else {
+            t.setDescription(filter(vtadescription.getText()));
+        }
+
+        if(testImage(vtfphotourl.getText()) == true){
+            t.setPhotoURL(vtfphotourl.getText());
+
+        }
+        else {vtfphotourl.setPromptText("Check the URL of the image");}
         t.setCreateDate(date);
         if (vrbopenforrequests.isSelected()) {
             t.setRequestable(true);
@@ -128,9 +145,7 @@ public class TeamViewController implements Initializable {
         listview.getItems().add(t);
 
 
-
     }
-
 
     @FXML
     void actiondelete(ActionEvent event) {
@@ -169,64 +184,61 @@ public class TeamViewController implements Initializable {
 
         teamUpdateController.getidd(id);
         teamUpdateController.iddd(id);
-        String tname =((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
-        }
-
-
+    }
 
     @FXML
     void Team(TouchEvent event) {
 
     }
+
     @FXML
     public void initialize() {
 
-        }
-        int info;
+    }
 
-        public void showTeams(){
-            final Team[] clabel = {new Team()};
-            List <Team >teamlist =teams.findAll("admin_id=2");
-            listview.getItems().addAll(teamlist);
+    public void showTeams() {
+        final Team[] clabel = {new Team()};
+        List<Team> teamlist = teams.findAll("admin_id=2");
+        listview.getItems().addAll(teamlist);
 
-            listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
-                @Override
-                public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
-                    clabel[0] = listview.getSelectionModel().getSelectedItem();
-                    Label.setText(clabel[0].getName());
-                    info = listview.getSelectionModel().getSelectedItem().getId();
-                    listview.getSelectionModel().selectedItemProperty();
-                    selected.setText("Team "+clabel[0].getName() +" is selected" );
-                    //Integer id = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
-                    //System.out.println(id);
-                }
-            });
+        listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
+            @Override
+            public void changed(ObservableValue<? extends Team> observable, Team oldValue, Team newValue) {
+                clabel[0] = listview.getSelectionModel().getSelectedItem();
+                Label.setText(clabel[0].getName());
+                info = listview.getSelectionModel().getSelectedItem().getId();
+                listview.getSelectionModel().selectedItemProperty();
+                selected.setText("Team " + clabel[0].getName() + " is selected");
+                //Integer id = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+                //System.out.println(id);
+            }
+        });
 
-        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Game> gameList = new Games().findAll();
 
-       vmbgame.getItems();
-       vmbgame.setOnAction(e -> {
+        vmbgame.getItems();
+        vmbgame.setOnAction(e -> {
             gameId = null;
 
         });
         for (Game g : gameList) {
-        MenuItem mi = new MenuItem(g.getName());
-        mi.setOnAction(e -> {
-            gameId = g.getId();
-            vmbgame.setText(g.getName());
-        });
-        vmbgame.getItems().add(mi);
-    }
+            MenuItem mi = new MenuItem(g.getName());
+            mi.setOnAction(e -> {
+                gameId = g.getId();
+                vmbgame.setText(g.getName());
+            });
+            vmbgame.getItems().add(mi);
+        }
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
         valueFactory.setValue(1);
         vsteamsize.setValueFactory(valueFactory);
-
 
 
         vbtnupdateteam.disableProperty()

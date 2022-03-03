@@ -10,46 +10,59 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.util.Badwords.filter;
+import static com.example.util.PhotoUrlCheck.testImage;
+
 public class TeamUpdateController implements Initializable {
 
+    public Integer idd;
+    public String textname;
+    Integer i = setidd();
     private Team t;
-
     @FXML
     private TextField teamname;
-
     @FXML
     private TextField photourl;
-
     @FXML
     private Spinner<Integer> scroller;
-
     @FXML
     private TextArea descritpion;
-
     @FXML
     private RadioButton rb1;
-
     @FXML
     private RadioButton rb2;
-
     @FXML
     private Button updateteam;
-
     @FXML
     private Label nameid;
     @FXML
     private Label nameee;
 
     @FXML
-    void Update(ActionEvent event){
+    void Update(ActionEvent event) {
         Teams teams = new Teams();
 
         t.setAdminId(2);
-        t.setName(teamname.getText());
-        t.setPhotoURL(photourl.getText());
+        if (teamname.getText().isBlank()){
+            teamname.setPromptText("field cannot be empty");
+        } else {
+            t.setName(teamname.getText());
+        }
+        if(testImage(photourl.getText()) == true){
+            t.setPhotoURL(photourl.getText());
+
+        }
+        else {photourl.setPromptText("Check the URL of the image");}
+
 
         t.setTeamSize(scroller.getValue());
-        t.setDescription(descritpion.getText());
+        if (descritpion.getText().isBlank()){
+            descritpion.setPromptText("field cannot be empty");
+        } else {
+            t.setDescription(filter(descritpion.getText()));
+        }
+
+
 
         if (rb1.isSelected()) {
             t.setRequestable(true);
@@ -68,43 +81,38 @@ public class TeamUpdateController implements Initializable {
         teams.modify(t);
     }
 
-
-  public Integer idd ;
-        public Integer setidd(){
-            return idd ;
-    }
-    public void getidd(Integer id){
-            this.idd=id;
-
+    public Integer setidd() {
+        return idd;
     }
 
+    public void getidd(Integer id) {
+        this.idd = id;
 
+    }
 
     public void iddd(Integer iddd) {
         nameid.setText(String.valueOf(idd));
     }
-    public String textname;
 
-    public String setnamee(){
-        return textname ;
+    public String setnamee() {
+        return textname;
     }
-    public void getnamee(String textname){
-        this.textname= textname;
+
+    public void getnamee(String textname) {
+        this.textname = textname;
 
     }
-    public void teammm(String name){
+
+    public void teammm(String name) {
         nameee.setText(textname);
 
     }
 
-
-    public void initialize(){
-
-
+    public void initialize() {
 
 
     }
-    Integer i = setidd();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -115,14 +123,14 @@ public class TeamUpdateController implements Initializable {
         descritpion.setText(t.getDescription());
 
 
-System.out.println(i);
+        System.out.println(i);
 
 
-        if(t.isRequestable() == true){
+        if (t.isRequestable() == true) {
             rb1.fire();
         }
 
-        if(t.isInvitable() == true){
+        if (t.isInvitable() == true) {
             rb2.fire();
         }
 
