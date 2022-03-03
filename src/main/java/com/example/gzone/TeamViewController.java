@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -69,6 +70,8 @@ public class TeamViewController implements Initializable {
     private Label Label;
     @FXML
     private Label selected;
+    @FXML
+    private Button delete;
     @FXML
     private AnchorPane teamviewanchor;
 
@@ -122,11 +125,22 @@ public class TeamViewController implements Initializable {
 
         alert.setContentText("Team Added!");
 
+        listview.getItems().add(t);
+
 
 
     }
 
 
+    @FXML
+    void actiondelete(ActionEvent event) {
+        Team dt = listview.getSelectionModel().getSelectedItem();
+        teams.deleteById(dt.getId());
+
+        listview.getItems().remove(dt);
+
+
+    }
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
