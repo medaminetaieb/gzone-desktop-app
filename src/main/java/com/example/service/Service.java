@@ -50,7 +50,7 @@ public interface Service<T> {
     }
 
     // Delete default methods
-    public default Boolean deleteById(int id) {
+    public default Boolean deleteById(Integer id) {
         return delete("`id`=" + id);
     }
 }
