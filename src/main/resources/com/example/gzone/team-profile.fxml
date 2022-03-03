@@ -6,14 +6,13 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamProfileController">
     <stylesheets>
@@ -121,18 +120,14 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox layoutX="407.0" layoutY="101.0" prefHeight="202.0" prefWidth="225.0">
+                  <VBox layoutX="407.0" layoutY="114.0" prefHeight="202.0" prefWidth="225.0">
                      <children>
-                        <TextField fx:id="teamname">
+                        <Text fx:id="teamname" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <VBox.margin>
-                              <Insets top="12.0" />
+                              <Insets top="25.0" />
                            </VBox.margin>
-                        </TextField>
-                        <TextArea fx:id="description" prefHeight="82.0" prefWidth="225.0">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </TextArea>
+                        </Text>
                      </children>
                   </VBox>
                   <VBox layoutX="268.0" layoutY="425.0" prefHeight="90.0" prefWidth="134.0">
@@ -173,6 +168,7 @@
                      </font>
                   </Label>
                   <ListView fx:id="lismemebers" layoutX="407.0" layoutY="263.0" prefHeight="182.0" prefWidth="218.0" />
+                  <Text fx:id="winrate" layoutX="120.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

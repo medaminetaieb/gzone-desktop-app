@@ -20,10 +20,10 @@ public class TeamStat {
 
     public static double getWinRate(Integer id) {
         final Matches matches = new Matches();
-        List<Match> l = matches.find(null, null, "`team1_id`=" + id + " OR `team2_id`=" + id, null);
+        List<Match> l = matches.findAll("`team1_id`=" + id + " OR `team2_id`=" + id);
         int wins = (int) l.stream().filter(m -> m.getWinnerTeamId().equals(id)).count();
 
-        return wins / l.stream().count();
+        return ((double)wins / (double)l.stream().count())*100;
     }
 
     public static List<Team> topTenTeams() {

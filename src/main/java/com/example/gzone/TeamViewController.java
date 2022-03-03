@@ -159,11 +159,21 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
-
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team-profile.fxml"));
+        id.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-profile.fxml"));
+        AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
 
-        teamviewanchor.getChildren().setAll(pane);
+        TeamProfileController teamProfileController = loader.getController();
+        String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        ;
+        String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
+        teamProfileController.getnamee(tname);
+        teamProfileController.teammm(tname);
+        teamProfileController.getdescription(desc);
+        teamProfileController.descriptionn(desc);
+      // TeamProfileController.getnamee(tname);
+        //TeamProfileController.teammm(tname);
     }
 
     @FXML
@@ -183,8 +193,10 @@ public class TeamViewController implements Initializable {
 
 
         String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
+
     }
 
     @FXML

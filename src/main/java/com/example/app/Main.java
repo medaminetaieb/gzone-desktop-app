@@ -5,15 +5,19 @@
 package com.example.app;
 
 import com.example.test.MainTest;
+import com.example.test.MatchTest;
 import com.example.test.MembershipTest;
+import com.example.util.TeamStat;
 
 /**
  * @author mat
  */
 public class Main {
     public static void main(String[] args) {
-       MainTest.insertAll();
-       MainTest.main();
+        //MatchTest.insertAll();
+       //MainTest.main();
+        TeamStat.getWinRate(2);
+
 
     }
 }

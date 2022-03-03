@@ -22,7 +22,7 @@ public class MatchTest {
     static {
         matchlist.add(new Match(null, 2, new Date(20200506), 2, 1, 2, 2));
         matchlist.add(new Match(null, 2, new Date(), 1, 2, 1, 1));
-        matchlist.add(new Match(null, 2, new Date(20200506), 1, 2, 1, 2));
+        matchlist.add(new Match(null, 2, new Date(20200506), 1, 2, 1, 1));
     }
     
     public static void insertAll() {
