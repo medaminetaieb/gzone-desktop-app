@@ -35,6 +35,8 @@ import javafx.scene.input.MouseEvent;
 public class CreateHappyHourController implements Initializable {
 
     private Integer gameId;
+        private Integer badgeId;
+
     @FXML
     private DatePicker dpStartDate;
     @FXML
@@ -42,11 +44,12 @@ public class CreateHappyHourController implements Initializable {
     @FXML
     private SplitMenuButton smbGame;
     @FXML
-    private TextField tfBadge;
-    @FXML
     private Button btnCreate;
     @FXML
     private Button btCancel;
+    private SplitMenuButton spMBadge;
+    @FXML
+    private TextField tfBadge;
 
     /**
      * Initializes the controller class.
@@ -67,7 +70,10 @@ public class CreateHappyHourController implements Initializable {
                 smbGame.setText(g.getName());
             });
             smbGame.getItems().add(mi);
-        }
+        }//////////////////////////////////////////////////////////////////////////
+                
+        
+        
     }    
 
     @FXML
@@ -99,9 +105,10 @@ public class CreateHappyHourController implements Initializable {
         Date crd = new Date(Date.from(instant).getTime());
         LocalDate ld1 = dpEndDate.getValue();
         Instant instant1 = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd1 = new Date(Date.from(instant).getTime());  
-            badges.insert(new Badge(null, gameId, null));
-            happyHours.insert(new HappyHour(null, gameId, crd, crd1));
+        Date crd1 = new Date(Date.from(instant).getTime()); 
+        badges.insert(new Badge(null, gameId,tfBadge.getText()));
+       
+            happyHours.insert(new HappyHour(null, badges.findAll("`title` REGEXP '"+tfBadge.getText()+"'").get(0).getId(), crd, crd1));
     }
     
 

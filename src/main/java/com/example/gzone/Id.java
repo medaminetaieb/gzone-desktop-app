@@ -11,4 +11,6 @@ package com.example.gzone;
 public class Id {
     protected static Integer user;
     protected static Integer game;
+        protected static Integer badge;
+
 }

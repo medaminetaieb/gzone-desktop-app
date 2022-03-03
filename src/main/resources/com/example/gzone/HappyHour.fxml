@@ -90,11 +90,11 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="190.0" layoutY="143.0" prefHeight="384.0" prefWidth="584.0">
+      <TableView fx:id="tbview" layoutX="190.0" layoutY="129.0" prefHeight="355.0" prefWidth="584.0">
         <columns>
-          <TableColumn prefWidth="162.0" text="Start Date" />
-          <TableColumn minWidth="0.0" prefWidth="151.0" text="End Date" />
-            <TableColumn prefWidth="270.0" text="Badge" />
+          <TableColumn fx:id="clStartDate" prefWidth="162.0" text="Start Date" />
+          <TableColumn fx:id="clEndDate" minWidth="0.0" prefWidth="151.0" text="End Date" />
+            <TableColumn fx:id="clBadge" prefWidth="270.0" text="Badge" />
         </columns>
       </TableView>
       <Label layoutX="425.0" layoutY="70.0" text="Happy Hour">
@@ -102,5 +102,6 @@
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="btnDelete" layoutX="623.0" layoutY="514.0" mnemonicParsing="false" onAction="#DeleteHappyHour" text="Delete" />
    </children>
 </AnchorPane>

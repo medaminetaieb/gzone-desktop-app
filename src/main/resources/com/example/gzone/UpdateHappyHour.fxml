@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateHappyHourController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.UpdateHappyHourController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -92,25 +92,24 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="356.0" layoutY="62.0" text="Create Happy Hour">
+      <Label layoutX="365.0" layoutY="44.0" text="Modify HappyHour" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="245.0" layoutY="153.0" text="Start Date" />
-      <Label layoutX="245.0" layoutY="227.0" text="End Date" />
-      <Label layoutX="245.0" layoutY="302.0" text="Badge" />
-      <Label layoutX="245.0" layoutY="390.0" text="Game" />
-      <DatePicker fx:id="dpStartDate" layoutX="356.0" layoutY="148.0" />
-      <DatePicker fx:id="dpEndDate" layoutX="356.0" layoutY="222.0" />
-      <SplitMenuButton fx:id="smbGame" layoutX="356.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game">
+      <Label layoutX="241.0" layoutY="131.0" text="Start Date" />
+      <Label layoutX="234.0" layoutY="225.0" text="End Date" />
+      <Label layoutX="234.0" layoutY="328.0" text="Badge" />
+      <Label layoutX="234.0" layoutY="424.0" text="Game" />
+      <DatePicker fx:id="dpStartDate1" layoutX="345.0" layoutY="126.0" />
+      <DatePicker fx:id="EndDate1" layoutX="347.0" layoutY="241.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tfBadge" layoutX="345.0" layoutY="339.0" prefHeight="31.0" prefWidth="218.0" />
+      <SplitMenuButton fx:id="smbGame1" layoutX="347.0" layoutY="430.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="SplitMenuButton">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </SplitMenuButton>
-      <Button fx:id="btnCreate" layoutX="324.0" layoutY="499.0" mnemonicParsing="false" onAction="#createHappyHour" text="Create" />
-      <Button fx:id="btCancel" layoutX="542.0" layoutY="499.0" mnemonicParsing="false" onAction="#CancelHappyHour" text="Cancel" />
-      <TextField fx:id="tfBadge" layoutX="356.0" layoutY="308.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button fx:id="btnUpdate" layoutX="400.0" layoutY="519.0" mnemonicParsing="false" onAction="#UpdateHappyHour" text="Modify" />
    </children>
 </AnchorPane>
