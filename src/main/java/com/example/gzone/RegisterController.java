@@ -6,6 +6,8 @@ import com.example.entity.UserGamePreference;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -51,33 +53,72 @@ public class RegisterController {
     public Hyperlink toLogin;
     @FXML
     public AnchorPane registerpane;
+    @FXML
+    private Label reglb;
+    @FXML
+    private Label birthdatecontrol;
+    @FXML
+    private Label fullnamecontrol;
+    @FXML
+    private Label usernamecontrol;
+    @FXML
+    private Label pwdcontrol;
+    @FXML
+    private Label emailcontrol;
+
+    public void initialize() {
+        birthdatecontrol.setVisible(false);
+        fullnamecontrol.setVisible(false);
+        usernamecontrol.setVisible(false);
+        pwdcontrol.setVisible(false);
+        emailcontrol.setVisible(false);
+    }
 
     @FXML
-    void createUser(ActionEvent event) {
+    void createUser(ActionEvent event) throws ParseException {
         Users user = new Users();
         UserGamePreferences ugp = new UserGamePreferences();
-        LocalDate ld = birthDate.getValue();
-        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd = Date.from(instant);
-        user.insert(new User(
-                null,
-                phoneNumber.getText(),
-                email.getText(),
-                username.getText(),
-                password.getText(),
-                photoURL.getText(),
-                fullName.getText(),
-                bio.getText(),
-                crd,
-                new java.util.Date(),
-                true,
-                Role.user
-        ));
-        ugp.insert(new UserGamePreference(
-                this.userId,
-                2,
-                2
-        ));
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            LocalDate ld = birthDate.getValue();
+            Date permitted = sdf.parse("2010-01-01");
+            Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+            Date bdate = Date.from(instant);
+            if ((bdate.after(permitted))) {
+                birthdatecontrol.setVisible(true);
+            } else if ((email.getText() != null && !email.getText().isEmpty())) {
+                emailcontrol.setVisible(true);
+            } else if ((username.getText() != null || !username.getText().isEmpty())) {
+                usernamecontrol.setVisible(true);
+            } else if ((fullName.getText() != null || !fullName.getText().isEmpty())) {
+                fullnamecontrol.setVisible(true);
+            } else if ((password.getText() != null || !password.getText().isEmpty())) {
+                pwdcontrol.setVisible(true);
+            } else {
+                user.insert(new User(
+                        null,
+                        phoneNumber.getText(),
+                        email.getText(),
+                        username.getText(),
+                        password.getText(),
+                        photoURL.getText(),
+                        fullName.getText(),
+                        bio.getText(),
+                        bdate,
+                        new java.util.Date(),
+                        true,
+                        Role.user
+                ));
+                ugp.insert(new UserGamePreference(
+                        this.userId,
+                        2,
+                        2
+                ));
+
+            }
+        } catch (NullPointerException ex) {
+            birthdatecontrol.setVisible(true);
+        }
 
     }
 
@@ -87,8 +128,4 @@ public class RegisterController {
         registerpane.getChildren().setAll(pane);
     }
 
-    @FXML
-    public void initialize() {
-
-    }
 }

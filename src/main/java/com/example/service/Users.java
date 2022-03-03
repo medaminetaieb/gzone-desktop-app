@@ -141,7 +141,7 @@ public class Users implements AdvancedService<User> {
 
     public Integer checklogin(String username, String password) {
         try {
-            cryptWithMD5(password);
+           
             Statement st = connection.createStatement();
             String query = "SELECT `id` FROM `users` WHERE `username`='" + username + "' AND `password`='" + password + "'";
             ResultSet rs = st.executeQuery(query);

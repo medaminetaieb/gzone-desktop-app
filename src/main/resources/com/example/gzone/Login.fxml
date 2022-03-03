@@ -12,19 +12,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="signinpane" prefHeight="600" prefWidth="800" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.LoginController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="106.0" layoutX="686.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@gzone%20logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="reglb1" layoutX="293.0" layoutY="14.0" prefHeight="58.0" prefWidth="105.0" text="Sign In" textFill="#659c00">
+      <Label fx:id="reglb1" layoutX="320.0" layoutY="14.0" prefHeight="74.0" prefWidth="155.0" text="Sign In" textFill="#659c00">
          <font>
-            <Font name="SansSerif Regular" size="31.0" />
+            <Font name="Courier New Bold" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="SignIN" layoutX="440.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkUser" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #659c00;" text="Sign In" textFill="WHITE" />
-      <PasswordField fx:id="password" layoutX="382.0" layoutY="178.0" prefHeight="30.0" prefWidth="187.0" promptText="Password" />
-      <TextField fx:id="username" layoutX="382.0" layoutY="114.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
-      <Hyperlink fx:id="toRegister" layoutX="370.0" layoutY="295.0" onAction="#ToRegister" text="Don't have an account? Register Now!" textFill="#659c00" />
+      <Button fx:id="SignIN" layoutX="356.0" layoutY="364.0" mnemonicParsing="false" onAction="#checkUser" prefHeight="42.0" prefWidth="88.0" style="-fx-background-color: #659c00;" text="Sign In" textFill="WHITE" />
+      <PasswordField fx:id="password" layoutX="275.0" layoutY="265.0" prefHeight="67.0" prefWidth="251.0" promptText="Password" />
+      <TextField fx:id="username" layoutX="274.0" layoutY="177.0" prefHeight="58.0" prefWidth="251.0" promptText="Username" />
+      <Hyperlink fx:id="toRegister" layoutX="303.0" layoutY="425.0" onAction="#ToRegister" text="Don't have an account? Register Now!" textFill="#659c00" />
    </children>
 </AnchorPane>
