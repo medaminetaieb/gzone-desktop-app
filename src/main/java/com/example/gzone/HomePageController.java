@@ -23,7 +23,7 @@ public class HomePageController {
 
     @FXML
     void Store(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 

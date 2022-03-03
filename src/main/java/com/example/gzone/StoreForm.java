@@ -36,9 +36,10 @@ public class StoreForm {
 
     @FXML
     void validate(ActionEvent event) throws IOException {
-        if((!storename.getText().isBlank()) && new Stores().insert(new Store(null, 1, gameId, storename.getText())))
+        if((!storename.getText().isBlank()) && new Stores().insert(new Store(null, Id.user, gameId, storename.getText())))
         {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("Store2.fxml"));
+            Id.store = new Stores().findByName(storename.getText()).getId();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             rootPane.getChildren().setAll(pane);
         }
 
@@ -48,7 +49,7 @@ public class StoreForm {
 
     @FXML
     void CancelCreateStore(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         rootPane.getChildren().setAll(pane);
     }
     @FXML

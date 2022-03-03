@@ -29,7 +29,10 @@ public class ViewStoresController {
     private TableView tbview;
     @FXML
     private TableColumn<Store,String> cltitle;
-
+    @FXML
+    private Button createstorebutton;
+    @FXML
+    private Button viewstorebutton;
     @FXML
     void Forum(ActionEvent event) {
 
@@ -44,7 +47,7 @@ public class ViewStoresController {
     @FXML
     void Store(ActionEvent event) throws IOException{
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         viewstorepane.getChildren().setAll(pane);
     }
 
@@ -77,6 +80,21 @@ public class ViewStoresController {
         tbview.refresh();
 
     }
+    @FXML
+    void ViewStore(ActionEvent event) throws IOException{
+        if ((Id.store = ((Store)tbview.getSelectionModel().getSelectedItem()).getId()) != null) {
+
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
+            viewstorepane.getChildren().setAll(pane);
+        }
+    }
+    @FXML
+    void CreateStore(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreForm.fxml"));
+        viewstorepane.getChildren().setAll(pane);
+    }
+
 
 
 }

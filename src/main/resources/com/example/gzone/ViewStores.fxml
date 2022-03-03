@@ -106,5 +106,7 @@
           <TableColumn fx:id="cltitle" prefWidth="560.0" text="Store Name" />
         </columns>
       </TableView>
+      <Button fx:id="viewstorebutton" layoutX="636.0" layoutY="202.0" mnemonicParsing="false" onAction="#ViewStore" prefHeight="34.0" prefWidth="87.0" text="View Store" />
+      <Button fx:id="createstorebutton" layoutX="493.0" layoutY="202.0" mnemonicParsing="false" onAction="#CreateStore" prefHeight="34.0" prefWidth="87.0" text="Create Store" />
     </children>
 </AnchorPane>

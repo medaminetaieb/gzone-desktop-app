@@ -87,4 +87,8 @@ public class MarketItems implements Service<MarketItem> {
 
         return false;
     }
+    public Boolean deleteByStoreId(Integer storeId) {
+       return delete("`store_id`="+storeId);
+
+    }
 }

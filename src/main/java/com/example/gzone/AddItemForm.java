@@ -30,7 +30,7 @@ public class AddItemForm {
     @FXML
     void AddItem(ActionEvent event) throws IOException {
         if (!title.getText().equals("")) {
-            new MarketItems().insert(new MarketItem(null, 63, title.getText(), description.getText(), false, new Date()));
+            new MarketItems().insert(new MarketItem(null, Id.store, title.getText(), description.getText(), false, new Date()));
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             itemformpane.getChildren().setAll(pane);
@@ -39,4 +39,19 @@ public class AddItemForm {
         }
     }
 
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        itemformpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        itemformpane.getChildren().setAll(pane);
+    }
+
+
 }
+
+

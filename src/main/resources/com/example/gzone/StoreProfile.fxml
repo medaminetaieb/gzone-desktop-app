@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="profilepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.StoreProfileController">
     <stylesheets>
@@ -89,12 +90,12 @@
                 </Button>
             </children>
         </VBox>
-      <Button fx:id="addbutton" layoutX="580.0" layoutY="114.0" mnemonicParsing="false" onAction="#AddToStore" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #86d300;" text="Add Your Item" textFill="#fffefe">
+      <Button fx:id="addbutton" layoutX="447.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddToStore" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86d300;" text="Add Your Item" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="deletebutton" layoutX="261.0" layoutY="114.0" mnemonicParsing="false" onAction="#DeleteYourItem" prefHeight="31.0" prefWidth="120.0" text="Delete Your Item" />
+      <Button fx:id="deletebutton" layoutX="256.0" layoutY="158.0" mnemonicParsing="false" onAction="#DeleteYourItem" prefHeight="37.0" prefWidth="120.0" text="Delete Your Item" />
       <TableView fx:id="tbview" layoutX="190.0" layoutY="247.0" prefHeight="301.0" prefWidth="570.0">
         <columns>
           <TableColumn fx:id="cltitle" minWidth="0.0" prefWidth="569.0" text="Items" />
@@ -106,5 +107,20 @@
          </font>
       </Button>
       <Button fx:id="deletestorebutton" layoutX="692.0" layoutY="559.0" mnemonicParsing="false" onAction="#DeleteYourStore" prefHeight="31.0" prefWidth="77.0" text="Delete " />
+      <ImageView fitHeight="88.0" fitWidth="87.0" layoutX="687.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/profile-pic.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="storenametext" layoutX="204.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store name :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="usernametext" layoutX="684.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
