@@ -78,7 +78,10 @@ public class RegisterController {
             Date bdate = Date.from(instant);
             if ((bdate.after(permitted))) {
                 birthdatecontrol.setVisible(true);
-            } else if ((email.getText().isEmpty()) ||(username.getText().isEmpty())||(fullName.getText().isEmpty())||(password.getText().isEmpty())) {
+            } else if ((email.getText().isBlank()) ||
+                    (username.getText().isBlank())||
+                    (fullName.getText().isBlank())||
+                    (password.getText().isBlank())) {
                 control.setVisible(true);
             } else {
                 user.insert(new User(
@@ -96,8 +99,8 @@ public class RegisterController {
                         Role.user
                 ));
                 ugp.insert(new UserGamePreference(
+                        null,
                         this.userId,
-                        2,
                         2
                 ));
 

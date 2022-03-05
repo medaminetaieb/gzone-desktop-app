@@ -4,6 +4,7 @@ import com.example.entity.User;
 import com.example.entity.UserGamePreference;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,6 +31,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -64,7 +66,6 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         User u = new Users().findById(Id.user);
-        /*   UserGamePreference gup = new UserGamePreferences().findById(Id.usergamepreferences);*/
         fullname.setText(u.getFullName());
         try {
             profilepic.setImage(new Image(new FileInputStream(u.getPhotoURL())));
@@ -77,7 +78,6 @@ public class ProfileController implements Initializable {
         bio.setText(u.getBio());
         email.setText(u.getEmail());
         invitable.setSelected(u.isInvitable());
-        /*favorite_games.setCellValueFactory(new PropertyValueFactory<>(gup.getUserId().toString()));*/
     }
 
     @FXML
