@@ -1,6 +1,8 @@
 package com.example.gzone;
 
+import com.example.entity.Match;
 import com.example.entity.Membership;
+import com.example.service.Matches;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
 import com.example.service.Memberships;
@@ -21,6 +23,8 @@ import java.util.ResourceBundle;
 public class TeamProfileController implements Initializable {
     private Team t;
     final Memberships members = new Memberships();
+    @FXML
+    private Text texxt;
     @FXML
     private Text teamname;
     @FXML
@@ -98,18 +102,52 @@ public class TeamProfileController implements Initializable {
 
         Teams teams = new Teams();
         t = teams.findById(TeamId.eam);
+
+        final Matches matches = new Matches();
+        List<Match> l = matches.findAll("`team1_id`=" + TeamId.eam + " OR `team2_id`=" + TeamId.eam);
+        long m = l.stream().count();
+
         if (t.isRequestable() == true) {
-            chekreq.fire();
+            chekreq.setSelected(true);
             chekreq.setDisable(true);
         } else {
-            chekreq.setDisable(false);
+            chekreq.setSelected(false);
+            chekreq.setDisable(true);
         }
         if (t.isInvitable() == true) {
-            checkin.fire();
+            checkin.setSelected(true);
             checkin.setDisable(true);
         } else {
-            checkin.setDisable(false);
+            checkin.setSelected(false);
+            checkin.setDisable(true);
         }
-        winrate.setText(String.valueOf(TeamStat.getWinRate(TeamId.eam)));
+
+        if(TeamStat.getWinRate(TeamId.eam) == 100.00) {
+                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+                texxt.setText("You guys are awesome :)\n For all of the "+m+" matches you played,\n you won all of them !!");
+
+        
+        }
+        else if ((TeamStat.getWinRate(TeamId.eam)<=99.99)&&(TeamStat.getWinRate(TeamId.eam)>=70.00)){
+            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+            texxt.setText("Well done!! Surely we will\n find you at our top 10 team's list");
+        }
+        else if((TeamStat.getWinRate(TeamId.eam)<=69.99)&&(TeamStat.getWinRate(TeamId.eam)>=40.00)){
+            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+            texxt.setText("We know you could do better.\n Better luck next time :)");
+        }
+        else{
+            if(m == 0){
+                winrate.setText("");
+                texxt.setText("You haven't played any matches yet!");
+            }
+            else{
+                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+                texxt.setText("Hard Luck! You will do better next time :)");
+
+            }
+
+        }
+
     }
 }

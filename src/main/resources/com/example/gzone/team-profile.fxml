@@ -168,7 +168,12 @@
                      </font>
                   </Label>
                   <ListView fx:id="lismemebers" layoutX="407.0" layoutY="263.0" prefHeight="182.0" prefWidth="218.0" />
-                  <Text fx:id="winrate" layoutX="120.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <VBox layoutX="37.0" layoutY="263.0" prefHeight="200.0" prefWidth="120.0">
+                     <children>
+                        <Text fx:id="texxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                     </children>
+                  </VBox>
+                  <Text fx:id="winrate" layoutX="113.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

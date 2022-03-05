@@ -23,9 +23,9 @@ import java.net.URLConnection;
  */
 public class Main {
     public static void main(String[] args) {
-        MatchTest.insertAll();
-       MainTest.main();
-        //TeamStat.getWinRate(2);
+       // MatchTest.insertAll();
+       //MainTest.main();
+        //System.out.println(TeamStat.getWinRate(2));
 
 
      /*  Image image = null;
