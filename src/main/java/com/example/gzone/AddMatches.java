@@ -81,7 +81,7 @@ public class AddMatches implements Initializable {
 
     @FXML
     void returnToTournament(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
         apAddMatches.getChildren().setAll(pane);
     }
 

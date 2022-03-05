@@ -2,6 +2,8 @@ package com.example.gzone;
 
 import com.example.entity.Tournament;
 import com.example.service.Games;
+import com.example.service.JoinRequests;
+import com.example.service.Matches;
 import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +16,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.ZoneId;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ModifyTournamentController implements Initializable {
@@ -29,6 +31,9 @@ public class ModifyTournamentController implements Initializable {
 
     @FXML
     private Button bModify;
+
+    @FXML
+    private Button bDeleteTournament;
 
     @FXML
     private CheckBox cbOpenForRequests;
@@ -84,7 +89,11 @@ public class ModifyTournamentController implements Initializable {
 
     @FXML
     void cancelModifyTournament(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Cancel Modifications");
+        a.setContentText("Your modifications will be lost." +
+                "Continue ?");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
         apModifyTournament.getChildren().setAll(pane);
     }
 
@@ -106,13 +115,30 @@ public class ModifyTournamentController implements Initializable {
             a.setTitle("Success");
             a.setContentText("Tournament modified");
             a.show();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
             apModifyTournament.getChildren().setAll(pane);
         } else {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setTitle("Error");
             a.setContentText("Please Fill the form");
             a.show();
+        }
+    }
+
+    @FXML
+    void deleteTournament(ActionEvent event) throws IOException {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Delete Tournament");
+        a.setContentText("Are you sure you want to delete "+ t.getName() +" ?");
+        Optional<ButtonType> buttonType = a.showAndWait();
+        if (buttonType.get().equals(ButtonType.OK)) {
+            new Matches().deleteByTournamentId(Id.tournament);
+            new JoinRequests().deleteByTournamentId(Id.tournament);
+            new Tournaments().deleteById(Id.tournament);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+            apModifyTournament.getChildren().setAll(pane);
+        } else {
+            a.close();
         }
     }
 

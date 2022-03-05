@@ -7,7 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
+<?import java.net.URL?>
 <AnchorPane fx:id="apListTournaments" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ListTournaments">
+   <stylesheets>
+      <URL value="@../../../styles/ViewTournament.css" />
+   </stylesheets>
    <children>
       <TextField fx:id="tfSearchName" layoutX="279.0" layoutY="50.0" prefHeight="26.0" prefWidth="196.0" promptText="Filter by name" />
       <Button fx:id="bRefresh" layoutX="501.0" layoutY="51.0" mnemonicParsing="false" onAction="#refreshList" text="Refresh" />

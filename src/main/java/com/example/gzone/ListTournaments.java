@@ -43,27 +43,6 @@ public class ListTournaments implements Initializable {
     private TableView tvList;
 
     @FXML
-    private TableColumn<Tournament, String> tcAdmin;
-
-    @FXML
-    private TableColumn<Tournament, String> tcGame;
-
-    @FXML
-    private TableColumn<Tournament, String> tcName;
-
-    @FXML
-    private TableColumn<Tournament, String> tcDescription;
-
-    @FXML
-    private TableColumn<Tournament, String> tcRequiredTeams;
-
-    @FXML
-    private TableColumn<Tournament, String> tcTeamSize;
-
-    @FXML
-    private TableColumn<Tournament, String> tcCloseRequestDate;
-
-    @FXML
     void refreshList(ActionEvent event) {
         tvList.getItems().clear();
 
@@ -130,19 +109,19 @@ public class ListTournaments implements Initializable {
             mbGame.getItems().add(mi);
         }
 
-        tcAdmin = new TableColumn<>();
+        TableColumn<Tournament, String> tcAdmin = new TableColumn<>();
         tcAdmin.setCellValueFactory(new PropertyValueFactory<>("Admin"));
-        tcGame = new TableColumn<>();
+        TableColumn<Tournament, String> tcGame = new TableColumn<>();
         tcGame.setCellValueFactory(new PropertyValueFactory<>("Game"));
-        tcName = new TableColumn<>();
+        TableColumn<Tournament, String> tcName = new TableColumn<>();
         tcName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        tcDescription = new TableColumn<>();
+        TableColumn<Tournament, String> tcDescription = new TableColumn<>();
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
-        tcRequiredTeams = new TableColumn<>();
+        TableColumn<Tournament, String> tcRequiredTeams = new TableColumn<>();
         tcRequiredTeams.setCellValueFactory(new PropertyValueFactory<>("Required Teams"));
-        tcTeamSize = new TableColumn<>();
+        TableColumn<Tournament, String> tcTeamSize = new TableColumn<>();
         tcTeamSize.setCellValueFactory(new PropertyValueFactory<>("Team Size"));
-        tcCloseRequestDate = new TableColumn<>();
+        TableColumn<Tournament, String> tcCloseRequestDate = new TableColumn<>();
         tcCloseRequestDate.setCellValueFactory(new PropertyValueFactory<>("Close Date"));
         tvList.getColumns().addAll(tcAdmin, tcGame, tcName, tcDescription, tcRequiredTeams, tcRequiredTeams, tcTeamSize, tcCloseRequestDate);
         refreshList(null);

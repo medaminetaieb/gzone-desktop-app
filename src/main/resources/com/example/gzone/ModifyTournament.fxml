@@ -108,9 +108,9 @@
       <Label layoutX="211.0" layoutY="404.0" prefHeight="18.0" prefWidth="94.0" text="Team size" />
       <DatePicker fx:id="dpCloseRequestDate" layoutX="406.0" layoutY="438.0" prefHeight="26.0" prefWidth="260.0" />
       <Label layoutX="213.0" layoutY="442.0" text="Close Request date" />
-      <Button fx:id="bModify" layoutX="598.0" layoutY="542.0" mnemonicParsing="false" onAction="#modifyTournament" prefHeight="26.0" prefWidth="135.0" text="Modify" />
+      <Button fx:id="bModify" layoutX="433.0" layoutY="541.0" mnemonicParsing="false" onAction="#modifyTournament" prefHeight="26.0" prefWidth="135.0" text="Save modifications" />
       <Label layoutX="212.0" layoutY="485.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" />
-      <Button fx:id="bCancel" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelModifyTournament" prefHeight="26.0" prefWidth="135.0" text="Cancel" />
+      <Button fx:id="bCancel" layoutX="204.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelModifyTournament" prefHeight="26.0" prefWidth="135.0" text="Cancel" />
       <CheckBox fx:id="cbOpenForRequests" layoutX="406.0" layoutY="485.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" />
       <SplitMenuButton fx:id="smbParticipatingTeams" layoutX="621.0" layoutY="42.0" mnemonicParsing="false" text="Participating Teams">
         <items>
@@ -121,5 +121,6 @@
       <Text fx:id="tTeamSize" layoutX="406.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Size" />
       <Text fx:id="tCreationDate" layoutX="693.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Label layoutX="596.0" layoutY="97.0" text="Creation Date" />
+      <Button fx:id="bDeleteTournament" layoutX="645.0" layoutY="541.0" mnemonicParsing="false" onAction="#deleteTournament" text="Delete Tournament" />
    </children>
 </AnchorPane>

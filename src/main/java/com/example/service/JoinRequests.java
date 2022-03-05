@@ -120,4 +120,7 @@ public class JoinRequests implements Service<JoinRequest> {
         return false;
     }
 
+    public Boolean deleteByTournamentId(Integer tournamentId) {
+        return delete("`tournament_id`=" + tournamentId);
+    }
 }

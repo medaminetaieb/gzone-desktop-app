@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="apViewTournament" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ViewTournamentController">
     <stylesheets>
-        <URL value="@homepage.css" />
+        <URL value="@../../../styles/ViewTournament.css" />
     </stylesheets>
     <children>
         <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
@@ -112,5 +112,6 @@
       <Button fx:id="bAddMatches" layoutX="614.0" layoutY="555.0" mnemonicParsing="false" onAction="#addMatches" prefHeight="26.0" prefWidth="135.0" text="Add Matches" />
       <TreeTableView fx:id="ttvMatches" layoutX="216.0" layoutY="237.0" prefHeight="306.0" prefWidth="537.0" />
       <Text layoutX="651.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams joined" />
+      <Button fx:id="bModifyTournament" layoutX="640.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToModifyTournament" text="Modify Tournament" />
     </children>
 </AnchorPane>

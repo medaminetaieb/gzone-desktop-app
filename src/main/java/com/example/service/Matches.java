@@ -109,4 +109,8 @@ public class Matches implements AdvancedService<Match> {
 
         return false;
     }
+
+    public Boolean deleteByTournamentId(Integer tournamentId) {
+        return delete("`tournament_id`=" + tournamentId);
+    }
 }

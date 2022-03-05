@@ -28,6 +28,9 @@ public class ViewTournamentController implements Initializable {
     private AnchorPane apViewTournament;
 
     @FXML
+    private Button bModifyTournament;
+
+    @FXML
     private Button bAddMatches;
 
     @FXML
@@ -86,6 +89,19 @@ public class ViewTournamentController implements Initializable {
     @FXML
     void Tournament(MouseEvent event) {
 
+    }
+
+    @FXML
+    void goToModifyTournament(ActionEvent event) throws IOException {
+        if (t.getAdminId().equals(Id.user)) {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ModifyTournament.fxml"));
+            apViewTournament.getChildren().setAll(pane);
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("You cannot access this page");
+            a.setContentText("You are not the admin of this tournament to modify it");
+            a.show();
+        }
     }
 
     @FXML
