@@ -83,8 +83,9 @@ public class ModifyTournamentController implements Initializable {
     }
 
     @FXML
-    void cancelModifyTournament(ActionEvent event) {
-
+    void cancelModifyTournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML
@@ -123,7 +124,7 @@ public class ModifyTournamentController implements Initializable {
         taTournamentDescription.setText((t.getDescription()));
         tNumberOfTeams.setText(t.getRequiredTeams().toString());
         tTeamSize.setText(t.getTeamSize().toString());
-        dpCloseRequestDate.setValue(t.getCloseRequestsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        dpCloseRequestDate.setValue(new java.sql.Date(t.getCloseRequestsDate().getTime()).toLocalDate());
         cbOpenForRequests.setSelected(t.isApproved());
         tCreationDate.setText(t.getCreateDate().toString());
     }

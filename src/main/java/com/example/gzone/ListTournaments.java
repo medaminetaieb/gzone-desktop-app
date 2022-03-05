@@ -80,6 +80,7 @@ public class ListTournaments implements Initializable {
         } else {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "' AND `game_id`=" + Id.game)) {
                 tvList.getItems().add(t);
+                System.out.println(t);
             }
         }
         tvList.refresh();
