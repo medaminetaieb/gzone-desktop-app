@@ -1,6 +1,6 @@
 package com.example.gzone;
 
-public class id {
+public class TeamId {
     protected static Integer eam;
 
 }

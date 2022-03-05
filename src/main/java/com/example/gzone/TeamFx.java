@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Parent;
 
-public class HelloApplication extends Application {
+public class TeamFx extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //  Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));

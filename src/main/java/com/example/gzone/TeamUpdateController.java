@@ -19,6 +19,7 @@ public class TeamUpdateController implements Initializable {
     public String textname;
 
     private Team t;
+    private Team oldteam;
     @FXML
     private TextField teamname;
     @FXML
@@ -33,8 +34,7 @@ public class TeamUpdateController implements Initializable {
     private RadioButton rb2;
     @FXML
     private Button updateteam;
-    @FXML
-    private Label nameid;
+
     @FXML
     private Label nameee;
 
@@ -42,43 +42,82 @@ public class TeamUpdateController implements Initializable {
     void Update(ActionEvent event) {
         Teams teams = new Teams();
 
+
+        oldteam = teams.findById(TeamId.eam);
+
+
         t.setAdminId(2);
-        if (teamname.getText().isBlank()){
+
+        if (teamname.getText().isBlank()) {
+            t.setName("");
             teamname.setPromptText("field cannot be empty");
-        } else {
-            t.setName(teamname.getText());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("Please check the name");
+            alert.showAndWait();
+
+
         }
-        if(testImage(photourl.getText()) == true){
-            t.setPhotoURL(photourl.getText());
+        if (testImage(photourl.getText()) == false) {
+
+            photourl.setPromptText("Check the URL of the image");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("Check the URL of the image");
+            alert.showAndWait();
 
         }
-        else {photourl.setPromptText("Check the URL of the image");}
-
-
-        t.setTeamSize(scroller.getValue());
-        if (descritpion.getText().isBlank()){
+        if (descritpion.getText().isBlank()) {
             descritpion.setPromptText("field cannot be empty");
-        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("Check your description");
+            alert.showAndWait();
+        }
+        if(descritpion.getText().isBlank()||testImage(photourl.getText()) == false||teamname.getText().isBlank()){
+            return;
+        }
+        if ((oldteam.getName()).equals(t.getName()) && (oldteam.getDescription()).equals(t.getDescription()) && (oldteam.getTeamSize() == t.getTeamSize()) && (oldteam.getPhotoURL()).equals(t.getPhotoURL()) && (oldteam.isInvitable() == t.isInvitable()) && (oldteam.isRequestable() == t.isRequestable())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("You didn't make any changes");
+            alert.showAndWait();
+            return;
+
+        }
+
+         else {
+            t.setName(teamname.getText());
+            t.setPhotoURL(photourl.getText());
+            t.setTeamSize(scroller.getValue());
             t.setDescription(filter(descritpion.getText()));
+            if (rb1.isSelected()) {
+                t.setRequestable(true);
+            } else {
+                t.setRequestable(false);
+            }
+
+            if (rb2.isSelected()) {
+                t.setInvitable(true);
+            } else {
+                t.setInvitable(false);
+            }
+
+            teams.modify(t);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Update Team");
+
+            alert.setContentText("Team Updated!");
+            alert.show();
         }
 
 
 
-        if (rb1.isSelected()) {
-            t.setRequestable(true);
-        } else {
-            t.setRequestable(false);
 
-        }
 
-        if (rb2.isSelected()) {
-            t.setInvitable(true);
-        } else {
-            t.setInvitable(false);
 
-        }
 
-        teams.modify(t);
+
     }
 
 
@@ -108,13 +147,13 @@ public class TeamUpdateController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Teams teams = new Teams();
-        t = teams.findById(id.eam);
+        t = teams.findById(TeamId.eam);
         teamname.setText(t.getName());
         photourl.setText(t.getPhotoURL());
         descritpion.setText(t.getDescription());
 
 
-        nameid.setText(String.valueOf(id.eam));
+
 
 
 
@@ -128,7 +167,7 @@ public class TeamUpdateController implements Initializable {
         }
 
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
         valueFactory.setValue(t.getTeamSize());
         scroller.setValueFactory(valueFactory);
 

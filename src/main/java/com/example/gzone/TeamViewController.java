@@ -1,12 +1,9 @@
 package com.example.gzone;
 
 import com.example.entity.Game;
-import com.example.util.Badwords;
-import com.example.entity.Membership;
 import com.example.entity.Team;
 import com.example.service.Games;
 import com.example.service.Teams;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -87,74 +84,65 @@ public class TeamViewController implements Initializable {
         Teams team = new Teams();
         Team t = new Team();
 
-        t.setId(null);
-        t.setAdminId(2);
-        if(vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Alert Dialog");
-            alert.setContentText("Please make sure to correctly fill the form");
-            alert.showAndWait();
 
-        }
-        if (vtfteamname.getText().isBlank()){
+
+       if (vtfteamname.getText().isBlank()){
             vtfteamname.setPromptText("field cannot be empty");
 
-        } else {
+
+        }
+       if (vtadescription.getText().isBlank()){
+            vtadescription.setPromptText("field cannot be empty");
+
+        }
+        if(testImage(vtfphotourl.getText()) == false){
+            vtfphotourl.setPromptText("Check the URL of the image");
+        }
+
+        if(vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)){
+           Alert alert = new Alert(Alert.AlertType.WARNING);
+           alert.setTitle("Warning Alert Dialog");
+           alert.setContentText("Please make sure to correctly fill the form");
+           alert.showAndWait();
+           return;
+
+       }
+        else {
+            t.setId(null);
+            t.setAdminId(2);
             t.setName(vtfteamname.getText());
-        }
-
-
-        t.setTeamSize(vsteamsize.getValue());
-
-
+            t.setTeamSize(vsteamsize.getValue());
             t.setGameId(gameId);
-
-
-
-        if (vtadescription.getText().isBlank()){
-            vtadescription.setPromptText("field cannot be empty");
-
-        } else {
             t.setDescription(filter(vtadescription.getText()));
-        }
-
-        if(testImage(vtfphotourl.getText()) == true){
             t.setPhotoURL(vtfphotourl.getText());
-
-        }
-        else {vtfphotourl.setPromptText("Check the URL of the image");
-            vtadescription.setPromptText("field cannot be empty");
+            t.setCreateDate(date);
+            if (vrbopenforrequests.isSelected()) {
+                t.setRequestable(true);
+            } else {
+                t.setRequestable(false);
 
             }
-        t.setCreateDate(date);
-        if (vrbopenforrequests.isSelected()) {
-            t.setRequestable(true);
-        } else {
-            t.setRequestable(false);
+            if (vrbopenforinvitation.isSelected()) {
+                t.setInvitable(true);
+            } else {
+                t.setInvitable(false);
+
+            }
+
+            teams.insert(t);
+            vtfteamname.setText("");
+            vtfphotourl.setText("");
+            vtadescription.setText("");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Create Team");
+
+            alert.setContentText("Team Added!");
+            alert.show();
+
+            listview.getItems().add(t);
 
         }
-
-        if (vrbopenforinvitation.isSelected()) {
-            t.setInvitable(true);
-        } else {
-            t.setInvitable(false);
-
-        }
-
-        teams.insert(t);
-        vtfteamname.setText("");
-        vtfphotourl.setText("");
-        vtadescription.setText("");
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Create Team");
-
-        alert.setContentText("Team Added!");
-        alert.show();
-
-        listview.getItems().add(t);
-
-
     }
 
     @FXML
@@ -178,7 +166,7 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
-        id.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        TeamId.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-profile.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
@@ -204,7 +192,7 @@ public class TeamViewController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
         stage.close();*/
-        id.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        TeamId.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
@@ -262,7 +250,7 @@ public class TeamViewController implements Initializable {
             });
             vmbgame.getItems().add(mi);
         }
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 1);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
         valueFactory.setValue(1);
         vsteamsize.setValueFactory(valueFactory);
 

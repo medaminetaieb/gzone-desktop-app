@@ -1,7 +1,6 @@
 package com.example.gzone;
 
 import com.example.entity.Membership;
-import com.example.util.PhotoUrlCheck;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
 import com.example.service.Memberships;
@@ -10,15 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -98,11 +93,11 @@ public class TeamProfileController implements Initializable {
 
         photo.setImage(image);
 
-        List<Membership> teamlistt = members.findAll("`team_id`=" + id.eam + " And `user_id` is not null");
+        List<Membership> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null");
         lismemebers.getItems().addAll(teamlistt);
 
         Teams teams = new Teams();
-        t = teams.findById(id.eam);
+        t = teams.findById(TeamId.eam);
         if (t.isRequestable() == true) {
             chekreq.fire();
             chekreq.setDisable(true);
@@ -115,6 +110,6 @@ public class TeamProfileController implements Initializable {
         } else {
             checkin.setDisable(false);
         }
-        winrate.setText(String.valueOf(TeamStat.getWinRate(id.eam)));
+        winrate.setText(String.valueOf(TeamStat.getWinRate(TeamId.eam)));
     }
 }
