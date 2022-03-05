@@ -95,7 +95,7 @@
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="604.0" prefWidth="673.0" style="-fx-background-color: 1f7ea1;">
                <children>
-                  <ImageView fitHeight="121.0" fitWidth="120.0" layoutX="31.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="photo" fitHeight="121.0" fitWidth="120.0" layoutX="31.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../Desktop/user.png" />
                      </image>

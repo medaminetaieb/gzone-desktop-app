@@ -1,6 +1,7 @@
 package com.example.gzone;
 
 import com.example.entity.Membership;
+import com.example.util.PhotoUrlCheck;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
 import com.example.service.Memberships;
@@ -11,9 +12,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,6 +28,8 @@ public class TeamProfileController implements Initializable {
     final Memberships members = new Memberships();
     @FXML
     private Text teamname;
+    @FXML
+    private ImageView photo;
 
     @FXML
     private Text description;
@@ -87,7 +94,11 @@ public class TeamProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        List<Membership> teamlistt = members.findAll("`team_id`="+id.eam+" And `user_id` is not null");
+        Image image = new Image("https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg");
+
+        photo.setImage(image);
+
+        List<Membership> teamlistt = members.findAll("`team_id`=" + id.eam + " And `user_id` is not null");
         lismemebers.getItems().addAll(teamlistt);
 
         Teams teams = new Teams();
@@ -95,13 +106,13 @@ public class TeamProfileController implements Initializable {
         if (t.isRequestable() == true) {
             chekreq.fire();
             chekreq.setDisable(true);
+        } else {
+            chekreq.setDisable(false);
         }
-else{chekreq.setDisable(false);}
         if (t.isInvitable() == true) {
             checkin.fire();
             checkin.setDisable(true);
-        }
-        else {
+        } else {
             checkin.setDisable(false);
         }
         winrate.setText(String.valueOf(TeamStat.getWinRate(id.eam)));

@@ -21,10 +21,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static com.example.util.Badwords.filter;
 import static com.example.util.PhotoUrlCheck.testImage;
@@ -46,7 +43,7 @@ public class TeamViewController implements Initializable {
     @FXML
     private Spinner<Integer> vsteamsize;
     @FXML
-    private MenuButton vmbgame;
+    private SplitMenuButton vmbgame;
     @FXML
     private TextArea vtadescription;
     @FXML
@@ -92,8 +89,16 @@ public class TeamViewController implements Initializable {
 
         t.setId(null);
         t.setAdminId(2);
+        if(vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("Please make sure to correctly fill the form");
+            alert.showAndWait();
+
+        }
         if (vtfteamname.getText().isBlank()){
             vtfteamname.setPromptText("field cannot be empty");
+
         } else {
             t.setName(vtfteamname.getText());
         }
@@ -108,6 +113,7 @@ public class TeamViewController implements Initializable {
 
         if (vtadescription.getText().isBlank()){
             vtadescription.setPromptText("field cannot be empty");
+
         } else {
             t.setDescription(filter(vtadescription.getText()));
         }
@@ -116,7 +122,10 @@ public class TeamViewController implements Initializable {
             t.setPhotoURL(vtfphotourl.getText());
 
         }
-        else {vtfphotourl.setPromptText("Check the URL of the image");}
+        else {vtfphotourl.setPromptText("Check the URL of the image");
+            vtadescription.setPromptText("field cannot be empty");
+
+            }
         t.setCreateDate(date);
         if (vrbopenforrequests.isSelected()) {
             t.setRequestable(true);
@@ -141,6 +150,7 @@ public class TeamViewController implements Initializable {
         alert.setTitle("Create Team");
 
         alert.setContentText("Team Added!");
+        alert.show();
 
         listview.getItems().add(t);
 
@@ -149,10 +159,19 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void actiondelete(ActionEvent event) {
-        Team dt = listview.getSelectionModel().getSelectedItem();
-        teams.deleteById(dt.getId());
 
-        listview.getItems().remove(dt);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete confirmation Alert");
+        alert.setContentText("Do you want to delete this Team: "+listview.getSelectionModel().getSelectedItem().getName());
+        Optional<ButtonType> result =alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            Team dt = listview.getSelectionModel().getSelectedItem();
+            teams.deleteById(dt.getId());
+
+            listview.getItems().remove(dt);
+        }
+
+
 
 
     }
@@ -204,10 +223,7 @@ public class TeamViewController implements Initializable {
 
     }
 
-    @FXML
-    public void initialize() {
 
-    }
 
     public void showTeams() {
         final Team[] clabel = {new Team()};
@@ -232,11 +248,11 @@ public class TeamViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Game> gameList = new Games().findAll();
-
-        vmbgame.getItems();
-        vmbgame.setOnAction(e -> {
+        MenuItem smbgmi = new MenuItem("No Game");
+        vmbgame.getItems().add(smbgmi);
+        smbgmi.setOnAction(e -> {
             gameId = null;
-
+            vmbgame.setText("No Game");
         });
         for (Game g : gameList) {
             MenuItem mi = new MenuItem(g.getName());
@@ -251,6 +267,8 @@ public class TeamViewController implements Initializable {
         vsteamsize.setValueFactory(valueFactory);
 
 
+        delete.disableProperty()
+                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnupdateteam.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnshowprofile.disableProperty()

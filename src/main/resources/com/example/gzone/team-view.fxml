@@ -5,12 +5,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -76,7 +75,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox layoutX="196.0" layoutY="53.0" prefHeight="276.0" prefWidth="351.0">
+                        <VBox layoutX="196.0" layoutY="60.0" prefHeight="276.0" prefWidth="351.0">
                            <children>
                               <TextField fx:id="vtfteamname">
                                  <VBox.margin>
@@ -93,15 +92,12 @@
                                     <Insets top="13.0" />
                                  </VBox.margin>
                               </Spinner>
-                              <MenuButton fx:id="vmbgame" mnemonicParsing="false" onAction="#initialize" prefHeight="31.0" prefWidth="147.0" text="Select a game">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                 </items>
+                              <SplitMenuButton fx:id="vmbgame" mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="Select a game">
+
                                  <VBox.margin>
-                                    <Insets top="11.0" />
+                                    <Insets top="10.0" />
                                  </VBox.margin>
-                              </MenuButton>
+                              </SplitMenuButton>
                               <TextArea fx:id="vtadescription" prefHeight="76.0" prefWidth="351.0">
                                  <VBox.margin>
                                     <Insets top="20.0" />
