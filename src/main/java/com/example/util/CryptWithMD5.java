@@ -1,25 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.util;
+
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
- * @author Mahdi
+ * @author LENOVO
  */
-public class EncryptPassword {
-      private static MessageDigest md;
+public class CryptWithMD5 {
+   private static MessageDigest md;
 
-   public static String cryptWithMD5(String password){
+   public static String cryptWithMD5(String pass){
     try {
         md = MessageDigest.getInstance("MD5");
-        byte[] passBytes = password.getBytes();
+        byte[] passBytes = pass.getBytes();
         md.reset();
         byte[] digested = md.digest(passBytes);
         StringBuffer sb = new StringBuffer();
@@ -28,11 +26,15 @@ public class EncryptPassword {
         }
         return sb.toString();
     } catch (NoSuchAlgorithmException ex) {
-        Logger.getLogger(EncryptPassword.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
     }
         return null;
 
 
    }
+
+
+
+
 
 }

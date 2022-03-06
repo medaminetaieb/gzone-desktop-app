@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="800" style="-fx-background-color: #3c3c3c;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.DashboardController">
+    <stylesheets>
+        <URL value="@/styles/dashboard.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="search" layoutX="432.0" layoutY="348.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="200.0" promptText="Search.." />
+      <TableView fx:id="tableviewuser" layoutX="-14.0" layoutY="66.0" prefHeight="200.0" prefWidth="836.0">
+        <columns>
+          <TableColumn fx:id="tid" prefWidth="49.60000687837601" text="id" />
+          <TableColumn fx:id="tusername" prefWidth="101.59997177124023" text="username" />
+            <TableColumn fx:id="tfullname" prefWidth="93.60000610351562" text="fullname" />
+            <TableColumn fx:id="tpassword" prefWidth="111.20001220703125" text="password" />
+            <TableColumn fx:id="temail" minWidth="6.4000244140625" prefWidth="100.0" text="email" />
+            <TableColumn fx:id="tphone" minWidth="0.0" prefWidth="85.60006713867188" text="phone" />
+            <TableColumn fx:id="tbirthdate" prefWidth="68.79998779296875" text="birthdate" />
+            <TableColumn fx:id="tjoindate" prefWidth="71.199951171875" text="join date" />
+            <TableColumn fx:id="tphoto" minWidth="0.0" prefWidth="75.2000732421875" text="photo" />
+            <TableColumn fx:id="trole" minWidth="0.0" prefWidth="73.5999755859375" text="role" />
+        </columns>
+      </TableView>
+      <Label layoutX="266.0" layoutY="351.0" text="Search a user account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <ListView fx:id="listviewusers" layoutY="386.0" prefHeight="200.0" prefWidth="810.0" />
+   </children>
+</AnchorPane>

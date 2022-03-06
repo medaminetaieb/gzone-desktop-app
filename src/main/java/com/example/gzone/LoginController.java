@@ -1,6 +1,7 @@
 package com.example.gzone;
 
-
+import com.example.entity.Role;
+import com.example.entity.User;
 import com.example.service.Users;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -43,10 +44,16 @@ public class LoginController {
 
     @FXML
     private void checkUser() throws IOException {
-        if ((Id.user=new Users().checklogin(username.getText(), password.getText())) != null) {
-            
-            AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-            signinpane.getChildren().setAll(panee);
+        if ((Id.user = new Users().checklogin(username.getText(), password.getText())) != null) {
+            User u = new Users().findById(Id.user);
+            if (u.getRole().equals(Role.admin)) {
+                AnchorPane panee = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+                signinpane.getChildren().setAll(panee);
+            } else {
+                AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                signinpane.getChildren().setAll(panee);
+            }
+
         }
     }
 

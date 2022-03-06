@@ -7,8 +7,8 @@ package com.example.service;
 
 import com.example.entity.User;
 import com.example.entity.Role;
+import static com.example.util.CryptWithMD5.cryptWithMD5;
 
-import static com.example.util.EncryptPassword.cryptWithMD5;
 
 import com.example.util.MySQLValidator;
 
@@ -40,7 +40,7 @@ public class Users implements AdvancedService<User> {
             ps.setString(++i, u.getPhoneNumber());
             ps.setString(++i, u.getEmail());
             ps.setString(++i, u.getUsername());
-            ps.setString(++i, u.getPassword());
+            ps.setString(++i, cryptWithMD5(u.getPassword()));
             ps.setString(++i, u.getPhotoURL());
             ps.setString(++i, u.getFullName());
             ps.setString(++i, u.getBio());
@@ -71,7 +71,7 @@ public class Users implements AdvancedService<User> {
             ps.setString(++i, u.getPhoneNumber());
             ps.setString(++i, u.getEmail());
             ps.setString(++i, u.getUsername());
-            ps.setString(++i, u.getPassword());
+            ps.setString(++i, cryptWithMD5(u.getPassword()));
             ps.setString(++i, u.getPhotoURL());
             ps.setString(++i, u.getFullName());
             ps.setString(++i, u.getBio());
@@ -141,9 +141,9 @@ public class Users implements AdvancedService<User> {
 
     public Integer checklogin(String username, String password) {
         try {
-           
+            
             Statement st = connection.createStatement();
-            String query = "SELECT `id` FROM `users` WHERE `username`='" + username + "' AND `password`='" + password + "'";
+            String query = "SELECT `id` FROM `users` WHERE `username`='" + username + "' AND `password`='" + cryptWithMD5(password) + "'";
             ResultSet rs = st.executeQuery(query);
             if (rs.next()){
                 return rs.getObject(1,Integer.class);

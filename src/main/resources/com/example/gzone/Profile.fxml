@@ -5,8 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -26,7 +25,7 @@
                   <Insets left="15.0" top="40.0" />
                </VBox.margin>
             </Circle>
-            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@gzone%20logo.png" />
                </image>
@@ -89,6 +88,11 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefHeight="59.0" prefWidth="172.0" style="-fx-background-color: #3c3c3c;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="18.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <Text fx:id="fullname" fill="#141d2b" layoutX="185.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FullName" wrappingWidth="230.800048828125">
@@ -119,12 +123,7 @@
             <Font name="Webdings" size="18.0" />
          </font>
       </Text>
-      <TextArea fx:id="bio" layoutX="192.0" layoutY="384.0" prefHeight="181.0" prefWidth="583.0" />
-      <TableView layoutX="192.0" layoutY="268.0" prefHeight="110.0" prefWidth="583.0">
-        <columns>
-          <TableColumn fx:id="favorite_games" prefWidth="581.6000366210938" text="Favorite Games" />
-        </columns>
-      </TableView>
+      <TextArea fx:id="bio" disable="true" layoutX="192.0" layoutY="384.0" prefHeight="174.0" prefWidth="583.0" />
       <CheckBox fx:id="invitable" disable="true" layoutX="748.0" layoutY="193.0" mnemonicParsing="false">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -142,5 +141,16 @@
             <Font size="14.0" />
          </font>
       </Hyperlink>
+      <ListView fx:id="favorite_games" layoutX="194.0" layoutY="241.0" prefHeight="132.0" prefWidth="583.0" />
+      <Button fx:id="deletebtn" layoutX="664.0" layoutY="566.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: red;" text="Delete account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="modifybtn" layoutX="367.0" layoutY="30.0" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: #9fef00;" text="Modify information" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
