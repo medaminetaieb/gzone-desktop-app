@@ -3,11 +3,10 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,12 +14,12 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="CreatePane" prefHeight="639.0" prefWidth="801.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateHappyHourController">
+<AnchorPane id="AnchorPane" fx:id="APCreate" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateGameController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="639.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
+      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
          <children>
             <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
                <VBox.margin>
@@ -92,25 +91,48 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="356.0" layoutY="62.0" text="Create Happy Hour">
+      <VBox layoutX="245.0" layoutY="92.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
+         <children>
+            <Label text="Name">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <Label text="PhotoUrl">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Description">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="400.0" layoutY="92.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
+         <children>
+            <TextField fx:id="tfName" text="PRO" />
+            <TextField fx:id="tfPhotoUrl" />
+            <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" text="Game5" />
+         </children>
+         <effect>
+            <BoxBlur height="0.0" iterations="0" width="0.0" />
+         </effect>
+      </VBox>
+      <Button fx:id="btnAdd" layoutX="579.0" layoutY="458.0" mnemonicParsing="false" onAction="#Add" prefHeight="30.0" prefWidth="79.0" text="Add">
          <font>
-            <Font name="Arial Bold Italic" size="20.0" />
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCancel" layoutX="385.0" layoutY="458.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="31.0" prefWidth="79.0" text="Cancel">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font></Button>
+      <Label layoutX="407.0" layoutY="32.0" text="Create a New Game">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="245.0" layoutY="153.0" text="Start Date" />
-      <Label layoutX="245.0" layoutY="227.0" text="End Date" />
-      <Label layoutX="245.0" layoutY="302.0" text="Badge" />
-      <Label layoutX="245.0" layoutY="390.0" text="Game" />
-      <DatePicker fx:id="dpStartDate" layoutX="356.0" layoutY="148.0" />
-      <DatePicker fx:id="dpEndDate" layoutX="356.0" layoutY="222.0" />
-      <SplitMenuButton fx:id="smbGame" layoutX="356.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
-      <Button fx:id="btnCreate" layoutX="324.0" layoutY="499.0" mnemonicParsing="false" onAction="#createHappyHour" text="Create" />
-      <Button fx:id="btCancel" layoutX="542.0" layoutY="499.0" mnemonicParsing="false" onAction="#CancelHappyHour" text="Cancel" />
-      <TextField fx:id="tfBadge" layoutX="356.0" layoutY="308.0" prefHeight="31.0" prefWidth="218.0" />
    </children>
 </AnchorPane>

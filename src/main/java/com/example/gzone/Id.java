@@ -13,4 +13,5 @@ public class Id {
     protected static Integer game;
         protected static Integer badge;
 
+
 }

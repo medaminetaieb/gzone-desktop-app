@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.UpdateHappyHourController">
+<AnchorPane id="AnchorPane" fx:id="UpdatePane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.UpdateHappyHourController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -110,6 +110,7 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </SplitMenuButton>
-      <Button fx:id="btnUpdate" layoutX="400.0" layoutY="519.0" mnemonicParsing="false" onAction="#UpdateHappyHour" text="Modify" />
+      <Button fx:id="btnUpdate" layoutX="347.0" layoutY="504.0" mnemonicParsing="false" onAction="#UpdateHappyHour" text="Modify" />
+      <Button fx:id="btnCancel" layoutX="476.0" layoutY="504.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
    </children>
 </AnchorPane>

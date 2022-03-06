@@ -4,14 +4,9 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.GameViewController">
     <stylesheets>
@@ -96,141 +90,56 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Game" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
-      <TabPane layoutX="163.0" layoutY="-1.0" prefHeight="604.0" prefWidth="638.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-            <Tab text="Our Games">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tbView" layoutX="23.0" layoutY="121.0" prefHeight="283.0" prefWidth="578.0">
-                          <columns>
-                            <TableColumn fx:id="clName" prefWidth="177.0" text="Name" />
-                              <TableColumn fx:id="clPhotoUrl" prefWidth="142.0" text="PhotoUrl" />
-                              <TableColumn fx:id="clDescription" prefWidth="258.0" text="Description" />
-                          </columns>
-                        </TableView>
-                        <HBox alignment="CENTER" layoutX="23.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
-                           <padding>
-                              <Insets left="30.0" right="30.0" />
-                           </padding>
-                           <children>
-                              <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="245.0" promptText="Type here to search" styleClass="tranparant" stylesheets="@fxml.css">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <styleClass>
-                              <String fx:value="search-box" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </HBox>
-                        <Button fx:id="BTNEdit" layoutX="202.0" layoutY="439.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="87.0" text="EDIT" />
-                        <Button fx:id="btnDelete" layoutX="368.0" layoutY="439.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="96.0" text="DELETE" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-          <Tab text="Add New Game">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox layoutX="83.0" layoutY="85.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
-                           <children>
-                              <Label text="Name">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="PhotoUrl">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Description">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox layoutX="256.0" layoutY="78.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
-                           <children>
-                              <TextField fx:id="tfName" text="PRO" />
-                              <TextField fx:id="tfPhotoUrl" />
-                              <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" text="Game5" />
-                           </children>
-                           <effect>
-                              <BoxBlur height="0.0" iterations="0" width="0.0" />
-                           </effect>
-                        </VBox>
-                        <Button fx:id="btnAdd" layoutX="319.0" layoutY="418.0" mnemonicParsing="false" onAction="#Add" prefHeight="30.0" prefWidth="63.0" text="ADD">
-                           <font>
-                              <Font name="Cambria" size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Edit Game">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox layoutX="83.0" layoutY="85.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
-                           <children>
-                              <Label text="Name">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="PhotoUrl">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Description">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox layoutX="256.0" layoutY="78.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
-                           <children>
-                              <TextField fx:id="tfNameUpdate" />
-                              <TextField fx:id="tfPhotoUrlUpdate" />
-                              <TextArea fx:id="tfDescriptionUpdate" prefHeight="165.0" prefWidth="227.0" />
-                           </children>
-                           <effect>
-                              <BoxBlur height="0.0" iterations="0" width="0.0" />
-                           </effect>
-                        </VBox>
-                        <Button fx:id="btnUpdate" layoutX="319.0" layoutY="418.0" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="83.0" text="EDIT">
-                           <font>
-                              <Font name="Cambria" size="15.0" />
-                           </font>
-                        </Button>
-                        <Text fx:id="tstatus" layoutX="282.0" layoutY="500.0" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
-                           <font>
-                              <Font name="Calibri Italic" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
+      <AnchorPane fx:id="gamepane" layoutX="164.0" prefHeight="604.0" prefWidth="742.0">
+         <children>
+            <TableView fx:id="tbView" layoutX="66.0" layoutY="167.0" prefHeight="278.0" prefWidth="578.0">
+               <columns>
+                  <TableColumn fx:id="clName" prefWidth="177.0" text="Name" />
+                  <TableColumn fx:id="clPhotoUrl" prefWidth="142.0" text="PhotoUrl" />
+                  <TableColumn fx:id="clDescription" prefWidth="258.0" text="Description" />
+               </columns>
+            </TableView>
+            <HBox alignment="CENTER" layoutX="42.0" layoutY="83.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+               <children>
+                  <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="245.0" promptText="Type here to search" styleClass="tranparant" stylesheets="@fxml.css">
+                     <font>
+                        <Font name="Cambria" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+            <Button fx:id="btnAddGame" layoutX="554.0" layoutY="43.0" mnemonicParsing="false" onAction="#AddGame" text="Add New Game" />
+            <Button fx:id="BTNEdit" layoutX="336.0" layoutY="496.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="69.0" text="EDIT" />
+            <Button fx:id="btnDelete" layoutX="216.0" layoutY="496.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="69.0" text="DELETE" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
