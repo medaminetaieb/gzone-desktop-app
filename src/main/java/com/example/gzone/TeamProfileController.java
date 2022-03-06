@@ -33,6 +33,8 @@ public class TeamProfileController implements Initializable {
     final Memberships members = new Memberships();
      Users users = new Users();
     @FXML
+    private ListView<Team> topthreelist;
+    @FXML
     private Button returnview;
     @FXML
     private Text texxt;
@@ -210,6 +212,12 @@ public class TeamProfileController implements Initializable {
         }
         deletemember.disableProperty()
                 .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
+
+        //Show top 10 teams
+      /* for(Team top:TeamStat.topTenTeams()){
+
+        }*/
+topthreelist.getItems().addAll(TeamStat.topThreeTeams());
 
     }
 }

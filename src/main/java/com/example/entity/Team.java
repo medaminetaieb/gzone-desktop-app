@@ -124,7 +124,7 @@ public class Team {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        //sb.append("Team{id=").append(id);
+        sb.append("Team{id=").append(id);
         //sb.append(", adminUserId=").append(adminId);
         sb.append("Name=").append(name);
         sb.append(", Description=").append(description);

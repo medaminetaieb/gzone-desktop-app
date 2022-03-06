@@ -16,6 +16,11 @@ public class MembershipTest {
     static{
         membershiplist.add(new Membership(null,3,2,null));
         membershiplist.add(new Membership(null,4,2,null));
+        membershiplist.add(new Membership(null,1,2,null));
+        membershiplist.add(new Membership(null,4,15,null));
+        membershiplist.add(new Membership(null,5,24,null));
+        membershiplist.add(new Membership(null,6,36,null));
+
     }
     public static void insertAll(){
 

@@ -3,9 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.JoinRequestView">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamJoinRequestView">
    <children>
       <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
          <children>
@@ -98,24 +97,21 @@
             </VBox>
             <VBox layoutX="179.0" layoutY="305.0" prefHeight="135.0" prefWidth="296.0">
                <children>
-                  <TextArea prefHeight="143.0" prefWidth="296.0" />
+                  <TextArea fx:id="messagetxt" prefHeight="143.0" prefWidth="296.0" />
                </children>
             </VBox>
             <Separator layoutX="36.0" layoutY="532.0" prefHeight="4.0" prefWidth="571.0" />
-            <Text layoutX="289.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send" wrappingWidth="207.6708984375">
+            <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request/invitation" wrappingWidth="404.6708984375">
                <font>
                   <Font size="29.0" />
                </font>
             </Text>
-            <Button layoutX="295.0" layoutY="256.0" mnemonicParsing="false" text="Select " />
-            <Button layoutX="290.0" layoutY="547.0" mnemonicParsing="false" text="Send " />
-            <TableView layoutX="92.0" layoutY="53.0" prefHeight="200.0" prefWidth="484.0">
-               <columns>
-                <TableColumn prefWidth="155.0" text="user name" />
-                  <TableColumn fx:id="vtcTournamentName" prefWidth="163.0" text="Tournament name" />
-                <TableColumn fx:id="vtcTeamName" prefWidth="163.0" text="Team name" />
-               </columns>
-            </TableView>
+            <Button fx:id="selectuser" layoutX="114.0" layoutY="253.0" mnemonicParsing="false" onAction="#selectuser" text="Select user" />
+            <Button fx:id="sendrequest" layoutX="430.0" layoutY="552.0" mnemonicParsing="false" onAction="#sendrequest" text="Send request" />
+            <ListView fx:id="userlist" layoutX="59.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="tournamentlist" layoutX="383.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="sendinvitation" layoutX="100.0" layoutY="552.0" mnemonicParsing="false" onAction="#sendinvitation" text="Send invitation" />
+            <Button fx:id="selecttournament" layoutX="407.0" layoutY="253.0" mnemonicParsing="false" onAction="#selecttournament" text="Select a tournament" />
          </children>
       </AnchorPane>
    </children>

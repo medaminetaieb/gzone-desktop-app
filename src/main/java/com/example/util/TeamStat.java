@@ -10,8 +10,6 @@ import com.example.service.Matches;
 import com.example.entity.Team;
 import com.example.service.Teams;
 
-import java.text.NumberFormat;
-import java.util.Formatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,17 +29,17 @@ public class TeamStat {
         return w;
     }
 
-    public static List<Team> topTenTeams() {
+    public static List<Team> topThreeTeams() {
         Teams teams = new Teams();
         return teams.findAll().stream()
-                .sorted((t1, t2) -> {
+                .sorted((Team t1, Team t2) -> {
                     if (getWinRate(t1.getId()) > getWinRate(t2.getId())) {
-                        return 1;
-                    } else if (getWinRate(t1.getId()) < getWinRate(t2.getId())) {
                         return -1;
+                    } else if (getWinRate(t1.getId()) < getWinRate(t2.getId())) {
+                        return 1;
                     } else {
                         return 0;
                     }
-                }).limit(10).collect(Collectors.toList());
+                }).limit(3).collect(Collectors.toList());
     }
 }
