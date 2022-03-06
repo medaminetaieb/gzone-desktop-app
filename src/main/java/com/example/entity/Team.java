@@ -124,16 +124,16 @@ public class Team {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Team{id=").append(id);
-        sb.append(", adminUserId=").append(adminId);
-        sb.append(", photoURL=").append(photoURL);
-        sb.append(", name=").append(name);
-        sb.append(", description=").append(description);
-        sb.append(", gameId=").append(gameId);
-        sb.append(", teamSize=").append(teamSize);
+        //sb.append("Team{id=").append(id);
+        //sb.append(", adminUserId=").append(adminId);
+        sb.append("Name=").append(name);
+        sb.append(", Description=").append(description);
+        sb.append(", PhotoURL=").append(photoURL);
+       //sb.append(", gameId=").append(gameId);
+        sb.append(", TeamSize=").append(teamSize);
         sb.append(", Requestable=").append(requestable);
         sb.append(", Invitable=").append(invitable);
-        sb.append(", createDate=").append(createDate);
+        sb.append(", CreateDate=").append(createDate);
         sb.append('}');
         
         return sb.toString();

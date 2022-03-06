@@ -2,27 +2,38 @@ package com.example.gzone;
 
 import com.example.entity.Match;
 import com.example.entity.Membership;
+import com.example.entity.User;
 import com.example.service.Matches;
+import com.example.service.Users;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
 import com.example.service.Memberships;
 import com.example.service.Teams;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TeamProfileController implements Initializable {
     private Team t;
+    private User u;
     final Memberships members = new Memberships();
+     Users users = new Users();
+    @FXML
+    private Button returnview;
     @FXML
     private Text texxt;
     @FXML
@@ -40,9 +51,16 @@ public class TeamProfileController implements Initializable {
     private CheckBox checkin;
     @FXML
     private Text winrate;
+    @FXML
+    private AnchorPane allanchor;
+    @FXML
+    private Button deletemember;
+    @FXML
+    private AnchorPane smanchor;
+
 
     @FXML
-    private ListView<Membership> lismemebers;
+    private ListView<User> lismemebers;
     private String textnamee;
     private String desc;
 
@@ -89,19 +107,61 @@ public class TeamProfileController implements Initializable {
         description.setText(desc);
 
     }
+    @FXML
+    void actionreturn(ActionEvent event) throws IOException {
+        FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-view.fxml"));
+        AnchorPane pane = loader.load();
+        allanchor.getChildren().setAll(pane);
+
+    }
+    @FXML
+    void actiondeletemember(ActionEvent event) {
+        //u = users.findById(lismemebers.getSelectionModel().getSelectedItem().getUserId());
+        User u = lismemebers.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete confirmation Alert");
+        alert.setContentText("Do you really want to delete this Member: "+u.getFullName()+"?");
+        Optional<ButtonType> result =alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+
+            List<Membership> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + TeamId.eam);
+
+              for (Membership m :list){
+
+                  members.deleteById(m.getId());
+
+                  lismemebers.getItems().remove(u);
+              }
+
+
+        }
+
+
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Image image = new Image("https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg");
+        Teams teams = new Teams();
+        t = teams.findById(
+                TeamId.eam);
+        Image image = new Image(t.getPhotoURL());
 
         photo.setImage(image);
 
+        List<User> userlist = new ArrayList<>();
         List<Membership> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null");
-        lismemebers.getItems().addAll(teamlistt);
+        for(Membership m : teamlistt){
+            Integer userId = m.getUserId();
+            userlist.add(users.findById(userId));
 
-        Teams teams = new Teams();
-        t = teams.findById(TeamId.eam);
+        }
+
+        lismemebers.getItems().addAll(userlist);
+
+
 
         final Matches matches = new Matches();
         List<Match> l = matches.findAll("`team1_id`=" + TeamId.eam + " OR `team2_id`=" + TeamId.eam);
@@ -148,6 +208,8 @@ public class TeamProfileController implements Initializable {
             }
 
         }
+        deletemember.disableProperty()
+                .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
 
     }
 }

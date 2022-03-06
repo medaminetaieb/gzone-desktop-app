@@ -158,7 +158,7 @@
           </Tab>
             <Tab fx:id="vtabyourteams" text="Your teams">
                <content>
-                  <AnchorPane prefHeight="461.0" prefWidth="665.0" style="-fx-background-color: 1f7ea1;">
+                  <AnchorPane fx:id="anchoryourteams" prefHeight="461.0" prefWidth="665.0" style="-fx-background-color: 1f7ea1;">
                      <children>
                         <VBox layoutX="50.0" layoutY="419.0" prefHeight="22.0" prefWidth="165.0" />
                         <Button fx:id="vbtnshowprofile" layoutX="203.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionShowProfile" text="Show profile" />

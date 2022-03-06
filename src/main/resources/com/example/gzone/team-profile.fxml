@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamProfileController">
+<AnchorPane id="AnchorPane" fx:id="allanchor" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamProfileController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -91,7 +91,7 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane layoutX="163.0" layoutY="1.0" prefHeight="604.0" prefWidth="637.0">
+      <AnchorPane fx:id="smanchor" layoutX="163.0" layoutY="1.0" prefHeight="604.0" prefWidth="637.0">
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="604.0" prefWidth="673.0" style="-fx-background-color: 1f7ea1;">
                <children>
@@ -130,7 +130,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox layoutX="268.0" layoutY="425.0" prefHeight="90.0" prefWidth="134.0">
+                  <VBox layoutX="268.0" layoutY="461.0" prefHeight="90.0" prefWidth="134.0">
                      <children>
                         <Label text="Open for requests">
                            <VBox.margin>
@@ -160,8 +160,8 @@
                         <Label prefHeight="21.0" prefWidth="69.0" text="Win rate:" />
                      </children>
                   </VBox>
-                  <CheckBox fx:id="chekreq" layoutX="408.0" layoutY="449.0" mnemonicParsing="false" />
-                  <CheckBox fx:id="checkin" layoutX="408.0" layoutY="488.0" mnemonicParsing="false" />
+                  <CheckBox fx:id="chekreq" layoutX="408.0" layoutY="484.0" mnemonicParsing="false" />
+                  <CheckBox fx:id="checkin" layoutX="408.0" layoutY="523.0" mnemonicParsing="false" />
                   <Label layoutX="241.0" layoutY="14.0" text="Team profile">
                      <font>
                         <Font size="34.0" />
@@ -174,6 +174,8 @@
                      </children>
                   </VBox>
                   <Text fx:id="winrate" layoutX="113.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Button fx:id="returnview" layoutX="5.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionreturn" text="return" />
+                  <Button fx:id="deletemember" layoutX="502.0" layoutY="448.0" mnemonicParsing="false" onAction="#actiondeletemember" text="Delete member" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

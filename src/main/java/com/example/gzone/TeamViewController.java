@@ -30,6 +30,8 @@ public class TeamViewController implements Initializable {
     String namee;
     int info;
     @FXML
+    private AnchorPane anchoryourteams;
+    @FXML
     private VBox vbox;
     @FXML
     private Tab vtabcreatetam;
@@ -51,8 +53,7 @@ public class TeamViewController implements Initializable {
     private TextField vtfaddmembers;
     @FXML
     private ScrollBar vsb;
-    @FXML
-    private Button vbtnaddmembers;
+
     @FXML
     private Button vtbncreateteam;
     @FXML
@@ -108,7 +109,7 @@ public class TeamViewController implements Initializable {
 
        }
         else {
-            t.setId(null);
+            //t.setId(null);
             t.setAdminId(2);
             t.setName(vtfteamname.getText());
             t.setTeamSize(vsteamsize.getValue());
@@ -129,18 +130,29 @@ public class TeamViewController implements Initializable {
 
             }
 
-            teams.insert(t);
-            vtfteamname.setText("");
-            vtfphotourl.setText("");
-            vtadescription.setText("");
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Create Team");
 
-            alert.setContentText("Team Added!");
-            alert.show();
 
-            listview.getItems().add(t);
+            Alert conf = new Alert(Alert.AlertType.CONFIRMATION);
+            conf.setTitle("Team creation confirmation Alert");
+            conf.setContentText("Do you really want to create this Team: "+t.getName()+"?");
+            Optional<ButtonType> result =conf.showAndWait();
+            if(result.get() == ButtonType.OK){
+                teams.insert(t);
+                listview.getItems().add(t);
+                listview.refresh();
+                vtfteamname.setText("");
+                vtfphotourl.setText("");
+                vtadescription.setText("");
+                vrbopenforrequests.setSelected(false);
+                vrbopenforinvitation.setSelected(false);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Create Team");
+
+                alert.setContentText("Team Added!");
+                alert.show();
+            }
 
         }
     }
@@ -150,7 +162,7 @@ public class TeamViewController implements Initializable {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete confirmation Alert");
-        alert.setContentText("Do you want to delete this Team: "+listview.getSelectionModel().getSelectedItem().getName());
+        alert.setContentText("Do you really want to delete this Team: "+listview.getSelectionModel().getSelectedItem().getName()+"?");
         Optional<ButtonType> result =alert.showAndWait();
         if(result.get() == ButtonType.OK){
             Team dt = listview.getSelectionModel().getSelectedItem();
@@ -173,7 +185,7 @@ public class TeamViewController implements Initializable {
 
         TeamProfileController teamProfileController = loader.getController();
         String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
-        ;
+
         String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
         teamProfileController.getnamee(tname);
         teamProfileController.teammm(tname);

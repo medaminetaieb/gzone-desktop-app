@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
+<AnchorPane id="AnchorPane" fx:id="teamupdateanchor" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -134,6 +134,11 @@
                      </font>
                   </Label>
                   <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" />
+                  <VBox layoutX="28.0" layoutY="4.0" prefHeight="73.0" prefWidth="81.0">
+                     <children>
+                        <Button fx:id="returnn" mnemonicParsing="false" onAction="#actionreturn" text="Return" />
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </children></AnchorPane>
