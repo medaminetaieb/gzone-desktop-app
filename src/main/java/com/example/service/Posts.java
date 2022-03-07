@@ -6,6 +6,7 @@
 package com.example.service;
 
 import com.example.entity.Post;
+import com.example.util.Badwords;
 import com.example.util.MySQLValidator;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +18,7 @@ import java.util.List;
  *
  * @author iheb
  */
-public class Posts implements Service<Post> {
+public class Posts implements AdvancedService<Post> {
 
     @Override
     public Boolean insert(Post p) {
@@ -33,8 +34,8 @@ public class Posts implements Service<Post> {
             ps.setObject(++i, p.getId());
             ps.setObject(++i, p.getPosterId());
             ps.setObject(++i, p.isResolved());
-            ps.setString(++i, p.getTitle());
-            ps.setString(++i, p.getContent());
+            ps.setString(++i,Badwords.filter(p.getTitle()));
+            ps.setString(++i,Badwords.filter(p.getContent()));
             ps.setString(++i, p.getTags());
             ps.setDate(++i, new java.sql.Date(p.getPostDate().getTime()));
            
@@ -96,6 +97,44 @@ public class Posts implements Service<Post> {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+        }
+
+        return false;
+    }
+    
+    public Boolean deleteById(int id) {
+        try {
+            String req = "DELETE FROM `posts` WHERE `id`="+id+";";
+            PreparedStatement ps = connection.prepareStatement(req);
+
+            return     new Comments().deleteByPostId(id) && ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return false;
+    }
+
+    @Override
+    public Boolean modify(Post p) {
+        try {
+            String req = "UPDATE `posts` SET "
+                    + "`poster_id`=?, `resolved`=?, `title`=?, `content`=?, `tags`=?, `post_date`=? WHERE `id`="+p.getId();
+
+            PreparedStatement ps = connection.prepareStatement(req);
+            Integer i = 0;
+            ps.setObject(++i, p.getPosterId());
+            ps.setObject(++i, p.isResolved());
+            ps.setString(++i, p.getTitle());
+            ps.setString(++i, p.getContent());
+            ps.setString(++i, p.getTags());
+            ps.setDate(++i, new java.sql.Date(p.getPostDate().getTime()));
+           
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
 
         return false;
