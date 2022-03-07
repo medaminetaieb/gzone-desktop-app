@@ -160,26 +160,32 @@ public class ViewTournamentController implements Initializable {
             lvRounds.getItems().add(i);
         }
 
-        if (t.getRequiredTeams() > new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true").size()) {
-            String c = "";
-            if (Id.game == null) {
-                c = " OR `game_id` IS NULL ";
-            }
-            for (Team t : new Teams().findAll("`admin_id`=" + Id.user + " AND `game_id`=" + t.getGameId() + " AND `team_size`=" + t.getTeamSize() + c)) {
-                if (new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `team_id`=" + Id.team).size() == 0) {
-                    MenuItem mi = new MenuItem(t.getName());
-                    mi.setOnAction(e -> {
-                        Id.team = t.getId();
-                        mbSelectTeam.setText(t.getName());
-                        try {
-                            mbSelectTeam.getScene().setRoot(FXMLLoader.load(getClass().getResource("joinRequest-Tournament.fxml")));
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
-                    });
-                    mbSelectTeam.getItems().add(mi);
+        if (t.isRequestable()) {
+            if (t.getRequiredTeams() > new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true").size()) {
+                String c = "";
+                if (Id.game == null) {
+                    c = " OR `game_id` IS NULL ";
                 }
+                for (Team t : new Teams().findAll("`admin_id`=" + Id.user + " AND `game_id`=" + t.getGameId() + " AND `team_size`=" + t.getTeamSize() + c)) {
+                    if (new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `team_id`=" + Id.team).size() == 0) {
+                        MenuItem mi = new MenuItem(t.getName());
+                        mi.setOnAction(e -> {
+                            Id.team = t.getId();
+                            mbSelectTeam.setText(t.getName());
+                            try {
+                                mbSelectTeam.getScene().setRoot(FXMLLoader.load(getClass().getResource("joinRequest-Tournament.fxml")));
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        });
+                        mbSelectTeam.getItems().add(mi);
+                    }
+                }
+            } else {
+                mbSelectTeam.setText("Tournament is full");
             }
+        } else {
+            mbSelectTeam.setText("Not Requestable");
         }
     }
 
