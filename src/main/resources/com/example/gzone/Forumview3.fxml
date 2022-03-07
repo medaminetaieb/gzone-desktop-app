@@ -127,5 +127,17 @@
          </font>
       </Button>
       <ListView fx:id="tbview" layoutX="203.0" layoutY="410.0" prefHeight="146.0" prefWidth="436.0" />
+      <Button fx:id="btnlike" layoutX="358.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDislike" layoutX="523.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleDisLike" style="-fx-background-color: E23F3F;" text="DisLike" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text fx:id="likeCount" layoutX="369.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="likes" />
+      <Text fx:id="dislikeCount" layoutX="535.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dislikes" />
    </children>
 </AnchorPane>

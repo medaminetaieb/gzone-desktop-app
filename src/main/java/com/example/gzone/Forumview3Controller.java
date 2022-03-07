@@ -10,12 +10,13 @@ import java.util.ResourceBundle;
 
 import com.example.entity.Comment;
 import com.example.entity.Post;
+import com.example.entity.UserLikesDislike;
 import com.example.service.Comments;
 import com.example.service.Posts;
+import com.example.service.UserLikesDislikes;
 import java.io.IOException;
 import java.util.Date;
 import javafx.fxml.Initializable;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -49,7 +49,7 @@ public class Forumview3Controller implements Initializable {
     private Button btncomment;
     @FXML
     private ListView<Comment> tbview;
-    
+
     @FXML
     private Text txtitle;
     @FXML
@@ -65,6 +65,14 @@ public class Forumview3Controller implements Initializable {
     @FXML
     private Button btndeletecm;
     Post p = new Posts().findById(Id.post);
+    @FXML
+    private Button btnlike;
+    @FXML
+    private Button btnDislike;
+    @FXML
+    private Text likeCount;
+    @FXML
+    private Text dislikeCount;
 
     /**
      * Initializes the controller class.
@@ -83,6 +91,10 @@ public class Forumview3Controller implements Initializable {
         }
 
         refresh(null);
+
+        btnlike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`" + Id.user + " `like`=true").isEmpty()) ? "Like" : "UnLike");
+        btnDislike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`" + Id.user + " `like`=false").isEmpty()) ? "Dislike" : "UnDislike");
+        refreshCounts();
     }
 
     @FXML
@@ -120,7 +132,7 @@ public class Forumview3Controller implements Initializable {
             cm.insert(c);
             refresh(event);
             tfcomment.setText("");
-        }else {
+        } else {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("Either the post is redolved or Text field is empty");
             a.show();
@@ -168,4 +180,40 @@ public class Forumview3Controller implements Initializable {
 
     }
 
+    @FXML
+    private void handleLike(ActionEvent event) {
+        if (new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").isEmpty()) {
+            new UserLikesDislikes().insert(new UserLikesDislike(null, Id.user, null, Id.post, null, true));
+            btnlike.setText("Unlike");
+            if (!new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").isEmpty()) {
+                new UserLikesDislikes().delete("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false");
+                btnDislike.setText("Dislike");
+            }
+        } else {
+            new UserLikesDislikes().delete("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true");
+            btnlike.setText("Like");
+        }
+        refreshCounts();
+    }
+
+    @FXML
+    private void handleDisLike(ActionEvent event) {
+        if (new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").isEmpty()) {
+            new UserLikesDislikes().insert(new UserLikesDislike(null, Id.user, null, Id.post, null, false));
+            btnDislike.setText("UnDislike");
+            if (!new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").isEmpty()) {
+                new UserLikesDislikes().delete("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true");
+                btnlike.setText("Like");
+            }
+        } else {
+            new UserLikesDislikes().delete("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false");
+            btnDislike.setText("Dislike");
+        }
+        refreshCounts();
+    }
+
+    private void refreshCounts() {
+        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").size());
+        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").size());
+    }
 }
