@@ -26,6 +26,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -134,11 +135,13 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void Team(ActionEvent event) {
+    void Team(MouseEvent event) throws IOException {
+        deletebtn.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
     }
 
     @FXML
-    private void Tournament(ActionEvent event) {
+    void Tournament(MouseEvent event) throws IOException {
+        deletebtn.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML

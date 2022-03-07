@@ -30,10 +30,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TeamProfileController implements Initializable {
+
     private Team t;
     private User u;
     final JoinRequests members = new JoinRequests();
-     Users users = new Users();
+    Users users = new Users();
     @FXML
     private ListView<Team> topthreelist;
     @FXML
@@ -62,7 +63,6 @@ public class TeamProfileController implements Initializable {
     @FXML
     private AnchorPane smanchor;
 
-
     @FXML
     private ListView<User> lismemebers;
     private String textnamee;
@@ -84,20 +84,22 @@ public class TeamProfileController implements Initializable {
     }
 
     @FXML
-    void Team(MouseEvent event) {
-
+    void Team(MouseEvent event) throws IOException {
+        returnview.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
     }
 
     @FXML
-    void Tournament(MouseEvent event) {
-
+    void Tournament(MouseEvent event) throws IOException {
+        returnview.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
+
     public void getnamee(String textname) {
 
         this.textnamee = textname;
 
     }
-    public  void teammm(String name){
+
+    public void teammm(String name) {
         teamname.setText(textnamee);
 
     }
@@ -107,57 +109,56 @@ public class TeamProfileController implements Initializable {
         this.desc = textname;
 
     }
-    public  void descriptionn(String name){
+
+    public void descriptionn(String name) {
         description.setText(desc);
 
     }
+
     @FXML
     void actionreturn(ActionEvent event) throws IOException {
-        FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-view.fxml"));
         AnchorPane pane = loader.load();
         allanchor.getChildren().setAll(pane);
 
     }
+
     @FXML
     void actiondeletemember(ActionEvent event) {
         //u = users.findById(lismemebers.getSelectionModel().getSelectedItem().getUserId());
         User u = lismemebers.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete confirmation Alert");
-        alert.setContentText("Do you really want to delete this Member: "+u.getFullName()+"?");
-        Optional<ButtonType> result =alert.showAndWait();
-        if(result.get() == ButtonType.OK){
+        alert.setContentText("Do you really want to delete this Member: " + u.getFullName() + "?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
 
-            List<JoinRequest> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + TeamId.eam + " And `accepted`=true");
+            List<JoinRequest> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + Id.team + " And `accepted`=true");
 
-              for (JoinRequest m :list){
+            for (JoinRequest m : list) {
 
-                  members.deleteById(m.getId());
+                members.deleteById(m.getId());
 
-                  lismemebers.getItems().remove(u);
-              }
-
+                lismemebers.getItems().remove(u);
+            }
 
         }
 
-
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         Teams teams = new Teams();
         t = teams.findById(
-                TeamId.eam);
+                Id.team);
         Image image = new Image(t.getPhotoURL());
 
         photo.setImage(image);
 
         List<User> userlist = new ArrayList<>();
-        List<JoinRequest> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null And `accepted`=true");
-        for(JoinRequest m : teamlistt){
+        List<JoinRequest> teamlistt = members.findAll("`team_id`=" + Id.team + " And `user_id` is not null And `accepted`=true");
+        for (JoinRequest m : teamlistt) {
             Integer userId = m.getUserId();
             userlist.add(users.findById(userId));
 
@@ -165,10 +166,8 @@ public class TeamProfileController implements Initializable {
 
         lismemebers.getItems().addAll(userlist);
 
-
-
         final Matches matches = new Matches();
-        List<Match> l = matches.findAll("`team1_id`=" + TeamId.eam + " OR `team2_id`=" + TeamId.eam);
+        List<Match> l = matches.findAll("`team1_id`=" + Id.team + " OR `team2_id`=" + Id.team);
         long m = l.stream().count();
 
         if (t.isRequestable() == true) {
@@ -186,27 +185,22 @@ public class TeamProfileController implements Initializable {
             checkin.setDisable(true);
         }
 
-        if(TeamStat.getWinRate(TeamId.eam) == 100.00) {
-                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
-                texxt.setText("You guys are awesome :)\n For all of the "+m+" matches you played,\n you won all of them !!");
+        if (TeamStat.getWinRate(Id.team) == 100.00) {
+            winrate.setText(TeamStat.getWinRate(Id.team) + "%");
+            texxt.setText("You guys are awesome :)\n For all of the " + m + " matches you played,\n you won all of them !!");
 
-        
-        }
-        else if ((TeamStat.getWinRate(TeamId.eam)<=99.99)&&(TeamStat.getWinRate(TeamId.eam)>=70.00)){
-            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+        } else if ((TeamStat.getWinRate(Id.team) <= 99.99) && (TeamStat.getWinRate(Id.team) >= 70.00)) {
+            winrate.setText(TeamStat.getWinRate(Id.team) + "%");
             texxt.setText("Well done!! Surely we will\n find you at our top 10 team's list");
-        }
-        else if((TeamStat.getWinRate(TeamId.eam)<=69.99)&&(TeamStat.getWinRate(TeamId.eam)>=40.00)){
-            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+        } else if ((TeamStat.getWinRate(Id.team) <= 69.99) && (TeamStat.getWinRate(Id.team) >= 40.00)) {
+            winrate.setText(TeamStat.getWinRate(Id.team) + "%");
             texxt.setText("We know you could do better.\n Better luck next time :)");
-        }
-        else{
-            if(m == 0){
+        } else {
+            if (m == 0) {
                 winrate.setText("");
                 texxt.setText("You haven't played any matches yet!");
-            }
-            else{
-                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+            } else {
+                winrate.setText(TeamStat.getWinRate(Id.team) + "%");
                 texxt.setText("Hard Luck! You will do better next time :)");
 
             }
@@ -216,10 +210,10 @@ public class TeamProfileController implements Initializable {
                 .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
 
         //Show top 3 teams
-      /* for(Team top:TeamStat.topTenTeams()){
+        /* for(Team top:TeamStat.topTenTeams()){
 
         }*/
-topthreelist.getItems().addAll(TeamStat.topThreeTeams());
+        topthreelist.getItems().addAll(TeamStat.topThreeTeams());
 
     }
 }

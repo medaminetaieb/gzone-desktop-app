@@ -74,13 +74,13 @@ public class ModifyTournamentController implements Initializable {
     }
 
     @FXML
-    void Team(MouseEvent event) {
-
+    void Team(MouseEvent event) throws IOException {
+        bCancel.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
     }
 
     @FXML
-    void Tournament(MouseEvent event) {
-
+    void Tournament(MouseEvent event) throws IOException {
+        bCancel.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML

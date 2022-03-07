@@ -56,11 +56,13 @@ public class JoinRequestTournamentController implements Initializable {
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void Team(MouseEvent event) throws IOException {
+        bSend.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void Tournament(MouseEvent event) throws IOException {
+        bSend.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML

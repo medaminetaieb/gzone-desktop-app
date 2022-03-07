@@ -1,7 +1,9 @@
 package com.example.gzone;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -43,13 +45,13 @@ public class JoinRequestController {
     }
 
     @FXML
-    void Team(MouseEvent event) {
-
+    void Team(MouseEvent event) throws IOException {
+        sendinvitation.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
     }
 
     @FXML
-    void Tournament(MouseEvent event) {
-
+    void Tournament(MouseEvent event) throws IOException {
+        sendinvitation.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML
