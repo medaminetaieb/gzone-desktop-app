@@ -31,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+//import org.controlsfx.control;
 
 /**
  * FXML Controller class
@@ -112,6 +113,7 @@ public class ProfileController implements Initializable {
         du.deleteById(Id.user);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
+        // Notifications.create(.title("Title Text").text("Hello World 0!").showWarning();
     }
 
     @FXML

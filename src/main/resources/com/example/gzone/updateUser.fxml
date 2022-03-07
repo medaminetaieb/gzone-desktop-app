@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="updatepane" prefHeight="365.0" prefWidth="635.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.UpdateController">
+<AnchorPane id="AnchorPane" fx:id="updatepane" prefHeight="365.0" prefWidth="635.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.UpdateUserController">
    <children>
       <TextField fx:id="username" layoutX="27.0" layoutY="149.0" prefHeight="30.0" prefWidth="187.0" promptText="Username" />
       <TextField fx:id="email" layoutX="27.0" layoutY="203.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />

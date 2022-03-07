@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  *
  * @author Mahdi
  */
-public class UpdateController implements Initializable {
+public class UpdateUserController implements Initializable {
 
     @FXML
     private AnchorPane updatepane;
