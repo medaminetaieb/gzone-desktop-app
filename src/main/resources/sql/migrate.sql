@@ -58,13 +58,6 @@ CREATE TABLE `teams` (
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE `memberships` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_id` int,
-  `team_id` int NOT NULL,
-  `tournament_id` int
-);
-
 CREATE TABLE `join_requests` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int,
@@ -85,7 +78,7 @@ CREATE TABLE `tournaments` (
   `description` varchar(500),
   `required_teams` int NOT NULL,
   `team_size` int NOT NULL DEFAULT 1,
-  `close_requests_date` datetime NOT NULL,
+  `requestable` boolean NOT NULL DEFAULT true,
   `approved` boolean NOT NULL DEFAULT false,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -195,14 +188,6 @@ ALTER TABLE `badge_ships` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 ALTER TABLE `teams` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `teams` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
-
-ALTER TABLE `memberships` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
-ALTER TABLE `memberships` ADD FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`);
-
-ALTER TABLE `memberships` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`);
-
-ALTER TABLE `memberships` ADD CHECK ((user_id IS NOT NULL OR tournament_id IS NOT NULL) AND NOT (user_id IS NOT NULL AND tournament_id IS NOT NULL));
 
 ALTER TABLE `join_requests` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 

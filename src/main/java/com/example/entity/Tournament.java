@@ -18,11 +18,11 @@ public class Tournament {
     private String description;
     private Integer requiredTeams;
     private Integer teamSize;
-    private Date closeRequestsDate;
+    private Boolean requestable;
     private Boolean approved;
     private Date createDate;
 
-    public Tournament(Integer id, Integer adminId, Integer gameId, String name, String description, Integer requiredTeams, Integer teamSize, Date closeRequestsDate, Boolean approved, Date createDate) {
+    public Tournament(Integer id, Integer adminId, Integer gameId, String name, String description, Integer requiredTeams, Integer teamSize, Boolean requestable, Boolean approved, Date createDate) {
         this.id = id;
         this.adminId = adminId;
         this.gameId = gameId;
@@ -30,7 +30,7 @@ public class Tournament {
         this.description = description;
         this.requiredTeams = requiredTeams;
         this.teamSize = teamSize;
-        this.closeRequestsDate = closeRequestsDate;
+        this.requestable = requestable;
         this.approved = approved;
         this.createDate = createDate;
     }
@@ -91,12 +91,12 @@ public class Tournament {
         this.teamSize = teamSize;
     }
 
-    public Date getCloseRequestsDate() {
-        return closeRequestsDate;
+    public Boolean isRequestable() {
+        return requestable;
     }
 
-    public void setCloseRequestsDate(Date closeRequestsDate) {
-        this.closeRequestsDate = closeRequestsDate;
+    public void setRequestable(Boolean requestable) {
+        this.requestable = requestable;
     }
 
     public Boolean isApproved() {
@@ -126,7 +126,7 @@ public class Tournament {
         sb.append(", description=").append(description);
         sb.append(", requiredTeams=").append(requiredTeams);
         sb.append(", teamSize=").append(teamSize);
-        sb.append(", closeRequestsDate=").append(closeRequestsDate);
+        sb.append(", requestable=").append(requestable);
         sb.append(", approved=").append(approved);
         sb.append(", createDate=").append(createDate);
         sb.append('}');
