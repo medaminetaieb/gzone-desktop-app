@@ -34,8 +34,6 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private Button bExit;
 
-
-
     @FXML
     private Text tCreationDate;
 
@@ -66,6 +64,8 @@ public class ViewTournamentController implements Initializable {
     private ListView<Match> lvMatches;
     @FXML
     private Text tRequestable;
+    @FXML
+    private MenuButton mbSelectTeam;
 
     @FXML
     void Forum(MouseEvent event) {
@@ -120,21 +120,17 @@ public class ViewTournamentController implements Initializable {
 
     @FXML
     void exitTournament(ActionEvent event) throws IOException {
-        /*
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
-        apViewTournament.getChildren().setAll(pane);
-*/
         bExit.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML
     void selectWinner(ActionEvent event) {
-        if (t.getAdminId().equals(Id.user) && ttvMatches.getSelectionModel().getSelectedItem() != null ) {
+        if (t.getAdminId().equals(Id.user) && ttvMatches.getSelectionModel().getSelectedItem() != null) {
             Team winnerTeam = new Teams().findAll(
                     String.format(
                             "`name`='%s'",
                             ttvMatches.getSelectionModel().getSelectedItem().toString()
-                            )
+                    )
             ).get(0);
 
         } else {
@@ -157,18 +153,33 @@ public class ViewTournamentController implements Initializable {
         )).size());
         tNumberOfTeams.setText(t.getRequiredTeams().toString());
         tTeamSize.setText(t.getTeamSize().toString());
-        
+
         lvRounds = new ListView<>();
         lvMatches = new ListView<>();
         for (int i = TournamentMatches.firstRoundOf(t); i > 0; --i) {
             lvRounds.getItems().add(i);
         }
+        
+        if (t.getRequiredTeams() > new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true").size()) {
+            for (Team t : new Teams().findAll("`admin_id`=" + Id.user + " AND `game_id`=" + t.getGameId() + " AND `team_size`=" + t.getTeamSize())) {
+                MenuItem mi = new MenuItem(t.getName());
+                mi.setOnAction(e -> {
+                    Id.team = t.getId();
+                    mbSelectTeam.setText(t.getName());
+                    try {
+                    mbSelectTeam.getScene().setRoot(FXMLLoader.load(getClass().getResource("joinRequest-Tournament.fxml")));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                mbSelectTeam.getItems().add(mi);
+            }
+        }
     }
-
 
     @FXML
     private void handleRoundsMouseClick(MouseEvent event) {
-        for (Match m : new Matches().findAll("`round`="+lvRounds.getSelectionModel().getSelectedItem())) {
+        for (Match m : new Matches().findAll("`round`=" + lvRounds.getSelectionModel().getSelectedItem())) {
             lvMatches.getItems().add(m);
         }
     }

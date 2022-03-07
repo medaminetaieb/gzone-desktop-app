@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.JoinRequestTournamentController">
+   <children>
+      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+         <children>
+            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets left="15.0" top="40.0" />
+               </VBox.margin>
+            </Circle>
+            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gzone%20logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="-115.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" top="60.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#74ff82">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="164.0" prefHeight="604.0" prefWidth="637.0">
+         <children>
+            <VBox layoutX="79.0" layoutY="304.0" prefHeight="94.0" prefWidth="100.0">
+               <children>
+                  <Label text="Message" />
+               </children>
+            </VBox>
+            <VBox layoutX="179.0" layoutY="305.0" prefHeight="135.0" prefWidth="296.0">
+               <children>
+                  <TextArea fx:id="messagetxt" prefHeight="143.0" prefWidth="296.0" />
+               </children>
+            </VBox>
+            <Separator layoutX="36.0" layoutY="532.0" prefHeight="4.0" prefWidth="571.0" />
+            <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request/invitation" wrappingWidth="404.6708984375">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Button fx:id="bSend" layoutX="211.0" layoutY="545.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="26.0" prefWidth="150.0" text="Send" />
+            <TextField fx:id="tfteam" layoutX="225.0" layoutY="164.0" />
+            <TextField fx:id="tftournament" layoutX="225.0" layoutY="221.0" />
+            <Label layoutX="125.0" layoutY="169.0" text="Team" />
+            <Label layoutX="125.0" layoutY="226.0" text="Tournament" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
