@@ -1,14 +1,14 @@
 package com.example.gzone;
 
 import com.example.entity.Match;
-import com.example.entity.Membership;
+
 import com.example.entity.JoinRequest;
 import com.example.entity.User;
 import com.example.service.Matches;
 import com.example.service.Users;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
-import com.example.service.Memberships;
+
 import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import javafx.event.ActionEvent;
