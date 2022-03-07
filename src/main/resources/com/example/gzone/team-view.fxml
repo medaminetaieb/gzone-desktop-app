@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="teamviewanchor" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
+    <stylesheets>
+        <URL value="@homepage.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutX="164.0" prefHeight="604.0" prefWidth="665.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="vtabcreatetam" text="Create Team">
+               <content>
+                  <AnchorPane prefHeight="461.0" prefWidth="665.0" style="-fx-background-color: 1f7ea1;">
+                     <children>
+                        <VBox layoutX="49.0" layoutY="46.0" prefHeight="182.0" prefWidth="138.0">
+                           <children>
+                              <Label text="Team name">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Photo URL">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Team-Size">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Game">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Description">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="196.0" layoutY="60.0" prefHeight="276.0" prefWidth="351.0">
+                           <children>
+                              <TextField fx:id="vtfteamname">
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="vtfphotourl">
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Spinner fx:id="vsteamsize" editable="true" prefHeight="31.0" prefWidth="148.0">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Spinner>
+                              <SplitMenuButton fx:id="vmbgame" mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="Select a game">
+
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </SplitMenuButton>
+                              <TextArea fx:id="vtadescription" prefHeight="76.0" prefWidth="351.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="49.0" layoutY="312.0" prefHeight="90.0" prefWidth="134.0">
+                           <children>
+                              <Label text="Open for requests">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Open for invitation">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="195.0" layoutY="299.0" prefHeight="90.0" prefWidth="27.0">
+                           <children>
+                              <RadioButton fx:id="vrbopenforrequests" mnemonicParsing="false">
+                                 <VBox.margin>
+                                    <Insets top="35.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="vrbopenforinvitation" mnemonicParsing="false">
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="vbox" layoutX="195.0" layoutY="414.0" prefHeight="82.0" prefWidth="353.0" />
+                        <ScrollBar fx:id="vsb" layoutY="3.0" orientation="VERTICAL" prefHeight="487.0" prefWidth="18.0" />
+                        <AnchorPane layoutX="9.0" layoutY="493.0" prefHeight="73.0" prefWidth="644.0">
+                           <children>
+                              <Button fx:id="vtbncreateteam" layoutX="264.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionCreateTeam" prefHeight="31.0" prefWidth="120.0" text="Create Team" />
+                              <Separator layoutX="9.0" layoutY="10.0" prefHeight="0.0" prefWidth="630.0" />
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="226.0" layoutY="3.0" text="Create a team">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab fx:id="vtabyourteams" text="Your teams">
+               <content>
+                  <AnchorPane fx:id="anchoryourteams" prefHeight="461.0" prefWidth="665.0" style="-fx-background-color: 1f7ea1;">
+                     <children>
+                        <VBox layoutX="50.0" layoutY="419.0" prefHeight="22.0" prefWidth="165.0" />
+                        <Button fx:id="vbtnshowprofile" layoutX="203.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionShowProfile" text="Show profile" />
+                        <Button fx:id="vbtnupdateteam" layoutX="333.0" layoutY="513.0" mnemonicParsing="false" onAction="#ActionUpdateTeam" text="Update team" />
+                        <ListView fx:id="listview" layoutX="197.0" layoutY="112.0" prefHeight="318.0" prefWidth="255.0" />
+                        <Separator layoutX="31.0" layoutY="495.0" prefHeight="0.0" prefWidth="601.0" />
+                        <Label fx:id="Label" layoutX="251.0">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="selected" layoutX="276.0" layoutY="431.0" text="Select a team" />
+                        <Button fx:id="delete" layoutX="270.0" layoutY="79.0" mnemonicParsing="false" onAction="#actiondelete" text="Delete team" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+         <children>
+            <VBox prefHeight="199.0" prefWidth="166.0">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@gzone%20logo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="25.0" top="30.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

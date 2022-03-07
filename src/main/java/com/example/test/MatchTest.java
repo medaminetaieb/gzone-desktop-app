@@ -20,9 +20,13 @@ public class MatchTest {
     private static final List<Match> matchlist = new ArrayList<>();
     
     static {
-        matchlist.add(new Match(null, 2, new Date(20200506), 2, 1, 2, 2));
+        /*matchlist.add(new Match(null, 2, new Date(20200506), 2, 1, 2, 2));
         matchlist.add(new Match(null, 2, new Date(), 1, 2, 1, 1));
-        matchlist.add(new Match(null, 2, new Date(20200506), 1, 2, 1, 2));
+        matchlist.add(new Match(null, 2, new Date(20200506), 1, 2, 1, 1));
+        matchlist.add(new Match(null, 2, new Date(20200506), 3, 2, 15, 15));
+        matchlist.add(new Match(null, 2, new Date(20200506), 1, 2, 24, 24));
+        matchlist.add(new Match(null, 2, new Date(20200506), 2, 24, 2, 24));*/
+        matchlist.add(new Match(null, 2, new Date(20200506), 2, 24, 15, 24));
     }
     
     public static void insertAll() {

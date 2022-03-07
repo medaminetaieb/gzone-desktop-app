@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="allanchor" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamProfileController">
+    <stylesheets>
+        <URL value="@homepage.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
+         <children>
+            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets left="15.0" top="40.0" />
+               </VBox.margin>
+            </Circle>
+            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gzone%20logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="-115.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" top="60.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#74ff82">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="smanchor" layoutX="163.0" layoutY="1.0" prefHeight="604.0" prefWidth="637.0">
+         <children>
+            <AnchorPane layoutY="-1.0" prefHeight="604.0" prefWidth="673.0" style="-fx-background-color: 1f7ea1;">
+               <children>
+                  <ImageView fx:id="photo" fitHeight="121.0" fitWidth="120.0" layoutX="23.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Desktop/user.png" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="270.0" layoutY="94.0" prefHeight="182.0" prefWidth="138.0">
+                     <children>
+                        <Label text="Team name:">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Description:">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="407.0" layoutY="114.0" prefHeight="202.0" prefWidth="225.0">
+                     <children>
+                        <Text fx:id="teamname" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="268.0" layoutY="461.0" prefHeight="90.0" prefWidth="134.0">
+                     <children>
+                        <Label text="Open for requests">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Open for invitation">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="270.0" layoutY="252.0" prefHeight="22.0" prefWidth="138.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="69.0" text="Members" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="29.0" layoutY="194.0" prefHeight="22.0" prefWidth="83.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="69.0" text="Win rate:" />
+                     </children>
+                  </VBox>
+                  <CheckBox fx:id="chekreq" layoutX="408.0" layoutY="484.0" mnemonicParsing="false" />
+                  <CheckBox fx:id="checkin" layoutX="408.0" layoutY="523.0" mnemonicParsing="false" />
+                  <Label layoutX="241.0" layoutY="14.0" text="Team profile">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="lismemebers" layoutX="407.0" layoutY="263.0" prefHeight="182.0" prefWidth="218.0" />
+                  <VBox layoutX="32.0" layoutY="226.0" prefHeight="83.0" prefWidth="120.0">
+                     <children>
+                        <Text fx:id="texxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                     </children>
+                  </VBox>
+                  <Text fx:id="winrate" layoutX="113.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Button fx:id="returnview" layoutX="5.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionreturn" text="return" />
+                  <Button fx:id="deletemember" layoutX="502.0" layoutY="448.0" mnemonicParsing="false" onAction="#actiondeletemember" text="Delete member" />
+                  <ListView fx:id="topthreelist" layoutX="8.0" layoutY="395.0" prefHeight="200.0" prefWidth="211.0" />
+                  <Text layoutX="9.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 3 list" />
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

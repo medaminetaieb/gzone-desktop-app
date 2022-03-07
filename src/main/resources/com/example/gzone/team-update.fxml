@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="teamupdateanchor" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
+    <stylesheets>
+        <URL value="@homepage.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="163.0" layoutY="1.0" prefHeight="604.0" prefWidth="637.0">
+         <children>
+            <AnchorPane layoutY="-1.0" prefHeight="604.0" prefWidth="673.0" style="-fx-background-color: 1f7ea1;">
+               <children>
+                  <VBox layoutX="49.0" layoutY="94.0" prefHeight="182.0" prefWidth="138.0">
+                     <children>
+                        <Label text="Team name">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Photo URL">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Team-Size">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Description">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="196.0" layoutY="101.0" prefHeight="276.0" prefWidth="351.0">
+                     <children>
+                        <TextField fx:id="teamname">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="photourl">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Spinner fx:id="scroller" prefHeight="31.0" prefWidth="147.0">
+                           <VBox.margin>
+                              <Insets top="13.0" />
+                           </VBox.margin>
+                        </Spinner>
+                        <TextArea fx:id="descritpion" prefHeight="121.0" prefWidth="396.0">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </TextArea>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="49.0" layoutY="359.0" prefHeight="90.0" prefWidth="134.0">
+                     <children>
+                        <Label text="Open for requests">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Open for invitation">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="197.0" layoutY="347.0" prefHeight="67.0" prefWidth="27.0">
+                     <children>
+                        <RadioButton fx:id="rb1" mnemonicParsing="false">
+                           <VBox.margin>
+                              <Insets top="35.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rb2" mnemonicParsing="false">
+                           <VBox.margin>
+                              <Insets top="18.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="50.0" layoutY="459.0" prefHeight="22.0" prefWidth="165.0" />
+                  <VBox layoutX="198.0" layoutY="453.0" prefHeight="82.0" prefWidth="348.0" />
+                  <ScrollBar orientation="VERTICAL" prefHeight="532.0" prefWidth="18.0" />
+                  <AnchorPane layoutY="531.0" prefHeight="73.0" prefWidth="661.0">
+                     <children>
+                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" onAction="#Update" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
+                        <Separator layoutX="22.0" layoutY="9.0" prefHeight="10.0" prefWidth="630.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="201.0" layoutY="14.0" text="Update your team">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" />
+                  <VBox layoutX="28.0" layoutY="4.0" prefHeight="73.0" prefWidth="81.0">
+                     <children>
+                        <Button fx:id="returnn" mnemonicParsing="false" onAction="#actionreturn" text="Return" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <VBox layoutY="1.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+         <children>
+            <VBox prefHeight="199.0" prefWidth="166.0">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@gzone%20logo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="25.0" top="30.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <Label alignment="CENTER" text="HomePage" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Team" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Tournament" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Store" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Forum" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -21,10 +21,10 @@ public class JoinRequestTest {
     private final static List<JoinRequest> joinrequestlist = new ArrayList<>();
     
     static {
-        joinrequestlist.add(new JoinRequest(null, 1, 1, null, "I want to join your team1", new Date(), null, null, true));
-        joinrequestlist.add(new JoinRequest(null, null, 1, 2, "I want to join your team2", new Date(), null, null, false));
-        joinrequestlist.add(new JoinRequest(null, null, 1, 2, "I want to join your team3", new Date(), null, null, true));
-        joinrequestlist.add(new JoinRequest(null, 1, 1, null, "I want to join your team4", new Date(), null, null, false));
+        joinrequestlist.add(new JoinRequest(null, 1, 2, null, "I want to join your team1", new Date(), true, null, true));
+       // joinrequestlist.add(new JoinRequest(null, null, 1, 2, "I want to join your team2", new Date(), null, null, false));
+        //joinrequestlist.add(new JoinRequest(null, null, 1, 2, "I want to join your team3", new Date(), null, null, true));
+        joinrequestlist.add(new JoinRequest(null, 3, 2, null, "I want to join your team4", new Date(), true, null, false));
     }
     
     public static void insertAll() {
