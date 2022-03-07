@@ -10,14 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ViewTournamentController implements Initializable {
@@ -36,11 +34,7 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private Button bExit;
 
-    @FXML
-    private Button bSelectWinner;
 
-    @FXML
-    private Text tCloseRequestDate;
 
     @FXML
     private Text tCreationDate;
@@ -63,8 +57,15 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private Label tTournamentName;
 
-    @FXML
     private TreeTableView ttvMatches;
+    @FXML
+    private Button bUpdateScore;
+    @FXML
+    private ListView<Integer> lvRounds;
+    @FXML
+    private ListView<Match> lvMatches;
+    @FXML
+    private Text tRequestable;
 
     @FXML
     void Forum(MouseEvent event) {
@@ -144,38 +145,31 @@ public class ViewTournamentController implements Initializable {
         }
     }
 
-    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
         tTournamentName.setText(t.getName());
         tCreationDate.setText(t.getCreateDate().toString());
         tDescription.setText(t.getDescription());
-        tCloseRequestDate.setText(t.getCloseRequestsDate().toString());
+        tRequestable.setText(t.isRequestable().toString());
         tGameName.setText(new Games().findById(t.getGameId()).getName());
         tJoinedTeams.setText("" + new JoinRequests().findAll(String.format(
                 "`tournament_id`=%d AND `accepted`=true", Id.tournament
         )).size());
         tNumberOfTeams.setText(t.getRequiredTeams().toString());
         tTeamSize.setText(t.getTeamSize().toString());
-        TreeTableColumn<String, String> ttcTeam = new TreeTableColumn<>("Teams");
-        ttcTeam.setCellValueFactory(new TreeItemPropertyValueFactory<>("team"));
-        ttvMatches.getColumns().add(ttcTeam);
-        TreeItem tiroot = new TreeItem("View Rounds");
+        
+        lvRounds = new ListView<>();
+        lvMatches = new ListView<>();
         for (int i = TournamentMatches.firstRoundOf(t); i > 0; --i) {
-            TreeItem tiRounds = new TreeItem("Round "+i);
-            List<Match> matchList = new Matches().findAll(String.format(
-                    "`tournament_id`=%d AND `round`=%d", Id.tournament, i
-            ));
-            for (int j = 0; j < matchList.size(); j++) {
-                TreeItem tiMatches = new TreeItem("Match "+j);
-                TreeItem tiTeam1 = new TreeItem(new Teams().findById(matchList.get(j).getTeam1Id()).getName());
-                TreeItem tiTeam2 = new TreeItem(new Teams().findById(matchList.get(j).getTeam2Id()).getName());
-                tiMatches.getChildren().addAll(tiTeam1, tiTeam2);
-                tiRounds.getChildren().add(tiMatches);
-            }
-            tiroot.getChildren().add(tiRounds);
+            lvRounds.getItems().add(i);
         }
-        ttvMatches.setRoot(tiroot);
+    }
 
+
+    @FXML
+    private void handleRoundsMouseClick(MouseEvent event) {
+        for (Match m : new Matches().findAll("`round`="+lvRounds.getSelectionModel().getSelectedItem())) {
+            lvMatches.getItems().add(m);
+        }
     }
 }

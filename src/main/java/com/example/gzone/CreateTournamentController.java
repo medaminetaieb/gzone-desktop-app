@@ -14,10 +14,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -37,9 +33,8 @@ public class CreateTournamentController implements Initializable {
     private Button bCreate;
 
     @FXML
-    private CheckBox cbOpenForRequests;
+    private CheckBox cbRequestable;
 
-    @FXML
     private DatePicker dpCloseRequestDate;
 
     @FXML
@@ -96,7 +91,6 @@ public class CreateTournamentController implements Initializable {
                         && !taTournamentDescription.getText().isBlank()
                         && requiredTeams != null
                         && teamSize != null
-                        && dpCloseRequestDate.getValue() != null
         ) {
             Tournaments tournaments = new Tournaments();
             tournaments.insert(new Tournament(
@@ -107,8 +101,8 @@ public class CreateTournamentController implements Initializable {
                     taTournamentDescription.getText(),
                     requiredTeams,
                     teamSize,
-                    new java.util.Date(java.sql.Date.valueOf(dpCloseRequestDate.getValue()).getTime()),
-                    cbOpenForRequests.isSelected(),
+                    cbRequestable.isSelected(),
+                    true,
                     new java.util.Date()
             ));
             a.setAlertType(Alert.AlertType.INFORMATION);
@@ -116,8 +110,7 @@ public class CreateTournamentController implements Initializable {
             a.setContentText("Tournament created");
             a.show();
             Id.tournament = tournaments.findAll("`name` REGEXP '"+tfTournamentName.getText()+"'").get(0).getId();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
-            apCreateTournament.getChildren().setAll(pane);
+            bCreate.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
         } else {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setTitle("Error");
@@ -126,7 +119,6 @@ public class CreateTournamentController implements Initializable {
         }
     }
 
-    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Game> gameList = new Games().findAll();
         MenuItem smbgmi = new MenuItem("No Game");

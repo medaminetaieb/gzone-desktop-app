@@ -36,13 +36,9 @@ public class ModifyTournamentController implements Initializable {
     private Button bDeleteTournament;
 
     @FXML
-    private CheckBox cbOpenForRequests;
+    private CheckBox cbRequestable;
 
-    @FXML
     private DatePicker dpCloseRequestDate;
-
-    @FXML
-    private SplitMenuButton smbParticipatingTeams;
 
     @FXML
     private Text tCreationDate;
@@ -91,32 +87,36 @@ public class ModifyTournamentController implements Initializable {
     void cancelModifyTournament(ActionEvent event) throws IOException {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Cancel Modifications");
-        a.setContentText("Your modifications will be lost." +
-                "Continue ?");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
-        apModifyTournament.getChildren().setAll(pane);
+        a.setContentText("Your modifications will be lost."
+                + "Continue ?");
+        Optional<ButtonType> buttonType = a.showAndWait();
+        if (buttonType.get().equals(ButtonType.OK)) {
+            bCancel.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
+            a.close();
+        } else {
+            a.close();
+        }
     }
 
     @FXML
     void modifyTournament(ActionEvent event) throws IOException {
         Alert a = new Alert(Alert.AlertType.NONE);
-        if (
-                !tfTournamentName.getText().isBlank()
-                        && !taTournamentDescription.getText().isBlank()
-                        && dpCloseRequestDate.getValue() != null
-        ) {
-            Tournaments tournaments = new Tournaments();
-            t.setName(tfTournamentName.getText());
-            t.setDescription(taTournamentDescription.getText());
-            t.setCloseRequestsDate(new java.util.Date(java.sql.Date.valueOf(dpCloseRequestDate.getValue()).getTime()));
-            t.setApproved(cbOpenForRequests.isSelected());
-            tournaments.modify(t);
-            a.setAlertType(Alert.AlertType.INFORMATION);
-            a.setTitle("Success");
-            a.setContentText("Tournament modified");
-            a.show();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
-            apModifyTournament.getChildren().setAll(pane);
+        if (!tfTournamentName.getText().isBlank() && !taTournamentDescription.getText().isBlank()) {
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setTitle("Confirm Modifications");
+            a.setContentText("Your tournament will be modified.\nConfirm ?");
+            Optional<ButtonType> buttonType = a.showAndWait();
+            if (buttonType.get().equals(ButtonType.OK)) {
+                Tournaments tournaments = new Tournaments();
+                t.setName(tfTournamentName.getText());
+                t.setDescription(taTournamentDescription.getText());
+                t.setRequestable(cbRequestable.isSelected());
+                tournaments.modify(t);
+                bModify.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
+                a.close();
+            } else {
+                a.close();
+            }
         } else {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setTitle("Error");
@@ -129,20 +129,19 @@ public class ModifyTournamentController implements Initializable {
     void deleteTournament(ActionEvent event) throws IOException {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Delete Tournament");
-        a.setContentText("Are you sure you want to delete "+ t.getName() +" ?");
+        a.setContentText("Are you sure you want to delete " + t.getName() + " ?");
         Optional<ButtonType> buttonType = a.showAndWait();
         if (buttonType.get().equals(ButtonType.OK)) {
             new Matches().deleteByTournamentId(Id.tournament);
             new JoinRequests().deleteByTournamentId(Id.tournament);
             new Tournaments().deleteById(Id.tournament);
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
-            apModifyTournament.getChildren().setAll(pane);
+            bDeleteTournament.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
+            a.close();
         } else {
             a.close();
         }
     }
 
-    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
         tGameName.setText(new Games().findById(t.getGameId()).getName());
@@ -150,8 +149,7 @@ public class ModifyTournamentController implements Initializable {
         taTournamentDescription.setText((t.getDescription()));
         tNumberOfTeams.setText(t.getRequiredTeams().toString());
         tTeamSize.setText(t.getTeamSize().toString());
-        dpCloseRequestDate.setValue(new java.sql.Date(t.getCloseRequestsDate().getTime()).toLocalDate());
-        cbOpenForRequests.setSelected(t.isApproved());
+        cbRequestable.setSelected(t.isRequestable());
         tCreationDate.setText(t.getCreateDate().toString());
     }
 }

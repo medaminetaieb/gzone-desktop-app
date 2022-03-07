@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -38,39 +37,39 @@ public class ListTournaments implements Initializable {
 
     @FXML
     private TextField tfSearchName;
-
+    
     @FXML
-    private TableView tvList;
+    private ListView<Tournament> lvTournaments;
 
     @FXML
     void refreshList(ActionEvent event) {
-        tvList.getItems().clear();
+        lvTournaments.getItems().clear();
 
         if (Id.game == null) {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "' AND `game_id` IS NULL")) {
-                tvList.getItems().add(t);
+                lvTournaments.getItems().add(t);
                 System.out.println(t);
             }
         } else if (Id.game == 0) {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "'")) {
-                tvList.getItems().add(t);
+                lvTournaments.getItems().add(t);
                 System.out.println(t);
             }
         } else {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "' AND `game_id`=" + Id.game)) {
-                tvList.getItems().add(t);
+                lvTournaments.getItems().add(t);
                 System.out.println(t);
             }
         }
-        tvList.refresh();
+        lvTournaments.refresh();
     }
 
 
     @FXML
     void viewTournament(ActionEvent event) throws IOException {
-        if (tvList.getSelectionModel().getSelectedItem() != null) {
-            Id.tournament = ((Tournament) tvList.getSelectionModel().getSelectedItem()).getId();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ModifyTournament.fxml"));
+        if (lvTournaments.getSelectionModel().getSelectedItem() != null) {
+            Id.tournament = ((Tournament) lvTournaments.getSelectionModel().getSelectedItem()).getId();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewTournament.fxml"));
             apListTournaments.getChildren().setAll(pane);
         }
     }
@@ -81,7 +80,6 @@ public class ListTournaments implements Initializable {
         apListTournaments.getChildren().setAll(pane);
     }
 
-    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tournaments = new Tournaments();
         List<Game> gameList = new Games().findAll();
@@ -108,22 +106,6 @@ public class ListTournaments implements Initializable {
             });
             mbGame.getItems().add(mi);
         }
-
-        TableColumn<Tournament, String> tcAdmin = new TableColumn<>();
-        tcAdmin.setCellValueFactory(new PropertyValueFactory<>("Admin"));
-        TableColumn<Tournament, String> tcGame = new TableColumn<>();
-        tcGame.setCellValueFactory(new PropertyValueFactory<>("Game"));
-        TableColumn<Tournament, String> tcName = new TableColumn<>();
-        tcName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        TableColumn<Tournament, String> tcDescription = new TableColumn<>();
-        tcDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
-        TableColumn<Tournament, String> tcRequiredTeams = new TableColumn<>();
-        tcRequiredTeams.setCellValueFactory(new PropertyValueFactory<>("Required Teams"));
-        TableColumn<Tournament, String> tcTeamSize = new TableColumn<>();
-        tcTeamSize.setCellValueFactory(new PropertyValueFactory<>("Team Size"));
-        TableColumn<Tournament, String> tcCloseRequestDate = new TableColumn<>();
-        tcCloseRequestDate.setCellValueFactory(new PropertyValueFactory<>("Close Date"));
-        tvList.getColumns().addAll(tcAdmin, tcGame, tcName, tcDescription, tcRequiredTeams, tcRequiredTeams, tcTeamSize, tcCloseRequestDate);
         refreshList(null);
     }
 }

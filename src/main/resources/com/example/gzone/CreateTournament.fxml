@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
@@ -117,11 +116,9 @@
         </items>
       </SplitMenuButton>
       <Label layoutX="211.0" layoutY="404.0" prefHeight="18.0" prefWidth="94.0" text="Team size" />
-      <DatePicker fx:id="dpCloseRequestDate" layoutX="406.0" layoutY="438.0" prefHeight="26.0" prefWidth="260.0" />
-      <Label layoutX="213.0" layoutY="442.0" text="Close Request date" />
       <Button fx:id="bCreate" layoutX="598.0" layoutY="542.0" mnemonicParsing="false" onAction="#createTournament" prefHeight="26.0" prefWidth="135.0" text="Create" />
-      <Label layoutX="212.0" layoutY="485.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" />
+      <Label layoutX="212.0" layoutY="445.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" />
       <Button fx:id="bCancel" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelCreateTournament" prefHeight="26.0" prefWidth="135.0" text="Cancel" />
-      <CheckBox fx:id="cbOpenForRequests" layoutX="406.0" layoutY="485.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" />
+      <CheckBox fx:id="cbRequestable" layoutX="406.0" layoutY="445.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" />
    </children>
 </AnchorPane>
