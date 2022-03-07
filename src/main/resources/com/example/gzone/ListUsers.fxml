@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="800.0" style="-fx-background-color: #3c3c3c;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ListUsersController">
+    <stylesheets>
+        <URL value="@/styles/dashboard.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="search" layoutX="505.0" layoutY="38.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="200.0" promptText="Search.." />
+      <Label layoutX="340.0" layoutY="41.0" text="Search a user account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <ListView fx:id="lvTeams" layoutX="18.0" layoutY="159.0" prefHeight="394.0" prefWidth="238.0" />
+      <ListView fx:id="lvUsers" layoutX="275.0" layoutY="82.0" prefHeight="472.0" prefWidth="494.0" />
+      <Button fx:id="bInvite" layoutX="90.0" layoutY="102.0" mnemonicParsing="false" onAction="#inviteUser" text="Invite To Team" />
+   </children>
+</AnchorPane>
