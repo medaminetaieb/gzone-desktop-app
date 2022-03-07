@@ -37,6 +37,8 @@ public class TeamProfileController implements Initializable {
     @FXML
     private ListView<Team> topthreelist;
     @FXML
+    private Text capacity;
+    @FXML
     private Button returnview;
     @FXML
     private Text texxt;
@@ -216,10 +218,10 @@ public class TeamProfileController implements Initializable {
                 .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
 
         //Show top 3 teams
-      /* for(Team top:TeamStat.topTenTeams()){
-
-        }*/
 topthreelist.getItems().addAll(TeamStat.topThreeTeams());
 
+Integer membernmbr = userlist.size();
+
+capacity.setText(membernmbr +"/"+ t.getTeamSize()+"  You have "+(t.getTeamSize()-membernmbr)+" places left.");
     }
 }

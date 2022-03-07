@@ -118,6 +118,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <Label text="Team size">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox layoutX="407.0" layoutY="114.0" prefHeight="202.0" prefWidth="225.0">
@@ -126,6 +131,11 @@
                         <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <VBox.margin>
                               <Insets top="25.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="capacity" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <VBox.margin>
+                              <Insets top="28.0" />
                            </VBox.margin>
                         </Text>
                      </children>
