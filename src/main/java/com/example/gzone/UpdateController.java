@@ -121,7 +121,7 @@ public class UpdateController implements Initializable {
         } catch (NullPointerException ex) {
             birthdatecontrol.setVisible(true);
         }
-      FXMLLoader fxmlLoader = new FXMLLoader(MainFX.class.getResource("Profile.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile.fxml"));
         Scene scene = new Scene(fxmlLoader.load());      
         
         Stage newWindow = new Stage();

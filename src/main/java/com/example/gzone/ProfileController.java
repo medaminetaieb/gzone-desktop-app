@@ -96,7 +96,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void reportUser(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainFX.class.getResource("Report.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         StackPane secondaryLayout = new StackPane();
         Stage newWindow = new Stage();
@@ -115,7 +115,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void modify(ActionEvent event) throws IOException {
-       FXMLLoader fxmlLoader = new FXMLLoader(MainFX.class.getResource("Update.fxml"));
+       FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update.fxml"));
         Scene scene = new Scene(fxmlLoader.load());        
         Stage newWindow = new Stage();
         newWindow.setTitle("Update your information !");
