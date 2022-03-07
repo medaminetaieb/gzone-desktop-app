@@ -26,5 +26,6 @@
       <PasswordField fx:id="password" layoutX="275.0" layoutY="265.0" prefHeight="67.0" prefWidth="251.0" promptText="Password" />
       <TextField fx:id="username" layoutX="274.0" layoutY="177.0" prefHeight="58.0" prefWidth="251.0" promptText="Username" />
       <Hyperlink fx:id="toRegister" layoutX="303.0" layoutY="425.0" onAction="#ToRegister" text="Don't have an account? Register Now!" textFill="#659c00" />
+      <Hyperlink fx:id="forgot" layoutX="346.0" layoutY="450.0" onAction="#ForgotPassword" text="Forgot your password" textFill="#659c00" />
    </children>
 </AnchorPane>

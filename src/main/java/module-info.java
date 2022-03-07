@@ -5,7 +5,6 @@ module com.example.gzone {
     requires java.desktop;
     requires java.base;
 
-
     opens com.example.gzone to javafx.fxml;
     exports com.example.gzone;
 }

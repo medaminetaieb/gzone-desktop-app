@@ -3,6 +3,8 @@ package com.example.gzone;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.service.Users;
+import com.example.util.CryptWithMD5;
+import static com.example.util.CryptWithMD5.cryptWithMD5;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,8 +24,6 @@ import javafx.scene.layout.AnchorPane;
 public class LoginController {
 
     @FXML
-    private Label SignIn;
-    @FXML
     private Button SignIN;
     @FXML
     private TextField username;
@@ -33,18 +33,29 @@ public class LoginController {
     public Hyperlink toRegister;
     @FXML
     public AnchorPane signinpane;
-    @FXML
     public AnchorPane homepagepane;
+    @FXML
+    private Label reglb1;
+    @FXML
+    private Hyperlink forgot;
 
+    
+    
     @FXML
     public void ToRegister(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Register.fxml"));
         signinpane.getChildren().setAll(pane);
     }
 
+  
+
+    public void initialize() {
+
+    }
+
     @FXML
-    private void checkUser() throws IOException {
-        if ((Id.user = new Users().checklogin(username.getText(), password.getText())) != null) {
+    private void checkUser(ActionEvent event) throws IOException {
+         if ((Id.user=new Users().checklogin(username.getText(), password.getText())) != null){
             User u = new Users().findById(Id.user);
             if (u.getRole().equals(Role.admin)) {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
@@ -57,8 +68,8 @@ public class LoginController {
         }
     }
 
-    public void initialize() {
-
+    @FXML
+    private void ForgotPassword(ActionEvent event) {
     }
 
 }
