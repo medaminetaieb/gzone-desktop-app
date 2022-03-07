@@ -32,6 +32,8 @@ public class Games implements AdvancedService<Game> {
             pst.setString(2, g.getPhotoUrl());
             pst.setString(3, g.getDescription());
 
+            
+       
             return pst.executeUpdate() > 0;
 
         } catch (SQLException ex) {

@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -73,10 +74,15 @@ public class ForumviewController implements Initializable {
 
     @FXML
     private void addpost(ActionEvent event) throws IOException {
+        if(!tftitle.getText().isBlank() || (!tfcontent.getText().isBlank())){
         Posts ps = new Posts();
         Post p = new Post(null, 3, false, tftitle.getText(), tfcontent.getText(), "", new Date());
         ps.insert(p);
-        
+        }   else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("One of your Text fields is empty");
+            a.show();
+        }
     }
     
     public void cancel (ActionEvent event) throws IOException{

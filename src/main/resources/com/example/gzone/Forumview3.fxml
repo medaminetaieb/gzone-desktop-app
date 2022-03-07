@@ -4,8 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -93,7 +92,7 @@
             </Button>
          </children>
       </VBox>
-      <CheckBox fx:id="cbresolved" layoutX="444.0" layoutY="42.0" mnemonicParsing="false" text="BRESOLVED" />
+      <CheckBox fx:id="cbresolved" layoutX="444.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#handleMouseClick" text="RESOLVED" />
       <Button fx:id="btndelete" layoutX="594.0" layoutY="37.0" mnemonicParsing="false" onAction="#deletepost" style="-fx-background-color: #86d300;" text="DELETE POST" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -106,12 +105,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="tbview" layoutX="204.0" layoutY="390.0" prefHeight="200.0" prefWidth="436.0">
-        <columns>
-          <TableColumn fx:id="clcomment" prefWidth="435.0" text="Comments " />
-        </columns>
-      </TableView>
-      <Text fx:id="txtitle" fill="#026105" layoutX="204.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE" wrappingWidth="140.0000035762787">
+      <Text fx:id="txtitle" fill="#026105" layoutX="195.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE" wrappingWidth="545.0000047683716">
          <font>
             <Font size="34.0" />
          </font>
@@ -132,5 +126,6 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
+      <ListView fx:id="tbview" layoutX="203.0" layoutY="410.0" prefHeight="146.0" prefWidth="436.0" />
    </children>
 </AnchorPane>

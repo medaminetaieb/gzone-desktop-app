@@ -19,11 +19,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -47,12 +48,10 @@ public class Forumview3Controller implements Initializable {
     @FXML
     private Button btncomment;
     @FXML
-    private TableView tbview;
-    @FXML
-    private TableColumn<Comment, String> clcomment;
+    private ListView<Comment> tbview;
+    
     @FXML
     private Text txtitle;
-    private int id;
     @FXML
     private TextField tfcomment;
     @FXML
@@ -65,6 +64,7 @@ public class Forumview3Controller implements Initializable {
     private TextArea tfcontent;
     @FXML
     private Button btndeletecm;
+    Post p = new Posts().findById(Id.post);
 
     /**
      * Initializes the controller class.
@@ -72,15 +72,15 @@ public class Forumview3Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Post p = new Posts().findById(Id.post);
+        p = new Posts().findById(Id.post);
         txtitle.setText(p.getTitle());
         txdate.setText(p.getPostDate().toString());
         tfcontent.setText(p.getContent());
         cbresolved.setSelected(p.isResolved());
-        refresh(null);
+        if (p.getPosterId().equals(Id.user)) {
 
-        clcomment.setCellValueFactory(new PropertyValueFactory<>("comment_body"));
-        tbview.getColumns().add(clcomment);
+            cbresolved.setDisable(true);
+        }
 
         refresh(null);
     }
@@ -109,23 +109,29 @@ public class Forumview3Controller implements Initializable {
     private boolean deletepost(ActionEvent event) throws IOException {
         leave(event);
         return new Posts().deleteById(Id.post);
-        
-        
+
     }
 
     @FXML
     private void addcomment(ActionEvent event) {
-        Comments cm = new Comments();
-        Comment c = new Comment(null, 6, 1, tfcomment.getText(), new Date());
-        cm.insert(c);
-
+        if (!p.isResolved() || !tfcomment.getText().isBlank()) {
+            Comments cm = new Comments();
+            Comment c = new Comment(null, Id.post, Id.user, tfcomment.getText(), new Date());
+            cm.insert(c);
+            refresh(event);
+            tfcomment.setText("");
+        }else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Either the post is redolved or Text field is empty");
+            a.show();
+        }
     }
 
     @FXML
     private void refresh(ActionEvent event) {
         Comments cm = new Comments();
         tbview.getItems().clear();
-        List<Comment> commentlist = cm.findAll("`post_id`=6");
+        List<Comment> commentlist = cm.findAll("`post_id`=" + Id.post);
         for (Comment c : commentlist) {
             tbview.getItems().add(c);
 
@@ -147,8 +153,18 @@ public class Forumview3Controller implements Initializable {
         if (Id.user.equals(c.getCommenterId())) {
             new Comments().deleteById(Id.comment);
             refresh(event);
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.show();
         }
-        
+
+    }
+
+    @FXML
+    private void handleMouseClick(MouseEvent event) {
+        p = new Posts().findById(Id.post);
+        p.setResolved(cbresolved.isSelected());
+        new Posts().modify(p);
 
     }
 

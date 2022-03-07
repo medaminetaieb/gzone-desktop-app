@@ -19,9 +19,9 @@ public class Badwords {
     private static final ArrayList<String> badwords= new ArrayList<>();
 
     static {
-        badwords.add("shit");
-        badwords.add("fuck");
-        badwords.add("nigger");
+        badwords.add("ffff");
+        badwords.add("ssss");
+        badwords.add("nnnn");
     }
 
     public static String filter(String input) {

@@ -108,8 +108,7 @@ public class Forumview1Controller implements Initializable {
     void view(ActionEvent event) throws IOException {
         
         Id.post = ((Post)tbview.getSelectionModel().getSelectedItem()).getId();
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview3.fxml"));
-        dashforumpane.getChildren().setAll(pane);
+        btnviewpost.getScene().setRoot(FXMLLoader.load(getClass().getResource("Forumview3.fxml")));
 
     }
 }
