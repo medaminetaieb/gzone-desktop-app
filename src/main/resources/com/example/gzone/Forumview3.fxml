@@ -123,11 +123,11 @@
       </Button>
       <Button fx:id="btndeletecm" layoutX="664.0" layoutY="409.0" mnemonicParsing="false" onAction="#deletcomment" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #86d300;" text="DELETE COMMENT" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="11.0" />
          </font>
       </Button>
       <ListView fx:id="tbview" layoutX="203.0" layoutY="410.0" prefHeight="146.0" prefWidth="436.0" />
-      <Button fx:id="btnlike" layoutX="358.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
+      <Button fx:id="btnlike" layoutX="348.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="31.0" prefWidth="71.0" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
