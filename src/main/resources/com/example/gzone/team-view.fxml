@@ -172,6 +172,8 @@
                         </Label>
                         <Label fx:id="selected" layoutX="276.0" layoutY="431.0" text="Select a team" />
                         <Button fx:id="delete" layoutX="270.0" layoutY="79.0" mnemonicParsing="false" onAction="#actiondelete" text="Delete team" />
+                        <Button fx:id="find" layoutX="381.0" layoutY="455.0" mnemonicParsing="false" onAction="#actionfind" text="Button" />
+                        <TextField fx:id="tfsearch" layoutX="196.0" layoutY="455.0" promptText="Type Here" />
                      </children>
                   </AnchorPane>
                </content>
@@ -184,7 +186,7 @@
                <children>
                   <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@gzone%20logo.png" />
+                        <Image url="@../../../../../../../../../Desktop/g%20zone.png" />
                      </image>
                      <VBox.margin>
                         <Insets left="25.0" top="30.0" />

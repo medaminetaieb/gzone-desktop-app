@@ -30,6 +30,11 @@ public class TeamViewController implements Initializable {
     String namee;
     int info;
     @FXML
+    private Button find;
+
+    @FXML
+    private TextField tfsearch;
+    @FXML
     private AnchorPane anchoryourteams;
     @FXML
     private VBox vbox;
@@ -223,6 +228,16 @@ public class TeamViewController implements Initializable {
 
     }
 
+    @FXML
+    private void actionfind(ActionEvent event) {
+        listview.getItems().clear();
+        Teams t =new Teams();
+        List<Team> teamlist = t.findAll("name REGEXP '" + tfsearch.getText() + "' And `admin_id`=2");
+        for (Team t1 : teamlist) {
+            listview.getItems().add(t1);
+        }
+        listview.refresh();
+    }
 
 
     public void showTeams() {
