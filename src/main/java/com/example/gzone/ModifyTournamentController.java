@@ -144,7 +144,7 @@ public class ModifyTournamentController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
-        tGameName.setText(new Games().findById(t.getGameId()).getName());
+        tGameName.setText((Id.game == null)? "No Game" : new Games().findById(t.getGameId()).getName());
         tfTournamentName.setText(t.getName());
         taTournamentDescription.setText((t.getDescription()));
         tNumberOfTeams.setText(t.getRequiredTeams().toString());

@@ -115,10 +115,10 @@ public class TeamViewController implements Initializable {
        }
         else {
             //t.setId(null);
-            t.setAdminId(2);
+            t.setAdminId(Id.user);
             t.setName(vtfteamname.getText());
             t.setTeamSize(vsteamsize.getValue());
-            t.setGameId(gameId);
+            t.setGameId(Id.game);
             t.setDescription(filter(vtadescription.getText()));
             t.setPhotoURL(vtfphotourl.getText());
             t.setCreateDate(date);
@@ -266,13 +266,13 @@ public class TeamViewController implements Initializable {
         MenuItem smbgmi = new MenuItem("No Game");
         vmbgame.getItems().add(smbgmi);
         smbgmi.setOnAction(e -> {
-            gameId = null;
+            Id.game = null;
             vmbgame.setText("No Game");
         });
         for (Game g : gameList) {
             MenuItem mi = new MenuItem(g.getName());
             mi.setOnAction(e -> {
-                gameId = g.getId();
+                Id.game = g.getId();
                 vmbgame.setText(g.getName());
             });
             vmbgame.getItems().add(mi);

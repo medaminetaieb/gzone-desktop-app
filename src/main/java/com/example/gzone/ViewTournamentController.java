@@ -147,7 +147,7 @@ public class ViewTournamentController implements Initializable {
         tCreationDate.setText(t.getCreateDate().toString());
         tDescription.setText(t.getDescription());
         tRequestable.setText(t.isRequestable().toString());
-        tGameName.setText(new Games().findById(t.getGameId()).getName());
+        tGameName.setText((Id.game == null) ? "No Game" : new Games().findById(t.getGameId()).getName());
         tJoinedTeams.setText("" + new JoinRequests().findAll(String.format(
                 "`tournament_id`=%d AND `accepted`=true", Id.tournament
         )).size());
@@ -159,20 +159,26 @@ public class ViewTournamentController implements Initializable {
         for (int i = TournamentMatches.firstRoundOf(t); i > 0; --i) {
             lvRounds.getItems().add(i);
         }
-        
+
         if (t.getRequiredTeams() > new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true").size()) {
-            for (Team t : new Teams().findAll("`admin_id`=" + Id.user + " AND `game_id`=" + t.getGameId() + " AND `team_size`=" + t.getTeamSize())) {
-                MenuItem mi = new MenuItem(t.getName());
-                mi.setOnAction(e -> {
-                    Id.team = t.getId();
-                    mbSelectTeam.setText(t.getName());
-                    try {
-                    mbSelectTeam.getScene().setRoot(FXMLLoader.load(getClass().getResource("joinRequest-Tournament.fxml")));
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                mbSelectTeam.getItems().add(mi);
+            String c = "";
+            if (Id.game == null) {
+                c = " OR `game_id` IS NULL ";
+            }
+            for (Team t : new Teams().findAll("`admin_id`=" + Id.user + " AND `game_id`=" + t.getGameId() + " AND `team_size`=" + t.getTeamSize() + c)) {
+                if (new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `team_id`=" + Id.team).size() == 0) {
+                    MenuItem mi = new MenuItem(t.getName());
+                    mi.setOnAction(e -> {
+                        Id.team = t.getId();
+                        mbSelectTeam.setText(t.getName());
+                        try {
+                            mbSelectTeam.getScene().setRoot(FXMLLoader.load(getClass().getResource("joinRequest-Tournament.fxml")));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    });
+                    mbSelectTeam.getItems().add(mi);
+                }
             }
         }
     }

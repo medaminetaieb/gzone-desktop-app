@@ -136,12 +136,14 @@ public class ProfileController implements Initializable {
 
     @FXML
     void Team(MouseEvent event) throws IOException {
-        deletebtn.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML
     void Tournament(MouseEvent event) throws IOException {
-        deletebtn.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML
