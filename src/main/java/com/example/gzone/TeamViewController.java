@@ -183,7 +183,7 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
-        TeamId.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-profile.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
@@ -209,7 +209,7 @@ public class TeamViewController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
         stage.close();*/
-        TeamId.eam = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);

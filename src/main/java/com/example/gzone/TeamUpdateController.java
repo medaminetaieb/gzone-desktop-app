@@ -60,7 +60,7 @@ public class TeamUpdateController implements Initializable {
         Teams teams = new Teams();
 
 
-        oldteam = teams.findById(TeamId.eam);
+        oldteam = teams.findById(Id.team);
 
 
         if (teamname.getText().isBlank()) {
@@ -171,7 +171,7 @@ public class TeamUpdateController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Teams teams = new Teams();
-        t = teams.findById(TeamId.eam);
+        t = teams.findById(Id.team);
         teamname.setText(t.getName());
         photourl.setText(t.getPhotoURL());
         descritpion.setText(t.getDescription());

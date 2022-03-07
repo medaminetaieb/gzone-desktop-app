@@ -128,7 +128,7 @@ public class TeamProfileController implements Initializable {
         Optional<ButtonType> result =alert.showAndWait();
         if(result.get() == ButtonType.OK){
 
-            List<JoinRequest> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + TeamId.eam + " And `accepted`=true");
+            List<JoinRequest> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + Id.team + " And `accepted`=true");
 
               for (JoinRequest m :list){
 
@@ -150,13 +150,13 @@ public class TeamProfileController implements Initializable {
 
         Teams teams = new Teams();
         t = teams.findById(
-                TeamId.eam);
+                Id.team);
         Image image = new Image(t.getPhotoURL());
 
         photo.setImage(image);
 
         List<User> userlist = new ArrayList<>();
-        List<JoinRequest> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null And `accepted`=true");
+        List<JoinRequest> teamlistt = members.findAll("`team_id`=" + Id.team + " And `user_id` is not null And `accepted`=true");
         for(JoinRequest m : teamlistt){
             Integer userId = m.getUserId();
             userlist.add(users.findById(userId));
@@ -168,7 +168,7 @@ public class TeamProfileController implements Initializable {
 
 
         final Matches matches = new Matches();
-        List<Match> l = matches.findAll("`team1_id`=" + TeamId.eam + " OR `team2_id`=" + TeamId.eam);
+        List<Match> l = matches.findAll("`team1_id`=" + Id.team + " OR `team2_id`=" + Id.team);
         long m = l.stream().count();
 
         if (t.isRequestable() == true) {
@@ -186,18 +186,18 @@ public class TeamProfileController implements Initializable {
             checkin.setDisable(true);
         }
 
-        if(TeamStat.getWinRate(TeamId.eam) == 100.00) {
-                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+        if(TeamStat.getWinRate(Id.team) == 100.00) {
+                winrate.setText(TeamStat.getWinRate(Id.team)+"%");
                 texxt.setText("You guys are awesome :)\n For all of the "+m+" matches you played,\n you won all of them !!");
 
         
         }
-        else if ((TeamStat.getWinRate(TeamId.eam)<=99.99)&&(TeamStat.getWinRate(TeamId.eam)>=70.00)){
-            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+        else if ((TeamStat.getWinRate(Id.team)<=99.99)&&(TeamStat.getWinRate(Id.team)>=70.00)){
+            winrate.setText(TeamStat.getWinRate(Id.team)+"%");
             texxt.setText("Well done!! Surely we will\n find you at our top 10 team's list");
         }
-        else if((TeamStat.getWinRate(TeamId.eam)<=69.99)&&(TeamStat.getWinRate(TeamId.eam)>=40.00)){
-            winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+        else if((TeamStat.getWinRate(Id.team)<=69.99)&&(TeamStat.getWinRate(Id.team)>=40.00)){
+            winrate.setText(TeamStat.getWinRate(Id.team)+"%");
             texxt.setText("We know you could do better.\n Better luck next time :)");
         }
         else{
@@ -206,7 +206,7 @@ public class TeamProfileController implements Initializable {
                 texxt.setText("You haven't played any matches yet!");
             }
             else{
-                winrate.setText(TeamStat.getWinRate(TeamId.eam)+"%");
+                winrate.setText(TeamStat.getWinRate(Id.team)+"%");
                 texxt.setText("Hard Luck! You will do better next time :)");
 
             }

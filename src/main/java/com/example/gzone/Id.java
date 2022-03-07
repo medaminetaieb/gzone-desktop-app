@@ -12,4 +12,5 @@ public class Id {
     protected static Integer user = 2;
     protected static Integer game;
     protected static Integer tournament = 4;
+    protected static Integer team;
 }
