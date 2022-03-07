@@ -119,8 +119,11 @@ public class ViewTournamentController implements Initializable {
 
     @FXML
     void exitTournament(ActionEvent event) throws IOException {
+        /*
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         apViewTournament.getChildren().setAll(pane);
+*/
+        bExit.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
     }
 
     @FXML
