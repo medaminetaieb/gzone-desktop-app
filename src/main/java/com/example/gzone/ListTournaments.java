@@ -48,17 +48,14 @@ public class ListTournaments implements Initializable {
         if (Id.game == null) {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "' AND `game_id` IS NULL")) {
                 lvTournaments.getItems().add(t);
-                System.out.println(t);
             }
         } else if (Id.game == 0) {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "'")) {
                 lvTournaments.getItems().add(t);
-                System.out.println(t);
             }
         } else {
             for (Tournament t : tournaments.findAll("`name` REGEXP '" + tfSearchName.getText() + "' AND `game_id`=" + Id.game)) {
                 lvTournaments.getItems().add(t);
-                System.out.println(t);
             }
         }
         lvTournaments.refresh();
