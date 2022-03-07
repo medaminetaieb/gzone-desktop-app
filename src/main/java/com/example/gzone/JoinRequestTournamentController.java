@@ -5,6 +5,7 @@
 package com.example.gzone;
 
 import com.example.entity.JoinRequest;
+import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
 import java.io.IOException;
@@ -79,8 +80,9 @@ public class JoinRequestTournamentController implements Initializable {
             a.setContentText("Send request to join this tournament");
             Optional<ButtonType> buttonType = a.showAndWait();
             if (buttonType.get().equals(ButtonType.OK)) {
-                JoinRequest jr = new JoinRequest(null, null, Id.team, Id.tournament, messagetxt.getText(), new Date(), null, null, false);
-                bSend.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
+                JoinRequest jr = new JoinRequest(null, Id.user, Id.team, null, messagetxt.getText(), new Date(), null, null, false);
+
+                //bSend.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
             }
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);

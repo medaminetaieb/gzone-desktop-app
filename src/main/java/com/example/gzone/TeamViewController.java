@@ -3,6 +3,7 @@ package com.example.gzone;
 import com.example.entity.Game;
 import com.example.entity.Team;
 import com.example.service.Games;
+import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 import java.io.IOException;
@@ -27,11 +29,14 @@ public class TeamViewController implements Initializable {
 
 
     final Teams teams = new Teams();
-    String namee;
+    final Games games = new Games();
+
+
     int info;
     @FXML
     private Button find;
-
+    @FXML
+    private Button joinreq;
     @FXML
     private TextField tfsearch;
     @FXML
@@ -58,6 +63,11 @@ public class TeamViewController implements Initializable {
     private TextField vtfaddmembers;
     @FXML
     private ScrollBar vsb;
+    @FXML
+    private ListView<Team> listofteams;
+
+    @FXML
+    private Label nameoftheteam;
 
     @FXML
     private Button vtbncreateteam;
@@ -216,7 +226,7 @@ public class TeamViewController implements Initializable {
         TeamUpdateController teamUpdateController = loader.getController();
 
 
-        String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        String tname = (listview.getSelectionModel().getSelectedItem()).getName();
         String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
@@ -237,6 +247,15 @@ public class TeamViewController implements Initializable {
             listview.getItems().add(t1);
         }
         listview.refresh();
+    }
+    @FXML
+    void actionjoinrequest(ActionEvent event) throws IOException {
+        Id.team = (listofteams.getSelectionModel().getSelectedItem()).getId();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("joinRequest-view.fxml"));
+        AnchorPane pane = loader.load();
+        teamviewanchor.getChildren().setAll(pane);
+        TeamUpdateController teamUpdateController = loader.getController();
+
     }
 
 
@@ -291,7 +310,28 @@ public class TeamViewController implements Initializable {
 
         showTeams();
 
-    }
+        //JoinRequest
+
+        List<Team> listrequest = teams.findAll("`requestable`= true And `admin_id`!="+Id.user);
+        listofteams.getItems().addAll(listrequest);
+
+        joinreq.disableProperty()
+                .bind(listofteams.getSelectionModel().selectedItemProperty().isNull());
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
 }
 
 

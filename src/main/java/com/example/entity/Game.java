@@ -13,12 +13,18 @@ public class Game {
     private String name;
     private String photoUrl;
     private String description;
+
+
     
     public Game(Integer id, String name, String photoUrl, String description) {
         this.id = id;
         this.name = name;
         this.photoUrl = photoUrl;
         this.description = description;
+    }
+
+    public Game() {
+
     }
 
     public Integer getId() {
