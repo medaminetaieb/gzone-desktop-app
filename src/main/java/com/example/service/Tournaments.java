@@ -24,7 +24,7 @@ public class Tournaments implements AdvancedService<Tournament> {
     public Boolean modify(Tournament t) {
         try {
             String req = "UPDATE `tournaments` SET "
-                    + "`admin_id`=?, `game_id`=?, `name`=?, `description`=?, `required_teams`=?, `team_size`=?, `close_requests_date`=?, `approved`=?, `create_date`=? WHERE `id`=" + t.getId();
+                    + "`admin_id`=?, `game_id`=?, `name`=?, `description`=?, `required_teams`=?, `team_size`=?, `requestable`=?, `approved`=?, `create_date`=? WHERE `id`=" + t.getId();
             PreparedStatement ps = connection.prepareStatement(req);
             Integer i = 0;
             ps.setObject(++i, t.getAdminId(), java.sql.Types.INTEGER);
@@ -33,7 +33,7 @@ public class Tournaments implements AdvancedService<Tournament> {
             ps.setString(++i, t.getDescription());
             ps.setObject(++i, t.getRequiredTeams(), java.sql.Types.INTEGER);
             ps.setObject(++i, t.getTeamSize(), java.sql.Types.INTEGER);
-            ps.setDate(++i, new Date(t.getCloseRequestsDate().getTime()));
+            ps.setObject(++i, t.isRequestable(), java.sql.Types.BOOLEAN);
             ps.setObject(++i, t.isApproved(), java.sql.Types.BOOLEAN);
             ps.setDate(++i, new Date(t.getCreateDate().getTime()));
 
@@ -49,7 +49,7 @@ public class Tournaments implements AdvancedService<Tournament> {
     public Boolean insert(Tournament t) {
         try {
             String req = "INSERT INTO `tournaments` ("
-                    + "`id`, `admin_id`, `game_id`, `name`, `description`, `required_teams`, `team_size`, `close_requests_date`, `approved`, `create_date`"
+                    + "`id`, `admin_id`, `game_id`, `name`, `description`, `required_teams`, `team_size`, `requestable`, `approved`, `create_date`"
                     + ") VALUES ("
                     + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                     + ")";
@@ -62,7 +62,7 @@ public class Tournaments implements AdvancedService<Tournament> {
             ps.setString(++i, t.getDescription());
             ps.setObject(++i, t.getRequiredTeams(), java.sql.Types.INTEGER);
             ps.setObject(++i, t.getTeamSize(), java.sql.Types.INTEGER);
-            ps.setDate(++i, new Date(t.getCloseRequestsDate().getTime()));
+            ps.setObject(++i, t.isRequestable(), java.sql.Types.BOOLEAN);
             ps.setObject(++i, t.isApproved(), java.sql.Types.BOOLEAN);
             ps.setDate(++i, new Date(t.getCreateDate().getTime()));
 
@@ -94,7 +94,7 @@ public class Tournaments implements AdvancedService<Tournament> {
                         rs.getString("description"),
                         rs.getObject("required_teams", Integer.class),
                         rs.getObject("team_size", Integer.class),
-                        rs.getDate("close_requests_date"),
+                        rs.getObject("requestable", Boolean.class),
                         rs.getObject("approved", Boolean.class),
                         rs.getDate("create_date")
                 ));

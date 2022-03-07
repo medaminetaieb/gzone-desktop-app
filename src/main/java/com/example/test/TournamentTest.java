@@ -19,9 +19,9 @@ public class TournamentTest {
     private static final List<Tournament> tournamentlist = new ArrayList<>();
     
     static {
-        tournamentlist.add(new Tournament(0, 2, 1, "fifa tournament", "sdf", 8, 1, new Date(2323), true, new Date()));
-        tournamentlist.add(new Tournament(0, 1, 3, "CS GO tournament", "oppa", 4, 5, new Date(2323), true, new Date()));
-        tournamentlist.add(new Tournament(0, 1, 1, "fifa tournament", "hhxcd", 16, 1, new Date(2323), true, new Date()));
+        tournamentlist.add(new Tournament(0, 2, 1, "fifa tournament", "sdf", 8, 1, true, true, new Date()));
+        tournamentlist.add(new Tournament(0, 1, 3, "CS GO tournament", "oppa", 4, 5, true, true, new Date()));
+        tournamentlist.add(new Tournament(0, 1, 1, "fifa tournament", "hhxcd", 16, 1, true, true, new Date()));
     }
     
     public static void insertAll() {
@@ -39,7 +39,7 @@ public class TournamentTest {
         if (tournaments.delete("game_id=1")) {
             System.out.println("Tournaments deleted");
         }
-        if (tournaments.modify(new Tournament(2, 1, 3, "CS GO tournament updated name", "oppa", 4, 5, new Date(2323), true, new Date()))) {
+        if (tournaments.modify(new Tournament(2, 1, 3, "CS GO tournament updated name", "oppa", 4, 5, false, true, new Date()))) {
             System.out.println("Tournament updated");
         }
     }
