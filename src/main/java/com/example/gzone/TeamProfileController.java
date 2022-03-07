@@ -2,12 +2,14 @@ package com.example.gzone;
 
 import com.example.entity.Match;
 import com.example.entity.Membership;
+import com.example.entity.JoinRequest;
 import com.example.entity.User;
 import com.example.service.Matches;
 import com.example.service.Users;
 import com.example.util.TeamStat;
 import com.example.entity.Team;
 import com.example.service.Memberships;
+import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +32,7 @@ import java.util.ResourceBundle;
 public class TeamProfileController implements Initializable {
     private Team t;
     private User u;
-    final Memberships members = new Memberships();
+    final JoinRequests members = new JoinRequests();
      Users users = new Users();
     @FXML
     private ListView<Team> topthreelist;
@@ -126,9 +128,9 @@ public class TeamProfileController implements Initializable {
         Optional<ButtonType> result =alert.showAndWait();
         if(result.get() == ButtonType.OK){
 
-            List<Membership> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + TeamId.eam);
+            List<JoinRequest> list = members.findAll("`user_id`=" + u.getId() + " AND `team_id`=" + TeamId.eam + " And `accepted`=true");
 
-              for (Membership m :list){
+              for (JoinRequest m :list){
 
                   members.deleteById(m.getId());
 
@@ -154,8 +156,8 @@ public class TeamProfileController implements Initializable {
         photo.setImage(image);
 
         List<User> userlist = new ArrayList<>();
-        List<Membership> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null");
-        for(Membership m : teamlistt){
+        List<JoinRequest> teamlistt = members.findAll("`team_id`=" + TeamId.eam + " And `user_id` is not null And `accepted`=true");
+        for(JoinRequest m : teamlistt){
             Integer userId = m.getUserId();
             userlist.add(users.findById(userId));
 
@@ -213,7 +215,7 @@ public class TeamProfileController implements Initializable {
         deletemember.disableProperty()
                 .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
 
-        //Show top 10 teams
+        //Show top 3 teams
       /* for(Team top:TeamStat.topTenTeams()){
 
         }*/

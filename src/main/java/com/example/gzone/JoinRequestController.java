@@ -2,37 +2,30 @@ package com.example.gzone;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class TeamJoinRequest implements Initializable {
+public class JoinRequestController {
 
     @FXML
     private TextArea messagetxt;
 
     @FXML
-    private Button selectuser;
-
-    @FXML
     private Button sendrequest;
-
-    @FXML
-    private ListView<?> userlist;
-
-    @FXML
-    private ListView<?> tournamentlist;
 
     @FXML
     private Button sendinvitation;
 
     @FXML
-    private Button selecttournament;
+    private TextField tfuser;
+
+    @FXML
+    private TextField tfteam;
+
+    @FXML
+    private TextField tftournament;
 
     @FXML
     void Forum(MouseEvent event) {
@@ -60,16 +53,6 @@ public class TeamJoinRequest implements Initializable {
     }
 
     @FXML
-    void selecttournament(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selectuser(ActionEvent event) {
-
-    }
-
-    @FXML
     void sendinvitation(ActionEvent event) {
 
     }
@@ -79,8 +62,4 @@ public class TeamJoinRequest implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

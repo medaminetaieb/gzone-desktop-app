@@ -4,6 +4,7 @@
  */
 package com.example.app;
 
+import com.example.test.JoinRequestTest;
 import com.example.test.MatchTest;
 import com.example.util.TeamStat;
 
@@ -20,6 +21,8 @@ public class Main {
 
         //MatchTest.insertAll();
       //  TeamStat.topTenTeams();
+        //JoinRequestTest.insertAll();
+
        System.out.println(TeamStat.getWinRate(15));
         System.out.println(TeamStat.getWinRate(24));
         System.out.println(TeamStat.getWinRate(1));
