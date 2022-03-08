@@ -34,6 +34,8 @@ public class TeamViewController implements Initializable {
 
     int info;
     @FXML
+    private Button invitebtn;
+    @FXML
     private Button find;
     @FXML
     private Button joinreq;
@@ -89,6 +91,7 @@ public class TeamViewController implements Initializable {
     private Button delete;
     @FXML
     private AnchorPane teamviewanchor;
+
     private Integer gameId;
 
     @FXML
@@ -232,11 +235,19 @@ public class TeamViewController implements Initializable {
         teamUpdateController.teammm(tname);
 
     }
-
+    @FXML
+    void actioninvite(ActionEvent event) throws IOException {
+        Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
+        AnchorPane pane = loader.load();
+        teamviewanchor.getChildren().setAll(pane);
+    }
     @FXML
     void Team(TouchEvent event) {
 
     }
+
+
 
     @FXML
     private void actionfind(ActionEvent event) {
@@ -261,7 +272,7 @@ public class TeamViewController implements Initializable {
 
     public void showTeams() {
         final Team[] clabel = {new Team()};
-        List<Team> teamlist = teams.findAll("admin_id=2");
+        List<Team> teamlist = teams.findAll("admin_id="+Id.user);
         listview.getItems().addAll(teamlist);
 
         listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
@@ -307,6 +318,9 @@ public class TeamViewController implements Initializable {
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnshowprofile.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
+        invitebtn.disableProperty()
+                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
+
 
         showTeams();
 
