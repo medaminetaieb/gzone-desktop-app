@@ -53,11 +53,9 @@ public class ReportController implements Initializable {
         } else {
             subject = Subject.score_manipulation;
         }
-        if ((title.getText() != null || !title.getText().isEmpty()) 
-                || (content.getText() != null 
-                || !content.getText().isEmpty())
-                ||(!sensitivebtn.isSelected() && !manipulationbtn.isSelected())) {
-                control.setVisible(true);
+        if ((title.getText() == null || title.getText().isBlank())
+                || (content.getText() == null || content.getText().isBlank())) {
+            control.setVisible(true);
         } else {
             rep.insert(new Report(
                     null,

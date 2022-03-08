@@ -141,14 +141,13 @@ public class ViewTournamentController implements Initializable {
                     new Matches().modify(m);
                 }
             } else {
-                for (HappyHour hh : new HappyHours().findAll(new Date() + " BETWEEN `start_date` AND `end_date`")) {
+                for (HappyHour hh : new HappyHours().findAll("now() BETWEEN `start_date` AND `end_date`")) {
                     if ((new Badges().findById(hh.getBadgeId()).getGameId().equals(new Tournaments().findById(Id.tournament)))) {
                         for (JoinRequest jr : new JoinRequests().findAll("`accepted`=true AND `user_id` IS NOT NULL AND `team_id`=" + team.getId())) {
                             new BadgeShips().insert(new BadgeShip(null, hh.getBadgeId(), jr.getUserId()));
                         }
                     }
                 }
-                new Tournaments().deleteById(Id.tournament);
             }
             handleMatchesMouseClick(null);
         } else {

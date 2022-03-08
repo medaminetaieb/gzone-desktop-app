@@ -28,10 +28,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-//import org.controlsfx.control;
 
 /**
  * FXML Controller class
@@ -67,6 +65,8 @@ public class ProfileController implements Initializable {
     private Button deletebtn;
     @FXML
     private Button modifybtn;
+    @FXML
+    private Button logout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,10 +97,9 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void reportUser(ActionEvent event) throws IOException {
+    private void report(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        StackPane secondaryLayout = new StackPane();
         Stage newWindow = new Stage();
         newWindow.setTitle("Report User");
         newWindow.setScene(scene);
@@ -113,13 +112,12 @@ public class ProfileController implements Initializable {
         du.deleteById(Id.user);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
-        // Notifications.create(.title("Title Text").text("Hello World 0!").showWarning();
     }
 
     @FXML
     private void modify(ActionEvent event) throws IOException {
-       FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());        
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         Stage newWindow = new Stage();
         newWindow.setTitle("Update your information !");
         newWindow.setScene(scene);

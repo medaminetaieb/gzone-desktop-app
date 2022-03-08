@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="CreatePane" prefHeight="639.0" prefWidth="801.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateHappyHourController">
+    <stylesheets>
+        <URL value="@homepage.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="639.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
+         <children>
+            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets left="15.0" top="40.0" />
+               </VBox.margin>
+            </Circle>
+            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/logo-gzone.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="-115.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" top="60.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label layoutX="387.0" layoutY="62.0" text="Create Happy Hour">
+         <font>
+            <Font name="Arial Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="301.0" layoutY="157.0" text="Start Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="228.0" text="End Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="393.0" text="Badge" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="321.0" text="Game" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <DatePicker fx:id="dpStartDate" layoutX="412.0" layoutY="149.0" prefHeight="31.0" prefWidth="237.0" />
+      <DatePicker fx:id="dpEndDate" layoutX="412.0" layoutY="223.0" prefHeight="31.0" prefWidth="237.0" />
+      <SplitMenuButton fx:id="smbGame" layoutX="412.0" layoutY="316.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game" textFill="#336861">
+        <items>
+          
+        </items>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </SplitMenuButton>
+      <Button fx:id="btnCreate" layoutX="370.0" layoutY="550.0" mnemonicParsing="false" onAction="#CreateHappyHour" styleClass="add-button" stylesheets="@fxml.css" text="Create" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
+      <Button fx:id="btCancel" layoutX="583.0" layoutY="550.0" mnemonicParsing="false" onAction="#CancelHappyHour" styleClass="cancel-button" stylesheets="@fxml.css" text="Cancel" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
+      <SplitMenuButton fx:id="smbBadge" layoutX="412.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Badge" textFill="#336861">
+        <items>
+          
+        </items>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </SplitMenuButton>
+      <Label layoutX="239.0" layoutY="484.0" text="Create Your Badge" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="TfBadge" layoutX="410.0" layoutY="479.0" prefHeight="31.0" prefWidth="226.0" />
+   </children>
+</AnchorPane>

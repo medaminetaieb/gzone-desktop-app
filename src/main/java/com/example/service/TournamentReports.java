@@ -81,5 +81,5 @@ public class TournamentReports implements Service<TournamentReport> {
 
         return false;
     }
-    
+
 }
