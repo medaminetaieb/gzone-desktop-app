@@ -59,28 +59,33 @@ public class ModifyTournamentController implements Initializable {
     private TextField tfTournamentName;
 
     @FXML
-    void Forum(MouseEvent event) {
-
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(MouseEvent event) {
-
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) throws IOException {
-        bCancel.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(MouseEvent event) throws IOException {
-        bCancel.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apModifyTournament.getChildren().setAll(pane);
     }
 
     @FXML

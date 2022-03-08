@@ -45,6 +45,13 @@ public class AddItemForm {
         }
     }
 
+
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        itemformpane.getChildren().setAll(pane);
+    }
+
     @FXML
     void HomePage(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -53,7 +60,20 @@ public class AddItemForm {
 
     @FXML
     void Store(ActionEvent event) throws IOException {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        itemformpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view1.fxml"));
+        itemformpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         itemformpane.getChildren().setAll(pane);
     }
 

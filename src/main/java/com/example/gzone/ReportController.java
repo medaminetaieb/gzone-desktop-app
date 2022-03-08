@@ -81,9 +81,9 @@ public class ReportController implements Initializable {
             if (Id.type==0){
             tr.insert(new TournamentReport(null,Id.tournament,Id.report));
             }
-            else if (Id.type==1){
+            else if (Id.type==2){
             pr.insert(new PostReport(null, Id.post, Id.report));
-            }else if (Id.type==2){
+            }else if (Id.type==1){
             sr.insert(new StoreReport(null, Id.store, Id.report));
             }
             

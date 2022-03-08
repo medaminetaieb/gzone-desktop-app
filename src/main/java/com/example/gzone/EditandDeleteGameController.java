@@ -57,26 +57,36 @@ public class EditandDeleteGameController implements Initializable {
         tfNameUpdate.setText(g.getName());
         tfDescriptionUpdate.setText(g.getDescription());
         tfPhotoUrlUpdate.setText(g.getPhotoUrl());
-    }   
-
-    @FXML
-    private void HomePage(MouseEvent event) {
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        APEdit.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        APEdit.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        APEdit.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(MouseEvent event) {
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        APEdit.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        APEdit.getChildren().setAll(pane);
     }
 
     @FXML

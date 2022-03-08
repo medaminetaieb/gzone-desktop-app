@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="CreatePane" prefHeight="639.0" prefWidth="801.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateHappyHourController">
+<AnchorPane id="AnchorPane" fx:id="CreatePane" prefHeight="639.0" prefWidth="801.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateHappyHourController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -34,7 +34,7 @@
                   <Insets left="20.0" top="-115.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+            <Button mnemonicParsing="false" onAction="#HomePage" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -45,7 +45,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -56,7 +56,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -67,7 +67,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -78,7 +78,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>

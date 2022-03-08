@@ -131,11 +131,13 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void HomePage(ActionEvent event) {
+    private void HomePage(ActionEvent event) throws IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         profile.getChildren().setAll(pane);
     }
@@ -147,12 +149,15 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void Store(ActionEvent event) {
+    private void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(ActionEvent event) {
-
+    private void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
 }

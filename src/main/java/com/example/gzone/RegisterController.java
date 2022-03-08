@@ -23,6 +23,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 
 public class RegisterController {
@@ -64,6 +65,7 @@ public class RegisterController {
     ;
 
     public void initialize() {
+
         birthdatecontrol.setVisible(false);
         control.setVisible(false);
         Games gs = new Games();

@@ -37,8 +37,9 @@ public class ViewStoresController {
 
 
     @FXML
-    void Forum(ActionEvent event) {
-
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        viewstorepane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -55,13 +56,15 @@ public class ViewStoresController {
     }
 
     @FXML
-    void Team(ActionEvent event) {
-
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        viewstorepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(ActionEvent event) {
-
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        viewstorepane.getChildren().setAll(pane);
     }
 
     @FXML

@@ -68,29 +68,36 @@ public class TeamProfileController implements Initializable {
     private String textnamee;
     private String desc;
 
-    @FXML
-    void Forum(MouseEvent event) {
 
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        allanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        allanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
 
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        allanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) throws IOException {
-        returnview.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        allanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(MouseEvent event) throws IOException {
-        returnview.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        allanchor.getChildren().setAll(pane);
     }
 
     public void getnamee(String textname) {
