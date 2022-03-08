@@ -46,26 +46,36 @@ public class UpdateHappyHourController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void HomePage(MouseEvent event) {
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        UpdatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        UpdatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        UpdatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(MouseEvent event) {
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        UpdatePane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        UpdatePane.getChildren().setAll(pane);
     }
 
     @FXML

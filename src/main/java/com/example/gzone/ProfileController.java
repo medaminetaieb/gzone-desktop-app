@@ -148,11 +148,14 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void Store(ActionEvent event) {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML
     private void Forum(ActionEvent event) {
-
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
 }

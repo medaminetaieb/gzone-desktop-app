@@ -19,30 +19,36 @@ public class HomePageController {
     @FXML
     private ListView<Store> topstore;
 
-    @FXML
-    void Forum(ActionEvent event) {
 
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forum.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(ActionEvent event) throws IOException{
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
     void Store(ActionEvent event) throws IOException {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(ActionEvent event) {
-
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(ActionEvent event) {
-
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Tournament.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
 }

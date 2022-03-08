@@ -50,28 +50,37 @@ public class ForumviewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    @FXML
-    private void HomePage(MouseEvent event) {
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        dashforumback.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        dashforumback.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        dashforumback.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(MouseEvent event) {
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        dashforumback.getChildren().setAll(pane);
     }
 
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        dashforumback.getChildren().setAll(pane);
+    }
     @FXML
     private void addpost(ActionEvent event) throws IOException {
         if(!tftitle.getText().isBlank() || (!tfcontent.getText().isBlank())){

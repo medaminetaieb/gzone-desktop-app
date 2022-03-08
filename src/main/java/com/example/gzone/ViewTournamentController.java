@@ -71,31 +71,37 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private Hyperlink report;
 
-    @FXML
-    void Forum(MouseEvent event) {
 
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        apViewTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        apViewTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
 
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        apViewTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) throws IOException {
-        bAddMatches.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        apViewTournament.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(MouseEvent event) throws IOException {
-        bAddMatches.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apViewTournament.getChildren().setAll(pane);
     }
-
     @FXML
     void goToModifyTournament(ActionEvent event) throws IOException {
         if (t.getAdminId().equals(Id.user)) {

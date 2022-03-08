@@ -98,23 +98,33 @@ public class Forumview3Controller implements Initializable {
     }
 
     @FXML
-    private void HomePage(MouseEvent event) {
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        postprofile.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        postprofile.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        postprofile.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Store(MouseEvent event) {
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        postprofile.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(MouseEvent event) {
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        postprofile.getChildren().setAll(pane);
     }
 
     @FXML

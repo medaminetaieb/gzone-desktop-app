@@ -143,7 +143,7 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <VBox layoutY="5.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+      <VBox prefHeight="609.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
          <children>
             <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
                <VBox.margin>

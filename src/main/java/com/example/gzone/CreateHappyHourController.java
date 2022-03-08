@@ -103,25 +103,34 @@ public class CreateHappyHourController implements Initializable {
     }
 
     @FXML
-    private void HomePage(MouseEvent event) {
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        CreatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Team(MouseEvent event) {
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        CreatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Tournament(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        CreatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Store(MouseEvent event) {
+    void Team(ActionEvent event)throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        CreatePane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void Forum(MouseEvent event) {
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        CreatePane.getChildren().setAll(pane);
     }
-
     @FXML
     private void CreateHappyHour(ActionEvent event) {
 

@@ -47,6 +47,37 @@ public class TeamUpdateController implements Initializable {
     private Button returnn;
 
     @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        teamupdateanchor.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        teamupdateanchor.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        teamupdateanchor.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        teamupdateanchor.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        teamupdateanchor.getChildren().setAll(pane);
+    }
+
+    @FXML
     void actionreturn(ActionEvent event) throws IOException {
         FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-view.fxml"));
         AnchorPane pane = loader.load();
