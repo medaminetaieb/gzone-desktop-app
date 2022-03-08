@@ -99,8 +99,7 @@ public class Forumview3Controller implements Initializable {
         txdate.setText(p.getPostDate().toString());
         tfcontent.setText(p.getContent());
         cbresolved.setSelected(p.isResolved());
-        if (p.getPosterId().equals(Id.user)) {
-
+        if (!p.getPosterId().equals(Id.user)) {
             cbresolved.setDisable(true);
         }
 
@@ -140,7 +139,7 @@ public class Forumview3Controller implements Initializable {
 
     @FXML
     private void addcomment(ActionEvent event) {
-        if (!p.isResolved() || !tfcomment.getText().isBlank()) {
+        if (!p.isResolved() && !tfcomment.getText().isBlank()) {
             Comments cm = new Comments();
             Comment c = new Comment(null, Id.post, Id.user, tfcomment.getText(), new Date());
             cm.insert(c);
