@@ -24,7 +24,7 @@ public class HappyHours implements AdvancedService<HappyHour> {
     public Boolean modify(HappyHour happy) {
         try {
             String req = "UPDATE `happy_hours` SET "
-                    + "`badge_id`=?, `start_date`=?, `end_date`=? WHERE `id`=" + happy.getId();
+                    + "`badge_id`=?, `start_date`=?, `end_date`=?, WHERE `id`=" + happy.getId();
             PreparedStatement st = connection.prepareStatement(req);
             int i = 0;
             st.setObject(++i, happy.getBadgeId(), java.sql.Types.INTEGER);
@@ -80,6 +80,7 @@ public class HappyHours implements AdvancedService<HappyHour> {
                         rs.getObject("badge_id", Integer.class),
                         rs.getDate("start_date"),
                         rs.getDate("end_date")
+                        
                 ));
             }
         } catch (SQLException ex) {

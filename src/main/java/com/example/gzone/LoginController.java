@@ -3,13 +3,10 @@ package com.example.gzone;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.service.Users;
-import com.example.util.CryptWithMD5;
-import static com.example.util.CryptWithMD5.cryptWithMD5;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -60,6 +57,7 @@ public class LoginController {
             if (u.getRole().equals(Role.admin)) {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                 signinpane.getChildren().setAll(panee);
+                
             } else {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                 signinpane.getChildren().setAll(panee);
