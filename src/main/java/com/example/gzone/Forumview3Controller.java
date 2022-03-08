@@ -92,8 +92,8 @@ public class Forumview3Controller implements Initializable {
 
         refresh(null);
 
-        btnlike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`" + Id.user + " `like`=true").isEmpty()) ? "Like" : "UnLike");
-        btnDislike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`" + Id.user + " `like`=false").isEmpty()) ? "Dislike" : "UnDislike");
+        btnlike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").isEmpty()) ? "Like" : "UnLike");
+        btnDislike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").isEmpty()) ? "Dislike" : "UnDislike");
         refreshCounts();
     }
 
@@ -213,7 +213,7 @@ public class Forumview3Controller implements Initializable {
     }
 
     private void refreshCounts() {
-        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").size());
-        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").size());
+        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
+        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
     }
 }
