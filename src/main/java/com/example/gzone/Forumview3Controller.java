@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
@@ -31,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -73,6 +75,8 @@ public class Forumview3Controller implements Initializable {
     private Text likeCount;
     @FXML
     private Text dislikeCount;
+    @FXML
+    private Button report;
 
     /**
      * Initializes the controller class.
@@ -215,5 +219,16 @@ public class Forumview3Controller implements Initializable {
     private void refreshCounts() {
         likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
         dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
+    }
+
+    @FXML
+    private void report(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report Post");
+        newWindow.setScene(scene);
+        newWindow.show();
+        
     }
 }

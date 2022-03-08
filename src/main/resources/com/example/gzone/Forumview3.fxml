@@ -132,12 +132,17 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnDislike" layoutX="523.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleDisLike" style="-fx-background-color: E23F3F;" text="DisLike" textFill="WHITE">
+      <Button fx:id="btnDislike" layoutX="523.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleDisLike" style="-fx-background-color: FF00DD;" text="DisLike" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Text fx:id="likeCount" layoutX="369.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="likes" />
       <Text fx:id="dislikeCount" layoutX="535.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dislikes" />
+      <Button fx:id="report" layoutX="713.0" layoutY="37.0" mnemonicParsing="false" onAction="#report" prefHeight="21.0" prefWidth="82.0" style="-fx-background-color: FF0000;" text="Report " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
