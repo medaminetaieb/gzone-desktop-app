@@ -22,9 +22,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="teamviewanchor" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamViewController">
-   <stylesheets>
-      <URL value="@homepage.css" />
-   </stylesheets>
+
    <children>
       <TabPane layoutX="164.0" prefHeight="604.0" prefWidth="665.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>

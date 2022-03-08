@@ -73,13 +73,15 @@ public class Forumview3Controller implements Initializable {
     private Text likeCount;
     @FXML
     private Text dislikeCount;
+    @FXML
+    private Button report;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+       
         p = new Posts().findById(Id.post);
         txtitle.setText(p.getTitle());
         txdate.setText(p.getPostDate().toString());
@@ -116,7 +118,7 @@ public class Forumview3Controller implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         postprofile.getChildren().setAll(pane);
     }
@@ -223,7 +225,11 @@ public class Forumview3Controller implements Initializable {
     }
 
     private void refreshCounts() {
-        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
-        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
+        likeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
+        dislikeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
+    }
+
+    @FXML
+    private void report(ActionEvent event) {
     }
 }

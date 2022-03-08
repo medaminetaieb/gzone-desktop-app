@@ -139,5 +139,10 @@
             </Button>
          </children>
       </VBox>
+      <Button fx:id="report" layoutX="400.0" layoutY="564.0" mnemonicParsing="false" onAction="#report" style="-fx-background-color: E23F3F;" text="Report post" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

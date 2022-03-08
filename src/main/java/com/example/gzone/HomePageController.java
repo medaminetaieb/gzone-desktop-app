@@ -22,7 +22,7 @@ public class HomePageController {
 
     @FXML
     void Forum(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forum.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 
@@ -41,13 +41,13 @@ public class HomePageController {
 
     @FXML
     void Team(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Team.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
     void Tournament(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Tournament.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 
