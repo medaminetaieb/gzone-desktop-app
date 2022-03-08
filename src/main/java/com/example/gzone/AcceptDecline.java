@@ -75,9 +75,8 @@ public class AcceptDecline implements Initializable {
                 .collect(Collectors.toList());
 
         List<Tournament> ltournaments = tournaments.findAll("`admin_id`=" + Id.user);
-        List<JoinRequest> ljrRequests = jrs.findAll("`accepted` IS NULL AND `invitation`=false").stream()
-                .filter(jr -> )
-                .collect(Collectors.toList());
+        //List<JoinRequest> ljrRequests = jrs.findAll("`accepted` IS NULL AND `invitation`=false").stream().filter(jr -> )
+               // .collect(Collectors.toList());
         List<JoinRequest> ljr = jrs.findAll("`accepted` IS NULL").stream()
                 .filter(joinRequest -> joinRequest.getUserId() != Id.user && lteam.indexOf(joinRequest.getTeamId()) == -1 && ltournaments.indexOf(joinRequest.getTournamentId()) == -1
                 ).peek(System.out::println).collect(Collectors.toList());
