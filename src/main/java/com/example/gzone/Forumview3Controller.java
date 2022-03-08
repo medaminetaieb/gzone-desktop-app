@@ -53,7 +53,7 @@ public class Forumview3Controller implements Initializable {
     private ListView<Comment> tbview;
 
     @FXML
-    private Text txtitle;
+    private Text txtitle;   
     @FXML
     private TextField tfcomment;
     @FXML
@@ -231,4 +231,10 @@ public class Forumview3Controller implements Initializable {
         newWindow.show();
         
     }
+    void Forum(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+                postprofile.getChildren().setAll(pane);
+        }
+
+        
 }
