@@ -6,6 +6,7 @@ package com.example.service;
 
 import com.example.entity.Store;
 import com.example.util.MySQLValidator;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Firas
  */
 public class Stores implements Service<Store> {
@@ -29,9 +29,9 @@ public class Stores implements Service<Store> {
                     + ")";
             PreparedStatement pst = connection.prepareStatement(req);
             Integer i = 0;
-            pst.setObject(++i, s.getId(),java.sql.Types.INTEGER);
-            pst.setObject(++i, s.getOwnerId(),java.sql.Types.INTEGER);
-            pst.setObject(++i, s.getGameId(),java.sql.Types.INTEGER);
+            pst.setObject(++i, s.getId(), java.sql.Types.INTEGER);
+            pst.setObject(++i, s.getOwnerId(), java.sql.Types.INTEGER);
+            pst.setObject(++i, s.getGameId(), java.sql.Types.INTEGER);
             pst.setString(++i, s.getName());
 
             return pst.executeUpdate() > 0;
@@ -59,7 +59,7 @@ public class Stores implements Service<Store> {
                         rs.getObject("owner_id", Integer.class),
                         rs.getObject("game_id", Integer.class),
                         rs.getString("name")
-                       
+
                 ));
             }
         } catch (SQLException e) {
@@ -71,6 +71,13 @@ public class Stores implements Service<Store> {
 
     public List<Store> findAllByOwnerId(Integer ownerId) {
         return find(null, null, "`owner_id`=" + ownerId, null);
+    }
+
+    public Store findByName(String storeName) {
+        List<Store> l = find(null, null, "`name` REGEXP '" +storeName+"'", null);
+
+        return (!l.isEmpty()) ? l.get(0) : null;
+
     }
 
     public Boolean deleteAllByOwnerId(Integer ownerId) {

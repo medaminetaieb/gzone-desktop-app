@@ -84,8 +84,6 @@ public class MarketItem {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("MarketItem{");
-        sb.append("id=").append(id);
-        sb.append(", storeId=").append(storeId);
         sb.append(", title=").append(title);
         sb.append(", description=").append(description);
         sb.append(", sold=").append(sold);

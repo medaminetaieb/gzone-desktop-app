@@ -118,7 +118,7 @@ CREATE TABLE `stores` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `owner_id` int NOT NULL,
   `game_id` int,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE `store_reports` (

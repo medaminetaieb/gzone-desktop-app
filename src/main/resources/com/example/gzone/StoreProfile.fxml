@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="profilepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.StoreProfileController">
+    <stylesheets>
+        <URL value="@homepage.css" />
+    </stylesheets>
+    <children>
+        <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
+            <children>
+                <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+                    <VBox.margin>
+                        <Insets left="15.0" top="40.0" />
+                    </VBox.margin>
+                </Circle>
+                <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/logo-gzone.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets left="20.0" top="-115.0" />
+                    </VBox.margin>
+                </ImageView>
+                <Button mnemonicParsing="false" onAction="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+      <Button fx:id="addbutton" layoutX="447.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddToStore" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86d300;" text="Add Your Item" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="deletebutton" layoutX="557.0" layoutY="556.0" mnemonicParsing="false" onAction="#DeleteYourItem" prefHeight="37.0" prefWidth="120.0" text="Delete Your Item" />
+      <Button fx:id="viewbutton" layoutX="676.0" layoutY="204.0" mnemonicParsing="false" onAction="#ViewItem" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #86d300;" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="deletestorebutton" layoutX="204.0" layoutY="161.0" mnemonicParsing="false" onAction="#DeleteYourStore" prefHeight="31.0" prefWidth="120.0" text="Delete Store " />
+      <ImageView fitHeight="88.0" fitWidth="87.0" layoutX="687.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/profile-pic.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="storenametext" layoutX="190.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store name :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="usernametext" layoutX="684.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="87.0" fitWidth="104.0" layoutX="194.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/store-logo.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="tbview" layoutX="217.0" layoutY="269.0" prefHeight="250.0" prefWidth="514.0" />
+      <Button fx:id="btnlike" layoutX="251.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="25.0" prefWidth="61.0" text="Like" />
+      <Button fx:id="btndislike" layoutX="370.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleDislike" prefHeight="25.0" prefWidth="61.0" text="Dislike" />
+      <Text fx:id="likeCount" layoutX="270.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="dislikeCount" layoutX="389.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+    </children>
+</AnchorPane>
