@@ -101,11 +101,7 @@ public class Forumview3Controller implements Initializable {
         refreshCounts();
     }
 
-    @FXML
-    void Forum(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
-        postprofile.getChildren().setAll(pane);
-    }
+   
 
     @FXML
     void HomePage(ActionEvent event) throws IOException {
@@ -231,9 +227,7 @@ public class Forumview3Controller implements Initializable {
         dislikeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
     }
 
-    @FXML
-    private void report(ActionEvent event) {
-    }
+  
 
     @FXML
     private void report(ActionEvent event) throws IOException {
