@@ -17,5 +17,6 @@ public class Id {
     protected static Integer post;
     protected static Integer comment;
     protected static Integer temp;
+    protected static Integer store;
 
 }

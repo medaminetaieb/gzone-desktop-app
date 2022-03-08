@@ -52,6 +52,8 @@ public class StoreProfileController {
 
         @FXML
         private Button btnlike;
+        @FXML
+        private Button report;
 
         @FXML
         void AddToStore(ActionEvent event) throws IOException {
@@ -80,8 +82,9 @@ public class StoreProfileController {
         }
 
         @FXML
-        void Forum(ActionEvent event) {
-
+        void Forum(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+                profilepane.getChildren().setAll(pane);
         }
 
         @FXML
@@ -97,13 +100,15 @@ public class StoreProfileController {
         }
 
         @FXML
-        void Team(ActionEvent event) {
-
+        void Team(ActionEvent event)throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+                profilepane.getChildren().setAll(pane);
         }
 
         @FXML
-        void Tournament(ActionEvent event) {
-
+        void Tournament(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+                profilepane.getChildren().setAll(pane);
         }
 
         @FXML
@@ -181,6 +186,18 @@ public class StoreProfileController {
         private void refreshCounts() {
                 likeCount.setText("" + new UserLikesDislikes().findAll("store_id=" + Id.store + " and `like`=true").size());
                 dislikeCount.setText("" + new UserLikesDislikes().findAll("store_id=" + Id.store + " and `like`=false").size());
+        }
+        @FXML
+        void report (ActionEvent event)throws IOException{
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage newWindow = new Stage();
+                newWindow.setTitle("Report User");
+                newWindow.setScene(scene);
+                newWindow.show();
+                
+
+
         }
 
 
