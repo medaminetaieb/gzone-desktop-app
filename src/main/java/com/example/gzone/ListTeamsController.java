@@ -30,8 +30,8 @@ public class ListTeamsController implements Initializable {
 
     @FXML
     void choose(MouseEvent event) {
-       Teams teams = new Teams();
-        List<Team> lteam = teams.findAll("`admin_id`!="+Id.user+" And `invitable`=1 And `game_id`="+lvtournament.getSelectionModel().getSelectedItem().getGameId()+" And `team_size`="+lvtournament.getSelectionModel().getSelectedItem().getTeamSize());
+        Teams teams = new Teams();
+        List<Team> lteam = teams.findAll("`admin_id`!=" + Id.user + " And `invitable`=1 And `game_id`=" + lvtournament.getSelectionModel().getSelectedItem().getGameId() + " And `team_size`=" + lvtournament.getSelectionModel().getSelectedItem().getTeamSize());
         lvteams.getItems().clear();
         lvteams.getItems().addAll(lteam);
 
@@ -42,28 +42,22 @@ public class ListTeamsController implements Initializable {
     @FXML
     void invitetournament(ActionEvent event) {
         Id.temp = lvteams.getSelectionModel().getSelectedItem().getId();
-        Id.tournament=lvtournament.getSelectionModel().getSelectedItem().getId();
+        Id.tournament = lvtournament.getSelectionModel().getSelectedItem().getId();
     }
-
-
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-       Tournaments tournaments = new Tournaments();
+        Tournaments tournaments = new Tournaments();
 
 
-
-
-       List<Tournament> ltournament = tournaments.findAll("`admin_id`="+Id.user);
+        List<Tournament> ltournament = tournaments.findAll("`admin_id`=" + Id.user);
 
         List<Tournament> result = ltournament.stream().filter(
                 tournament -> tournament.getRequiredTeams() > new JoinRequests().findAll(String.format("`tournament_id`=%d AND `accepted`=true", tournament.getId())).size()
         ).collect(Collectors.toList());
         lvtournament.getItems().addAll(ltournament);
-
 
 
         bInvite.disableProperty()
