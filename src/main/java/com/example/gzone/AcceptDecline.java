@@ -3,13 +3,16 @@ package com.example.gzone;
 import com.example.entity.JoinRequest;
 import com.example.entity.Team;
 import com.example.entity.Tournament;
+import com.example.entity.User;
 import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
@@ -17,6 +20,7 @@ import java.net.URL;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -58,11 +62,33 @@ public class AcceptDecline implements Initializable {
 
     @FXML
     void actionaccept(ActionEvent event) {
+        JoinRequest joinRequest = listinvitation.getSelectionModel().getSelectedItem();
+        JoinRequests joinRequests = new JoinRequests();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Accept confirmation Alert");
+        alert.setContentText("Do you really want to accept this ?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            joinRequests.respondToJoinRequestById(joinRequest.getId(),true);
+
+
+        }
 
     }
 
     @FXML
     void actiondeccline(ActionEvent event) {
+        JoinRequest joinRequest = listinvitation.getSelectionModel().getSelectedItem();
+        JoinRequests joinRequests = new JoinRequests();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Decline confirmation Alert");
+        alert.setContentText("Do you really want to decline this ?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            joinRequests.respondToJoinRequestById(joinRequest.getId(),false);
+
+
+            }
 
     }
 
