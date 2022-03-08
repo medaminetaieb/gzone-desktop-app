@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class ViewTournamentController implements Initializable {
 
@@ -66,6 +68,8 @@ public class ViewTournamentController implements Initializable {
     private Text tRequestable;
     @FXML
     private MenuButton mbSelectTeam;
+    @FXML
+    private Hyperlink report;
 
     @FXML
     void Forum(MouseEvent event) {
@@ -225,4 +229,16 @@ public class ViewTournamentController implements Initializable {
         lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam1Id()));
         lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam2Id()));
     }
+
+    @FXML
+    private void ReportTournament(ActionEvent event) throws IOException {
+        Id.type = 0;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report Tournament");
+        newWindow.setScene(scene);
+        newWindow.show();
+    }
+    
 }

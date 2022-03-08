@@ -23,7 +23,7 @@ public class TournamentReports implements Service<TournamentReport> {
     public Boolean insert(TournamentReport tr) {
         try {
             String req = "INSERT INTO `tournament_reports` ("
-                    + "`id, `tournament_id`, `report_id`"
+                    + "`id`, `tournament_id`, `report_id`"
                     + ") VALUES ("
                     + "? , ?, ?"
                     + ")";
