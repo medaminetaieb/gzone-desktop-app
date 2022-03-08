@@ -12,7 +12,6 @@ import com.example.service.Games;
 import com.example.service.HappyHours;
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -31,7 +30,6 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javax.swing.text.html.HTMLEditorKit;
 
 /**
  * FXML Controller class
@@ -53,18 +51,19 @@ public class CreateHappyHourController implements Initializable {
     private Button btnCreate;
     @FXML
     private Button btCancel;
-    private SplitMenuButton spMBadge;
-    @FXML
-    private TextField tfBadge;
     @FXML
     private AnchorPane CreatePane;
+    @FXML
+    private SplitMenuButton smbBadge;
+    @FXML
+    private TextField TfBadge;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         List<Game> gamelist = new Games().findAll();
+        List<Game> gamelist = new Games().findAll();
         MenuItem smbgmi = new MenuItem("No Game");
         smbGame.getItems().add(smbgmi);
         smbgmi.setOnAction(e -> {
@@ -79,10 +78,29 @@ public class CreateHappyHourController implements Initializable {
             });
             smbGame.getItems().add(mi);
         }
-                
-        
-        
-    }    
+
+        MenuItem smbB = new MenuItem("New Badge");
+        smbB.setOnAction(e -> {
+            Id.badge = null;
+            smbBadge.setText("New Badge");
+            TfBadge.setEditable(true);
+
+        });
+        smbBadge.getItems().add(smbB);
+
+        for (Badge b : new Badges().findAll()) {
+            MenuItem mi1 = new MenuItem(b.getTitle());
+            mi1.setOnAction(e -> {
+                Id.badge = b.getId();
+                smbBadge.setText(b.getTitle());
+                TfBadge.setEditable(false);
+                TfBadge.setText(b.getTitle());
+            });
+
+            smbBadge.getItems().add(mi1);
+        }
+
+    }
 
     @FXML
     private void HomePage(MouseEvent event) {
@@ -105,31 +123,36 @@ public class CreateHappyHourController implements Initializable {
     }
 
     @FXML
-    private void createHappyHour(ActionEvent event) {
-        Badges badges = new Badges();
-        HappyHours happyHours = new HappyHours();
-        LocalDate ld = dpStartDate.getValue();
-        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd = new Date(Date.from(instant).getTime());
-        LocalDate ld1 = dpEndDate.getValue();
-        Instant instant1 = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date crd1 = new Date(Date.from(instant).getTime());
+    private void CreateHappyHour(ActionEvent event) {
+
         Alert a = new Alert(Alert.AlertType.NONE);
-        if (ld.isBefore(ld1) == true
-                && dpStartDate.getValue() != null
-                && dpEndDate.getValue() != null
-                && !tfBadge.getText().isBlank()) {
-            badges.insert(new Badge(null, gameId, tfBadge.getText()));
-            happyHours.insert(new HappyHour(null, badges.findAll("`title` REGEXP '" + tfBadge.getText() + "'").get(0).getId(), crd, crd1));
-            a.setAlertType(Alert.AlertType.INFORMATION);
-            a.setTitle("success");
-            a.setHeaderText("Success");
-            a.setContentText("HappyHour is added successefully");
-            a.show();
+
+        if (dpStartDate.getValue() != null && dpEndDate.getValue() != null) {
+            Date crd = new Date(java.sql.Date.valueOf(dpStartDate.getValue()).getTime());
+            Date crd1 = new Date(java.sql.Date.valueOf(dpEndDate.getValue()).getTime());
+            if (crd.before(crd1)) {
+                if (badgeId == null) {
+                    new Badges().insert(new Badge(null, gameId, TfBadge.getText()));
+                    new HappyHours().insert(new HappyHour(null, new Badges().findAll("`title` REGEXP '" + TfBadge.getText() + "'").get(0).getId(), crd, crd1));
+                } else {
+                    new HappyHours().insert(new HappyHour(null, badgeId, crd, crd1));
+                }
+                a.setAlertType(Alert.AlertType.INFORMATION);
+                a.setTitle("success");
+                a.setHeaderText("Success");
+                a.setContentText("HappyHour is added successefully");
+                a.show();
+            } else {
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setTitle("failed");
+                a.setHeaderText("failed");
+                a.setContentText("start date must be less than end date");
+                a.show();
+            }
         } else {
             a.setAlertType(Alert.AlertType.ERROR);
-            a.setTitle("faild");
-            a.setHeaderText("faild");
+            a.setTitle("failed");
+            a.setHeaderText("failed");
             a.setContentText("please check the form");
             a.show();
         }
@@ -137,7 +160,8 @@ public class CreateHappyHourController implements Initializable {
 
     @FXML
     private void CancelHappyHour(ActionEvent event) throws IOException {
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
         CreatePane.getChildren().setAll(pane);
     }
+
 }

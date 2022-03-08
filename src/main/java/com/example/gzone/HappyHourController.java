@@ -10,6 +10,7 @@ import com.example.service.Games;
 import com.example.service.HappyHours;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,14 +35,6 @@ import javafx.scene.layout.AnchorPane;
 public class HappyHourController implements Initializable {
 
     @FXML
-    private TableView tbview;
-    @FXML
-    private TableColumn<HappyHour, String> clStartDate;
-    @FXML
-    private TableColumn<HappyHour, String> clEndDate;
-    @FXML
-    private TableColumn<HappyHour, String> clBadge;
-    @FXML
     private Button btnEdit;
     @FXML
     private Button btnAdd;
@@ -52,23 +46,15 @@ public class HappyHourController implements Initializable {
     private AnchorPane HPane;
     @FXML
     private Button btnDelete;
+    @FXML
+    private ListView<HappyHour> HappyHourList;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        HappyHours happyHours = new HappyHours();
-        clStartDate.setCellValueFactory(new PropertyValueFactory<>("startdate"));
-        tbview.getColumns().add(clStartDate);
-        clEndDate.setCellValueFactory(new PropertyValueFactory<>("enddate"));
-        tbview.getColumns().add(clEndDate);
-        clBadge.setCellValueFactory(new PropertyValueFactory<>("badge"));
-        tbview.getColumns().add(clBadge);
-        for (HappyHour h : happyHours.findAll()) {
-            tbview.getItems().add(h);
-        }
-        tbview.refresh();
+        find(null);
     }
 
     @FXML
@@ -93,13 +79,13 @@ public class HappyHourController implements Initializable {
 
     @FXML
     private void find(ActionEvent event) {
-        tbview.getItems().clear();
         HappyHours h = new HappyHours();
-        List<HappyHour> happyHourList = h.findAll("name REGEXP '" + tfSearch.getText() + "'");
+        HappyHourList.getItems().clear();
+        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " BETWEEN `start_date` AND `end_date`" );
         for (HappyHour h1 : happyHourList) {
-            tbview.getItems().add(h1);
+            HappyHourList.getItems().add(h1);
         }
-        tbview.refresh();
+        HappyHourList.refresh();
     }
 
     @FXML
@@ -116,7 +102,7 @@ public class HappyHourController implements Initializable {
 
     @FXML
     private void DeleteHappyHour(ActionEvent event) {
-        int id = ((HappyHour) tbview.getSelectionModel().getSelectedItem()).getId();
+        int id = ((HappyHour) HappyHourList.getSelectionModel().getSelectedItem()).getId();
         new HappyHours().deleteById(id);
         find(event);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -124,12 +110,7 @@ public class HappyHourController implements Initializable {
         alert.setHeaderText("Success");
         alert.setContentText("HappyHour is delete successefully");
         alert.show();
-        tbview.refresh();
+        HappyHourList.refresh();
     }
 
-
-
- 
-
-   
 }

@@ -91,7 +91,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="245.0" layoutY="92.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
+      <VBox layoutX="296.0" layoutY="124.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
          <children>
             <Label text="Name">
                <font>
@@ -110,26 +110,26 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="400.0" layoutY="92.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
+      <VBox layoutX="451.0" layoutY="124.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
          <children>
-            <TextField fx:id="tfName" text="PRO" />
+            <TextField fx:id="tfName" />
             <TextField fx:id="tfPhotoUrl" />
-            <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" text="Game5" />
+            <TextArea fx:id="tfDescription" prefHeight="165.0" prefWidth="227.0" />
          </children>
          <effect>
             <BoxBlur height="0.0" iterations="0" width="0.0" />
          </effect>
       </VBox>
-      <Button fx:id="btnAdd" layoutX="579.0" layoutY="458.0" mnemonicParsing="false" onAction="#Add" prefHeight="30.0" prefWidth="79.0" text="Add">
+      <Button fx:id="btnAdd" layoutX="566.0" layoutY="489.0" mnemonicParsing="false" onAction="#Add" prefHeight="30.0" prefWidth="79.0" styleClass="add-button" stylesheets="@fxml.css" text="Add" textFill="#336861">
          <font>
-            <Font name="Cambria" size="15.0" />
+            <Font name="Roboto Black" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnCancel" layoutX="385.0" layoutY="458.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="31.0" prefWidth="79.0" text="Cancel">
+      <Button fx:id="btnCancel" layoutX="353.0" layoutY="488.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="31.0" prefWidth="79.0" styleClass="cancel-button" stylesheets="@fxml.css" text="Cancel" textFill="#336861">
          <font>
-            <Font name="Cambria" size="15.0" />
+            <Font name="Roboto Black" size="15.0" />
          </font></Button>
-      <Label layoutX="407.0" layoutY="32.0" text="Create a New Game">
+      <Label layoutX="410.0" layoutY="50.0" text="Create a New Game">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>

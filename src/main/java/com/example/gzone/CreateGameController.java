@@ -72,9 +72,10 @@ public class CreateGameController implements Initializable {
     private void Add(ActionEvent event) {
         Games GS = new Games();
         Alert alert = new Alert(Alert.AlertType.NONE);
-        if (!tfName.getText().isBlank()
-               // && PhotoUrlCheck.testImage(tfPhotoUrl.getText())
-                && !tfDescription.getText().isBlank()) {
+        if (
+             !tfName.getText().isBlank()
+             && PhotoUrlCheck.testImage(tfPhotoUrl.getText())
+             && !tfDescription.getText().isBlank()) {
             GS.insert(new Game(null, tfName.getText(), tfPhotoUrl.getText(), tfDescription.getText()));
             alert.setAlertType(Alert.AlertType.INFORMATION);
             alert.setTitle("success");
@@ -94,7 +95,8 @@ public class CreateGameController implements Initializable {
     @FXML
     private void Cancel(ActionEvent event) throws IOException {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
-            APCreate.getChildren().setAll(pane);
+            //APCreate.getChildren().setAll(pane);
+               btnCancel.getScene().setRoot(pane);
 
         }
     }

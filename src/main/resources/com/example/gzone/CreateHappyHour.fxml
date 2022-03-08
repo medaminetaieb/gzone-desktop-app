@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -92,25 +91,57 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="356.0" layoutY="62.0" text="Create Happy Hour">
+      <Label layoutX="387.0" layoutY="62.0" text="Create Happy Hour">
          <font>
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="245.0" layoutY="153.0" text="Start Date" />
-      <Label layoutX="245.0" layoutY="227.0" text="End Date" />
-      <Label layoutX="245.0" layoutY="302.0" text="Badge" />
-      <Label layoutX="245.0" layoutY="390.0" text="Game" />
-      <DatePicker fx:id="dpStartDate" layoutX="356.0" layoutY="148.0" />
-      <DatePicker fx:id="dpEndDate" layoutX="356.0" layoutY="222.0" />
-      <SplitMenuButton fx:id="smbGame" layoutX="356.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game">
+      <Label layoutX="301.0" layoutY="157.0" text="Start Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="228.0" text="End Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="393.0" text="Badge" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="321.0" text="Game" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <DatePicker fx:id="dpStartDate" layoutX="412.0" layoutY="149.0" />
+      <DatePicker fx:id="dpEndDate" layoutX="412.0" layoutY="223.0" />
+      <SplitMenuButton fx:id="smbGame" layoutX="412.0" layoutY="316.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game" textFill="#336861">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          
         </items>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
       </SplitMenuButton>
-      <Button fx:id="btnCreate" layoutX="324.0" layoutY="499.0" mnemonicParsing="false" onAction="#createHappyHour" text="Create" />
-      <Button fx:id="btCancel" layoutX="542.0" layoutY="499.0" mnemonicParsing="false" onAction="#CancelHappyHour" text="Cancel" />
-      <TextField fx:id="tfBadge" layoutX="356.0" layoutY="308.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button fx:id="btnCreate" layoutX="370.0" layoutY="550.0" mnemonicParsing="false" onAction="#CreateHappyHour" styleClass="add-button" stylesheets="@fxml.css" text="Create" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
+      <Button fx:id="btCancel" layoutX="583.0" layoutY="550.0" mnemonicParsing="false" onAction="#CancelHappyHour" styleClass="cancel-button" stylesheets="@fxml.css" text="Cancel" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
+      <SplitMenuButton fx:id="smbBadge" layoutX="412.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Badge" textFill="#336861">
+        <items>
+          
+        </items>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </SplitMenuButton>
+      <Label layoutX="239.0" layoutY="484.0" text="Create Your Badge" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="TfBadge" layoutX="410.0" layoutY="479.0" prefHeight="31.0" prefWidth="226.0" />
    </children>
 </AnchorPane>

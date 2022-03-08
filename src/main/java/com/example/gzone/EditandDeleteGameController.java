@@ -6,6 +6,7 @@ package com.example.gzone;
 
 import com.example.entity.Game;
 import com.example.service.Games;
+import com.example.util.TournamentStat;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -21,6 +22,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -29,7 +31,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class EditandDeleteGameController implements Initializable {
     private Integer gameId;
-
+    private Game g;
     @FXML
     private TextField tfNameUpdate;
     @FXML
@@ -42,6 +44,8 @@ public class EditandDeleteGameController implements Initializable {
     private Button btnCancel;
     @FXML
     private AnchorPane APEdit;
+    @FXML
+    private Text Tourid;
   
 
     /**
@@ -49,8 +53,13 @@ public class EditandDeleteGameController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        Games games = new Games();
+        g = games.findById(Id.game);
+        tfNameUpdate.setText(g.getName());
+        tfDescriptionUpdate.setText(g.getDescription());
+        tfPhotoUrlUpdate.setText(g.getPhotoUrl());
+        Tourid.setText("" + TournamentStat.CountTournaments(Id.game));
+    }   
 
     @FXML
     private void HomePage(MouseEvent event) {
@@ -74,8 +83,7 @@ public class EditandDeleteGameController implements Initializable {
 
     @FXML
     private void modify(ActionEvent event) {
-     
-        Game g = new Games().findById(gameId);
+        Game g = new Games().findById(Id.game);
         g.setName(tfNameUpdate.getText());
         g.setDescription(tfDescriptionUpdate.getText());
         g.setPhotoUrl(tfPhotoUrlUpdate.getText());
@@ -86,8 +94,6 @@ public class EditandDeleteGameController implements Initializable {
         alert.setHeaderText("Success");
         alert.setContentText("Game is update successefully");
         alert.show();
-     
-
     }
     
    
@@ -114,6 +120,8 @@ public class EditandDeleteGameController implements Initializable {
     @FXML
     private void Cancel(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
-        APEdit.getChildren().setAll(pane);
+        //APEdit.getChildren().setAll(pane);
+        btnCancel.getScene().setRoot(pane);
+
     }
 }
