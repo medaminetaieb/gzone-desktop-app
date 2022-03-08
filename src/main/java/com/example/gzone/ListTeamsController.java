@@ -7,11 +7,13 @@ import com.example.service.Teams;
 import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,9 +42,10 @@ public class ListTeamsController implements Initializable {
     }
 
     @FXML
-    void invitetournament(ActionEvent event) {
+    void invitetournament(ActionEvent event) throws IOException {
         Id.temp = lvteams.getSelectionModel().getSelectedItem().getId();
         Id.tournament = lvtournament.getSelectionModel().getSelectedItem().getId();
+        bInvite.getScene().setRoot(FXMLLoader.load(getClass().getResource("JoinRequest-inviteTeam.fxml")));
     }
 
 
