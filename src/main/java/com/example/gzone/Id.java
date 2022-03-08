@@ -12,6 +12,11 @@ public class Id {
     protected static Integer user;
     protected static Integer usergamepreferences;
     protected static Integer game;
+    protected static Integer report;
+    protected static Integer tournamentReport;
+    protected static Integer postReport;
+    protected static Integer storeReport;
+    
     
     
 }
