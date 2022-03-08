@@ -81,12 +81,15 @@ public class HappyHourController implements Initializable {
     private void find(ActionEvent event) {
         HappyHours h = new HappyHours();
         HappyHourList.getItems().clear();
-        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " BETWEEN `start_date` AND `end_date`" );
-        for (HappyHour h1 : happyHourList) {
+        List<HappyHour> list = h.findAll();
+        for (HappyHour h1 : list) {
             HappyHourList.getItems().add(h1);
         }
         HappyHourList.refresh();
     }
+    
+    
+
 
     @FXML
     private void EditHappyHour(ActionEvent event) throws IOException {
