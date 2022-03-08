@@ -14,7 +14,12 @@ import com.example.entity.UserLikesDislike;
 import com.example.service.Comments;
 import com.example.service.Posts;
 import com.example.service.UserLikesDislikes;
+import com.google.protobuf.ByteString;
+import static java.awt.SystemColor.text;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
@@ -31,6 +36,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import java.util.Locale;
+import javax.speech.AudioException;
+import javax.speech.Central;
+import javax.speech.EngineException;
+import javax.speech.synthesis.Synthesizer;
+import javax.speech.synthesis.SynthesizerModeDesc;
 
 /**
  * FXML Controller class
@@ -73,6 +85,8 @@ public class Forumview3Controller implements Initializable {
     private Text likeCount;
     @FXML
     private Text dislikeCount;
+    @FXML
+    private Button btnlisten;
 
     /**
      * Initializes the controller class.
@@ -213,7 +227,48 @@ public class Forumview3Controller implements Initializable {
     }
 
     private void refreshCounts() {
-        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
-        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
+        likeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
+        dislikeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
     }
+
+    @FXML
+    public void listen(ActionEvent event) {
+
+        try {
+            // Set property as Kevin Dictionary
+            System.setProperty(
+                    "freetts.voices",
+                    "com.sun.speech.freetts.en.us"
+                    + ".cmu_us_kal.KevinVoiceDirectory");
+
+            // Register Engine
+            Central.registerEngineCentral(
+                    "com.sun.speech.freetts"
+                    + ".jsapi.FreeTTSEngineCentral");
+
+            // Create a Synthesizer
+            Synthesizer synthesizer
+                    = Central.createSynthesizer(
+                            new SynthesizerModeDesc(Locale.US));
+
+            // Allocate synthesizer
+            synthesizer.allocate();
+
+            // Resume Synthesizer
+            synthesizer.resume();
+
+            // Speaks the given text
+            // until the queue is empty.
+            synthesizer.speakPlainText(
+                    tfcontent.getText(), null);
+            synthesizer.waitEngineState(
+                    Synthesizer.QUEUE_EMPTY);
+
+            // Deallocate the Synthesizer.
+            synthesizer.deallocate();
+        } catch (IllegalArgumentException | InterruptedException | AudioException | EngineException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

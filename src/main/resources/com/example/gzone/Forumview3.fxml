@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="postprofile" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
+<AnchorPane id="AnchorPane" fx:id="postprofile" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
@@ -139,5 +139,6 @@
             </Button>
          </children>
       </VBox>
+      <Button fx:id="btnlisten" layoutX="749.0" layoutY="209.0" mnemonicParsing="false" onAction="#listen" prefHeight="31.0" prefWidth="48.0" style="-fx-background-color: FFF200;" text="♫" />
    </children>
 </AnchorPane>
