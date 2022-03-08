@@ -9,10 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -36,8 +33,16 @@ public class StoreForm {
 
     @FXML
     void validate(ActionEvent event) throws IOException {
-        if((!storename.getText().isBlank()) && new Stores().insert(new Store(null, Id.user, gameId, storename.getText())))
+        if ((storename.getText().isBlank())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("the text is blank");
+            alert.showAndWait();
+        }
+
+        else
         {
+            new Stores().insert(new Store(null, Id.user, gameId, storename.getText()));
+
             Id.store = new Stores().findByName(storename.getText()).getId();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             rootPane.getChildren().setAll(pane);

@@ -5,6 +5,7 @@ import com.example.service.MarketItems;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -29,7 +30,12 @@ public class AddItemForm {
 
     @FXML
     void AddItem(ActionEvent event) throws IOException {
-        if (!title.getText().equals("")) {
+        if (((title.getText().isBlank())) ||(description.getText().isBlank())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("this text is blank");
+            alert.showAndWait();
+        }
+        else{
             new MarketItems().insert(new MarketItem(null, Id.store, title.getText(), description.getText(), false, new Date()));
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));

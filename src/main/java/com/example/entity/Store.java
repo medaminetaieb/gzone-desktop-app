@@ -60,8 +60,6 @@ public class Store {
         StringBuilder sb = new StringBuilder();
         sb.append("Store{");
         sb.append("id=").append(id);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", gameId=").append(gameId);
         sb.append(", name=").append(name);
         
         
