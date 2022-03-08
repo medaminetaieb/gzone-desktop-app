@@ -7,7 +7,6 @@ import com.example.entity.UserGamePreference;
 import com.example.service.Games;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
-import static com.example.util.CryptWithMD5.cryptWithMD5;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,8 +19,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class RegisterController {
@@ -99,26 +99,33 @@ public class RegisterController {
                     || (fullName.getText().isBlank())
                     || (password.getText().isBlank())) {
                 control.setVisible(true);
-            } else {
-                user.insert(new User(
-                        null,
-                        phoneNumber.getText(),
-                        email.getText(),
-                        username.getText(),
-                        password.getText(),
-                        photoURL.getText(),
-                        fullName.getText(),
-                        bio.getText(),
-                        bdate,
-                        new java.util.Date(),
-                        true,
-                        Role.user
-                ));
+            } else if (user.insert(new User(
+                    null,
+                    phoneNumber.getText(),
+                    email.getText(),
+                    username.getText(),
+                    password.getText(),
+                    photoURL.getText(),
+                    fullName.getText(),
+                    bio.getText(),
+                    bdate,
+                    new java.util.Date(),
+                    true,
+                    Role.user
+            ))) {
                 
-                Id.user = user.findAll("`email` REGEXP '"+email.getText()+"'").get(0).getId();
+               Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Success");
+		alert.setHeaderText("Account created successfully!");
+		alert.setContentText("Now you can Log in");
+
+		alert.showAndWait();
                 
+
+                Id.user = user.findAll("`email` REGEXP '" + email.getText() + "'").get(0).getId();
+
                 UserGamePreferences ugps = new UserGamePreferences();
-                
+
                 for (Integer i : selectedgames) {
                     ugps.insert(new UserGamePreference(null, Id.user, i));
                 }
@@ -128,24 +135,6 @@ public class RegisterController {
         }
 
     }
-
-   /* @FXML
-    void CreateGamesFav(MouseEvent mouseevent) throws InterruptedException {
-
-        Users gu = new Users();
-        Games gg = new Games();
-        for (int i = 0; i <= selectedgames.size(); i++) {
-            Integer game_id = selectedgames.get(i);
-            Integer user_id = gu.findAll("`id`= (SELECT MAX(id) FROM users)").get(0).getId();
-            UserGamePreferences ugp = new UserGamePreferences();
-            ugp.insert(new UserGamePreference(
-                    null,
-                    user_id,
-                    game_id
-            ));
-        }
-
-    }*/
 
     @FXML
     public void ToLogin(ActionEvent event) throws IOException {

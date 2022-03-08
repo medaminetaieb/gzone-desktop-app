@@ -123,7 +123,7 @@
             <Font name="Webdings" size="18.0" />
          </font>
       </Text>
-      <TextArea fx:id="bio" disable="true" layoutX="192.0" layoutY="384.0" prefHeight="174.0" prefWidth="583.0" />
+      <TextArea fx:id="bio" editable="false" layoutX="192.0" layoutY="384.0" prefHeight="174.0" prefWidth="583.0" />
       <CheckBox fx:id="invitable" disable="true" layoutX="748.0" layoutY="193.0" mnemonicParsing="false">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -136,7 +136,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Hyperlink fx:id="reporthyperlink" layoutX="176.0" layoutY="195.0" onAction="#reportUser" text="Report user" textFill="#e40e0e" underline="true">
+      <Hyperlink fx:id="report" layoutX="176.0" layoutY="195.0" onAction="#report" text="Report user" textFill="#e40e0e" underline="true">
          <font>
             <Font size="14.0" />
          </font>
