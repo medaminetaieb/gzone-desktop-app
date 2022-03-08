@@ -14,6 +14,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -69,18 +71,35 @@ public class AcceptDecline implements Initializable {
         JoinRequests jrs = new JoinRequests();
         Teams teams = new Teams();
         Tournaments tournaments = new Tournaments();
-        List<Team> lteam = teams.findAll("`admin_id`=" + Id.user);
-        List<JoinRequest> ljrinvitations = jrs.findAll("`accepted` IS NULL AND `invitation`=true").stream()
-                .filter(jr -> lteam.indexOf(jr.getTeamId()) == -1 && jr.getUserId().equals(Id.user))
-                .collect(Collectors.toList());
+        List<JoinRequest> ljr = new ArrayList<>();
+        List<Integer> myTeamIds = teams.findAll("`admin_id`=" + Id.user).stream().map(t -> t.getId()).collect(Collectors.toList());
+        List<Integer> myTournamentIds = tournaments.findAll("`admin_id`=" + Id.user).stream().map(t -> t.getId()).collect(Collectors.toList());
 
-        List<Tournament> ltournaments = tournaments.findAll("`admin_id`=" + Id.user);
-        List<JoinRequest> ljrRequests = jrs.findAll("`accepted` IS NULL AND `invitation`=false").stream()
-                .filter(jr -> )
-                .collect(Collectors.toList());
-        List<JoinRequest> ljr = jrs.findAll("`accepted` IS NULL").stream()
-                .filter(joinRequest -> joinRequest.getUserId() != Id.user && lteam.indexOf(joinRequest.getTeamId()) == -1 && ltournaments.indexOf(joinRequest.getTournamentId()) == -1
-                ).peek(System.out::println).collect(Collectors.toList());
+        // Add User Join Requests to My Teams
+        ljr.addAll(
+                jrs.findAll("`accepted` IS NULL AND `user_id` IS NOT NULL AND `invitation`=false").stream()
+                        .filter(jr -> myTeamIds.indexOf(jr.getTeamId()) != -1)
+                        .collect(Collectors.toList())
+        );
+
+        // Add Team Join Requests To My Tournaments
+        ljr.addAll(
+                jrs.findAll("`accepted` IS NULL AND `team_id` IS NOT NULL AND `invitation`=false").stream()
+                        .filter(jr -> myTournamentIds.indexOf(jr.getTournamentId()) != -1)
+                        .collect(Collectors.toList())
+        );
+
+        // Add Team Invitations
+        ljr.addAll(
+                jrs.findAll("`accepted` IS NULL AND `invitation`=true AND `user_id`=" + Id.user)
+        );
+
+        // Add Tournament Invitations To My Teams
+        ljr.addAll(
+                jrs.findAll("`accepted` IS NULL AND `tournament_id` IS NOT NULL AND `invitation`=true").stream()
+                        .filter(jr -> myTeamIds.indexOf(jr.getTeamId()) != -1)
+                        .collect(Collectors.toList())
+        );
 
         listinvitation.getItems().addAll(ljr);
 
