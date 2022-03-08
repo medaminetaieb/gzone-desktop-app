@@ -99,7 +99,10 @@ public class ForumviewController implements Initializable {
     AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
     dashforumback.getChildren().setAll(pane);
     }
-        
-
+    @FXML
+        void Forum(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+                dashforumback.getChildren().setAll(pane);
+        }
 
 }

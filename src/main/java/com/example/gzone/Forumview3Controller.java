@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
@@ -31,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -51,7 +53,7 @@ public class Forumview3Controller implements Initializable {
     private ListView<Comment> tbview;
 
     @FXML
-    private Text txtitle;
+    private Text txtitle;   
     @FXML
     private TextField tfcomment;
     @FXML
@@ -88,7 +90,7 @@ public class Forumview3Controller implements Initializable {
         tfcontent.setText(p.getContent());
         cbresolved.setSelected(p.isResolved());
         if (p.getPosterId().equals(Id.user)) {
-
+            report.setVisible(false);
             cbresolved.setDisable(true);
         }
 
@@ -146,7 +148,7 @@ public class Forumview3Controller implements Initializable {
             tfcomment.setText("");
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Either the post is redolved or Text field is empty");
+            a.setContentText("Either the post is resolved or Text field is empty");
             a.show();
         }
     }
@@ -174,7 +176,7 @@ public class Forumview3Controller implements Initializable {
     void deletcomment(ActionEvent event) {
         Comment c = (Comment) tbview.getSelectionModel().getSelectedItem();
         Id.comment = c.getId();
-        if (Id.user.equals(c.getCommenterId())) {
+        if (Id.user.equals(c.getCommenterId()) || Id.user.equals(new Posts().findAll("`id` REGEXP '" + c.getPostId() + "'").get(0).getPosterId())) {
             new Comments().deleteById(Id.comment);
             refresh(event);
         } else {
@@ -232,4 +234,21 @@ public class Forumview3Controller implements Initializable {
     @FXML
     private void report(ActionEvent event) {
     }
+
+    @FXML
+    private void report(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report Post");
+        newWindow.setScene(scene);
+        newWindow.show();
+        
+    }
+    void Forum(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+                postprofile.getChildren().setAll(pane);
+        }
+
+        
 }
