@@ -90,7 +90,7 @@ public class Forumview3Controller implements Initializable {
         tfcontent.setText(p.getContent());
         cbresolved.setSelected(p.isResolved());
         if (p.getPosterId().equals(Id.user)) {
-
+            report.setVisible(false);
             cbresolved.setDisable(true);
         }
 
@@ -138,7 +138,7 @@ public class Forumview3Controller implements Initializable {
             tfcomment.setText("");
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Either the post is redolved or Text field is empty");
+            a.setContentText("Either the post is resolved or Text field is empty");
             a.show();
         }
     }
@@ -166,7 +166,7 @@ public class Forumview3Controller implements Initializable {
     void deletcomment(ActionEvent event) {
         Comment c = (Comment) tbview.getSelectionModel().getSelectedItem();
         Id.comment = c.getId();
-        if (Id.user.equals(c.getCommenterId())) {
+        if (Id.user.equals(c.getCommenterId()) || Id.user.equals(new Posts().findAll("`id` REGEXP '" + c.getPostId() + "'").get(0).getPosterId())) {
             new Comments().deleteById(Id.comment);
             refresh(event);
         } else {
