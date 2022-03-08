@@ -1,8 +1,14 @@
 package com.example.gzone;
 
+import com.example.entity.PostReport;
 import com.example.entity.Report;
+import com.example.entity.StoreReport;
 import com.example.entity.Subject;
+import com.example.entity.TournamentReport;
+import com.example.service.PostReports;
 import com.example.service.Reports;
+import com.example.service.StoreReports;
+import com.example.service.TournamentReports;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -65,6 +71,22 @@ public class ReportController implements Initializable {
                     content.getText(),
                     new java.util.Date()
             ));
+            
+            Id.report = rep.findAll("`head` REGEXP '" + title.getText() + "'").get(0).getId();
+            
+            TournamentReports tr = new TournamentReports();
+            PostReports pr = new PostReports();
+            StoreReports sr = new StoreReports();
+            
+            if (Id.type==0){
+            tr.insert(new TournamentReport(null,Id.tournament,Id.report));
+            }
+            else if (Id.type==1){
+            pr.insert(new PostReport(null, Id.post, Id.report));
+            }else if (Id.type==2){
+            sr.insert(new StoreReport(null, Id.store, Id.report));
+            }
+            
         }
     }
 

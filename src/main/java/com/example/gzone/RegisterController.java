@@ -23,6 +23,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.Notifications;
 
 public class RegisterController {
 
@@ -63,7 +64,6 @@ public class RegisterController {
     ;
 
     public void initialize() {
-
         birthdatecontrol.setVisible(false);
         control.setVisible(false);
         Games gs = new Games();
@@ -113,14 +113,12 @@ public class RegisterController {
                     true,
                     Role.user
             ))) {
-                
-               Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Success");
-		alert.setHeaderText("Account created successfully!");
-		alert.setContentText("Now you can Log in");
 
-		alert.showAndWait();
-                
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Account created successfully!");
+                alert.setContentText("Now you can Log in");
+                alert.showAndWait();
 
                 Id.user = user.findAll("`email` REGEXP '" + email.getText() + "'").get(0).getId();
 

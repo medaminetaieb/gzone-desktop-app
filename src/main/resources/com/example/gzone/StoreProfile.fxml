@@ -15,6 +15,7 @@
 <AnchorPane id="AnchorPane" fx:id="profilepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.StoreProfileController">
     <stylesheets>
         <URL value="@homepage.css" />
+
     </stylesheets>
     <children>
         <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
@@ -126,5 +127,10 @@
       <Button fx:id="btndislike" layoutX="370.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleDislike" prefHeight="25.0" prefWidth="61.0" text="Dislike" />
       <Text fx:id="likeCount" layoutX="270.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="dislikeCount" layoutX="389.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Button fx:id="report" layoutX="731.0" layoutY="369.0" mnemonicParsing="false" onAction="#report" style="-fx-background-color: red;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
