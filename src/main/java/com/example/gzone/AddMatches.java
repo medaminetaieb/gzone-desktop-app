@@ -26,6 +26,7 @@ public class AddMatches implements Initializable {
     private Integer team2Id;
 
     private Teams teams;
+    private List<JoinRequest> jrl;
 
     @FXML
     private AnchorPane apAddMatches;
@@ -100,13 +101,14 @@ public class AddMatches implements Initializable {
             mbRound.getItems().add(mi);
         }
 
-        List<JoinRequest> jrl = new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true");
+        jrl = new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `accepted`=true");
 
-        refresh1(jrl);
-        refresh2(jrl);
+        refresh1();
+        refresh2();
     }
 
-    private void refresh1(List<JoinRequest> jrl) {
+    private void refresh1() {
+        mbTeam1.getItems().clear();
         jrl.stream()
                 .filter(jr -> !jr.getTeamId().equals(team2Id))
                 .forEach(jr -> {
@@ -115,13 +117,14 @@ public class AddMatches implements Initializable {
                     mi.setOnAction(actionEvent -> {
                         team1Id = jr.getTeamId();
                         mbTeam1.setText(mi.getText());
-                        refresh2(jrl);
+                        refresh2();
                     });
                     mbTeam1.getItems().add(mi);
                 });
     }
 
-    private void refresh2(List<JoinRequest> jrl) {
+    private void refresh2() {
+        mbTeam2.getItems().clear();
         jrl.stream()
                 .filter(jr -> !jr.getTeamId().equals(team1Id)).peek(System.out::println)
                 .forEach(jr -> {
@@ -130,7 +133,7 @@ public class AddMatches implements Initializable {
                     mi.setOnAction(actionEvent -> {
                         team2Id = jr.getTeamId();
                         mbTeam2.setText(mi.getText());
-                        refresh1(jrl);
+                        refresh1();
                     });
                     mbTeam2.getItems().add(mi);
                 });

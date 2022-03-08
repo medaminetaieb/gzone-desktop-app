@@ -95,7 +95,7 @@ CREATE TABLE `matches` (
   `start_time` datetime NOT NULL,
   `round` int,
   `team1_id` int NOT NULL,
-  `team2_id` int NOT NULL,
+  `team2_id` int,
   `winner_team_id` int
 );
 

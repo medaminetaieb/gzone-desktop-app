@@ -10,10 +10,12 @@ package com.example.gzone;
  */
 public class Id {
 
-    protected static Integer user=1;
+    protected static Integer user = 1;
     protected static Integer game;
     protected static Integer tournament;
     protected static Integer team;
+    protected static Integer post;
+    protected static Integer comment;
     protected static Integer temp;
 
 }
