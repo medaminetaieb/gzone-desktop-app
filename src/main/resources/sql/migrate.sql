@@ -36,7 +36,7 @@ CREATE TABLE `happy_hours` (
 CREATE TABLE `badges` (
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `game_id` int NOT NULL,
-    `title` varchar(50) NOT NULL
+    `title` varchar(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE `badge_ships` (
@@ -164,7 +164,7 @@ CREATE TABLE `reports` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `reporter_id` int NOT NULL,
   `subject` ENUM('sensitive','score_manipulation') NOT NULL,
-  `head` varchar(255) NOT NULL,
+  `head` varchar(255) NOT NULL UNIQUE,
   `body` varchar(1000),
   `report_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
