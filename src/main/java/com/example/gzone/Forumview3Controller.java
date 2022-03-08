@@ -231,6 +231,7 @@ public class Forumview3Controller implements Initializable {
 
     @FXML
     private void report(ActionEvent event) throws IOException {
+        Id.type=2;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage newWindow = new Stage();
