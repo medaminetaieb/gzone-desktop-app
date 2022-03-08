@@ -1,4 +1,4 @@
-/*package com.example.gzone;
+package com.example.gzone;
 
 import com.example.entity.JoinRequest;
 import com.example.service.JoinRequests;
@@ -127,4 +127,4 @@ public class AcceptDecline implements Initializable {
         listinvitation.getItems().addAll(ljr);
     }
 }
-*/
+
