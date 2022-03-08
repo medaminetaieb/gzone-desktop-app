@@ -265,7 +265,7 @@ public class TeamViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("joinRequest-view.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
-        TeamUpdateController teamUpdateController = loader.getController();
+
 
     }
 
