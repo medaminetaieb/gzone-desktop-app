@@ -42,7 +42,8 @@ public class InviteTeamController implements Initializable {
             if (buttonType.get().equals(ButtonType.OK)) {
                 JoinRequest jr = new JoinRequest(null,null, Id.temp, Id.tournament, messagetxt.getText(), new Date(), null, null, true);
                 new JoinRequests().insert(jr);
-                sendinvitation.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListUsers.fxml")));
+
+
             }
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);

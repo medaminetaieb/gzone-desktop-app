@@ -31,6 +31,7 @@ public class ListTeamsController implements Initializable {
     private Button bInvite;
 
     @FXML
+
     void choose(MouseEvent event) {
         Teams teams = new Teams();
         List<Team> lteam = teams.findAll("`admin_id`!=" + Id.user + " And `invitable`=1 And `game_id`=" + lvtournament.getSelectionModel().getSelectedItem().getGameId() + " And `team_size`=" + lvtournament.getSelectionModel().getSelectedItem().getTeamSize());
