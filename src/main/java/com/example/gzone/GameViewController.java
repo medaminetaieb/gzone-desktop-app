@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML GameViewController class
@@ -46,14 +47,19 @@ public class GameViewController implements Initializable {
     private Label MyLabel;
     @FXML
     private ListView<User> Top5;
-
+    @FXML
+    private Text Tourid;
+    @FXML
+    private Text tnot;
+    
     @FXML
     private void edit(ActionEvent event) throws IOException {
+        Id.game = GameList.getSelectionModel().getSelectedItem().getId();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("EditandDeleteGame.fxml"));
         // gamepane.getChildren().setAll(pane);
         BTNEdit.getScene().setRoot(pane);
     }
-
+    
     @FXML
     private void AddGame(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("CreateGame.fxml"));
@@ -78,30 +84,33 @@ public class GameViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         find(null);
         Top5.getItems().addAll(TournamentStat.TopFive());
+        tnot.setVisible(false);
+        Tourid.setVisible(false);
     }
-
+    
     @FXML
     private void HomePage(MouseEvent event) {
     }
-
+    
     @FXML
     private void Team(MouseEvent event) {
     }
-
+    
     @FXML
     private void Tournament(MouseEvent event) {
     }
-
+    
     @FXML
     private void Store(MouseEvent event) {
     }
-
+    
     @FXML
     private void Forum(MouseEvent event) {
     }
-
+    
     @FXML
     
     private void delete(ActionEvent event) {
@@ -116,7 +125,7 @@ public class GameViewController implements Initializable {
         GameList.refresh();
         
     }
-
+    
     @FXML
     private void find(ActionEvent event) {
         Games games = new Games();
@@ -126,6 +135,14 @@ public class GameViewController implements Initializable {
             GameList.getItems().add(g1);
         }
         GameList.refresh();
+    }
+    
+    @FXML
+    private void UpdateNumberOfTournament() {
+        tnot.setVisible(true);
+        Tourid.setVisible(true);
+        Tourid.setText("" + TournamentStat.CountTournaments(GameList.getSelectionModel().getSelectedItem().getId()));
+        
     }
     
 }

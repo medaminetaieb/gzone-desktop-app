@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="604.0" prefWidth="959.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.EditandDeleteGameController">
     <stylesheets>
@@ -92,9 +91,9 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane fx:id="APEdit" layoutX="163.0" prefHeight="604.0" prefWidth="825.0">
+      <AnchorPane fx:id="APEdit" layoutX="164.0" prefHeight="604.0" prefWidth="825.0">
          <children>
-            <VBox layoutX="281.0" layoutY="98.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
+            <VBox layoutX="281.0" layoutY="124.0" prefHeight="328.0" prefWidth="227.0" spacing="30.0">
                <children>
                   <TextField fx:id="tfNameUpdate" />
                   <TextField fx:id="tfPhotoUrlUpdate" />
@@ -104,27 +103,30 @@
                   <BoxBlur height="0.0" iterations="0" width="0.0" />
                </effect>
             </VBox>
-            <Button fx:id="btnCancel" layoutX="458.0" layoutY="519.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="31.0" prefWidth="83.0" text="Cancel" />
-            <Button fx:id="btnUpdate" layoutX="233.0" layoutY="535.0" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="83.0" text="Edit">
+            <Button fx:id="btnCancel" layoutX="458.0" layoutY="500.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="31.0" prefWidth="83.0" text="Cancel" textFill="#336861">
                <font>
-                  <Font name="Cambria" size="15.0" />
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+            <Button fx:id="btnUpdate" layoutX="256.0" layoutY="501.0" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="83.0" text="Edit" textFill="#336861">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
                </font>
             </Button>
-            <VBox layoutX="111.0" layoutY="98.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
+            <VBox layoutX="111.0" layoutY="126.0" prefHeight="333.0" prefWidth="215.0" spacing="50.0">
                <children>
-                  <Label text="Name">
+                  <Label text="Name" textFill="#336861">
                      <font>
-                        <Font name="Cambria" size="18.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="PhotoUrl">
+                  <Label text="PhotoUrl" textFill="#336861">
                      <font>
-                        <Font name="Cambria" size="18.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="Description">
+                  <Label text="Description" textFill="#336861">
                      <font>
-                        <Font name="Cambria" size="18.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -134,8 +136,6 @@
                   <Font name="Arial Bold Italic" size="24.0" />
                </font>
             </Label>
-            <Text layoutX="525.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Tournaments" />
-            <Text fx:id="Tourid" layoutX="729.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
          </children>
       </AnchorPane>
    </children>

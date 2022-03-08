@@ -97,20 +97,38 @@
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="241.0" layoutY="131.0" text="Start Date" />
-      <Label layoutX="234.0" layoutY="225.0" text="End Date" />
-      <Label layoutX="234.0" layoutY="328.0" text="Badge" />
-      <Label layoutX="234.0" layoutY="424.0" text="Game" />
+      <Label layoutX="241.0" layoutY="131.0" text="Start Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="234.0" layoutY="225.0" text="End Date" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="234.0" layoutY="328.0" text="Badge" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="234.0" layoutY="424.0" text="Game" textFill="#336861">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Label>
       <DatePicker fx:id="dpStartDate1" layoutX="345.0" layoutY="126.0" />
       <DatePicker fx:id="EndDate1" layoutX="347.0" layoutY="241.0" prefHeight="31.0" prefWidth="218.0" />
       <TextField fx:id="tfBadge" layoutX="345.0" layoutY="339.0" prefHeight="31.0" prefWidth="218.0" />
-      <SplitMenuButton fx:id="smbGame1" layoutX="347.0" layoutY="430.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="SplitMenuButton">
+      <SplitMenuButton fx:id="smbGame1" layoutX="347.0" layoutY="430.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game" textFill="#336861">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </SplitMenuButton>
-      <Button fx:id="btnUpdate" layoutX="347.0" layoutY="504.0" mnemonicParsing="false" onAction="#UpdateHappyHour" text="Modify" />
-      <Button fx:id="btnCancel" layoutX="476.0" layoutY="504.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+      <Button fx:id="btnUpdate" layoutX="359.0" layoutY="510.0" mnemonicParsing="false" onAction="#UpdateHappyHour" styleClass="delete-button" stylesheets="@fxml.css" text="Modify" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnCancel" layoutX="488.0" layoutY="510.0" mnemonicParsing="false" onAction="#Cancel" styleClass="delete-button" stylesheets="@fxml.css" text="Cancel" textFill="#336861">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

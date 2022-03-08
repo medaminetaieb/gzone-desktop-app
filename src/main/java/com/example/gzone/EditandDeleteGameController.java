@@ -44,8 +44,7 @@ public class EditandDeleteGameController implements Initializable {
     private Button btnCancel;
     @FXML
     private AnchorPane APEdit;
-    @FXML
-    private Text Tourid;
+    
   
 
     /**
@@ -58,7 +57,6 @@ public class EditandDeleteGameController implements Initializable {
         tfNameUpdate.setText(g.getName());
         tfDescriptionUpdate.setText(g.getDescription());
         tfPhotoUrlUpdate.setText(g.getPhotoUrl());
-        Tourid.setText("" + TournamentStat.CountTournaments(Id.game));
     }   
 
     @FXML

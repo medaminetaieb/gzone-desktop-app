@@ -112,8 +112,8 @@
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font></Label>
-      <DatePicker fx:id="dpStartDate" layoutX="412.0" layoutY="149.0" />
-      <DatePicker fx:id="dpEndDate" layoutX="412.0" layoutY="223.0" />
+      <DatePicker fx:id="dpStartDate" layoutX="412.0" layoutY="149.0" prefHeight="31.0" prefWidth="237.0" />
+      <DatePicker fx:id="dpEndDate" layoutX="412.0" layoutY="223.0" prefHeight="31.0" prefWidth="237.0" />
       <SplitMenuButton fx:id="smbGame" layoutX="412.0" layoutY="316.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose Game" textFill="#336861">
         <items>
           
