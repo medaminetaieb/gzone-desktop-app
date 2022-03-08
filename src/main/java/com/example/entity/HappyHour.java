@@ -14,6 +14,7 @@ public class HappyHour {
     private Integer badgeId;
     private Date startDate;
     private Date endDate;
+   
 
     public HappyHour(Integer id, Integer badgeId, Date startDate, Date endDate) {
         this.id = id;
@@ -54,6 +55,8 @@ public class HappyHour {
         this.endDate = endDate;
     }
 
+ 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -62,6 +65,8 @@ public class HappyHour {
         sb.append(", badgeId=").append(badgeId);
         sb.append(", startDate=").append(startDate);
         sb.append(", endDate=").append(endDate);
+       
+
         sb.append('}');
         return sb.toString();
     }
