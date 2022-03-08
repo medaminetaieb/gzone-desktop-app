@@ -3,6 +3,7 @@ package com.example.gzone;
 import com.example.entity.Game;
 import com.example.entity.Team;
 import com.example.service.Games;
+import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 import java.io.IOException;
@@ -27,11 +29,16 @@ public class TeamViewController implements Initializable {
 
 
     final Teams teams = new Teams();
-    String namee;
+    final Games games = new Games();
+
+
     int info;
     @FXML
+    private Button invitebtn;
+    @FXML
     private Button find;
-
+    @FXML
+    private Button joinreq;
     @FXML
     private TextField tfsearch;
     @FXML
@@ -58,6 +65,11 @@ public class TeamViewController implements Initializable {
     private TextField vtfaddmembers;
     @FXML
     private ScrollBar vsb;
+    @FXML
+    private ListView<Team> listofteams;
+
+    @FXML
+    private Label nameoftheteam;
 
     @FXML
     private Button vtbncreateteam;
@@ -79,6 +91,7 @@ public class TeamViewController implements Initializable {
     private Button delete;
     @FXML
     private AnchorPane teamviewanchor;
+
     private Integer gameId;
 
     @FXML
@@ -92,12 +105,12 @@ public class TeamViewController implements Initializable {
 
 
 
-       if (vtfteamname.getText().isBlank()){
+        if (vtfteamname.getText().isBlank()){
             vtfteamname.setPromptText("field cannot be empty");
 
 
         }
-       if (vtadescription.getText().isBlank()){
+        if (vtadescription.getText().isBlank()){
             vtadescription.setPromptText("field cannot be empty");
 
         }
@@ -106,19 +119,19 @@ public class TeamViewController implements Initializable {
         }
 
         if(vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)){
-           Alert alert = new Alert(Alert.AlertType.WARNING);
-           alert.setTitle("Warning Alert Dialog");
-           alert.setContentText("Please make sure to correctly fill the form");
-           alert.showAndWait();
-           return;
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Alert Dialog");
+            alert.setContentText("Please make sure to correctly fill the form");
+            alert.showAndWait();
+            return;
 
-       }
+        }
         else {
             //t.setId(null);
-            t.setAdminId(Id.user);
+            t.setAdminId(2);
             t.setName(vtfteamname.getText());
             t.setTeamSize(vsteamsize.getValue());
-            t.setGameId(Id.game);
+            t.setGameId(gameId);
             t.setDescription(filter(vtadescription.getText()));
             t.setPhotoURL(vtfphotourl.getText());
             t.setCreateDate(date);
@@ -196,7 +209,7 @@ public class TeamViewController implements Initializable {
         teamProfileController.teammm(tname);
         teamProfileController.getdescription(desc);
         teamProfileController.descriptionn(desc);
-      // TeamProfileController.getnamee(tname);
+        // TeamProfileController.getnamee(tname);
         //TeamProfileController.teammm(tname);
     }
 
@@ -216,17 +229,25 @@ public class TeamViewController implements Initializable {
         TeamUpdateController teamUpdateController = loader.getController();
 
 
-        String tname = ((Team) listview.getSelectionModel().getSelectedItem()).getName();
+        String tname = (listview.getSelectionModel().getSelectedItem()).getName();
         String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
 
     }
-
+    @FXML
+    void actioninvite(ActionEvent event) throws IOException {
+        Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
+        AnchorPane pane = loader.load();
+        teamviewanchor.getChildren().setAll(pane);
+    }
     @FXML
     void Team(TouchEvent event) {
 
     }
+
+
 
     @FXML
     private void actionfind(ActionEvent event) {
@@ -237,6 +258,15 @@ public class TeamViewController implements Initializable {
             listview.getItems().add(t1);
         }
         listview.refresh();
+    }
+    @FXML
+    void actionjoinrequest(ActionEvent event) throws IOException {
+        Id.team = (listofteams.getSelectionModel().getSelectedItem()).getId();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("joinRequest-view.fxml"));
+        AnchorPane pane = loader.load();
+        teamviewanchor.getChildren().setAll(pane);
+
+
     }
 
 
@@ -266,13 +296,13 @@ public class TeamViewController implements Initializable {
         MenuItem smbgmi = new MenuItem("No Game");
         vmbgame.getItems().add(smbgmi);
         smbgmi.setOnAction(e -> {
-            Id.game = null;
+            gameId = null;
             vmbgame.setText("No Game");
         });
         for (Game g : gameList) {
             MenuItem mi = new MenuItem(g.getName());
             mi.setOnAction(e -> {
-                Id.game = g.getId();
+                gameId = g.getId();
                 vmbgame.setText(g.getName());
             });
             vmbgame.getItems().add(mi);
@@ -288,10 +318,34 @@ public class TeamViewController implements Initializable {
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnshowprofile.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
+        invitebtn.disableProperty()
+                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
+
 
         showTeams();
 
+        //JoinRequest
+
+        List<Team> listrequest = teams.findAll("`requestable`= true And `admin_id`!="+Id.user);
+        listofteams.getItems().addAll(listrequest);
+
+        joinreq.disableProperty()
+                .bind(listofteams.getSelectionModel().selectedItemProperty().isNull());
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+
 }
 
 
