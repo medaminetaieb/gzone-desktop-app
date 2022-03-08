@@ -242,7 +242,7 @@ public class TeamViewController implements Initializable {
 
     public void showTeams() {
         final Team[] clabel = {new Team()};
-        List<Team> teamlist = teams.findAll("admin_id=2");
+        List<Team> teamlist = teams.findAll("admin_id="+Id.user);
         listview.getItems().addAll(teamlist);
 
         listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
