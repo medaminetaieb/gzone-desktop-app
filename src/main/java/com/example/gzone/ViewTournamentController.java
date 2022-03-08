@@ -174,7 +174,7 @@ public class ViewTournamentController implements Initializable {
         tCreationDate.setText(t.getCreateDate().toString());
         tDescription.setText(t.getDescription());
         tRequestable.setText(t.isRequestable().toString());
-        tGameName.setText((t.getGameId() == null) ? "No Game" : new Games().findById(t.getGameId()).getName());
+        tGameName.setText((t.getGameId() != null) ? "No Game" : new Games().findById(t.getGameId()).getName());
         tJoinedTeams.setText("" + new JoinRequests().findAll(String.format(
                 "`tournament_id`=%d AND `accepted`=true", Id.tournament
         )).size());

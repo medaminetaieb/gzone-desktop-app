@@ -42,6 +42,38 @@ public class ListTournaments implements Initializable {
     private ListView<Tournament> lvTournaments;
 
     @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        apListTournaments.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        apListTournaments.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        apListTournaments.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        apListTournaments.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apListTournaments.getChildren().setAll(pane);
+    }
+
+
+    @FXML
     void refreshList(ActionEvent event) {
         lvTournaments.getItems().clear();
 
