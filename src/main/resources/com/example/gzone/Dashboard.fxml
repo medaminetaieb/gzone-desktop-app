@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
@@ -35,23 +35,23 @@
             <TableColumn fx:id="trole" minWidth="0.0" prefWidth="73.5999755859375" text="role" />
         </columns>
       </TableView>
-      <Label layoutX="92.0" layoutY="103.0" text="Reports Management" textFill="WHITE">
+      <Label layoutX="91.0" layoutY="90.0" text="Reports Management" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <ListView fx:id="reportslistview" layoutX="11.0" layoutY="131.0" prefHeight="200.0" prefWidth="303.0" />
+      <ListView fx:id="reportslistview" layoutX="11.0" layoutY="113.0" prefHeight="218.0" prefWidth="303.0" />
       <Label layoutX="299.0" layoutY="1.0" text="Admin Dashboard" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <StackedBarChart layoutX="314.0" layoutY="120.0" prefHeight="282.0" prefWidth="456.0">
+      <BarChart fx:id="chartUsers" layoutX="328.0" layoutY="112.0" prefHeight="264.0" prefWidth="458.0" style="-fx-background-color: white;" title="Users age chart">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+          <NumberAxis side="LEFT" />
         </yAxis>
-      </StackedBarChart>
+      </BarChart>
    </children>
 </AnchorPane>
