@@ -140,5 +140,10 @@
          </children>
       </VBox>
       <Button fx:id="btnlisten" layoutX="749.0" layoutY="209.0" mnemonicParsing="false" onAction="#listen" prefHeight="31.0" prefWidth="48.0" style="-fx-background-color: FFF200;" text="♫" />
+      <Button fx:id="btnReport" layoutX="204.0" layoutY="564.0" mnemonicParsing="false" onAction="#report" style="-fx-background-color: E23F3F;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
