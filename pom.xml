@@ -26,6 +26,20 @@
             <artifactId>javafx-controls</artifactId>
             <version>17.0.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode/google-api-translate-java -->
+        <dependency>
+            <groupId>com.googlecode</groupId>
+            <artifactId>google-api-translate-java</artifactId>
+            <version>0.92</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>19-ea+3</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -44,7 +58,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>17</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>

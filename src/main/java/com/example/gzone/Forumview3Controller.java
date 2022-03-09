@@ -33,6 +33,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * FXML Controller class
@@ -53,7 +59,7 @@ public class Forumview3Controller implements Initializable {
     private ListView<Comment> tbview;
 
     @FXML
-    private Text txtitle;   
+    private Text txtitle;
     @FXML
     private TextField tfcomment;
     @FXML
@@ -77,6 +83,9 @@ public class Forumview3Controller implements Initializable {
     private Text dislikeCount;
     @FXML
     private Button report;
+    @FXML
+    private Button btntranslate;
+ 
 
     /**
      * Initializes the controller class.
@@ -130,7 +139,7 @@ public class Forumview3Controller implements Initializable {
 
     @FXML
     private void addcomment(ActionEvent event) {
-        if (!p.isResolved() || !tfcomment.getText().isBlank()) {
+        if (!p.isResolved() && !tfcomment.getText().isBlank()) {
             Comments cm = new Comments();
             Comment c = new Comment(null, Id.post, Id.user, tfcomment.getText(), new Date());
             cm.insert(c);
@@ -217,8 +226,8 @@ public class Forumview3Controller implements Initializable {
     }
 
     private void refreshCounts() {
-        likeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
-        dislikeCount.setText(""+new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
+        likeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=true").size());
+        dislikeCount.setText("" + new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `like`=false").size());
     }
 
     @FXML
@@ -229,12 +238,58 @@ public class Forumview3Controller implements Initializable {
         newWindow.setTitle("Report Post");
         newWindow.setScene(scene);
         newWindow.show();
-        
+
     }
-    void Forum(ActionEvent event) throws IOException {
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
-                postprofile.getChildren().setAll(pane);
+
+    @FXML
+    void translate(ActionEvent event) throws IOException {
+        String text = tfcontent.getText();
+        System.out.println("Translated text: " + translate("fr", "en", text));
+    }
+
+    private String translate(String langFrom, String langTo, String text) throws IOException {
+        // INSERT YOU URL HERE
+        String urlStr = "https://script.google.com/macros/s/AKfycbx2sxk6TzQspBj2UO-OW38K-XXdzaFw9tOWwmCSq-FVb_mQ4gcWIWmtKTFCuOAx4W7l1w/exec"
+                + "?q=" + URLEncoder.encode(text, "UTF-8")
+                + "&target=" + langTo
+                + "&source=" + langFrom;
+        URL url = new URL(urlStr);
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            tfcontent.setText(response.toString());
         }
 
-        
+   
+        return response.toString();
+
+    }
+
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void HomePage(ActionEvent event) {
+    }
+
+    @FXML
+    private void Team(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tournament(ActionEvent event) {
+    }
+
+    @FXML
+    private void Store(ActionEvent event) {
+    }
+
 }

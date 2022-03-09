@@ -99,7 +99,7 @@
          </font>
       </Button>
       <Text fx:id="txdate" fill="#4230ff" layoutX="204.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE" underline="true" />
-      <TextArea fx:id="tfcontent" layoutX="204.0" layoutY="209.0" prefHeight="120.0" prefWidth="545.0" style="-fx-border-color: 000000;" />
+      <TextArea fx:id="tfcontent" layoutX="204.0" layoutY="209.0" prefHeight="120.0" prefWidth="558.0" style="-fx-border-color: 000000;" />
       <Button fx:id="btncomment" layoutX="204.0" layoutY="346.0" mnemonicParsing="false" onAction="#addcomment" style="-fx-background-color: #86d300;" text="ADD COMMENT " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -144,5 +144,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="btntranslate" layoutX="681.0" layoutY="169.0" mnemonicParsing="false" onAction="#translate" text="translate" />
    </children>
 </AnchorPane>
