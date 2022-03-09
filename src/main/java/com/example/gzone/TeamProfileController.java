@@ -225,9 +225,7 @@ public class TeamProfileController implements Initializable {
                 .bind(lismemebers.getSelectionModel().selectedItemProperty().isNull());
 
         //Show top 3 teams
-        /* for(Team top:TeamStat.topTenTeams()){
 
-        }*/
         topthreelist.getItems().addAll(TeamStat.topThreeTeams());
 
     }

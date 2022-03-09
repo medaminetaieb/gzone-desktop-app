@@ -17,6 +17,8 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -24,6 +26,8 @@ import tray.notification.TrayNotification;
 public class JoinRequestController implements Initializable {
 
     final JoinRequests joinRequests = new JoinRequests();
+    @FXML
+    private AnchorPane teamviewanchor;
     @FXML
     private TextArea messagetxt;
 
@@ -37,29 +41,36 @@ public class JoinRequestController implements Initializable {
     private TextField tfteam;
 
     @FXML
-    void Forum(MouseEvent event) {
-
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
 
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) {
-
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(MouseEvent event) {
-
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        teamviewanchor.getChildren().setAll(pane);
     }
+
 
     @FXML
     void sendrequest(ActionEvent event) throws IOException {

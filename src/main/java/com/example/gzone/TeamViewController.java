@@ -158,7 +158,7 @@ public class TeamViewController implements Initializable {
 
         } else {
             //t.setId(null);
-            t.setAdminId(2);
+            t.setAdminId(Id.user);
             t.setName(vtfteamname.getText());
             t.setTeamSize(vsteamsize.getValue());
             t.setGameId(gameId);
@@ -265,7 +265,7 @@ public class TeamViewController implements Initializable {
     @FXML
     void actioninvite(ActionEvent event) throws IOException {
         Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-update.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListUsers.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
     }
@@ -279,7 +279,7 @@ public class TeamViewController implements Initializable {
     private void actionfind(ActionEvent event) {
         listview.getItems().clear();
         Teams t = new Teams();
-        List<Team> teamlist = t.findAll("name REGEXP '" + tfsearch.getText() + "' And `admin_id`=2");
+        List<Team> teamlist = t.findAll("name REGEXP '" + tfsearch.getText() + "' And `admin_id`="+Id.user);
         for (Team t1 : teamlist) {
             listview.getItems().add(t1);
         }
