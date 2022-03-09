@@ -116,5 +116,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="btncapture" layoutX="676.0" layoutY="230.0" mnemonicParsing="false" onAction="#capture" text="Button" />
+      <ImageView fx:id="imgCapture" fitHeight="110.0" fitWidth="120.0" layoutX="666.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
