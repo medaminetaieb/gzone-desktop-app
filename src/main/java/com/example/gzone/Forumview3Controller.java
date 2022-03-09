@@ -7,42 +7,38 @@ package com.example.gzone;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import com.example.entity.Comment;
 import com.example.entity.Post;
 import com.example.entity.UserLikesDislike;
 import com.example.service.Comments;
 import com.example.service.Posts;
 import com.example.service.UserLikesDislikes;
-import com.google.protobuf.ByteString;
-import static java.awt.SystemColor.text;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-
 import java.util.Locale;
+import javafx.scene.Scene;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
 import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -145,10 +141,24 @@ public class Forumview3Controller implements Initializable {
             cm.insert(c);
             refresh(event);
             tfcomment.setText("");
+            String title = "Comment added";
+            String message = "Your comment was added !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Either the post is redolved or Text field is empty");
-            a.show();
+            String title = "Something went wrong !";
+            String message = "Either the post is resolved or Text field is empty !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
+
         }
     }
 
@@ -178,9 +188,25 @@ public class Forumview3Controller implements Initializable {
         if (Id.user.equals(c.getCommenterId())) {
             new Comments().deleteById(Id.comment);
             refresh(event);
+            String title = "Comment deleted";
+            String message = "Comment was deleted !";
+            NotificationType notification = NotificationType.SUCCESS;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.show();
+            String title = "Something went wrong";
+            String message = "";
+            NotificationType notification = NotificationType.ERROR;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
         }
 
     }
@@ -231,6 +257,7 @@ public class Forumview3Controller implements Initializable {
     }
 
     @FXML
+
     public void listen(ActionEvent event) {
 
         try {
@@ -268,6 +295,24 @@ public class Forumview3Controller implements Initializable {
         } catch (IllegalArgumentException | InterruptedException | AudioException | EngineException e) {
             e.printStackTrace();
         }
+
+    
+
+  /*  private void report(ActionEvent event) throws IOException {
+        Id.type = 2;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report Post");
+        newWindow.setScene(scene);
+        newWindow.show();*/
+
+    }
+
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        postprofile.getChildren().setAll(pane);
+
     }
 
 }

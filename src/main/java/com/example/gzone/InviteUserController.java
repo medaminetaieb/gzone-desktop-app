@@ -24,6 +24,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -79,7 +82,7 @@ public class InviteUserController implements Initializable {
     }
 
     @FXML
-    private void sendinvitation(ActionEvent event) throws IOException{
+    private void sendinvitation(ActionEvent event) throws IOException {
         if (!messagetxt.getText().isBlank()) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setHeaderText("Send Invitation");
@@ -89,12 +92,24 @@ public class InviteUserController implements Initializable {
                 JoinRequest jr = new JoinRequest(null, Id.temp, Id.team, null, messagetxt.getText(), new Date(), null, null, true);
                 new JoinRequests().insert(jr);
                 sendrequest.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListUsers.fxml")));
+                String title = "Invitation sent!";
+                String message = "wait for them to respond !";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setHeaderText("Fill the form");
-            a.setContentText("Form has empty fields");
-            a.show();
+            String title = "Failed!";
+            String message = "Fill the form correctly !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 

@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class InviteTeamController implements Initializable {
 
@@ -40,16 +43,26 @@ public class InviteTeamController implements Initializable {
             a.setContentText("Invite team to this tournament?");
             Optional<ButtonType> buttonType = a.showAndWait();
             if (buttonType.get().equals(ButtonType.OK)) {
-                JoinRequest jr = new JoinRequest(null,null, Id.temp, Id.tournament, messagetxt.getText(), new Date(), null, null, true);
+                JoinRequest jr = new JoinRequest(null, null, Id.temp, Id.tournament, messagetxt.getText(), new Date(), null, null, true);
                 new JoinRequests().insert(jr);
-
-
+                String title = "Invitation sent!";
+                String message = "wait for them to respond !";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setHeaderText("Fill the form");
-            a.setContentText("Form has empty fields");
-            a.show();
+            String title = "Failed!";
+            String message = "Fill the form correctly !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 

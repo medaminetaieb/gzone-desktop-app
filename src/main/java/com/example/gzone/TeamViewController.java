@@ -17,20 +17,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 import static com.example.util.Badwords.filter;
 import static com.example.util.PhotoUrlCheck.testImage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class TeamViewController implements Initializable {
 
-
     final Teams teams = new Teams();
     final Games games = new Games();
-
 
     int info;
     @FXML
@@ -94,7 +94,6 @@ public class TeamViewController implements Initializable {
 
     private Integer gameId;
 
-
     @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
@@ -121,43 +120,43 @@ public class TeamViewController implements Initializable {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         teamviewanchor.getChildren().setAll(pane);
     }
+
     @FXML
     void ActionCreateTeam(ActionEvent event) {
 
         Date date = new Date(System.currentTimeMillis());
 
-
         Teams team = new Teams();
         Team t = new Team();
 
-
-
-        if (vtfteamname.getText().isBlank()){
+        if (vtfteamname.getText().isBlank()) {
             vtfteamname.setPromptText("field cannot be empty");
 
-
         }
-        if (vtadescription.getText().isBlank()){
+        if (vtadescription.getText().isBlank()) {
             vtadescription.setPromptText("field cannot be empty");
 
         }
-        if(testImage(vtfphotourl.getText()) == false){
+        if (testImage(vtfphotourl.getText()) == false) {
             vtfphotourl.setPromptText("Check the URL of the image");
         }
 
-        if(vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Alert Dialog");
-            alert.setContentText("Please make sure to correctly fill the form");
-            alert.showAndWait();
+        if (vtfteamname.getText().isBlank() || vtadescription.getText().isBlank() || (testImage(vtfphotourl.getText()) == false)) {
+            String title = "Failed!";
+            String message = "Fill the form correctly!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
             return;
 
-        }
-        else {
+        } else {
             //t.setId(null);
             t.setAdminId(2);
             t.setName(vtfteamname.getText());
@@ -179,14 +178,11 @@ public class TeamViewController implements Initializable {
 
             }
 
-
-
-
             Alert conf = new Alert(Alert.AlertType.CONFIRMATION);
             conf.setTitle("Team creation confirmation Alert");
-            conf.setContentText("Do you really want to create this Team: "+t.getName()+"?");
-            Optional<ButtonType> result =conf.showAndWait();
-            if(result.get() == ButtonType.OK){
+            conf.setContentText("Do you really want to create this Team: " + t.getName() + "?");
+            Optional<ButtonType> result = conf.showAndWait();
+            if (result.get() == ButtonType.OK) {
                 teams.insert(t);
                 listview.getItems().add(t);
                 listview.refresh();
@@ -196,11 +192,14 @@ public class TeamViewController implements Initializable {
                 vrbopenforrequests.setSelected(false);
                 vrbopenforinvitation.setSelected(false);
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Create Team");
-
-                alert.setContentText("Team Added!");
-                alert.show();
+                String title = "Success!";
+                String message = "Team created!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));;
             }
 
         }
@@ -211,24 +210,21 @@ public class TeamViewController implements Initializable {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete confirmation Alert");
-        alert.setContentText("Do you really want to delete this Team: "+listview.getSelectionModel().getSelectedItem().getName()+"?");
-        Optional<ButtonType> result =alert.showAndWait();
-        if(result.get() == ButtonType.OK){
+        alert.setContentText("Do you really want to delete this Team: " + listview.getSelectionModel().getSelectedItem().getName() + "?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             Team dt = listview.getSelectionModel().getSelectedItem();
             teams.deleteById(dt.getId());
 
             listview.getItems().remove(dt);
         }
 
-
-
-
     }
 
     @FXML
     void ActionShowProfile(ActionEvent event) throws IOException {
         Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
-        FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-profile.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
 
@@ -246,7 +242,7 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void ActionUpdateTeam(ActionEvent event) throws IOException {
-   /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Store2.fxml"));
+        /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Store2.fxml"));
         Parent root =(Parent) fxmlLoader.load();
         Stage stage = (Stage) validatebutton.getScene().getWindow();
         stage.setTitle("fill in");
@@ -259,13 +255,13 @@ public class TeamViewController implements Initializable {
         teamviewanchor.getChildren().setAll(pane);
         TeamUpdateController teamUpdateController = loader.getController();
 
-
         String tname = (listview.getSelectionModel().getSelectedItem()).getName();
         String desc = ((Team) listview.getSelectionModel().getSelectedItem()).getDescription();
         teamUpdateController.getnamee(tname);
         teamUpdateController.teammm(tname);
 
     }
+
     @FXML
     void actioninvite(ActionEvent event) throws IOException {
         Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
@@ -273,23 +269,23 @@ public class TeamViewController implements Initializable {
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
     }
+
     @FXML
     void Team(TouchEvent event) {
 
     }
 
-
-
     @FXML
     private void actionfind(ActionEvent event) {
         listview.getItems().clear();
-        Teams t =new Teams();
+        Teams t = new Teams();
         List<Team> teamlist = t.findAll("name REGEXP '" + tfsearch.getText() + "' And `admin_id`=2");
         for (Team t1 : teamlist) {
             listview.getItems().add(t1);
         }
         listview.refresh();
     }
+
     @FXML
     void actionjoinrequest(ActionEvent event) throws IOException {
         Id.team = (listofteams.getSelectionModel().getSelectedItem()).getId();
@@ -297,13 +293,11 @@ public class TeamViewController implements Initializable {
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
 
-
     }
-
 
     public void showTeams() {
         final Team[] clabel = {new Team()};
-        List<Team> teamlist = teams.findAll("admin_id="+Id.user);
+        List<Team> teamlist = teams.findAll("admin_id=" + Id.user);
         listview.getItems().addAll(teamlist);
 
         listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Team>() {
@@ -342,7 +336,6 @@ public class TeamViewController implements Initializable {
         valueFactory.setValue(1);
         vsteamsize.setValueFactory(valueFactory);
 
-
         delete.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnupdateteam.disableProperty()
@@ -352,38 +345,15 @@ public class TeamViewController implements Initializable {
         invitebtn.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
 
-
         showTeams();
 
         //JoinRequest
-
-        List<Team> listrequest = teams.findAll("`requestable`= true And `admin_id`!="+Id.user);
+        List<Team> listrequest = teams.findAll("`requestable`= true And `admin_id`!=" + Id.user);
         listofteams.getItems().addAll(listrequest);
 
         joinreq.disableProperty()
                 .bind(listofteams.getSelectionModel().selectedItemProperty().isNull());
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
-
 }
-
-
-
-
-
-
-
-
-

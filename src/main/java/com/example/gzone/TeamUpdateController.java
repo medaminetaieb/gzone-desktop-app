@@ -16,6 +16,9 @@ import java.util.ResourceBundle;
 
 import static com.example.util.Badwords.filter;
 import static com.example.util.PhotoUrlCheck.testImage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class TeamUpdateController implements Initializable {
 
@@ -72,17 +75,16 @@ public class TeamUpdateController implements Initializable {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         teamupdateanchor.getChildren().setAll(pane);
     }
 
     @FXML
     void actionreturn(ActionEvent event) throws IOException {
-        FXMLLoader loader = new  FXMLLoader(getClass().getResource("Team-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Team-view.fxml"));
         AnchorPane pane = loader.load();
         teamupdateanchor.getChildren().setAll(pane);
-
 
     }
 
@@ -90,9 +92,7 @@ public class TeamUpdateController implements Initializable {
     void Update(ActionEvent event) {
         Teams teams = new Teams();
 
-
         oldteam = teams.findById(Id.team);
-
 
         if (teamname.getText().isBlank()) {
 
@@ -101,7 +101,6 @@ public class TeamUpdateController implements Initializable {
             alert.setTitle("Warning Alert Dialog");
             alert.setContentText("Please check the name");
             alert.showAndWait();
-
 
         }
         if (testImage(photourl.getText()) == false) {
@@ -165,19 +164,20 @@ public class TeamUpdateController implements Initializable {
                     }
 
                     teams.modify(t);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Update Team");
-
-                    alert.setContentText("Team Updated!");
-                    alert.show();
+                    String title = "Success!";
+                    String message = "Team Updated!";
+                    NotificationType notification = NotificationType.SUCCESS;
+                    TrayNotification tray = new TrayNotification();
+                    tray.setTitle(title);
+                    tray.setMessage(message);
+                    tray.setNotificationType(notification);
+                    tray.showAndDismiss(Duration.seconds(3));;
                 }
             }
 
         }
 
-
     }
-
 
     public String setnamee() {
         return textname;
@@ -195,7 +195,6 @@ public class TeamUpdateController implements Initializable {
 
     public void initialize() {
 
-
     }
 
     @Override
@@ -207,7 +206,6 @@ public class TeamUpdateController implements Initializable {
         photourl.setText(t.getPhotoURL());
         descritpion.setText(t.getDescription());
 
-
         if (t.isRequestable() == true) {
             rb1.fire();
         }
@@ -215,7 +213,6 @@ public class TeamUpdateController implements Initializable {
         if (t.isInvitable() == true) {
             rb2.fire();
         }
-
 
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
         valueFactory.setValue(t.getTeamSize());

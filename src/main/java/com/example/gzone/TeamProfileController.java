@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -28,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class TeamProfileController implements Initializable {
 
@@ -68,7 +70,6 @@ public class TeamProfileController implements Initializable {
     private String textnamee;
     private String desc;
 
-
     @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
@@ -95,7 +96,7 @@ public class TeamProfileController implements Initializable {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         allanchor.getChildren().setAll(pane);
     }
@@ -148,7 +149,14 @@ public class TeamProfileController implements Initializable {
 
                 lismemebers.getItems().remove(u);
             }
-
+            String title = "Success!";
+            String message = "Deleted!";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
         }
 
     }

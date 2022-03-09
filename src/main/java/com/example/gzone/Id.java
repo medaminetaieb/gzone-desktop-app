@@ -18,9 +18,8 @@ public class Id {
     protected static Integer post;
     protected static Integer comment;
     protected static Integer store;
-
     protected static Integer temp;
-
+    public static Integer code;
     protected static Integer report;
     protected static Integer postReport;
     protected static Integer storeReport;

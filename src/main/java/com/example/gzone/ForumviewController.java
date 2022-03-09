@@ -21,6 +21,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -29,21 +32,19 @@ import javafx.scene.layout.AnchorPane;
  */
 public class ForumviewController implements Initializable {
 
-
     @FXML
     private TextArea tfcontent;
     @FXML
     public Button btninsert;
-    
+
     @FXML
     public Button btncancel;
     @FXML
     private TextField tftitle;
     @FXML
     public AnchorPane dashforumback;
-    
+
     /*ValidationSupport validationsupport = new ValidationSupport();*/
-    
     /**
      * Initializes the controller class.
      */
@@ -51,8 +52,6 @@ public class ForumviewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
-
 
     @FXML
     void HomePage(ActionEvent event) throws IOException {
@@ -67,7 +66,7 @@ public class ForumviewController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         dashforumback.getChildren().setAll(pane);
     }
@@ -77,28 +76,43 @@ public class ForumviewController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         dashforumback.getChildren().setAll(pane);
     }
+
     @FXML
     private void addpost(ActionEvent event) throws IOException {
-        if(!tftitle.getText().isBlank() || (!tfcontent.getText().isBlank())){
-        Posts ps = new Posts();
-        Post p = new Post(null, 3, false, tftitle.getText(), tfcontent.getText(), "", new Date());
-        ps.insert(p);
-        }   else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("One of your Text fields is empty");
-            a.show();
+        if (!tftitle.getText().isBlank() || (!tfcontent.getText().isBlank())) {
+            Posts ps = new Posts();
+            Post p = new Post(null, 3, false, tftitle.getText(), tfcontent.getText(), "", new Date());
+            ps.insert(p);
+            String title = "Success!";
+            String message = "Post added !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+        } else {
+            String title = "Failed!";
+            String message = "Verify your informations !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
-    
-    public void cancel (ActionEvent event) throws IOException{
-        
-    AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
-    dashforumback.getChildren().setAll(pane);
+
+    public void cancel(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        dashforumback.getChildren().setAll(pane);
     }
+
     @FXML
-        void Forum(ActionEvent event) throws IOException {
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
-                dashforumback.getChildren().setAll(pane);
-        }
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        dashforumback.getChildren().setAll(pane);
+    }
 
 }

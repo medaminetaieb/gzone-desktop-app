@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class AddMatches implements Initializable {
 
@@ -67,15 +70,23 @@ public class AddMatches implements Initializable {
                     team2Id,
                     null
             ));
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Match was added successfully");
-            a.setContentText("You can add more matches");
-            a.show();
+            String title = "Added Successfully!";
+            String message = "Match added !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Not Adding");
-            a.setContentText("Please fill the form");
-            a.show();
+            String title = "Not adding !";
+            String message = "Fill the form correctly !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
 
     }

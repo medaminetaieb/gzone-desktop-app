@@ -20,6 +20,9 @@ import java.util.List;
 
 import java.io.IOException;
 import java.util.List;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class StoreProfileController {
 
@@ -58,9 +61,14 @@ public class StoreProfileController {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("AddItemForm.fxml"));
             profilepane.getChildren().setAll(pane);
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("different user");
-            alert.showAndWait();
+            String title = "Failed!";
+            String message = "Not the owner!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 
@@ -70,11 +78,24 @@ public class StoreProfileController {
             new MarketItems().deleteById(
                     ((MarketItem) tbview.getSelectionModel().getSelectedItem()).getId()
             );
+            String title = "Success!";
+            String message = "Deleted!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
             ViewItem();
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("different user");
-            alert.showAndWait();
+            String title = "Failed!";
+            String message = "Not the owner!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
         }
     }
 
@@ -144,10 +165,23 @@ public class StoreProfileController {
             new MarketItems().deleteByStoreId(Id.store);
             new Stores().deleteById(Id.store);
             Store(event);
+            String title = "Success!";
+            String message = "Deleted!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("different user");
-            alert.showAndWait();
+            String title = "Failed!";
+            String message = "Not the owner!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));;
         }
     }
 

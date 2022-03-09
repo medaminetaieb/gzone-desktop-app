@@ -22,9 +22,14 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class RegisterController {
 
@@ -63,6 +68,8 @@ public class RegisterController {
     private MenuButton mbgames;
 
     ;
+    @FXML
+    private Button importphoto;
 
     public void initialize() {
 
@@ -116,11 +123,14 @@ public class RegisterController {
                     Role.user
             ))) {
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Account created successfully!");
-                alert.setContentText("Now you can Log in");
-                alert.showAndWait();
+                String title = "Success!";
+                String message = "Welcome to G-ZONE!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
 
                 Id.user = user.findAll("`email` REGEXP '" + email.getText() + "'").get(0).getId();
 
@@ -140,6 +150,16 @@ public class RegisterController {
     public void ToLogin(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         registerpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void importPhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose your profile pic");
+        Window stage = null;
+        String FileDis = fileChooser.showOpenDialog(stage).getAbsolutePath();
+        System.out.println(FileDis);
+        Image image = new Image(getClass().getResourceAsStream(FileDis));
     }
 
 }

@@ -20,6 +20,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -27,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
  * @author chayma
  */
 public class CreateGameController implements Initializable {
+
     @FXML
     private TextField tfName;
     @FXML
@@ -67,7 +71,7 @@ public class CreateGameController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         APCreate.getChildren().setAll(pane);
     }
@@ -82,33 +86,35 @@ public class CreateGameController implements Initializable {
     private void Add(ActionEvent event) {
         Games GS = new Games();
         Alert alert = new Alert(Alert.AlertType.NONE);
-        if (
-             !tfName.getText().isBlank()
-             && PhotoUrlCheck.testImage(tfPhotoUrl.getText())
-             && !tfDescription.getText().isBlank()) {
+        if (!tfName.getText().isBlank()
+                && PhotoUrlCheck.testImage(tfPhotoUrl.getText())
+                && !tfDescription.getText().isBlank()) {
             GS.insert(new Game(null, tfName.getText(), tfPhotoUrl.getText(), tfDescription.getText()));
-            alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setTitle("success");
-            alert.setHeaderText("Success");
-            alert.setContentText("Game is added successefully");
-            alert.show();
+            String title = "Success!";
+            String message = "Game added !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         } else {
-            alert.setAlertType(Alert.AlertType.ERROR);
-            alert.setTitle("faild");
-            alert.setHeaderText("faild");
-            alert.setContentText("check form");
-            alert.show();
+            String title = "Something went wrong!";
+            String message = "Verify your information !";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
- 
 
     @FXML
     private void Cancel(ActionEvent event) throws IOException {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
-            //APCreate.getChildren().setAll(pane);
-               btnCancel.getScene().setRoot(pane);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
+        //APCreate.getChildren().setAll(pane);
+        btnCancel.getScene().setRoot(pane);
 
-        }
     }
-
-
+}

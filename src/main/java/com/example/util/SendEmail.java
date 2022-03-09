@@ -4,9 +4,9 @@
  */
 package com.example.util;
 
+import com.example.gzone.Id;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -21,26 +21,27 @@ import javax.mail.internet.MimeMessage;
  */
 public class SendEmail {
 
+    private static int CodeGenerator() {
+        int min = 1000;
+        int max = 999999;
+        int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+        System.out.println(random_int);
+        return random_int;
+
+    }
+
     public static void sendMail(String recepient) throws Exception {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-        //Enable authentication
         properties.put("mail.smtp.auth", "true");
-        //Set TLS encryption enabled
         properties.put("mail.smtp.starttls.enable", "true");
-        //Set SMTP host
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        //Set smtp port
         properties.put("mail.smtp.port", "587");
-
-        //Your gmail address
         String myAccountEmail = "appgzone@gmail.com";
-        //Your gmail password
         String password = "123456789.Az";
 
-        //Create a session with account credentials
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -58,11 +59,28 @@ public class SendEmail {
 
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
         try {
+            int CodeGenerator = CodeGenerator();
+            Id.code=CodeGenerator;
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My First Email from Java App");
-            String htmlCode = "<h1> WE LOVE JAVA </h1> <br/> <h2><b>Next Line </b></h2>";
+            message.setSubject("G-ZONE Password Recovery");
+            String htmlCode = "<h1>Here is your verification code</h1><br><h2>Use it and enter a new password </h2>\n"
+                    + "\n"
+                    + "<style>\n"
+                    + " h1 {\n"
+                    + "  color: #26b72b;\n"
+                    + "   font-family:verdana;\n"
+                    + "   text-align:center;\n"
+                    + "   font-weight: bold;\n"
+                    + "}\n"
+                    + "   h2 {\n"
+                    + "  color: #00008B;\n"
+                    + "     font-family:courier;\n"
+                    + "     text-align:center;\n"
+                    + "     font-weight: bold;\n"
+                    + "}\n"
+                    + "</style>" + CodeGenerator;
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {

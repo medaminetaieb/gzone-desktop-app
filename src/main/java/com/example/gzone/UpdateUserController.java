@@ -30,6 +30,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -74,18 +77,17 @@ public class UpdateUserController implements Initializable {
         email.setText(old.getEmail());
         fullName.setText(old.getFullName());
         phoneNumber.setText(old.getPhoneNumber());
-         Instant instant = Instant.ofEpochMilli(old.getBirthDate().getTime());
+        Instant instant = Instant.ofEpochMilli(old.getBirthDate().getTime());
         LocalDateTime ldt = LocalDateTime.ofInstant(instant, ZoneOffset.UTC);
         birthDate.setValue(ldt.toLocalDate());
         bio.setText(old.getBio());
         photoURL.setText(old.getPhotoURL());
-   }
-  
+    }
 
     @FXML
     private void update(ActionEvent event) throws ParseException, IOException {
         Users old = new Users();
-          User tochange = old.findById(Id.user);
+        User tochange = old.findById(Id.user);
         try {
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -97,10 +99,10 @@ public class UpdateUserController implements Initializable {
                 birthdatecontrol.setVisible(true);
             } else if ((email.getText().isBlank())
                     || (username.getText().isBlank())
-                    || (fullName.getText().isBlank())){
+                    || (fullName.getText().isBlank())) {
                 control.setVisible(true);
             } else {
-                
+
                 old.modify(new User(
                         Id.user,
                         phoneNumber.getText(),
@@ -115,18 +117,26 @@ public class UpdateUserController implements Initializable {
                         true,
                         Role.user
                 ));
+                String title = "Success!";
+                String message = "User updated!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));;
             }
         } catch (NullPointerException ex) {
             birthdatecontrol.setVisible(true);
         }
-      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());      
-        
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
         Stage newWindow = new Stage();
         newWindow.setTitle("G-Zone");
         newWindow.setScene(scene);
         newWindow.show();
-        
+
     }
 
 }

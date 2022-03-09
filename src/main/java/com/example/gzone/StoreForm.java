@@ -15,13 +15,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class StoreForm {
 
     private Integer gameId;
     @FXML
-    public Button validatebutton,cancelbutton;
-
+    public Button validatebutton, cancelbutton;
 
     @FXML
     private SplitMenuButton smbGame;
@@ -34,21 +36,29 @@ public class StoreForm {
     @FXML
     void validate(ActionEvent event) throws IOException {
         if ((storename.getText().isBlank())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("the text is blank");
-            alert.showAndWait();
-        }
-
-        else
-        {
+            String title = "Failed!";
+            String message = "Fill the form correctly!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+        } else {
             new Stores().insert(new Store(null, Id.user, gameId, storename.getText()));
+            String title = "Success!";
+            String message = "Store Added!";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
 
             Id.store = new Stores().findByName(storename.getText()).getId();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             rootPane.getChildren().setAll(pane);
         }
-
-
 
     }
 
@@ -57,8 +67,9 @@ public class StoreForm {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         List<Game> gameList = new Games().findAll();
         MenuItem smbgmi = new MenuItem("No Game");
         smbGame.getItems().add(smbgmi);

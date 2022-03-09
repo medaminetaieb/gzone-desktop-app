@@ -13,6 +13,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.Date;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class AddItemForm {
 
@@ -30,21 +33,32 @@ public class AddItemForm {
 
     @FXML
     void AddItem(ActionEvent event) throws IOException {
-        if (((title.getText().isBlank())) ||(description.getText().isBlank())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("this text is blank");
-            alert.showAndWait();
-        }
-        else{
+        if (((title.getText().isBlank())) || (description.getText().isBlank())) {
+            String title = "Something is not right";
+            String message = "This field is blank !";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+        } else {
             new MarketItems().insert(new MarketItem(null, Id.store, title.getText(), description.getText(), false, new Date()));
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             itemformpane.getChildren().setAll(pane);
             new StoreProfileController().ViewItem();
+             String title = "Item added";
+            String message = "Your item was added to the store !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
 
         }
     }
-
 
     @FXML
     void Forum(ActionEvent event) throws IOException {
@@ -72,12 +86,9 @@ public class AddItemForm {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         itemformpane.getChildren().setAll(pane);
     }
 
-
 }
-
-
