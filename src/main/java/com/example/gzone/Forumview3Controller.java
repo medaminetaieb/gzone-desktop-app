@@ -13,6 +13,12 @@ import com.example.entity.UserLikesDislike;
 import com.example.service.Comments;
 import com.example.service.Posts;
 import com.example.service.UserLikesDislikes;
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import javafx.fxml.Initializable;
@@ -29,7 +35,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import java.util.Locale;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
@@ -37,6 +46,7 @@ import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.imageio.ImageIO;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -85,13 +95,17 @@ public class Forumview3Controller implements Initializable {
     private Button btnlisten;
     @FXML
     private Button btnReport;
+    @FXML
+    private Button btncapture;
+
+    @FXML
+    private ImageView imgCapture;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
 
         p = new Posts().findById(Id.post);
         txtitle.setText(p.getTitle());
@@ -294,6 +308,17 @@ public class Forumview3Controller implements Initializable {
         newWindow.setScene(scene);
         newWindow.show();
 
+    }
+
+    @FXML
+    void capture(ActionEvent event) throws AWTException, IOException {
+        Robot robot = new Robot();
+        Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        BufferedImage image = robot.createScreenCapture(rectangle);
+        Image myImage = SwingFXUtils.toFXImage(image, null);
+        ImageIO.write(image, "jpg", new File("out.jpg"));
+
+        imgCapture.setImage(myImage);
     }
 
     @FXML
