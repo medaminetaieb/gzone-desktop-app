@@ -89,6 +89,7 @@ public class ForgotPasswordController implements Initializable {
             newWindow.setTitle("Change Password");
             newWindow.setScene(scene);
             newWindow.show();
+            submit.getScene().getWindow().hide();
         } else {
             String title = "Wrong Code";
             String message = "The code doesn't match the code we just sent !";
