@@ -4,6 +4,7 @@ import com.example.entity.Game;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.entity.UserGamePreference;
+import static com.example.gzone.UploadDropBox.uploadPhoto;
 import com.example.service.Games;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
@@ -88,6 +89,17 @@ public class RegisterController {
     }
 
     @FXML
+    private void importPhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose your profile pic");
+        Window stage = null;
+        String path = fileChooser.showOpenDialog(stage).getAbsolutePath();
+        String name = "/" + fileChooser.showOpenDialog(stage).getName();
+        uploadPhoto(path, name);
+
+    }
+
+    @FXML
     void createUser(ActionEvent event) throws ParseException {
         Users user = new Users();
 
@@ -147,17 +159,6 @@ public class RegisterController {
     public void ToLogin(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         registerpane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void importPhoto(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose your profile pic");
-        Window stage = null;
-        String FileDis = fileChooser.showOpenDialog(stage).getAbsolutePath();
-        System.out.println(FileDis);
-        
-        
     }
 
 }
