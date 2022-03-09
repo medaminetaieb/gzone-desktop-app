@@ -19,15 +19,12 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -159,7 +156,7 @@ public class RegisterController {
         Window stage = null;
         String FileDis = fileChooser.showOpenDialog(stage).getAbsolutePath();
         System.out.println(FileDis);
-        Image image = new Image(getClass().getResourceAsStream(FileDis));
+        
     }
 
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
@@ -42,5 +45,13 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <StackedBarChart layoutX="314.0" layoutY="120.0" prefHeight="282.0" prefWidth="456.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+        </yAxis>
+      </StackedBarChart>
    </children>
 </AnchorPane>
