@@ -19,7 +19,6 @@ import javafx.util.Duration;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-
 /**
  * FXML Controller class
  *
@@ -65,7 +64,7 @@ public class ForgotPasswordController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(notification);
             tray.showAndDismiss(Duration.seconds(4));
-            
+
         } else {
             String title = "Wrong Email";
             String message = "Please verify the entered email !";
@@ -90,6 +89,16 @@ public class ForgotPasswordController implements Initializable {
             newWindow.setTitle("Change Password");
             newWindow.setScene(scene);
             newWindow.show();
+        } else {
+            String title = "Wrong Code";
+            String message = "The code doesn't match the code we just sent !";
+            NotificationType notification = NotificationType.ERROR;
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
         }
     }
 
