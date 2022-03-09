@@ -157,6 +157,7 @@ public class RegisterController {
         String FileDis = fileChooser.showOpenDialog(stage).getAbsolutePath();
         System.out.println(FileDis);
         
+        
     }
 
 }
