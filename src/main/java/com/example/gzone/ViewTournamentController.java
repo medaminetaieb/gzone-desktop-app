@@ -145,7 +145,7 @@ public class ViewTournamentController implements Initializable {
     }
 
     @FXML
-    void selectWinner(ActionEvent event) {
+    void selectWinner(ActionEvent event) throws IOException {
         Integer round = lvRounds.getSelectionModel().getSelectedItem();
         Match match = lvMatches.getSelectionModel().getSelectedItem();
         Team team = lvTeams.getSelectionModel().getSelectedItem();
@@ -158,8 +158,11 @@ public class ViewTournamentController implements Initializable {
                     new Matches().insert(new Match(null, Id.tournament, new Date(), round, team.getId(), null, null));
                 } else {
                     Match m = new Matches().findAll("`tournament_id`=" + Id.tournament + " AND `round`=" + round + " AND `team2_id` IS NULL").get(0);
+                    Id.match = m.getId();
                     m.setTeam2Id(team.getId());
+                    m.setWinnerTeamId(null);
                     new Matches().modify(m);
+                    bAddMatches.getScene().setRoot(FXMLLoader.load(getClass().getResource("ModifyMatch.fxml")));
                 }
             } else {
                 for (HappyHour hh : new HappyHours().findAll("now() BETWEEN `start_date` AND `end_date`")) {
@@ -241,14 +244,14 @@ public class ViewTournamentController implements Initializable {
     @FXML
     void handleMatchesMouseClick(MouseEvent event) {
         lvTeams.getItems().clear();
-        if ((lvMatches.getSelectionModel().getSelectedItem().getWinnerTeamId() != null) || (lvMatches.getSelectionModel().getSelectedItem().getTeam2Id() == null)) {
+        Teams teams = new Teams();
+        lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam1Id()));
+        lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam2Id()));
+        if ((lvMatches.getSelectionModel().getSelectedItem().getWinnerTeamId() != 0) || (lvMatches.getSelectionModel().getSelectedItem().getTeam2Id() == 0)) {
             bUpdateScore.setDisable(true);
         } else {
             bUpdateScore.setDisable(false);
         }
-        Teams teams = new Teams();
-        lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam1Id()));
-        lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam2Id()));
     }
 
     @FXML

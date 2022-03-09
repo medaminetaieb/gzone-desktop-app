@@ -49,7 +49,7 @@ CREATE TABLE `teams` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `admin_id` int NOT NULL,
   `photo_url` varchar(500),
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL UNIQUE,
   `description` varchar(500),
   `game_id` int,
   `team_size` int NOT NULL DEFAULT 1,
@@ -74,7 +74,7 @@ CREATE TABLE `tournaments` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `admin_id` int NOT NULL,
   `game_id` int,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL UNIQUE,
   `description` varchar(500),
   `required_teams` int NOT NULL,
   `team_size` int NOT NULL DEFAULT 1,
@@ -131,7 +131,7 @@ CREATE TABLE `posts` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `poster_id` int NOT NULL,
   `resolved` boolean NOT NULL DEFAULT false,
-  `title` varchar(500) NOT NULL,
+  `title` varchar(500) NOT NULL UNIQUE,
   `content` varchar(2555) NOT NULL,
   `tags` varchar(255),
   `post_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -215,7 +215,7 @@ ALTER TABLE `matches` ADD FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
 
 ALTER TABLE `matches` ADD FOREIGN KEY (`winner_team_id`) REFERENCES `teams` (`id`);
 
-ALTER TABLE `matches` ADD CHECK (`winner_team_id` = `team1_id` or `winner_team_id` = `team2_id`);
+ALTER TABLE `matches` ADD CHECK (`winner_team_id` IS NULL OR `winner_team_id` = `team1_id` OR `winner_team_id` = `team2_id`);
 
 ALTER TABLE `market_items` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`);
 
