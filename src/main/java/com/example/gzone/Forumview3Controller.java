@@ -83,7 +83,36 @@ public class Forumview3Controller implements Initializable {
     private Text dislikeCount;
     @FXML
     private Button btnlisten;
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
 
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        postprofile.getChildren().setAll(pane);
+    }
     /**
      * Initializes the controller class.
      */
@@ -309,10 +338,6 @@ public class Forumview3Controller implements Initializable {
 
     }
 
-    void Forum(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
-        postprofile.getChildren().setAll(pane);
 
-    }
 
 }
