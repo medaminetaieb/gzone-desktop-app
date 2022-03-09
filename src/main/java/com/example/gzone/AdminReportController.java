@@ -24,6 +24,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -70,11 +73,14 @@ public class AdminReportController implements Initializable {
             new Reports().deleteById(Id.report);
             new Posts().deleteById(tempId);
 
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Report Validated");
-            alert.setContentText("Actions were taken !");
-            alert.showAndWait();
+            String title = "Report managed!";
+            String message = "Measures were taken !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
 
     }
@@ -83,10 +89,14 @@ public class AdminReportController implements Initializable {
     private void deletereport(ActionEvent event) {
         new Reports().deleteById(Id.report);
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Report removed");
-        alert.setContentText("Report was discarded");
-        alert.showAndWait();
+        String title = "Report declined!";
+        String message = "The report was discarded !";
+        NotificationType notification = NotificationType.NOTICE;
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndDismiss(Duration.seconds(3));
     }
 
 }

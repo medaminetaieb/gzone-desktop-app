@@ -21,6 +21,9 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -71,22 +74,29 @@ public class ReportController implements Initializable {
                     content.getText(),
                     new java.util.Date()
             ));
-            
+
             Id.report = rep.findAll("`head` REGEXP '" + title.getText() + "'").get(0).getId();
-            
+
             TournamentReports tr = new TournamentReports();
             PostReports pr = new PostReports();
             StoreReports sr = new StoreReports();
-            
-            if (Id.type==0){
-            tr.insert(new TournamentReport(null,Id.tournament,Id.report));
+
+            if (Id.type == 0) {
+                tr.insert(new TournamentReport(null, Id.tournament, Id.report));
+            } else if (Id.type == 2) {
+                pr.insert(new PostReport(null, Id.post, Id.report));
+            } else if (Id.type == 1) {
+                sr.insert(new StoreReport(null, Id.store, Id.report));
+                String title = "Success!";
+                String message = "Report created!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             }
-            else if (Id.type==2){
-            pr.insert(new PostReport(null, Id.post, Id.report));
-            }else if (Id.type==1){
-            sr.insert(new StoreReport(null, Id.store, Id.report));
-            }
-            
+
         }
     }
 

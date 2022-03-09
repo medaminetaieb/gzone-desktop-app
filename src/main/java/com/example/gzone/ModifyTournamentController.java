@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class ModifyTournamentController implements Initializable {
 
@@ -77,7 +80,7 @@ public class ModifyTournamentController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         apModifyTournament.getChildren().setAll(pane);
     }
@@ -119,14 +122,26 @@ public class ModifyTournamentController implements Initializable {
                 tournaments.modify(t);
                 bModify.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
                 a.close();
+                String title = "Success!";
+                String message = "Tournament modified !";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             } else {
                 a.close();
             }
         } else {
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setContentText("Please Fill the form");
-            a.show();
+            String title = "Something went wrong !";
+            String message = "Verify your information !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 
@@ -142,6 +157,14 @@ public class ModifyTournamentController implements Initializable {
             new Tournaments().deleteById(Id.tournament);
             bDeleteTournament.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
             a.close();
+            String title = "Success!";
+            String message = "Tournament deleted!";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         } else {
             a.close();
         }
@@ -149,7 +172,7 @@ public class ModifyTournamentController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
-        tGameName.setText((Id.game == null)? "No Game" : new Games().findById(t.getGameId()).getName());
+        tGameName.setText((Id.game == null) ? "No Game" : new Games().findById(t.getGameId()).getName());
         tfTournamentName.setText(t.getName());
         taTournamentDescription.setText((t.getDescription()));
         tNumberOfTeams.setText(t.getRequiredTeams().toString());

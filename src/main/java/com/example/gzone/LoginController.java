@@ -9,12 +9,17 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -56,20 +61,48 @@ public class LoginController {
             if (u.getRole().equals(Role.admin)) {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                 signinpane.getChildren().setAll(panee);
-
-                
+                String title = "Welcome!";
+                String message = "";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(4));
 
             } else {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                 signinpane.getChildren().setAll(panee);
-            }
+                String title = "Welcome!";
+                String message = "";
+                NotificationType notification = NotificationType.SUCCESS;
 
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(4));
+            }
+        } else {
+            String title = "Something went wrong!";
+            String message = "Verify your informations !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(4));
         }
     }
 
     @FXML
     private void ForgotPassword(ActionEvent event) throws Exception {
-        sendMail("mahdi3soussi@gmail.com");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ForgotPassword.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Recover Password");
+        newWindow.setScene(scene);
+        newWindow.show();
     }
 
 }

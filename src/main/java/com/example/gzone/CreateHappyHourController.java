@@ -12,9 +12,6 @@ import com.example.service.Games;
 import com.example.service.HappyHours;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,8 +25,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -121,7 +120,7 @@ public class CreateHappyHourController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         CreatePane.getChildren().setAll(pane);
     }
@@ -131,6 +130,7 @@ public class CreateHappyHourController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         CreatePane.getChildren().setAll(pane);
     }
+
     @FXML
     private void CreateHappyHour(ActionEvent event) {
 
@@ -146,24 +146,33 @@ public class CreateHappyHourController implements Initializable {
                 } else {
                     new HappyHours().insert(new HappyHour(null, badgeId, crd, crd1));
                 }
-                a.setAlertType(Alert.AlertType.INFORMATION);
-                a.setTitle("success");
-                a.setHeaderText("Success");
-                a.setContentText("HappyHour is added successefully");
-                a.show();
+                String title = "Success!";
+                String message = "Happy hour added !";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             } else {
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setTitle("failed");
-                a.setHeaderText("failed");
-                a.setContentText("start date must be less than end date");
-                a.show();
+                String title = "Failed!";
+                String message = "Start date must be before the end date !";
+                NotificationType notification = NotificationType.WARNING;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             }
         } else {
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setTitle("failed");
-            a.setHeaderText("failed");
-            a.setContentText("please check the form");
-            a.show();
+            String title = "Failed!";
+            String message = "Fill the form correctly !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 

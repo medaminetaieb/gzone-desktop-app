@@ -18,6 +18,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class ViewTournamentController implements Initializable {
 
@@ -71,7 +74,6 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private Hyperlink report;
 
-
     @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
@@ -98,20 +100,25 @@ public class ViewTournamentController implements Initializable {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         apViewTournament.getChildren().setAll(pane);
     }
+
     @FXML
     void goToModifyTournament(ActionEvent event) throws IOException {
         if (t.getAdminId().equals(Id.user)) {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("ModifyTournament.fxml"));
             apViewTournament.getChildren().setAll(pane);
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("You cannot access this page");
-            a.setContentText("You are not the admin of this tournament to modify it");
-            a.show();
+            String title = "Access denied!";
+            String message = "You are not the admin of the tournament!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(6));
         }
     }
 
@@ -121,10 +128,14 @@ public class ViewTournamentController implements Initializable {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("AddMatches.fxml"));
             apViewTournament.getChildren().setAll(pane);
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("You cannot access this menu");
-            a.setContentText("You are not the admin of this tournament to add matches");
-            a.show();
+            String title = "Access denied!";
+            String message = "You are not the admin of the tournament!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(6));
         }
     }
 
@@ -161,10 +172,14 @@ public class ViewTournamentController implements Initializable {
             }
             handleMatchesMouseClick(null);
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("You cannot access this action");
-            a.setContentText("You are not the admin of this tournament to select winners");
-            a.show();
+            String title = "Access denied!";
+            String message = "You are not the admin of the tournament!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(6));
         }
     }
 
@@ -174,7 +189,7 @@ public class ViewTournamentController implements Initializable {
         tCreationDate.setText(t.getCreateDate().toString());
         tDescription.setText(t.getDescription());
         tRequestable.setText(t.isRequestable().toString());
-        tGameName.setText((t.getGameId() == null) ? "No Game" : new Games().findById(t.getGameId()).getName());
+        tGameName.setText((t.getGameId() != null) ? "No Game" : new Games().findById(t.getGameId()).getName());
         tJoinedTeams.setText("" + new JoinRequests().findAll(String.format(
                 "`tournament_id`=%d AND `accepted`=true", Id.tournament
         )).size());
@@ -191,7 +206,7 @@ public class ViewTournamentController implements Initializable {
                 if (Id.game == null) {
                     c = " OR `game_id` IS NULL";
                 }
-                for (Team team : new Teams().findAll("`admin_id`=" + Id.user + " AND (`game_id`=" + t.getGameId() + c +") AND `team_size`=" + t.getTeamSize() + " AND `invitable`=true")) {
+                for (Team team : new Teams().findAll("`admin_id`=" + Id.user + " AND (`game_id`=" + t.getGameId() + c + ") AND `team_size`=" + t.getTeamSize() + " AND `invitable`=true")) {
                     if (new JoinRequests().findAll("`tournament_id`=" + Id.tournament + " AND `team_id`=" + team.getId()).size() == 0) {
                         MenuItem mi = new MenuItem(team.getName());
                         mi.setOnAction(e -> {
@@ -246,5 +261,5 @@ public class ViewTournamentController implements Initializable {
         newWindow.setScene(scene);
         newWindow.show();
     }
-    
+
 }

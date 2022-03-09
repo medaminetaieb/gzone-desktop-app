@@ -31,6 +31,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML GameViewController class
@@ -38,9 +41,9 @@ import javafx.scene.text.Text;
  * @author chayma
  */
 public class GameViewController implements Initializable {
-    
+
     private Integer gameId;
-    public AnchorPane gamepane;    
+    public AnchorPane gamepane;
     @FXML
     private ListView<Game> GameList;
     @FXML
@@ -51,7 +54,7 @@ public class GameViewController implements Initializable {
     private Text Tourid;
     @FXML
     private Text tnot;
-    
+
     @FXML
     private void edit(ActionEvent event) throws IOException {
         Id.game = GameList.getSelectionModel().getSelectedItem().getId();
@@ -59,13 +62,13 @@ public class GameViewController implements Initializable {
         // gamepane.getChildren().setAll(pane);
         BTNEdit.getScene().setRoot(pane);
     }
-    
+
     @FXML
     private void AddGame(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("CreateGame.fxml"));
         //gamepane.getChildren().setAll(pane);
         btnDelete.getScene().setRoot(pane);
-        
+
     }
     @FXML
     private Button btnAddGame;
@@ -84,12 +87,13 @@ public class GameViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         find(null);
         Top5.getItems().addAll(TournamentStat.TopFive());
         tnot.setVisible(false);
         Tourid.setVisible(false);
     }
+
     @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
@@ -109,7 +113,7 @@ public class GameViewController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         gamepane.getChildren().setAll(pane);
     }
@@ -119,21 +123,25 @@ public class GameViewController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         gamepane.getChildren().setAll(pane);
     }
+
     @FXML
-    
+
     private void delete(ActionEvent event) {
         int id = ((Game) GameList.getSelectionModel().getSelectedItem()).getId();
         new Games().deleteById(id);
         find(event);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("success");
-        alert.setHeaderText("Success");
-        alert.setContentText("Game is delete successefully");
-        alert.show();
+        String title = "Success!";
+        String message = "Game was deleted!";
+        NotificationType notification = NotificationType.SUCCESS;
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndDismiss(Duration.seconds(3));
         GameList.refresh();
-        
+
     }
-    
+
     @FXML
     private void find(ActionEvent event) {
         Games games = new Games();
@@ -144,13 +152,13 @@ public class GameViewController implements Initializable {
         }
         GameList.refresh();
     }
-    
+
     @FXML
     private void UpdateNumberOfTournament() {
         tnot.setVisible(true);
         Tourid.setVisible(true);
         Tourid.setText("" + TournamentStat.CountTournaments(GameList.getSelectionModel().getSelectedItem().getId()));
-        
+
     }
-    
+
 }

@@ -30,6 +30,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -112,6 +115,14 @@ public class ProfileController implements Initializable {
         du.deleteById(Id.user);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
+        String title = "Success!";
+        String message = "Account deleted!";
+        NotificationType notification = NotificationType.SUCCESS;
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndDismiss(Duration.seconds(3));
     }
 
     @FXML
@@ -131,8 +142,8 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void HomePage(ActionEvent event) throws IOException{
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+    private void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         profile.getChildren().setAll(pane);
     }
 

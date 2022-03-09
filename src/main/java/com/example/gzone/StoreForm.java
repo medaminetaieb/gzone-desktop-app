@@ -2,8 +2,11 @@ package com.example.gzone;
 
 import com.example.entity.Game;
 import com.example.entity.Store;
+import static com.example.gzone.StoreNotification.notifMail;
 import com.example.service.Games;
 import com.example.service.Stores;
+import com.example.service.UserGamePreferences;
+import com.example.service.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +18,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class StoreForm {
 
     private Integer gameId;
     @FXML
-    public Button validatebutton,cancelbutton;
-
+    public Button validatebutton, cancelbutton;
 
     @FXML
     private SplitMenuButton smbGame;
@@ -32,23 +37,36 @@ public class StoreForm {
     public AnchorPane rootPane;
 
     @FXML
-    void validate(ActionEvent event) throws IOException {
+    void validate(ActionEvent event) throws IOException, Exception {
         if ((storename.getText().isBlank())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("the text is blank");
-            alert.showAndWait();
-        }
-
-        else
-        {
+            String title = "Failed!";
+            String message = "Fill the form correctly!";
+            NotificationType notification = NotificationType.WARNING;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+        } else {
             new Stores().insert(new Store(null, Id.user, gameId, storename.getText()));
+            String title = "Success!";
+            String message = "Store Added!";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+            int numberrecepients = new UserGamePreferences().findAll("`game_id`=" + gameId).size();
+            for (int i = 0; i < numberrecepients; i++) {
+                Integer recipientId = new UserGamePreferences().findAll("`game_id`=" + gameId).get(i).getUserId();
+                notifMail(new Users().findAll("`id`=" + recipientId).get(0).getEmail());
+            }
 
             Id.store = new Stores().findByName(storename.getText()).getId();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("StoreProfile.fxml"));
             rootPane.getChildren().setAll(pane);
         }
-
-
 
     }
 
@@ -57,8 +75,9 @@ public class StoreForm {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         List<Game> gameList = new Games().findAll();
         MenuItem smbgmi = new MenuItem("No Game");
         smbGame.getItems().add(smbgmi);

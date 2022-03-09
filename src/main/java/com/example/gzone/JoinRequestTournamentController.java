@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.example.gzone;
 
 import com.example.entity.JoinRequest;
@@ -24,6 +20,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -85,12 +84,25 @@ public class JoinRequestTournamentController implements Initializable {
                 JoinRequest jr = new JoinRequest(null, null, Id.team, Id.tournament, messagetxt.getText(), new Date(), null, null, false);
                 new JoinRequests().insert(jr);
                 bSend.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
+                String title = "tournament joined!";
+                String message = "wait for the matches to begin !";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
+
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setHeaderText("Fill the form");
-            a.setContentText("Form has empty fields");
-            a.show();
+            String title = "Failed!";
+            String message = "Verify your information!";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 

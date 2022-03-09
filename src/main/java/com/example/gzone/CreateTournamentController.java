@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class CreateTournamentController implements Initializable {
 
@@ -78,7 +81,7 @@ public class CreateTournamentController implements Initializable {
     }
 
     @FXML
-    void Tournament(ActionEvent event) throws IOException{
+    void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Tournament.fxml"));
         apCreateTournament.getChildren().setAll(pane);
     }
@@ -92,12 +95,10 @@ public class CreateTournamentController implements Initializable {
     @FXML
     void createTournament(ActionEvent event) throws IOException {
         Alert a = new Alert(Alert.AlertType.NONE);
-        if (
-                !tfTournamentName.getText().isBlank()
-                        && !taTournamentDescription.getText().isBlank()
-                        && requiredTeams != null
-                        && teamSize != null
-        ) {
+        if (!tfTournamentName.getText().isBlank()
+                && !taTournamentDescription.getText().isBlank()
+                && requiredTeams != null
+                && teamSize != null) {
             Tournaments tournaments = new Tournaments();
             tournaments.insert(new Tournament(
                     null,
@@ -111,17 +112,25 @@ public class CreateTournamentController implements Initializable {
                     true,
                     new java.util.Date()
             ));
-            a.setAlertType(Alert.AlertType.INFORMATION);
-            a.setTitle("Success");
-            a.setContentText("Tournament created");
-            a.show();
-            Id.tournament = tournaments.findAll("`name` REGEXP '"+tfTournamentName.getText()+"'").get(0).getId();
+            String title = "Success!";
+            String message = "Tournament created !";
+            NotificationType notification = NotificationType.SUCCESS;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
+            Id.tournament = tournaments.findAll("`name` REGEXP '" + tfTournamentName.getText() + "'").get(0).getId();
             bCreate.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTournaments.fxml")));
         } else {
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setContentText("Please Fill the form");
-            a.show();
+            String title = "Failed!";
+            String message = "Verify the information !";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
     }
 

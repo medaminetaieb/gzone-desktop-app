@@ -1,10 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.example.util;
+package com.example.gzone;
 
+import com.example.entity.Store;
+import com.example.entity.UserGamePreference;
 import com.example.gzone.Id;
+import com.example.service.Games;
+import com.example.service.Stores;
+import com.example.service.UserGamePreferences;
+import com.example.service.Users;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -19,18 +21,9 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Mahdi
  */
-public class SendEmail {
+public class StoreNotification {
 
-    private static int CodeGenerator() {
-        int min = 1000;
-        int max = 999999;
-        int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
-        System.out.println(random_int);
-        return random_int;
-
-    }
-
-    public static void sendMail(String recepient) throws Exception {
+    public static void notifMail(String recepient) throws Exception {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -59,13 +52,17 @@ public class SendEmail {
 
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
         try {
-            int CodeGenerator = CodeGenerator();
-            Id.code=CodeGenerator;
+            
+            Integer GameFavId = new UserGamePreferences().findAll("`user_id`=" + Id.user ).get(0).getGameId();
+            String GameFav = new Games().findById(GameFavId).getName();
+            
+            String StoreFavGame = new Stores().findAll("`game_id` REGEXP '" + GameFavId + "' AND id = (SELECT MAX(id) FROM stores)").get(0).getName();
+           
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("G-ZONE Password Recovery");
-            String htmlCode = "<h1>Here is your verification code</h1><br><h2>Use it and enter a new password </h2>\n"
+            message.setSubject("G-ZONE new store of"+GameFav);
+            String htmlCode = "<h1>New store was added of your favorite game</h1><br><h2>Go check the platform for more information about the store : </h2>\n"
                     + "\n"
                     + "<style>\n"
                     + " h1 {\n"
@@ -80,7 +77,7 @@ public class SendEmail {
                     + "     text-align:center;\n"
                     + "     font-weight: bold;\n"
                     + "}\n"
-                    + "</style>" + CodeGenerator;
+                    + "</style>" + StoreFavGame;
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {

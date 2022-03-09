@@ -23,6 +23,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -30,6 +33,7 @@ import javafx.scene.text.Text;
  * @author chayma
  */
 public class EditandDeleteGameController implements Initializable {
+
     private Integer gameId;
     private Game g;
     @FXML
@@ -44,8 +48,6 @@ public class EditandDeleteGameController implements Initializable {
     private Button btnCancel;
     @FXML
     private AnchorPane APEdit;
-    
-  
 
     /**
      * Initializes the controller class.
@@ -78,7 +80,7 @@ public class EditandDeleteGameController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         APEdit.getChildren().setAll(pane);
     }
@@ -97,34 +99,32 @@ public class EditandDeleteGameController implements Initializable {
         g.setPhotoUrl(tfPhotoUrlUpdate.getText());
         Games games = new Games();
         games.modify(g);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("success");
-        alert.setHeaderText("Success");
-        alert.setContentText("Game is update successefully");
-        alert.show();
+        String title = "Success!";
+        String message = "Game modified !";
+        NotificationType notification = NotificationType.SUCCESS;
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndDismiss(Duration.seconds(3));
     }
-    
-   
-    
-    
-       // @FXML
+
+    // @FXML
     //private void modify(ActionEvent event) {
-       // Game g = new Games().findById(Id.game);
-       // g.setName(tfNameUpdate.getText());
-       // g.setDescription(tfDescriptionUpdate.getText());
-       // g.setPhotoUrl(tfPhotoUrlUpdate.getText());
-       // Games games = new Games();
-       // games.modify(g);
-       // Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setTitle("success");
-        //alert.setHeaderText("Success");
-        //alert.setContentText("Game is update successefully");
-        //alert.show();
-        //find(event);
-        //tabOurGame.getTabPane().selectionModelProperty().set(tabEdit.getTabPane().selectionModelProperty().getValue());
-  //  }
-
-
+    // Game g = new Games().findById(Id.game);
+    // g.setName(tfNameUpdate.getText());
+    // g.setDescription(tfDescriptionUpdate.getText());
+    // g.setPhotoUrl(tfPhotoUrlUpdate.getText());
+    // Games games = new Games();
+    // games.modify(g);
+    // Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    //alert.setTitle("success");
+    //alert.setHeaderText("Success");
+    //alert.setContentText("Game is update successefully");
+    //alert.show();
+    //find(event);
+    //tabOurGame.getTabPane().selectionModelProperty().set(tabEdit.getTabPane().selectionModelProperty().getValue());
+    //  }
     @FXML
     private void Cancel(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));

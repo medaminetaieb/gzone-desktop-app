@@ -14,6 +14,7 @@ import com.example.service.Badges;
 import com.example.service.Matches;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
+import com.example.service.UserGamePreferences;
 import com.example.service.Users;
 import static com.example.util.TeamStat.getWinRate;
 import java.util.List;
@@ -24,8 +25,7 @@ import java.util.stream.Collectors;
  * @author chayma
  */
 public class TournamentStat {
-  
-    
+
     public static int CountTournaments(Integer gameId) {
         Tournaments tournaments = new Tournaments();
         return tournaments.findAll("`game_id`=" + gameId).size();
@@ -51,11 +51,13 @@ public class TournamentStat {
         ).limit(5).collect(Collectors.toList());
     }
     
-    
-   
+    public static List<Tournament> suggestedTournaments(Integer userId) {
+        List<Integer> favoriteGameIds = new UserGamePreferences().findAll("`user_id`="+userId).stream()
+                .map(ugp -> ugp.getGameId())
+                .collect(Collectors.toList());
         
-        
-    
+        return new Tournaments().findAll().stream()
+                .filter(t -> favoriteGameIds.indexOf(t.getGameId()) != -1)
+                .collect(Collectors.toList());
+    }
 }
-
-

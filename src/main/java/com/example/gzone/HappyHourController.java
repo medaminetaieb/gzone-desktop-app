@@ -26,6 +26,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -76,7 +79,7 @@ public class HappyHourController implements Initializable {
     }
 
     @FXML
-    void Team(ActionEvent event)throws IOException {
+    void Team(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
         HPane.getChildren().setAll(pane);
     }
@@ -91,7 +94,7 @@ public class HappyHourController implements Initializable {
     private void find(ActionEvent event) {
         HappyHours h = new HappyHours();
         HappyHourList.getItems().clear();
-        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " BETWEEN `start_date` AND `end_date`" );
+        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " BETWEEN `start_date` AND `end_date`");
         for (HappyHour h1 : happyHourList) {
             HappyHourList.getItems().add(h1);
         }
@@ -115,11 +118,14 @@ public class HappyHourController implements Initializable {
         int id = ((HappyHour) HappyHourList.getSelectionModel().getSelectedItem()).getId();
         new HappyHours().deleteById(id);
         find(event);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("success");
-        alert.setHeaderText("Success");
-        alert.setContentText("HappyHour is delete successefully");
-        alert.show();
+        String title = "Success!";
+        String message = "Happy hour deleted !";
+        NotificationType notification = NotificationType.SUCCESS;
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(notification);
+        tray.showAndDismiss(Duration.seconds(3));
         HappyHourList.refresh();
     }
 
