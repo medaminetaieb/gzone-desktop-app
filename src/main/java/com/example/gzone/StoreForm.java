@@ -37,6 +37,36 @@ public class StoreForm {
     public AnchorPane rootPane;
 
     @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    @FXML
     void validate(ActionEvent event) throws IOException, Exception {
         if ((storename.getText().isBlank())) {
             String title = "Failed!";
@@ -94,4 +124,6 @@ public class StoreForm {
             smbGame.getItems().add(mi);
         }
     }
+    
+    
 }

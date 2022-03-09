@@ -121,12 +121,12 @@ public class AddMatches implements Initializable {
     private void refresh1() {
         mbTeam1.getItems().clear();
         jrl.stream()
-                .filter(jr -> !jr.getTeamId().equals(team2Id))
+                .filter(jr -> !jr.getTeamId().equals(team1Id))
                 .forEach(jr -> {
                     Team team = teams.findById(jr.getTeamId());
                     MenuItem mi = new MenuItem((team.getName()));
                     mi.setOnAction(actionEvent -> {
-                        team1Id = jr.getTeamId();
+                        team2Id = jr.getTeamId();
                         mbTeam1.setText(mi.getText());
                         refresh2();
                     });
@@ -137,12 +137,12 @@ public class AddMatches implements Initializable {
     private void refresh2() {
         mbTeam2.getItems().clear();
         jrl.stream()
-                .filter(jr -> !jr.getTeamId().equals(team1Id)).peek(System.out::println)
+                .filter(jr -> !jr.getTeamId().equals(team2Id))
                 .forEach(jr -> {
                     Team team = teams.findById(jr.getTeamId());
                     MenuItem mi = new MenuItem((team.getName()));
                     mi.setOnAction(actionEvent -> {
-                        team2Id = jr.getTeamId();
+                        team1Id = jr.getTeamId();
                         mbTeam2.setText(mi.getText());
                         refresh1();
                     });

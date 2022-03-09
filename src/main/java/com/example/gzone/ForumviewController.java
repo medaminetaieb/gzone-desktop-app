@@ -81,7 +81,7 @@ public class ForumviewController implements Initializable {
     private void addpost(ActionEvent event) throws IOException {
         if (!tftitle.getText().isBlank() || (!tfcontent.getText().isBlank())) {
             Posts ps = new Posts();
-            Post p = new Post(null, 3, false, tftitle.getText(), tfcontent.getText(), "", new Date());
+            Post p = new Post(null, Id.user, false, tftitle.getText(), tfcontent.getText(), "", new Date());
             ps.insert(p);
             String title = "Success!";
             String message = "Post added !";

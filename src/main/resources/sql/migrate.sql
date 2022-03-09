@@ -215,7 +215,7 @@ ALTER TABLE `matches` ADD FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
 
 ALTER TABLE `matches` ADD FOREIGN KEY (`winner_team_id`) REFERENCES `teams` (`id`);
 
-ALTER TABLE `matches` ADD CHECK (`winner_team_id` = `team1_id` or `winner_team_id` = `team2_id`);
+ALTER TABLE `matches` ADD CHECK (`winner_team_id` IS NULL OR `winner_team_id` = `team1_id` OR `winner_team_id` = `team2_id`);
 
 ALTER TABLE `market_items` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`);
 
