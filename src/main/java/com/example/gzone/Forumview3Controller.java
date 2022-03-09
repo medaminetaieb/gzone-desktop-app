@@ -83,20 +83,27 @@ public class Forumview3Controller implements Initializable {
     private Text dislikeCount;
     @FXML
     private Button btnlisten;
+    @FXML
+    private Button btnReport;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 
         p = new Posts().findById(Id.post);
         txtitle.setText(p.getTitle());
         txdate.setText(p.getPostDate().toString());
         tfcontent.setText(p.getContent());
         cbresolved.setSelected(p.isResolved());
-        if (!p.getPosterId().equals(Id.user)) {
-            cbresolved.setDisable(true);
+        if (p.getPosterId().equals(Id.user)) {
+            cbresolved.setVisible(true);
+            btnReport.setVisible(false);
+        } else if (!p.getPosterId().equals(Id.user)) {
+            cbresolved.setVisible(false);
+            btnReport.setVisible(true);
         }
 
         refresh(null);
@@ -104,26 +111,6 @@ public class Forumview3Controller implements Initializable {
         btnlike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=true").isEmpty()) ? "Like" : "UnLike");
         btnDislike.setText((new UserLikesDislikes().findAll("`post_id`=" + Id.post + " and `user_id`=" + Id.user + " and `like`=false").isEmpty()) ? "Dislike" : "UnDislike");
         refreshCounts();
-    }
-
-    @FXML
-    private void HomePage(MouseEvent event) {
-    }
-
-    @FXML
-    private void Team(MouseEvent event) {
-    }
-
-    @FXML
-    private void Tournament(MouseEvent event) {
-    }
-
-    @FXML
-    private void Store(MouseEvent event) {
-    }
-
-    @FXML
-    private void Forum(MouseEvent event) {
     }
 
     @FXML
@@ -295,24 +282,41 @@ public class Forumview3Controller implements Initializable {
         } catch (IllegalArgumentException | InterruptedException | AudioException | EngineException e) {
             e.printStackTrace();
         }
+    }
 
-    
-
-  /*  private void report(ActionEvent event) throws IOException {
+    @FXML
+    private void report(ActionEvent event) throws IOException {
         Id.type = 2;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage newWindow = new Stage();
         newWindow.setTitle("Report Post");
         newWindow.setScene(scene);
-        newWindow.show();*/
+        newWindow.show();
 
     }
 
+    @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
         postprofile.getChildren().setAll(pane);
 
+    }
+
+    @FXML
+    private void HomePage(ActionEvent event) {
+    }
+
+    @FXML
+    private void Team(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tournament(ActionEvent event) {
+    }
+
+    @FXML
+    private void Store(ActionEvent event) {
     }
 
 }
