@@ -61,6 +61,8 @@ public class ChangePasswordController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(notification);
             tray.showAndDismiss(Duration.seconds(4));
+            submit.getScene().getWindow().hide();
+       
         } else {
             
             String title = "Error";

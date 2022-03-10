@@ -9,9 +9,7 @@ package com.example.gzone;
  * @author chayma
  */
 public class Id {
-
-
-    protected static Integer user = 1;
+    protected static Integer user=1;
     protected static Integer game;
     protected static Integer tournament;
     protected static Integer team;
@@ -26,7 +24,5 @@ public class Id {
     protected static Integer tournamentReport;
     protected static Integer type;
     protected static Integer badge;
-    
-
-
+    protected static Integer match;
 }

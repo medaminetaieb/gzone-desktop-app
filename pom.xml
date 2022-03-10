@@ -16,6 +16,11 @@
     
     <dependencies>
         <dependency>
+            <groupId>com.dropbox.core</groupId>
+            <artifactId>dropbox-core-sdk</artifactId>
+            <version>3.0.6</version>
+        </dependency>
+        <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.5.0-b01</version>
@@ -39,7 +44,11 @@
             <version>1.2.2</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.github.plushaze.traynotification</groupId>
+            <artifactId>TrayNotification</artifactId>
+            <version>0.3</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -78,10 +87,17 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
-            <groupId>com.github.plushaze.traynotification</groupId>
-            <artifactId>TrayNotification</artifactId>
-            <version>0.3</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20211205</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>17</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
     <build>

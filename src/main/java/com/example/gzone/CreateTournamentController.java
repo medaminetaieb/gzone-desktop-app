@@ -82,7 +82,7 @@ public class CreateTournamentController implements Initializable {
 
     @FXML
     void Tournament(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Tournament.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         apCreateTournament.getChildren().setAll(pane);
     }
 

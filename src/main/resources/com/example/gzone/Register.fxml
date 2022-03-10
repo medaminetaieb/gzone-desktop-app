@@ -49,6 +49,6 @@
          </font>
       </Label>
       <MenuButton fx:id="mbgames" layoutX="517.0" layoutY="207.0" mnemonicParsing="false" text="MenuButton" />
-      <Button fx:id="importphoto" layoutX="538.0" layoutY="93.0" mnemonicParsing="false" onAction="#importPhoto" text="Button" />
+      <Button fx:id="importphoto" layoutX="517.0" layoutY="93.0" mnemonicParsing="false" onAction="#importPhoto" text="Upload a photo" />
    </children>
 </AnchorPane>

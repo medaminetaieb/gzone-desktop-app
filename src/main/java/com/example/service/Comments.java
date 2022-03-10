@@ -6,6 +6,7 @@
 package com.example.service;
 
 import com.example.entity.Comment;
+import com.example.util.Badwords;
 import com.example.util.MySQLValidator;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,11 +30,12 @@ public class Comments implements Service<Comment> {
                     + "?, ?, ?, ?, ?"
                     + ")";
             PreparedStatement ps = connection.prepareStatement(req);
-            ps.setObject(1, c.getId(), java.sql.Types.INTEGER);
-            ps.setObject(2, c.getPostId(), java.sql.Types.INTEGER);
-            ps.setObject(3, c.getCommenterId(), java.sql.Types.INTEGER);
-            ps.setString(4, c.getCommentBody());
-            ps.setDate(5, new java.sql.Date(c.getCommentDate().getTime()));
+            int i = 0 ;
+            ps.setObject(++i, c.getId(), java.sql.Types.INTEGER);
+            ps.setObject(++i, c.getPostId(), java.sql.Types.INTEGER);
+            ps.setObject(++i, c.getCommenterId(), java.sql.Types.INTEGER);
+            ps.setString(++i, Badwords.filter(c.getCommentBody()));
+            ps.setDate(++i, new java.sql.Date(c.getCommentDate().getTime()));
             
             
             return ps.executeUpdate() > 0;
