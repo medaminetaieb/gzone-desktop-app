@@ -72,7 +72,7 @@ public class ViewTournamentController implements Initializable {
     @FXML
     private MenuButton mbSelectTeam;
     @FXML
-    private Hyperlink report;
+    private Button report;
 
     @FXML
     void Forum(ActionEvent event) throws IOException {
@@ -187,6 +187,11 @@ public class ViewTournamentController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(Id.user.equals(t.getAdminId())){
+            report.setVisible(true);
+        }
+        
+        
         t = new Tournaments().findById(Id.tournament);
         tTournamentName.setText(t.getName());
         tCreationDate.setText(t.getCreateDate().toString());

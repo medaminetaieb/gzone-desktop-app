@@ -21,7 +21,6 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -64,8 +63,6 @@ public class RegisterController {
     private Label control;
     @FXML
     private MenuButton mbgames;
-
-    ;
     @FXML
     private Button importphoto;
 
@@ -100,7 +97,7 @@ public class RegisterController {
     }
 
     @FXML
-    void createUser(ActionEvent event) throws ParseException {
+    void createUser(ActionEvent event) throws ParseException, IOException {
         Users user = new Users();
 
         try {
@@ -147,18 +144,21 @@ public class RegisterController {
 
                 for (Integer i : selectedgames) {
                     ugps.insert(new UserGamePreference(null, Id.user, i));
+                    AnchorPane panee = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                    registerpane.getChildren().setAll(panee);
+
                 }
             }
         } catch (NullPointerException ex) {
             birthdatecontrol.setVisible(true);
-                String title = "Failed!";
-                String message = "Verify your information!";
-                NotificationType notification = NotificationType.ERROR;
-                TrayNotification tray = new TrayNotification();
-                tray.setTitle(title);
-                tray.setMessage(message);
-                tray.setNotificationType(notification);
-                tray.showAndDismiss(Duration.seconds(3));
+            String title = "Failed!";
+            String message = "Verify your information!";
+            NotificationType notification = NotificationType.ERROR;
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(notification);
+            tray.showAndDismiss(Duration.seconds(3));
         }
 
     }

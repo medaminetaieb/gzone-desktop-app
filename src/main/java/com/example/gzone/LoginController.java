@@ -52,10 +52,10 @@ public class LoginController {
     }
 
     public void initialize() {
-          if (checkFile() == true) {
-                    username.setText(getUsername());
-                    password.setText(getPassword());
-                }
+        if (checkFile() == true) {
+            username.setText(getUsername());
+            password.setText(getPassword());
+        }
     }
 
     @FXML
@@ -78,7 +78,7 @@ public class LoginController {
                 }
 
             } else {
-                AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                AnchorPane panee = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
                 signinpane.getChildren().setAll(panee);
                 String title = "Welcome!";
                 String message = "";
