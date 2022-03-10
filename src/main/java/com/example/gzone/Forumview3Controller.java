@@ -18,8 +18,12 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URLEncoder;
 import java.util.Date;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
@@ -100,6 +104,8 @@ public class Forumview3Controller implements Initializable {
 
     @FXML
     private ImageView imgCapture;
+    @FXML
+    private Button btntranslate;
 
     /**
      * Initializes the controller class.
@@ -319,6 +325,35 @@ public class Forumview3Controller implements Initializable {
         ImageIO.write(image, "jpg", new File("out.jpg"));
 
         imgCapture.setImage(myImage);
+    }
+
+    @FXML
+
+    void translate(ActionEvent event) throws IOException {
+        String text = tfcontent.getText();
+        System.out.println("Translated text: " + translate("fr", "en", text));
+    }
+
+    private String translate(String langFrom, String langTo, String text) throws IOException {
+        // INSERT YOU URL HERE
+        String urlStr = "https://script.google.com/macros/s/AKfycbx2sxk6TzQspBj2UO-OW38K-XXdzaFw9tOWwmCSq-FVb_mQ4gcWIWmtKTFCuOAx4W7l1w/exec"
+                + "?q=" + URLEncoder.encode(text, "UTF-8")
+                + "&target=" + langTo
+                + "&source=" + langFrom;
+        URL url = new URL(urlStr);
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            tfcontent.setText(response.toString());
+        }
+
+        return response.toString();
+
     }
 
     @FXML
