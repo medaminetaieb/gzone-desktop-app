@@ -4,6 +4,7 @@ import com.example.entity.JoinRequest;
 import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
+import com.example.service.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,6 +83,25 @@ public class AcceptDecline implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             joinRequests.respondToJoinRequestById(joinRequest.getId(), true);
+            Integer userId;
+            if (joinRequest.getUserId() != null) {
+                if (!joinRequest.isInvitation()) {
+                    userId = joinRequest.getUserId();
+                } else {
+                    userId = new Teams().findById(joinRequest.getTeamId()).getAdminId();
+                }
+            } else {
+                if (joinRequest.isInvitation()) {
+                    userId = new Tournaments().findById(joinRequest.getTournamentId()).getAdminId();
+                } else {
+                    userId = new Teams().findById(joinRequest.getTeamId()).getAdminId();
+                }
+            }
+            try {
+                JoinRequestNotification.notifMail(new Users().findById(userId).getEmail(), joinRequest.getId());
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
         }
         refresh();
     }

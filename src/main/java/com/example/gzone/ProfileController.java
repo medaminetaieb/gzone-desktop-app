@@ -2,6 +2,7 @@ package com.example.gzone;
 
 import com.example.entity.User;
 import com.example.service.Games;
+import com.example.service.Posts;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
 import java.io.FileInputStream;
@@ -21,10 +22,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -68,6 +71,8 @@ public class ProfileController implements Initializable {
     private Button checkBtn;
     @FXML
     private Button tournamentbtn;
+    @FXML
+    private Hyperlink logout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -173,6 +178,17 @@ public class ProfileController implements Initializable {
     private void Tournament(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         profile.getChildren().setAll(pane);
+    }
+
+       @FXML
+    private void changeInvitable(MouseEvent event) {
+        User u = new Users().findById(Id.post);
+        u.setInvitable(invitable.isSelected());
+        new Users().modify(u);
+    }
+
+    @FXML
+    private void changeInvitable(ActionEvent event) {
     }
 
 }

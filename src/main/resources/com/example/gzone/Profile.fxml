@@ -48,7 +48,7 @@
          </font>
       </Text>
       <TextArea fx:id="bio" editable="false" layoutX="192.0" layoutY="384.0" prefHeight="174.0" prefWidth="583.0" />
-      <CheckBox fx:id="invitable" layoutX="748.0" layoutY="193.0" mnemonicParsing="false">
+      <CheckBox fx:id="invitable" layoutX="748.0" layoutY="193.0" mnemonicParsing="false" onAction="#changeInvitable" onMouseClicked="#changeInvitable">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></CheckBox>

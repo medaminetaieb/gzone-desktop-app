@@ -38,6 +38,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -86,6 +87,8 @@ public class DashboardController implements Initializable {
     private Button managegames;
     @FXML
     private Button managehappyhours;
+    @FXML
+    private AnchorPane DashborardPane;
    
 
     @Override
@@ -167,13 +170,16 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    private void openManageGames(ActionEvent event) {
-        
-        
+    private void openManageGames(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
+        DashborardPane.getChildren().setAll(pane);
+
     }
 
     @FXML
-    private void openHappHours(ActionEvent event) {
+    private void openHappHours(ActionEvent event) throws IOException {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
+        DashborardPane.getChildren().setAll(pane);
     }
 
 
