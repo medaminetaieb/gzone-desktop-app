@@ -104,12 +104,12 @@ public class UpdateUserController implements Initializable {
                 control.setVisible(true);
             } else {
 
-                old.modify(new User(
+                old.modifyWithoutPassword(new User(
                         Id.user,
                         phoneNumber.getText(),
                         email.getText(),
                         username.getText(),
-                        tochange.getPassword(),
+                        null,
                         photoURL.getText(),
                         fullName.getText(),
                         bio.getText(),
@@ -118,7 +118,7 @@ public class UpdateUserController implements Initializable {
                         true,
                         Role.user
                 ));
-                saveSession(username.getText(),tochange.getPassword());
+                saveSession(username.getText());
                 String title = "Success!";
                 String message = "User updated!";
                 NotificationType notification = NotificationType.SUCCESS;

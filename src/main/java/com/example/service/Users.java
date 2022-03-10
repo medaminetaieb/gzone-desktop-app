@@ -55,6 +55,31 @@ public class Users implements AdvancedService<User> {
 
         return false;
     }
+     public Boolean modifyWithoutPassword(User u) {
+        try {
+            String req = "UPDATE `users` SET "
+                    + "`phone_number`=?, `email`=?, `username`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?"
+                    + " WHERE `id`=" + u.getId();
+            PreparedStatement ps = connection.prepareStatement(req);
+            int i = 0;
+            ps.setString(++i, u.getPhoneNumber());
+            ps.setString(++i, u.getEmail());
+            ps.setString(++i, u.getUsername());
+            ps.setString(++i, u.getPhotoURL());
+            ps.setString(++i, u.getFullName());
+            ps.setString(++i, u.getBio());
+            ps.setDate(++i, new java.sql.Date(u.getBirthDate().getTime()));
+            ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
+            ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
+            ps.setString(++i, u.getRole().toString());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return false;
+    }
 
     @Override
     public Boolean insert(User u) {

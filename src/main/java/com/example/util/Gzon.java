@@ -31,13 +31,13 @@ public class Gzon {
                 }
                 br.close();
                 JSONObject gzon = new JSONObject(sb.toString());
-                
+
                 return gzon.has("username") && gzon.has("password");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        
+
         return false;
     }
 
@@ -83,6 +83,20 @@ public class Gzon {
         String gzon = new JSONObject()
                 .put("username", username)
                 .put("password", password)
+                .toString();
+        try {
+            FileWriter fw = new FileWriter(path, false);
+            fw.write(gzon);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveSession(String username) {
+        String gzon = new JSONObject()
+                .put("username", username)
+                .put("password", getPassword())
                 .toString();
         try {
             FileWriter fw = new FileWriter(path, false);
