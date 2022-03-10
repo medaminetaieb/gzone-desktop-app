@@ -100,7 +100,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="createstorebutton" layoutX="493.0" layoutY="202.0" mnemonicParsing="false" onAction="#CreateStore" prefHeight="34.0" prefWidth="87.0" text="Create Store" />
+      <Button fx:id="createstorebutton" layoutX="493.0" layoutY="202.0" mnemonicParsing="false" onAction="#CreateStore" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: #28C0EB;" text="Create Store" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <ListView fx:id="tbview" layoutX="239.0" layoutY="275.0" prefHeight="288.0" prefWidth="492.0" />
     </children>
    <styleClass>
