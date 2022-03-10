@@ -47,12 +47,15 @@ public class HomePageController {
 
     @FXML
     void initialize() {
+        tournamentList.getItems().addAll(TournamentStat.suggestedTournaments(Id.user));
+
         userList.setVisible(false);
         datausers.clear();
         Top5.getItems().addAll(TournamentStat.TopFive());
         Users us = new Users();
         for (User u : us.findAll()) {
             datausers.add(u.getUsername());
+            
         }
         ObservableList users = FXCollections.observableArrayList(datausers);
         userList.setItems(users);
@@ -83,7 +86,6 @@ public class HomePageController {
             pieChart.getData().add(new PieChart.Data(s.getName(), new UserLikesDislikes().findAll("`store_id`=" + s.getId() + " and `like`=true").size()));
         }
 
-        tournamentList.getItems().addAll(TournamentStat.suggestedTournaments(Id.user));
     }
     @FXML
     private AnchorPane homepagepane;
