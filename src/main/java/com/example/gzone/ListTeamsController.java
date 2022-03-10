@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import javafx.scene.layout.AnchorPane;
 
 public class ListTeamsController implements Initializable {
 
@@ -29,9 +30,42 @@ public class ListTeamsController implements Initializable {
 
     @FXML
     private Button bInvite;
+    @FXML
+    private AnchorPane apInviteTeams;
 
     @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        apInviteTeams.getChildren().setAll(pane);
+    }
 
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        apInviteTeams.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        apInviteTeams.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        apInviteTeams.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apInviteTeams.getChildren().setAll(pane);
+    }
+
+
+    @FXML
     void choose(MouseEvent event) {
         Teams teams = new Teams();
         List<Team> lteam = teams.findAll("`admin_id`!=" + Id.user + " And `invitable`=1 And `game_id`=" + lvtournament.getSelectionModel().getSelectedItem().getGameId() + " And `team_size`=" + lvtournament.getSelectionModel().getSelectedItem().getTeamSize());

@@ -264,7 +264,6 @@ public class TeamViewController implements Initializable {
 
     @FXML
     void actioninvite(ActionEvent event) throws IOException {
-        Id.team = ((Team) listview.getSelectionModel().getSelectedItem()).getId();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ListUsers.fxml"));
         AnchorPane pane = loader.load();
         teamviewanchor.getChildren().setAll(pane);
@@ -341,8 +340,6 @@ public class TeamViewController implements Initializable {
         vbtnupdateteam.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
         vbtnshowprofile.disableProperty()
-                .bind(listview.getSelectionModel().selectedItemProperty().isNull());
-        invitebtn.disableProperty()
                 .bind(listview.getSelectionModel().selectedItemProperty().isNull());
 
         showTeams();

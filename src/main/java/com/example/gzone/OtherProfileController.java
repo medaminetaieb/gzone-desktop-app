@@ -37,7 +37,7 @@ import tray.notification.TrayNotification;
  *
  * @author Mahdi
  */
-public class ProfileController implements Initializable {
+public class OtherProfileController implements Initializable {
 
     @FXML
     private AnchorPane profile;
@@ -72,7 +72,7 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        User u = new Users().findById(Id.user);
+        User u = new Users().findById(Id.usertemp);
         UserGamePreferences ugp = new UserGamePreferences();
         ArrayList favgamearray = new ArrayList();
         Games favgames = new Games();
@@ -98,40 +98,9 @@ public class ProfileController implements Initializable {
         favorite_games.setItems(favgameobservable);
     }
 
-    private void report(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Report User");
-        newWindow.setScene(scene);
-        newWindow.show();
-    }
 
-    @FXML
-    private void delete(ActionEvent event) throws IOException {
-        Users du = new Users();
-        du.deleteById(Id.user);
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        profile.getChildren().setAll(pane);
-        String title = "Success!";
-        String message = "Account deleted!";
-        NotificationType notification = NotificationType.SUCCESS;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.setNotificationType(notification);
-        tray.showAndDismiss(Duration.seconds(3));
-    }
 
-    @FXML
-    private void modify(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("updateUser.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Update your information !");
-        newWindow.setScene(scene);
-        newWindow.show();
-    }
+ 
 
     private void logout(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));

@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -89,17 +90,9 @@
       </VBox>
       <PieChart fx:id="pieChart" layoutX="461.0" layoutY="105.0" prefHeight="278.0" prefWidth="289.0" />
       <ListView fx:id="topstore" layoutX="190.0" layoutY="372.0" prefHeight="120.0" prefWidth="505.0" />
-      <HBox layoutX="135.0" layoutY="14.0" prefHeight="82.0" prefWidth="634.0" style="-fx-background-color: #4eab5;">
+      <HBox layoutX="180.0" layoutY="14.0" prefHeight="67.0" prefWidth="618.0" style="-fx-background-color: #4eab5;">
          <children>
-            <Button layoutX="110.0" layoutY="40.0" mnemonicParsing="false" onAction="#HappyHour" style="-fx-background-color: transparent;" text="HappyHour" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="80.0" right="-30.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button layoutX="183.0" layoutY="10.0" mnemonicParsing="false" onAction="#Profile" style="-fx-background-color: transparent;" text="Profile" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="183.0" layoutY="10.0" mnemonicParsing="false" onAction="#Profile" prefHeight="38.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="My Profile" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -107,10 +100,12 @@
                   <Insets left="150.0" top="30.0" />
                </HBox.margin>
             </Button>
+            <TextField fx:id="search" onKeyTyped="#search" promptText="Search for a user.." text=" " />
          </children>
       </HBox>
       <ListView fx:id="tournamentList" layoutX="179.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" />
       <Text fill="WHITE" layoutX="179.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested tournaments" />
       <Button fx:id="bGoToTournament" layoutX="379.0" layoutY="177.0" mnemonicParsing="false" onAction="#goToTournament" text="Go to" />
+      <ListView fx:id="userList" layoutX="526.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

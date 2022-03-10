@@ -132,7 +132,7 @@ public class DashboardController implements Initializable {
 
         ObservableList reports = FXCollections.observableArrayList(datareports);
         reportslistview.setItems(reports);
-        reportslistview.setItems(reports);
+       
 
         reportslistview.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
