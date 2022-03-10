@@ -148,6 +148,16 @@ public class RegisterController {
                     registerpane.getChildren().setAll(panee);
 
                 }
+            } else {
+                birthdatecontrol.setVisible(true);
+                String title = "Failed!";
+                String message = "Verify your information!";
+                NotificationType notification = NotificationType.ERROR;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
             }
         } catch (NullPointerException ex) {
             birthdatecontrol.setVisible(true);
