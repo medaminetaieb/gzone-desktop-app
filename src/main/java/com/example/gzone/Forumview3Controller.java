@@ -136,10 +136,12 @@ public class Forumview3Controller implements Initializable {
     }
 
     @FXML
-    private boolean deletepost(ActionEvent event) throws IOException {
+    private void deletepost(ActionEvent event) throws IOException {
+        new Comments().deleteByPostId(Id.post);
+        new UserLikesDislikes().deleteByPostId(Id.post);
+         new Posts().deleteById(Id.post);
+         
         leave(event);
-        return new Posts().deleteById(Id.post);
-
     }
 
     @FXML
