@@ -69,9 +69,9 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="Tourid" layoutX="696.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="Tourid" fill="#e8dede" layoutX="696.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Arial Black" size="15.0" />
                </font>
             </Text>
             <Button fx:id="btnAddGame" layoutX="195.0" layoutY="521.0" mnemonicParsing="false" onAction="#AddGame" style="-fx-background-color: #4ceab5;" styleClass="add-button" stylesheets="@fxml.css" text="Add New Game" textFill="WHITE">

@@ -204,25 +204,6 @@ public class CreateHappyHourController implements Initializable {
         CreatePane.getChildren().setAll(pane);
     }
 
-    @FXML
-    private void HomePage(MouseEvent event) {
-    }
-
-    @FXML
-    private void Team(MouseEvent event) {
-    }
-
-    @FXML
-    private void Tournament(MouseEvent event) {
-    }
-
-    @FXML
-    private void Store(MouseEvent event) {
-    }
-
-    @FXML
-    private void Forum(MouseEvent event) {
-    }
 
   
 

@@ -122,7 +122,6 @@ public class GameViewController implements Initializable {
     }
 
     @FXML
-
     private void delete(ActionEvent event) {
         int id = ((Game) GameList.getSelectionModel().getSelectedItem()).getId();
         new Games().deleteById(id);
