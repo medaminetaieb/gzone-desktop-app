@@ -55,18 +55,24 @@
          </font>
       </Button>
       <ListView fx:id="tbview" layoutX="203.0" layoutY="410.0" prefHeight="146.0" prefWidth="436.0" />
-      <Button fx:id="btnlike" layoutX="365.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #28C0EB;" text="👍" textFill="WHITE">
+      <Button fx:id="btnlike" layoutX="365.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnDislike" layoutX="540.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleDisLike" style="-fx-background-color: E23F3F;" text="👎" textFill="WHITE">
+      <Button fx:id="btnDislike" layoutX="540.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleDisLike" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: E23F3F;" text="Dislike" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Text fx:id="likeCount" layoutX="369.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="likes" />
-      <Text fx:id="dislikeCount" layoutX="535.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dislikes" />
+      <Text fx:id="likeCount" fill="WHITE" layoutX="376.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="likes">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="dislikeCount" fill="WHITE" layoutX="554.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dislikes">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <Button fx:id="btnlisten" layoutX="749.0" layoutY="209.0" mnemonicParsing="false" onAction="#listen" prefHeight="31.0" prefWidth="48.0" style="-fx-background-color: FFF200;" text="♫" />
       <Button fx:id="btnReport" layoutX="204.0" layoutY="564.0" mnemonicParsing="false" onAction="#report" style="-fx-background-color: E23F3F;" text="Report" textFill="WHITE">
          <font>

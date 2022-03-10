@@ -86,7 +86,7 @@
             </Button>
          </children>
       </VBox>
-      <PieChart fx:id="pieChart" layoutX="199.0" layoutY="97.0" prefHeight="476.0" prefWidth="539.0" />
+      <PieChart fx:id="pieChart" layoutX="542.0" layoutY="105.0" prefHeight="236.0" prefWidth="208.0" />
       <ListView fx:id="topstore" layoutX="190.0" layoutY="372.0" prefHeight="120.0" prefWidth="505.0" />
       <HBox layoutX="135.0" layoutY="14.0" prefHeight="82.0" prefWidth="634.0" style="-fx-background-color: #4eab5;">
          <children>
