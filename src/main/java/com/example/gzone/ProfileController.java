@@ -133,6 +133,7 @@ public class ProfileController implements Initializable {
         newWindow.show();
     }
 
+    @FXML
     private void logout(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
@@ -163,7 +164,9 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void checkRequests(ActionEvent event) {
+    private void checkRequests(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("accept-decline.fxml"));
+        profile.getChildren().setAll(pane);
     }
 
     @FXML

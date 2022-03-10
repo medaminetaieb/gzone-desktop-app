@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -85,7 +86,7 @@
                   <Insets left="20.0" top="-115.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+            <Button mnemonicParsing="false" onAction="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text=" HomePage" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -96,7 +97,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="   Team" textFill="#fffefe">
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="    Team" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -107,7 +108,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="tournamentbtn" layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+            <Button fx:id="tournamentbtn" layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text=" Tournament" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -140,6 +141,11 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
+            <Hyperlink fx:id="logout" onAction="#logout" prefHeight="74.0" prefWidth="164.0" text="                Log Out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Hyperlink>
          </children>
       </VBox>
       <Button fx:id="checkBtn" layoutX="192.0" layoutY="199.0" mnemonicParsing="false" onAction="#checkRequests" style="-fx-background-color: #9fef00;" text="Check Invitations/Declines" textFill="WHITE">
