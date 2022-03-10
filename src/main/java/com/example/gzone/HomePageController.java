@@ -2,6 +2,7 @@ package com.example.gzone;
 
 import com.example.entity.Store;
 import com.example.entity.Tournament;
+import com.example.entity.User;
 import com.example.service.UserLikesDislikes;
 import com.example.util.StoreStat;
 import com.example.util.TournamentStat;
@@ -25,12 +26,15 @@ public class HomePageController {
     private ListView<Tournament> tournamentList;
     @FXML
     private Button bGoToTournament;
-
-    @FXML
+ @FXML
+    private ListView<User> Top5;
+@FXML
     void initialize() {
+        Top5.getItems().addAll(TournamentStat.TopFive());
+
         topstore.getItems().setAll(StoreStat.Top3());
         for (Store s : StoreStat.Top3()) {
-            pieChart.getData().add(new PieChart.Data(s.getName(), new UserLikesDislikes().findAll("`store_id`=" + s.getId() + " and `like`=true").size()));
+      pieChart.getData().add(new PieChart.Data(s.getName(), new UserLikesDislikes().findAll("`store_id`=" + s.getId() + " and `like`=true").size()));
         }
 
         tournamentList.getItems().addAll(TournamentStat.suggestedTournaments(Id.user));
@@ -88,10 +92,12 @@ public class HomePageController {
         homepagepane.getChildren().setAll(pane);
     }
 
-    @FXML
+  @FXML
     private void goToTournament(ActionEvent event) throws IOException {
         Id.tournament = tournamentList.getSelectionModel().getSelectedItem().getId();
         bGoToTournament.getScene().setRoot(FXMLLoader.load(getClass().getResource("ViewTournament.fxml")));
     }
+    
+    
 
 }

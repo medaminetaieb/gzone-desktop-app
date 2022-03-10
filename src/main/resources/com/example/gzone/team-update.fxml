@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -16,9 +17,10 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="teamupdateanchor" prefHeight="600.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
+<AnchorPane id="AnchorPane" fx:id="teamupdateanchor" prefHeight="600.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.TeamUpdateController">
     <stylesheets>
         <URL value="@homepage.css" />
+      <URL value="@../../../styles/HomePage.css" />
     </stylesheets>
    <children>
       <AnchorPane layoutX="163.0" layoutY="1.0" prefHeight="604.0" prefWidth="637.0">
@@ -27,36 +29,36 @@
                <children>
                   <VBox layoutX="49.0" layoutY="94.0" prefHeight="182.0" prefWidth="138.0">
                      <children>
-                        <Label text="Team name">
+                        <Label text="Team name" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="Photo URL">
+                        <Label text="Photo URL" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="Team-Size">
+                        <Label text="Team-Size" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="Description">
+                        <Label text="Description" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
@@ -85,22 +87,22 @@
                         </TextArea>
                      </children>
                   </VBox>
-                  <VBox layoutX="49.0" layoutY="359.0" prefHeight="90.0" prefWidth="134.0">
+                  <VBox layoutX="49.0" layoutY="359.0" prefHeight="90.0" prefWidth="147.0">
                      <children>
-                        <Label text="Open for requests">
+                        <Label text="Open for requests" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="Open for invitation">
+                        <Label text="Open for invitation" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
@@ -123,19 +125,19 @@
                   <VBox layoutX="198.0" layoutY="453.0" prefHeight="82.0" prefWidth="348.0" />
                   <AnchorPane layoutY="531.0" prefHeight="73.0" prefWidth="661.0">
                      <children>
-                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" onAction="#Update" prefHeight="31.0" prefWidth="120.0" text="Update Team" />
+                        <Button fx:id="updateteam" layoutX="271.0" layoutY="28.0" mnemonicParsing="false" onAction="#Update" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #4ceab5;" text="Update Team" textFill="WHITE" />
                         <Separator layoutX="22.0" layoutY="9.0" prefHeight="10.0" prefWidth="630.0" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="201.0" layoutY="14.0" text="Update your team">
+                  <Label layoutX="201.0" layoutY="14.0" text="Update your team" textFill="#00ff15">
                      <font>
                         <Font size="34.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" />
+                  <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" textFill="WHITE" />
                   <VBox layoutX="28.0" layoutY="4.0" prefHeight="73.0" prefWidth="81.0">
                      <children>
-                        <Button fx:id="returnn" mnemonicParsing="false" onAction="#actionreturn" text="Return" />
+                        <Button fx:id="returnn" mnemonicParsing="false" onAction="#actionreturn" style="-fx-background-color: #28C0EB;" text="Return" textFill="WHITE" />
                      </children>
                   </VBox>
                </children>
@@ -214,4 +216,8 @@
          </children>
       </VBox>
    </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="bodybg" />
+   </styleClass>
 </AnchorPane>
