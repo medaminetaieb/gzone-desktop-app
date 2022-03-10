@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -15,97 +14,22 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="HPane" prefHeight="639.0" prefWidth="801.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HappyHourController">
-    <stylesheets>
-        <URL value="@homepage.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" fx:id="HPane" prefHeight="639.0" prefWidth="801.0" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HappyHourController">
    <children>
-      <VBox prefHeight="639.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
-         <children>
-            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
-               <VBox.margin>
-                  <Insets left="15.0" top="40.0" />
-               </VBox.margin>
-            </Circle>
-            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/logo-gzone.png" />
-               </image>
-               <VBox.margin>
-                  <Insets left="20.0" top="-115.0" />
-               </VBox.margin>
-            </ImageView>
-            <Button mnemonicParsing="false" onAction="#HomePage" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="30.0" top="60.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-      <Label layoutX="403.0" layoutY="38.0" prefHeight="23.0" prefWidth="150.0" text="Happy Hour">
+      <Label layoutX="403.0" layoutY="38.0" prefHeight="23.0" prefWidth="150.0" text="Happy Hour" textFill="WHITE">
          <font>
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnEdit" layoutX="430.0" layoutY="542.0" mnemonicParsing="false" onAction="#EditHappyHour" prefHeight="31.0" prefWidth="72.0" text="Edit" textFill="#336861">
+      <Button fx:id="btnEdit" layoutX="430.0" layoutY="542.0" mnemonicParsing="false" onAction="#EditHappyHour" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #4ceab5;" text="Edit" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="15.0" />
          </font></Button>
-      <Button fx:id="btnAdd" layoutX="312.0" layoutY="541.0" mnemonicParsing="false" onAction="#addHappyHour" prefHeight="31.0" prefWidth="72.0" text="Add" textFill="#336861">
+      <Button fx:id="btnAdd" layoutX="312.0" layoutY="541.0" mnemonicParsing="false" onAction="#addHappyHour" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #4ceab5;" text="Add" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="15.0" />
          </font></Button>
-      <HBox alignment="CENTER" layoutX="190.0" layoutY="129.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
+      <HBox alignment="CENTER" layoutX="210.0" layoutY="141.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
          <padding>
             <Insets left="30.0" right="30.0" />
          </padding>
@@ -115,7 +39,7 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH">
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #4ceab5;" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH" textFill="WHITE">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -129,10 +53,86 @@
             <String fx:value="shadow" />
          </styleClass>
       </HBox>
-      <Button fx:id="btnDelete" layoutX="536.0" layoutY="541.0" mnemonicParsing="false" onAction="#DeleteHappyHour" prefHeight="31.0" prefWidth="72.0" text="Delete" textFill="#336861">
+      <Button fx:id="btnDelete" layoutX="536.0" layoutY="541.0" mnemonicParsing="false" onAction="#DeleteHappyHour" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #4ceab5;" text="Delete" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="15.0" />
          </font></Button>
-      <ListView fx:id="HappyHourList" layoutX="241.0" layoutY="219.0" prefHeight="271.0" prefWidth="447.0" />
+      <ListView fx:id="HappyHourList" layoutX="207.0" layoutY="217.0" prefHeight="307.0" prefWidth="531.0" />
+      <VBox layoutX="10.0" layoutY="-23.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
+         <children>
+            <Circle fill="#4ceab5" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets left="15.0" top="40.0" />
+               </VBox.margin>
+            </Circle>
+            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/logo-gzone.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="-115.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" top="60.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
    </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="bodybg" />
+   </styleClass>
 </AnchorPane>
