@@ -32,8 +32,24 @@ public class HomePageController {
 
 
     @FXML
+    void Games(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("GameView.fxml"));
+        homepagepane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void HappyHour(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
+        homepagepane.getChildren().setAll(pane);
+    }
+    @FXML
     void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        homepagepane.getChildren().setAll(pane);
+    }
+    @FXML
+    void Profile(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         homepagepane.getChildren().setAll(pane);
     }
 
