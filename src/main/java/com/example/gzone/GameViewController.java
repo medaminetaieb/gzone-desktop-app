@@ -49,8 +49,6 @@ public class GameViewController implements Initializable {
     @FXML
     private Label MyLabel;
     @FXML
-    private ListView<User> Top5;
-    @FXML
     private Text Tourid;
     @FXML
     private Text tnot;
@@ -89,7 +87,6 @@ public class GameViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         find(null);
-        Top5.getItems().addAll(TournamentStat.TopFive());
         tnot.setVisible(false);
         Tourid.setVisible(false);
     }
