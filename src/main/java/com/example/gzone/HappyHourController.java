@@ -38,13 +38,7 @@ import tray.notification.TrayNotification;
 public class HappyHourController implements Initializable {
 
     @FXML
-    private Button btnEdit;
-    @FXML
     private Button btnAdd;
-    @FXML
-    private TextField tfSearch;
-    @FXML
-    private Button btnSearch;
     @FXML
     private AnchorPane HPane;
     @FXML
@@ -90,19 +84,18 @@ public class HappyHourController implements Initializable {
         HPane.getChildren().setAll(pane);
     }
 
-    @FXML
     private void find(ActionEvent event) {
         HappyHours h = new HappyHours();
         HappyHourList.getItems().clear();
-        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " BETWEEN `start_date` AND `end_date`");
+        List<HappyHour> happyHourList = h.findAll(new Date().getTime() + " ");
         for (HappyHour h1 : happyHourList) {
             HappyHourList.getItems().add(h1);
         }
         HappyHourList.refresh();
     }
 
-    @FXML
     private void EditHappyHour(ActionEvent event) throws IOException {
+        Id.happyHour = HappyHourList.getSelectionModel().getSelectedItem().getId();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("UpdateHappyHour.fxml"));
         HPane.getChildren().setAll(pane);
     }
