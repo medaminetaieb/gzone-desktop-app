@@ -8,6 +8,7 @@ import static com.example.gzone.UploadDropBox.uploadPhoto;
 import com.example.service.Games;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
+import com.example.util.Gzon;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -148,6 +149,7 @@ public class RegisterController {
                     registerpane.getChildren().setAll(panee);
 
                 }
+                Gzon.saveSession(username.getText(), password.getText());
             } else {
                 birthdatecontrol.setVisible(true);
                 String title = "Failed!";

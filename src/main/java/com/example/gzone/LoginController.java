@@ -73,7 +73,7 @@ public class LoginController {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndDismiss(Duration.seconds(4));
-                if (checkFile() == false) {
+                if (checkFile()==false) {
                     saveSession(username.getText(), password.getText());
                 }
 
@@ -89,7 +89,7 @@ public class LoginController {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndDismiss(Duration.seconds(4));
-                if (checkFile() == false) {
+                if (checkFile()==false) {
                     saveSession(username.getText(), password.getText());
                 }
             }

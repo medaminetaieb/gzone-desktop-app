@@ -55,7 +55,7 @@ public class HomePageController {
         Users us = new Users();
         for (User u : us.findAll()) {
             datausers.add(u.getUsername());
-            
+
         }
         ObservableList users = FXCollections.observableArrayList(datausers);
         userList.setItems(users);
@@ -85,8 +85,6 @@ public class HomePageController {
             }
         });
 
-
-
     }
     @FXML
     private AnchorPane homepagepane;
@@ -95,10 +93,15 @@ public class HomePageController {
 
     @FXML
     private void search(KeyEvent event) {
-        userList.setVisible(true);
-        userList.getItems().clear();
-        new Users().findAll().stream().filter(u -> u.getFullName().contains(search.getText())).forEach(u -> userList.getItems().add(u.getUsername()));
-        userList.refresh();
+        if (!search.getText().isBlank()) {
+            userList.setVisible(true);
+            userList.getItems().clear();
+            new Users().findAll().stream().filter(u -> u.getFullName().contains(search.getText().strip())).forEach(u -> userList.getItems().add(u.getUsername()));
+            userList.refresh();
+        } else {
+            userList.setVisible(false);
+
+        }
 
     }
 

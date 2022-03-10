@@ -5,6 +5,7 @@ import com.example.service.Games;
 import com.example.service.Posts;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
+import com.example.util.Gzon;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -151,6 +152,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
+        Gzon.saveSession(Gzon.getUsername(), "");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
     }

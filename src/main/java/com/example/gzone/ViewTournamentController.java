@@ -71,8 +71,8 @@ public class ViewTournamentController implements Initializable {
     private Text tRequestable;
     @FXML
     private MenuButton mbSelectTeam;
-     @FXML
-    private Button bInviteTeams;
+    @FXML
+    private Button bInviteTeams = new Button();
     @FXML
     private Button report;
 
@@ -191,7 +191,7 @@ public class ViewTournamentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         t = new Tournaments().findById(Id.tournament);
         bInviteTeams.setVisible(false);
-        if(Id.user.equals(t.getAdminId())){
+        if (Id.user.equals(t.getAdminId())) {
             report.setVisible(false);
             bInviteTeams.setVisible(true);
         }
@@ -260,7 +260,7 @@ public class ViewTournamentController implements Initializable {
             bUpdateScore.setDisable(false);
         }
     }
-    
+
     @FXML
     void goToInviteTeams(ActionEvent event) throws IOException {
         bInviteTeams.getScene().setRoot(FXMLLoader.load(getClass().getResource("ListTeams.fxml")));

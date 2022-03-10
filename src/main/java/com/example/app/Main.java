@@ -4,30 +4,15 @@
  */
 package com.example.app;
 
-import com.example.test.JoinRequestTest;
-import com.example.test.MatchTest;
-import com.example.util.TeamStat;
+import com.example.test.GameTest;
+
 
 /**
  * @author mat
  */
 public class Main {
     public static void main(String[] args) {
-       //MatchTest.insertAll();
-
-
-        //System.out.println(TeamStat.getWinRate(2));
-   // MembershipTest.insertAll();
-
-        //MatchTest.insertAll();
-      //  TeamStat.topTenTeams();
-        //JoinRequestTest.insertAll();
-
-       System.out.println(TeamStat.getWinRate(15));
-        System.out.println(TeamStat.getWinRate(24));
-        System.out.println(TeamStat.getWinRate(1));
-        System.out.println(TeamStat.getWinRate(2));
-       System.out.println(TeamStat.topThreeTeams());
+        GameTest.insertAll();
     }
 }
 
