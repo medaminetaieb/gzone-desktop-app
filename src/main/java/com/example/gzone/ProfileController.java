@@ -5,11 +5,19 @@ import com.example.service.Games;
 import com.example.service.Posts;
 import com.example.service.UserGamePreferences;
 import com.example.service.Users;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +37,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -73,6 +82,8 @@ public class ProfileController implements Initializable {
     private Button tournamentbtn;
     @FXML
     private Hyperlink logout;
+    @FXML
+    private Button openqr;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -180,7 +191,7 @@ public class ProfileController implements Initializable {
         profile.getChildren().setAll(pane);
     }
 
-       @FXML
+    @FXML
     private void changeInvitable(MouseEvent event) {
         User u = new Users().findById(Id.post);
         u.setInvitable(invitable.isSelected());
@@ -188,7 +199,13 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    private void changeInvitable(ActionEvent event) {
+    private void openQr(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("QrCode.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Report User");
+        newWindow.setScene(scene);
+        newWindow.show();
     }
 
 }
