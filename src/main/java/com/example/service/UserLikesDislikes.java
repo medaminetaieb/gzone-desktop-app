@@ -88,5 +88,18 @@ public class UserLikesDislikes implements Service<UserLikesDislike> {
 
         return false;
     }
+    public Boolean deleteByPostId(Integer postId){
+    
+        return delete("`post_id`="+postId);
+        
+    
+    }
+    public Boolean deleteByStoreId(Integer storeId){
+
+        return delete("`store_id`="+storeId);
+
+
+    }
+
 
 }

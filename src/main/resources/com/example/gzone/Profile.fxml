@@ -66,7 +66,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="modifybtn" layoutX="371.0" layoutY="30.0" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: #9fef00;" text="Modify information" textFill="WHITE">
+      <Button fx:id="modifybtn" layoutX="371.0" layoutY="28.0" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: #9fef00;" text="Modify information" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -149,6 +149,11 @@
          </children>
       </VBox>
       <Button fx:id="checkBtn" layoutX="192.0" layoutY="199.0" mnemonicParsing="false" onAction="#checkRequests" style="-fx-background-color: #9fef00;" text="Check Invitations/Declines" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="openqr" layoutX="522.0" layoutY="28.0" mnemonicParsing="false" onAction="#openQr" style="-fx-background-color: #eb722a;" text="Get QR Code" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

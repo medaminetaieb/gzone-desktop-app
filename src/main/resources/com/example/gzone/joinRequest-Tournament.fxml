@@ -32,7 +32,7 @@
                </children>
             </VBox>
             <Separator layoutX="28.0" layoutY="536.0" prefHeight="0.0" prefWidth="579.0" />
-            <Text fill="#00ff4d" layoutX="160.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request/invitation" wrappingWidth="404.6708984375">
+            <Text fill="#00ff4d" layoutX="238.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request" wrappingWidth="245.6708984375">
                <font>
                   <Font size="29.0" />
                </font>

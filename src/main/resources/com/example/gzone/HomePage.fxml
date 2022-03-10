@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="homepagepane" prefHeight="600.0" prefWidth="800.0" styleClass="bodybg" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HomePageController">
+<AnchorPane id="AnchorPane" fx:id="homepagepane" prefHeight="600.0" prefWidth="800.0" styleClass="bodybg" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HomePageController">
    <children>
       <VBox layoutY="-33.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0">
          <children>
@@ -88,8 +88,7 @@
             </Button>
          </children>
       </VBox>
-      <PieChart fx:id="pieChart" layoutX="491.0" layoutY="279.0" prefHeight="134.0" prefWidth="289.0" />
-      <ListView fx:id="topstore" layoutX="164.0" layoutY="436.0" prefHeight="120.0" prefWidth="289.0" />
+      <ListView fx:id="topstore" layoutX="152.0" layoutY="390.0" prefHeight="120.0" prefWidth="289.0" />
       <HBox layoutX="180.0" layoutY="14.0" prefHeight="67.0" prefWidth="618.0" style="-fx-background-color: #4eab5;">
          <children>
             <Button layoutX="183.0" layoutY="10.0" mnemonicParsing="false" onAction="#Profile" prefHeight="38.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="My Profile" textAlignment="CENTER" textFill="WHITE">
@@ -103,18 +102,19 @@
             <TextField fx:id="search" onKeyTyped="#search" promptText="Search for a user.." text=" " />
          </children>
       </HBox>
-      <ListView fx:id="tournamentList" layoutX="214.0" layoutY="169.0" prefHeight="200.0" prefWidth="200.0" />
-      <Text fill="WHITE" layoutX="210.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested tournaments">
+      <ListView fx:id="tournamentList" layoutX="183.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text fill="WHITE" layoutX="191.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested tournaments">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font></Text>
-      <Button fx:id="bGoToTournament" layoutX="283.0" layoutY="383.0" mnemonicParsing="false" onAction="#goToTournament" style="-fx-background-color: #4ceab5;" text="Go to" textFill="#f8f8f8" />
+      <Button fx:id="bGoToTournament" layoutX="250.0" layoutY="348.0" mnemonicParsing="false" onAction="#goToTournament" style="-fx-background-color: #4ceab5;" text="Go to" textFill="#f8f8f8" />
       <ListView fx:id="userList" layoutX="535.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" />
-      <ListView fx:id="Top5" layoutX="476.0" layoutY="467.0" prefHeight="110.0" prefWidth="300.0" />
-      <Text fill="#fffbfb" layoutX="613.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 5">
+      <ListView fx:id="Top5" layoutX="480.0" layoutY="483.0" prefHeight="110.0" prefWidth="300.0" />
+      <Text fill="#fffbfb" layoutX="387.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 5">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Text>
+      <PieChart fx:id="pieChart" layoutX="473.0" layoutY="214.0" prefHeight="235.0" prefWidth="289.0" />
    </children>
 </AnchorPane>
