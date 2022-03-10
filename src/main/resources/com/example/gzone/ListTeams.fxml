@@ -12,12 +12,13 @@
         <URL value="@homepage.css" />
     </stylesheets>
    <children>
-      <Label layoutX="367.0" layoutY="44.0" text="Search a team" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
       <ListView fx:id="lvtournament" layoutX="18.0" layoutY="159.0" onMouseClicked="#choose" prefHeight="394.0" prefWidth="238.0" />
       <ListView fx:id="lvteams" layoutX="275.0" layoutY="82.0" prefHeight="472.0" prefWidth="494.0" />
-      <Button fx:id="bInvite" layoutX="56.0" layoutY="102.0" mnemonicParsing="false" onAction="#invitetournament" onMouseClicked="#choose" text="Invite To Tournament" />
+      <Button fx:id="bInvite" layoutX="56.0" layoutY="102.0" mnemonicParsing="false" onAction="#invitetournament" onMouseClicked="#choose" style="-fx-background-color: #28C0EB;" text="Invite To Tournament" textFill="WHITE" />
+      <Label layoutX="473.0" layoutY="56.0" text="List of Teams" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

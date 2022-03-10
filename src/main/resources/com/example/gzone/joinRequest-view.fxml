@@ -14,24 +14,58 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="teamviewanchor" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.JoinRequestController">
+<AnchorPane fx:id="teamviewanchor" prefHeight="600.0" prefWidth="800.0" styleClass="bodybg" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.JoinRequestController">
    <children>
-      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+      <AnchorPane layoutX="164.0" prefHeight="604.0" prefWidth="637.0">
          <children>
-            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+            <VBox layoutX="79.0" layoutY="304.0" prefHeight="94.0" prefWidth="100.0">
+               <children>
+                  <Label text="Message" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox layoutX="179.0" layoutY="305.0" prefHeight="135.0" prefWidth="296.0">
+               <children>
+                  <TextArea fx:id="messagetxt" prefHeight="143.0" prefWidth="296.0" />
+               </children>
+            </VBox>
+            <Separator layoutX="36.0" layoutY="532.0" prefHeight="4.0" prefWidth="571.0" />
+            <Text fill="#00ff1a" layoutX="225.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request" wrappingWidth="187.00000589434057">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Button fx:id="sendrequest" layoutX="255.0" layoutY="559.0" mnemonicParsing="false" onAction="#sendrequest" style="-fx-background-color: #4ceab5;" text="Send request" textFill="WHITE" />
+            <TextField fx:id="tfuser" layoutX="225.0" layoutY="110.0" />
+            <TextField fx:id="tfteam" layoutX="225.0" layoutY="164.0" />
+            <Label layoutX="125.0" layoutY="115.0" text="User" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="125.0" layoutY="169.0" text="Team" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="10.0" layoutY="-23.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
+         <children>
+            <Circle fill="#4ceab5" radius="60.0" stroke="BLACK" strokeType="INSIDE">
                <VBox.margin>
                   <Insets left="15.0" top="40.0" />
                </VBox.margin>
             </Circle>
             <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@gzone%20logo.png" />
+                  <Image url="@../../../img/logo-gzone.png" />
                </image>
                <VBox.margin>
                   <Insets left="20.0" top="-115.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#HomePage" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
+            <Button mnemonicParsing="false" onAction="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -42,7 +76,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#f8f8f8">
+            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -53,7 +87,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -64,7 +98,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -75,7 +109,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
+            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -88,30 +122,5 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane layoutX="164.0" prefHeight="604.0" prefWidth="637.0">
-         <children>
-            <VBox layoutX="79.0" layoutY="304.0" prefHeight="94.0" prefWidth="100.0">
-               <children>
-                  <Label text="Message" />
-               </children>
-            </VBox>
-            <VBox layoutX="179.0" layoutY="305.0" prefHeight="135.0" prefWidth="296.0">
-               <children>
-                  <TextArea fx:id="messagetxt" prefHeight="143.0" prefWidth="296.0" />
-               </children>
-            </VBox>
-            <Separator layoutX="36.0" layoutY="532.0" prefHeight="4.0" prefWidth="571.0" />
-            <Text layoutX="225.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send request" wrappingWidth="187.00000589434057">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </Text>
-            <Button fx:id="sendrequest" layoutX="255.0" layoutY="559.0" mnemonicParsing="false" onAction="#sendrequest" text="Send request" />
-            <TextField fx:id="tfuser" layoutX="225.0" layoutY="110.0" />
-            <TextField fx:id="tfteam" layoutX="225.0" layoutY="164.0" />
-            <Label layoutX="125.0" layoutY="115.0" text="User" />
-            <Label layoutX="125.0" layoutY="169.0" text="Team" />
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
