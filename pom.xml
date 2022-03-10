@@ -93,7 +93,12 @@
             <artifactId>json</artifactId>
             <version>20211205</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>17</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

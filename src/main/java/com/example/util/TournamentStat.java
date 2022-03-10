@@ -51,6 +51,10 @@ public class TournamentStat {
         ).limit(5).collect(Collectors.toList());
     }
     
+    
+    
+    
+    
     public static List<Tournament> suggestedTournaments(Integer userId) {
         List<Integer> favoriteGameIds = new UserGamePreferences().findAll("`user_id`="+userId).stream()
                 .map(ugp -> ugp.getGameId())
