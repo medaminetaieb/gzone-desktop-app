@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,10 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="apInviteUser" prefHeight="600" prefWidth="886.0" style="-fx-background-color: #3c3c3c;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ListUsersController">
-    <stylesheets>
-        <URL value="@/styles/dashboard.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" fx:id="apInviteUser" prefHeight="600" prefWidth="886.0" style="-fx-background-color: #3c3c3c;" styleClass="bodybg" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ListUsersController">
    <children>
       <TextField fx:id="search" layoutX="635.0" layoutY="38.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="200.0" promptText="Search.." />
       <Label layoutX="470.0" layoutY="41.0" text="Search a user account" textFill="WHITE">
@@ -26,7 +22,7 @@
       <ListView fx:id="lvTeams" layoutX="208.0" layoutY="159.0" prefHeight="394.0" prefWidth="238.0" />
       <ListView fx:id="lvUsers" layoutX="450.0" layoutY="81.0" prefHeight="472.0" prefWidth="440.0" />
       <Button fx:id="bInvite" layoutX="280.0" layoutY="102.0" mnemonicParsing="false" onAction="#inviteUser" text="Invite To Team" />
-      <VBox layoutX="4.0" layoutY="-18.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
+      <VBox layoutX="10.0" layoutY="-23.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
          <children>
             <Circle fill="#4ceab5" radius="60.0" stroke="BLACK" strokeType="INSIDE">
                <VBox.margin>

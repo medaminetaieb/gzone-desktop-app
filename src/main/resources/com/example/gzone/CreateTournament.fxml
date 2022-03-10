@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="apCreateTournament" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.CreateTournamentController">
    <children>
-      <Label layoutX="400.0" layoutY="43.0" text="Create Tournament" textFill="WHITE">
+      <Label layoutX="400.0" layoutY="43.0" text="Create Tournament" textFill="#40ffb6">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
@@ -56,12 +56,12 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="bCreate" layoutX="598.0" layoutY="542.0" mnemonicParsing="false" onAction="#createTournament" prefHeight="26.0" prefWidth="135.0" text="Create" />
+      <Button fx:id="bCreate" layoutX="598.0" layoutY="542.0" mnemonicParsing="false" onAction="#createTournament" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #28C0EB;" text="Create" />
       <Label layoutX="212.0" layoutY="445.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="bCancel" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelCreateTournament" prefHeight="26.0" prefWidth="135.0" text="Cancel" />
+      <Button fx:id="bCancel" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelCreateTournament" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: E23F3F;" text="Cancel" />
       <CheckBox fx:id="cbRequestable" layoutX="406.0" layoutY="445.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" textFill="WHITE" />
       <VBox layoutX="20.0" layoutY="-13.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
          <children>

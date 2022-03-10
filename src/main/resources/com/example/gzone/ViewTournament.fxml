@@ -27,8 +27,8 @@
         <Label fx:id="tJoinedTeams" layoutX="593.0" layoutY="136.0" text="joinedTeams" textFill="WHITE" />
         <Label layoutX="593.0" layoutY="181.0" prefHeight="18.0" prefWidth="94.0" text="Team size :" textFill="WHITE" />
         <Label layoutX="566.0" layoutY="86.0" text="Open for requests :" textFill="WHITE" />
-        <Button fx:id="bUpdateScore" layoutX="605.0" layoutY="376.0" mnemonicParsing="false" onAction="#selectWinner" prefHeight="26.0" prefWidth="135.0" text="Select Winner" />
-        <Button fx:id="bExit" layoutX="644.0" layoutY="549.0" mnemonicParsing="false" onAction="#exitTournament" prefHeight="26.0" prefWidth="135.0" text="Exit" />
+        <Button fx:id="bUpdateScore" layoutX="605.0" layoutY="376.0" mnemonicParsing="false" onAction="#selectWinner" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #28C0EB;" text="Select Winner" />
+        <Button fx:id="bExit" layoutX="644.0" layoutY="549.0" mnemonicParsing="false" onAction="#exitTournament" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: E23F3F;" text="Exit" />
         <Text fx:id="tGameName" fill="#f6ff00" layoutX="283.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Name" wrappingWidth="120.0">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -39,7 +39,7 @@
         <Label layoutX="221.0" layoutY="79.0" text="Creation Date :" textFill="WHITE" />
       <Text layoutX="611.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
       <Text fx:id="tRequestable" fill="#ff30a4" layoutX="690.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="boolean" />
-      <Button fx:id="bAddMatches" layoutX="414.0" layoutY="470.0" mnemonicParsing="false" onAction="#addMatches" prefHeight="26.0" prefWidth="135.0" text="Add Matches" />
+      <Button fx:id="bAddMatches" layoutX="414.0" layoutY="470.0" mnemonicParsing="false" onAction="#addMatches" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #28C0EB;" text="Add Matches" />
       <Text fill="WHITE" layoutX="651.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams joined" />
       <Button fx:id="bModifyTournament" layoutX="640.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToModifyTournament" style="-fx-background-color: #28C0EB;" text="Modify Tournament" textFill="WHITE">
          <font>
@@ -47,7 +47,7 @@
          </font></Button>
       <ListView fx:id="lvRounds" layoutX="182.0" layoutY="270.0" onMouseClicked="#handleRoundsMouseClick" prefHeight="200.0" prefWidth="200.0" />
       <ListView fx:id="lvMatches" layoutX="386.0" layoutY="270.0" onMouseClicked="#handleMatchesMouseClick" prefHeight="200.0" prefWidth="200.0" />
-      <MenuButton fx:id="mbSelectTeam" layoutX="211.0" layoutY="469.0" mnemonicParsing="false" text="Participate as a team">
+      <MenuButton fx:id="mbSelectTeam" layoutX="211.0" layoutY="469.0" mnemonicParsing="false" style="-fx-background-color: #28C0EB;" text="Participate as a team">
         <items>
         </items>
       </MenuButton>
