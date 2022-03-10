@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,11 +24,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.scene.transform.Scale;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -110,6 +116,7 @@ public class TeamProfileController implements Initializable {
 
     }
 
+
     public void teammm(String name) {
         teamname.setText(textnamee);
 
@@ -133,6 +140,43 @@ public class TeamProfileController implements Initializable {
         allanchor.getChildren().setAll(pane);
 
     }
+    public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+        PrinterAttributes attr = printer.getPrinterAttributes();
+        PrinterJob job = PrinterJob.createPrinterJob();
+        double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+        double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+        Scale scale = new Scale(scaleX, scaleY);
+        node.getTransforms().add(scale);
+
+        if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
+            boolean success = job.printPage(pageLayout, node);
+            if (success) {
+                job.endJob();
+
+            }
+        }
+        node.getTransforms().remove(scale);
+
+    }
+    @FXML
+    private void printevent(ActionEvent event) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        printNode(smanchor);
+        System.out.println("To Printer!");
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            Window primaryStage = null;
+            job.showPrintDialog(primaryStage);
+
+            Node root = this.smanchor;
+            job.printPage(root);
+            job.endJob();
+
+        }
+
+    }
+
 
     @FXML
     void actiondeletemember(ActionEvent event) {
@@ -232,7 +276,6 @@ public class TeamProfileController implements Initializable {
         topthreelist.getItems().addAll(TeamStat.topThreeTeams());
         Integer membernmbr = userlist.size();
 
-        capacity.setText(membernmbr +"/"+ t.getTeamSize()+"  You have "+(t.getTeamSize()-membernmbr)+" places left.");
+        capacity.setText(membernmbr + "/" + t.getTeamSize() + "  You have " + (t.getTeamSize() - membernmbr) + " places left.");
 
-    }
-}
+    }}

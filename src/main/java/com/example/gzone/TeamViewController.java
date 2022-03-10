@@ -214,6 +214,7 @@ public class TeamViewController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             Team dt = listview.getSelectionModel().getSelectedItem();
+            new JoinRequests().deleteByTeamId(Id.team);
             teams.deleteById(dt.getId());
 
             listview.getItems().remove(dt);

@@ -124,6 +124,7 @@
                   <Button fx:id="deletemember" layoutX="502.0" layoutY="448.0" mnemonicParsing="false" onAction="#actiondeletemember" style="-fx-background-color: E23F3F;" text="Delete member" textFill="WHITE" />
                   <ListView fx:id="topthreelist" layoutX="8.0" layoutY="395.0" prefHeight="200.0" prefWidth="211.0" />
                   <Text fill="WHITE" layoutX="9.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 3 list" />
+                  <Button layoutX="567.0" layoutY="24.0" mnemonicParsing="false" onAction="#printevent" text="view PDF" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
