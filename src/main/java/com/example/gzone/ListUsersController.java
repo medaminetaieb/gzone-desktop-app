@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -39,6 +40,54 @@ public class ListUsersController implements Initializable {
     private ListView<User> lvUsers;
     @FXML
     private Button bInvite;
+    @FXML
+    private Button bReturn;
+    @FXML
+    private AnchorPane apInviteUser;
+    
+    @FXML
+    void HappyHour(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Profile(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Store(ActionEvent event) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        apInviteUser.getChildren().setAll(pane);
+    }
+
 
     /**
      * Initializes the controller class.
@@ -57,7 +106,7 @@ public class ListUsersController implements Initializable {
             new JoinRequests().findAll("`tournament_id` IS NULL AND `team_id`=" + lvTeams.getSelectionModel().getSelectedItem().getId())
                     .stream().mapToInt(jr -> jr.getUserId()).forEach(id -> requested.add(id));
         }
-        new Users().findAll("`id`<>"+Id.user+" AND `invitable`=true").stream().filter(u -> (requested.indexOf(u.getId()) == -1) && u.getFullName().indexOf(search.getText()) != -1).forEach(u -> lvUsers.getItems().add(u));
+        new Users().findAll("`id`<>" + Id.user + " AND `invitable`=true").stream().filter(u -> (requested.indexOf(u.getId()) == -1) && u.getFullName().indexOf(search.getText()) != -1).forEach(u -> lvUsers.getItems().add(u));
         new Teams().findAll("`admin_id`=" + Id.user).stream().forEach(t -> lvTeams.getItems().add(t));
         lvUsers.refresh();
         lvTeams.refresh();
@@ -71,4 +120,8 @@ public class ListUsersController implements Initializable {
 
     }
 
+    @FXML
+    void returnToTeam(ActionEvent event) throws IOException {
+        bReturn.getScene().setRoot(FXMLLoader.load(getClass().getResource("team-view.fxml")));
+    }
 }
