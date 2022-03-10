@@ -7,6 +7,7 @@ package com.example.gzone;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.service.Users;
+import static com.example.util.Gzon.saveSession;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -117,6 +118,7 @@ public class UpdateUserController implements Initializable {
                         true,
                         Role.user
                 ));
+                saveSession(username.getText(),tochange.getPassword());
                 String title = "Success!";
                 String message = "User updated!";
                 NotificationType notification = NotificationType.SUCCESS;

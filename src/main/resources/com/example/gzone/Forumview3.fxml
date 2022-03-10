@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="postprofile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
+<AnchorPane id="AnchorPane" fx:id="postprofile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../styles/HomePage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.Forumview3Controller">
    <children>
       <CheckBox fx:id="cbresolved" layoutX="444.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#handleMouseClick" text="RESOLVED" textFill="WHITE">
          <font>
@@ -55,7 +55,7 @@
          </font>
       </Button>
       <ListView fx:id="tbview" layoutX="203.0" layoutY="410.0" prefHeight="146.0" prefWidth="436.0" />
-      <Button fx:id="btnlike" layoutX="365.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
+      <Button fx:id="btnlike" layoutX="365.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleLike" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: #28C0EB;" text="Like" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

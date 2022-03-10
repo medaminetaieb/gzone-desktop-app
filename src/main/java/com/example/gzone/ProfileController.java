@@ -127,7 +127,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void modify(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("updateUser.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage newWindow = new Stage();
         newWindow.setTitle("Update your information !");
