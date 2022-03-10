@@ -1,7 +1,9 @@
 package com.example.gzone;
 
+import com.example.entity.Game;
 import com.example.entity.Team;
 import com.example.entity.Tournament;
+import com.example.service.Games;
 import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
@@ -11,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -22,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class ListTeamsController implements Initializable {
 
+    @FXML
+    private TextField tfsearch;
     @FXML
     private ListView<Tournament> lvtournament;
 
@@ -82,7 +87,16 @@ public class ListTeamsController implements Initializable {
         Id.tournament = lvtournament.getSelectionModel().getSelectedItem().getId();
         bInvite.getScene().setRoot(FXMLLoader.load(getClass().getResource("JoinRequest-inviteTeam.fxml")));
     }
-
+    @FXML
+    private void find(ActionEvent event) {
+        Teams teams = new Teams();
+        lvteams.getItems().clear();
+        List<Team> list = teams.findAll("name REGEXP '" + tfsearch.getText() + "'");
+        for (Team t1 : list) {
+            lvteams.getItems().add(t1);
+        }
+        lvteams.refresh();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

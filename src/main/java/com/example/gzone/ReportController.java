@@ -17,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -83,13 +82,41 @@ public class ReportController implements Initializable {
 
             if (Id.type == 0) {
                 tr.insert(new TournamentReport(null, Id.tournament, Id.report));
+                String title = "Success!";
+                String message = "Report created!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
+                submit.getScene().getWindow().hide();
             } else if (Id.type == 2) {
                 pr.insert(new PostReport(null, Id.post, Id.report));
+                String title = "Success!";
+                String message = "Report created!";
+                NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
+                submit.getScene().getWindow().hide();
             } else if (Id.type == 1) {
                 sr.insert(new StoreReport(null, Id.store, Id.report));
                 String title = "Success!";
                 String message = "Report created!";
                 NotificationType notification = NotificationType.SUCCESS;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
+                submit.getScene().getWindow().hide();
+            }else{
+                String title = "ERROR!";
+                String message = "Verify your informations!";
+                NotificationType notification = NotificationType.ERROR;
                 TrayNotification tray = new TrayNotification();
                 tray.setTitle(title);
                 tray.setMessage(message);
