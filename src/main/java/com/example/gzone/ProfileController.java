@@ -21,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -61,18 +60,19 @@ public class ProfileController implements Initializable {
     public TextArea bio;
 
     @FXML
-    private Hyperlink reporthyperlink;
-    @FXML
     private ListView favorite_games;
     @FXML
     private Button deletebtn;
     @FXML
     private Button modifybtn;
     @FXML
-    private Button logout;
+    private Button checkBtn;
+    @FXML
+    private Button tournamentbtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         User u = new Users().findById(Id.user);
         UserGamePreferences ugp = new UserGamePreferences();
         ArrayList favgamearray = new ArrayList();
@@ -99,7 +99,6 @@ public class ProfileController implements Initializable {
         favorite_games.setItems(favgameobservable);
     }
 
-    @FXML
     private void report(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Report.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -135,7 +134,6 @@ public class ProfileController implements Initializable {
         newWindow.show();
     }
 
-    @FXML
     private void logout(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
         profile.getChildren().setAll(pane);
@@ -154,12 +152,6 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    void Tournament(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
-        profile.getChildren().setAll(pane);
-    }
-
-    @FXML
     private void Store(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
         profile.getChildren().setAll(pane);
@@ -168,6 +160,16 @@ public class ProfileController implements Initializable {
     @FXML
     private void Forum(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        profile.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void checkRequests(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
         profile.getChildren().setAll(pane);
     }
 
