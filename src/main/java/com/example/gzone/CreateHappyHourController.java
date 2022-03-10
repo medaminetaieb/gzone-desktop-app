@@ -165,7 +165,7 @@ public class CreateHappyHourController implements Initializable {
 
                 for (Integer id : lUsers) {
                     User u = new Users().findById(id);
-                    Api.sms("chaymadhahri", "Esprit2021202", u.getPhoneNumber(), h.toString());
+                    Api.sms("ihebbensalem", "Iheb123456789", u.getPhoneNumber(), h.toString());
                 }
 
                 String title = "Success!";

@@ -7,95 +7,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.GameViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.GameViewController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="gamepane" prefHeight="602.0" prefWidth="807.0" stylesheets="@../../../styles/HomePage.css">
          <children>
-            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
-               <VBox.margin>
-                  <Insets left="15.0" top="40.0" />
-               </VBox.margin>
-            </Circle>
-            <ImageView fitHeight="110.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets left="20.0" top="-115.0" />
-               </VBox.margin>
-               <image>
-                  <Image url="@../../../img/logo-gzone.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" onAction="#HomePage" onMouseClicked="#HomePage" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="HomePage" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="30.0" top="60.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#Team" onMouseClicked="#Team" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Team" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#Tournament" onMouseClicked="#Tournament" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Tournament" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="294.0" mnemonicParsing="false" onAction="#Store" onMouseClicked="#Store" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Store" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#Forum" onMouseClicked="#Forum" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="Forum" textFill="#fffefe">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-      <AnchorPane fx:id="gamepane" layoutX="7.0" layoutY="2.0" prefHeight="600.0" prefWidth="800.0">
-         <children>
-            <HBox alignment="CENTER" layoutX="172.0" layoutY="145.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
+            <HBox alignment="CENTER" layoutX="34.0" layoutY="138.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="357.0" stylesheets="@fxml.css">
                <padding>
                   <Insets left="30.0" right="30.0" />
                </padding>
@@ -105,7 +29,7 @@
                         <Font name="Cambria" size="18.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH">
+                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#find" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #4ceab5;" styleClass="search-button" stylesheets="@fxml.css" text="SEARCH" textFill="#f8f5f5">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -122,15 +46,11 @@
                   <String fx:value="shadow" />
                </styleClass>
             </HBox>
-            <Button fx:id="btnAddGame" layoutX="577.0" layoutY="32.0" mnemonicParsing="false" onAction="#AddGame" styleClass="add-button" stylesheets="@fxml.css" text="Add New Game" textFill="#336861">
+            <Button fx:id="BTNEdit" layoutX="488.0" layoutY="520.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: #4ceab5;" styleClass="edit-button" stylesheets="@fxml.css" text="EDIT" textFill="#f8f5f5">
                <font>
                   <Font name="Roboto Black" size="15.0" />
                </font></Button>
-            <Button fx:id="BTNEdit" layoutX="417.0" layoutY="538.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="82.0" styleClass="edit-button" stylesheets="@fxml.css" text="EDIT" textFill="#336861">
-               <font>
-                  <Font name="Roboto Black" size="15.0" />
-               </font></Button>
-            <Button fx:id="btnDelete" layoutX="209.0" layoutY="535.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="82.0" stylesheets="@fxml.css" text="DELETE" textFill="#336861">
+            <Button fx:id="btnDelete" layoutX="359.0" layoutY="520.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: #4ceab5;" stylesheets="@fxml.css" text="DELETE" textFill="#f8f5f5">
                <font>
                   <Font name="Roboto Black" size="15.0" />
                </font>
@@ -138,14 +58,14 @@
                   <String fx:value="delete-button" />
                   <String fx:value="delete-button" />
                </styleClass></Button>
-            <ListView fx:id="GameList" layoutX="172.0" layoutY="216.0" onMouseClicked="#UpdateNumberOfTournament" prefHeight="276.0" prefWidth="400.0" />
-            <ListView fx:id="Top5" layoutX="588.0" layoutY="261.0" prefHeight="200.0" prefWidth="164.0" />
-            <Label fx:id="MyLabel" layoutX="246.0" layoutY="41.0" prefHeight="29.0" prefWidth="164.0" text="Our Games ">
+            <ListView fx:id="GameList" layoutX="22.0" layoutY="214.0" onMouseClicked="#UpdateNumberOfTournament" prefHeight="276.0" prefWidth="474.0" />
+            <ListView fx:id="Top5" layoutX="601.0" layoutY="252.0" prefHeight="200.0" prefWidth="164.0" />
+            <Label fx:id="MyLabel" layoutX="287.0" layoutY="41.0" prefHeight="37.0" prefWidth="226.0" text="Our Games " textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
-            <Text fx:id="tnot" fill="#336861" layoutX="472.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Tournaments">
+            <Text fx:id="tnot" fill="#35ddc7" layoutX="494.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Tournaments">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
@@ -155,7 +75,16 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Text>
+            <Button fx:id="btnAddGame" layoutX="197.0" layoutY="521.0" mnemonicParsing="false" onAction="#AddGame" style="-fx-background-color: #4ceab5;" styleClass="add-button" stylesheets="@fxml.css" text="Add New Game" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
          </children>
+         <styleClass>
+            <String fx:value="mainFxmlClass" />
+            <String fx:value="bodybg" />
+         </styleClass>
       </AnchorPane>
    </children>
 </AnchorPane>
