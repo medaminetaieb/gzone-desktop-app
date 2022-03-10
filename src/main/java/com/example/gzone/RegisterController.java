@@ -151,6 +151,14 @@ public class RegisterController {
             }
         } catch (NullPointerException ex) {
             birthdatecontrol.setVisible(true);
+                String title = "Failed!";
+                String message = "Verify your information!";
+                NotificationType notification = NotificationType.ERROR;
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle(title);
+                tray.setMessage(message);
+                tray.setNotificationType(notification);
+                tray.showAndDismiss(Duration.seconds(3));
         }
 
     }
