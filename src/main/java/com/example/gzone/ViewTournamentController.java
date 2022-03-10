@@ -187,12 +187,10 @@ public class ViewTournamentController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        t = new Tournaments().findById(Id.tournament);
         if(Id.user.equals(t.getAdminId())){
             report.setVisible(true);
         }
-        
-        
-        t = new Tournaments().findById(Id.tournament);
         tTournamentName.setText(t.getName());
         tCreationDate.setText(t.getCreateDate().toString());
         tDescription.setText(t.getDescription());
