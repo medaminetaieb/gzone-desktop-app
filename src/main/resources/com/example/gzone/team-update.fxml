@@ -134,7 +134,10 @@
                         <Font size="34.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" textFill="WHITE" />
+                  <Label fx:id="nameee" layoutX="207.0" layoutY="64.0" text="Label" textFill="#e966ff">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
                   <VBox layoutX="28.0" layoutY="4.0" prefHeight="73.0" prefWidth="81.0">
                      <children>
                         <Button fx:id="returnn" mnemonicParsing="false" onAction="#actionreturn" style="-fx-background-color: #28C0EB;" text="Return" textFill="WHITE" />
