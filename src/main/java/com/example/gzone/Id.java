@@ -11,7 +11,7 @@ package com.example.gzone;
 public class Id {
 
 
-    protected static Integer user;
+    protected static Integer user = 1;
     protected static Integer game;
     protected static Integer tournament;
     protected static Integer team;

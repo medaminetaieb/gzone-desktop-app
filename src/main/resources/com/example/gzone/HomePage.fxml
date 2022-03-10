@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="homepagepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HomePageController">
+<AnchorPane id="AnchorPane" fx:id="homepagepane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.HomePageController">
    <stylesheets>
       <URL value="@homepage.css" />
    </stylesheets>
@@ -88,6 +89,13 @@
             </Button>
          </children>
       </VBox>
-      <ListView fx:id="topstore" layoutX="189.0" layoutY="296.0" prefHeight="120.0" prefWidth="505.0" />
+      <ListView fx:id="topstore" layoutX="215.0" layoutY="397.0" prefHeight="120.0" prefWidth="505.0" />
+      <ListView fx:id="tournamentList" layoutX="573.0" layoutY="139.0" prefHeight="167.0" prefWidth="164.0" />
+      <Text fontSmoothingType="LCD" layoutX="516.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament that make interested you" wrappingWidth="283.69287109375">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnTournament" layoutX="589.0" layoutY="321.0" mnemonicParsing="false" onAction="#ViewTournament" text="View Tournament" />
    </children>
 </AnchorPane>

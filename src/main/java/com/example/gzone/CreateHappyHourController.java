@@ -7,14 +7,21 @@ package com.example.gzone;
 import com.example.entity.Badge;
 import com.example.entity.Game;
 import com.example.entity.HappyHour;
+import com.example.entity.JoinRequest;
+import com.example.entity.User;
 import com.example.service.Badges;
 import com.example.service.Games;
 import com.example.service.HappyHours;
+import com.example.service.JoinRequests;
+import com.example.service.Teams;
+import com.example.service.Users;
+import com.example.util.Api;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +32,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import tray.notification.NotificationType;
@@ -56,6 +64,7 @@ public class CreateHappyHourController implements Initializable {
     private SplitMenuButton smbBadge;
     @FXML
     private TextField TfBadge;
+   
 
     /**
      * Initializes the controller class.
@@ -135,17 +144,30 @@ public class CreateHappyHourController implements Initializable {
     private void CreateHappyHour(ActionEvent event) {
 
         Alert a = new Alert(Alert.AlertType.NONE);
-
+        HappyHour h;
         if (dpStartDate.getValue() != null && dpEndDate.getValue() != null) {
             Date crd = new Date(java.sql.Date.valueOf(dpStartDate.getValue()).getTime());
             Date crd1 = new Date(java.sql.Date.valueOf(dpEndDate.getValue()).getTime());
             if (crd.before(crd1)) {
                 if (badgeId == null) {
+                    badgeId = new Badges().findAll("`title` REGEXP '" + TfBadge.getText() + "'").get(0).getId();
                     new Badges().insert(new Badge(null, gameId, TfBadge.getText()));
-                    new HappyHours().insert(new HappyHour(null, new Badges().findAll("`title` REGEXP '" + TfBadge.getText() + "'").get(0).getId(), crd, crd1));
+                    h = new HappyHour(null, badgeId, crd, crd1);
+                    new HappyHours().insert(h);
                 } else {
-                    new HappyHours().insert(new HappyHour(null, badgeId, crd, crd1));
+                    h = new HappyHour(null, badgeId, crd, crd1);
+                    new HappyHours().insert(h);
                 }
+                Integer gameId = new Badges().findById(badgeId).getGameId();
+                List<Integer> lTeams = new Teams().findAll("`game_id`=" + gameId).stream().map(t -> t.getId()).collect(Collectors.toList());
+                List<Integer> lUsers = new JoinRequests().findAll("`accepted`=true and `user_id` is not null").stream()
+                        .filter(jr -> lTeams.indexOf(jr.getTeamId()) != -1).map(jr -> jr.getUserId()).collect(Collectors.toList());
+
+                for (Integer id : lUsers) {
+                    User u = new Users().findById(id);
+                    Api.sms("chaymadhahri", "Esprit2021202", u.getPhoneNumber(), h.toString());
+                }
+
                 String title = "Success!";
                 String message = "Happy hour added !";
                 NotificationType notification = NotificationType.SUCCESS;
@@ -181,5 +203,27 @@ public class CreateHappyHourController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("HappyHour.fxml"));
         CreatePane.getChildren().setAll(pane);
     }
+
+    @FXML
+    private void HomePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void Team(MouseEvent event) {
+    }
+
+    @FXML
+    private void Tournament(MouseEvent event) {
+    }
+
+    @FXML
+    private void Store(MouseEvent event) {
+    }
+
+    @FXML
+    private void Forum(MouseEvent event) {
+    }
+
+  
 
 }
