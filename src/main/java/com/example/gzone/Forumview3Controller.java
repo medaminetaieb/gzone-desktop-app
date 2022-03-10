@@ -124,6 +124,8 @@ public class Forumview3Controller implements Initializable {
         } else if (!p.getPosterId().equals(Id.user)) {
             cbresolved.setVisible(false);
             btnReport.setVisible(true);
+            btndelete.setVisible(false);
+            
         }
 
         refresh(null);
