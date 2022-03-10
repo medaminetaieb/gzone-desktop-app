@@ -6,13 +6,16 @@ import com.example.service.Teams;
 import com.example.service.Tournaments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class AcceptDecline implements Initializable {
-
+    @FXML
+    private AnchorPane homepagepane;
     @FXML
     private Button decline;
 
@@ -31,31 +35,43 @@ public class AcceptDecline implements Initializable {
     @FXML
     private ListView<JoinRequest> listinvitation;
 
-    @FXML
-    void Forum(MouseEvent event) {
 
+    @FXML
+    void Forum(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Forumview1.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void HomePage(MouseEvent event) {
-
+    void Profile(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Store(MouseEvent event) {
-
+    void HomePage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Team(MouseEvent event) {
+    void Store(ActionEvent event) throws IOException {
 
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewStores.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
     @FXML
-    void Tournament(MouseEvent event) {
-
+    void Team(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("team-view.fxml"));
+        homepagepane.getChildren().setAll(pane);
     }
 
+    @FXML
+    void Tournament(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ListTournaments.fxml"));
+        homepagepane.getChildren().setAll(pane);
+    }
     @FXML
     void actionaccept(ActionEvent event) {
         JoinRequest joinRequest = listinvitation.getSelectionModel().getSelectedItem();
