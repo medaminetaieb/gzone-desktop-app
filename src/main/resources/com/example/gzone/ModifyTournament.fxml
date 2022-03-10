@@ -15,36 +15,37 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="apModifyTournament" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ModifyTournamentController">
+<AnchorPane id="AnchorPane" fx:id="apModifyTournament" prefHeight="600.0" prefWidth="800.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gzone.ModifyTournamentController">
    <stylesheets>
       <URL value="@homepage.css" />
+      <URL value="@../../../styles/HomePage.css" />
    </stylesheets>
    <children>
-      <Label layoutX="280.0" layoutY="43.0" text="Modify Tournament">
+      <Label layoutX="280.0" layoutY="43.0" text="Modify Tournament" textFill="#ecc1c1">
          <font>
             <Font name="Arial Bold Italic" size="20.0" />
          </font>
       </Label>
       <TextField fx:id="tfTournamentName" layoutX="406.0" layoutY="178.0" prefHeight="26.0" prefWidth="260.0" promptText="Tournament Name" />
-      <Label layoutX="211.0" layoutY="134.0" text="Game" />
-      <Label layoutX="213.0" layoutY="183.0" text="Name" />
+      <Label layoutX="211.0" layoutY="134.0" text="Game" textFill="WHITE" />
+      <Label layoutX="213.0" layoutY="183.0" text="Name" textFill="WHITE" />
       <TextArea fx:id="taTournamentDescription" layoutX="406.0" layoutY="222.0" prefHeight="120.0" prefWidth="260.0" promptText="Tournament Description" />
-      <Label layoutX="211.0" layoutY="236.0" text="Description" />
-      <Label layoutX="211.0" layoutY="368.0" text="Number of teams" />
-      <Label layoutX="211.0" layoutY="404.0" prefHeight="18.0" prefWidth="94.0" text="Team size" />
-      <Button fx:id="bModify" layoutX="433.0" layoutY="541.0" mnemonicParsing="false" onAction="#modifyTournament" prefHeight="26.0" prefWidth="135.0" text="Save modifications" />
-      <Label layoutX="212.0" layoutY="443.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" />
-      <Button fx:id="bCancel" layoutX="204.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelModifyTournament" prefHeight="26.0" prefWidth="135.0" text="Cancel" />
-      <CheckBox fx:id="cbRequestable" layoutX="406.0" layoutY="443.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" />
-      <Text fx:id="tGameName" layoutX="406.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Name" wrappingWidth="210.13671875" />
-      <Text fx:id="tNumberOfTeams" layoutX="406.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Teams" />
-      <Text fx:id="tTeamSize" layoutX="406.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Size" />
-      <Text fx:id="tCreationDate" layoutX="693.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Label layoutX="596.0" layoutY="97.0" text="Creation Date" />
-      <Button fx:id="bDeleteTournament" layoutX="645.0" layoutY="541.0" mnemonicParsing="false" onAction="#deleteTournament" text="Delete Tournament" />
-      <VBox prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: #3c3c3c;">
+      <Label layoutX="211.0" layoutY="236.0" text="Description" textFill="WHITE" />
+      <Label layoutX="211.0" layoutY="368.0" text="Number of teams" textFill="WHITE" />
+      <Label layoutX="211.0" layoutY="404.0" prefHeight="18.0" prefWidth="94.0" text="Team size" textFill="WHITE" />
+      <Button fx:id="bModify" layoutX="433.0" layoutY="541.0" mnemonicParsing="false" onAction="#modifyTournament" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #4ceab5;" text="Save modifications" />
+      <Label layoutX="212.0" layoutY="443.0" prefHeight="18.0" prefWidth="102.0" text="Open for requests" textFill="WHITE" />
+      <Button fx:id="bCancel" layoutX="204.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelModifyTournament" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #28C0EB;" text="Cancel" />
+      <CheckBox fx:id="cbRequestable" layoutX="406.0" layoutY="443.0" mnemonicParsing="false" text="Team Admins can request joining this tournament" textFill="#c9c3c3" />
+      <Text fx:id="tGameName" fill="WHITE" layoutX="406.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Name" wrappingWidth="210.13671875" />
+      <Text fx:id="tNumberOfTeams" fill="WHITE" layoutX="406.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Teams" />
+      <Text fx:id="tTeamSize" fill="WHITE" layoutX="406.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Size" />
+      <Text fx:id="tCreationDate" fill="#fffcfc" layoutX="693.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Label layoutX="596.0" layoutY="97.0" text="Creation Date" textFill="WHITE" />
+      <Button fx:id="bDeleteTournament" layoutX="645.0" layoutY="541.0" mnemonicParsing="false" onAction="#deleteTournament" style="-fx-background-color: E23F3F;" text="Delete Tournament" textFill="#100000" />
+      <VBox layoutX="7.0" layoutY="-2.0" prefHeight="604.0" prefWidth="164.0" style="-fx-background-color: transparent;">
          <children>
-            <Circle fill="#00ff02" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+            <Circle fill="#4ceab5" radius="60.0" stroke="BLACK" strokeType="INSIDE">
                <VBox.margin>
                   <Insets left="15.0" top="40.0" />
                </VBox.margin>
