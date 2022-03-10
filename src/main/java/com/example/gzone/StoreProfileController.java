@@ -163,6 +163,7 @@ public class StoreProfileController {
     void DeleteYourStore(ActionEvent event) throws IOException {
         if (new Stores().findById(Id.store).getOwnerId().equals(Id.user)) {
             new MarketItems().deleteByStoreId(Id.store);
+            new UserLikesDislikes().deleteByStoreId(Id.store);
             new Stores().deleteById(Id.store);
             Store(event);
             String title = "Success!";

@@ -94,5 +94,12 @@ public class UserLikesDislikes implements Service<UserLikesDislike> {
         
     
     }
+    public Boolean deleteByStoreId(Integer storeId){
+
+        return delete("`store_id`="+storeId);
+
+
+    }
+
 
 }

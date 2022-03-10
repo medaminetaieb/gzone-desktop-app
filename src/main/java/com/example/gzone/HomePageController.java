@@ -59,6 +59,10 @@ public class HomePageController {
         }
         ObservableList users = FXCollections.observableArrayList(datausers);
         userList.setItems(users);
+        topstore.getItems().setAll(StoreStat.Top3());
+        for (Store s : StoreStat.Top3()) {
+            pieChart.getData().add(new PieChart.Data(s.getName(), new UserLikesDislikes().findAll("`store_id`=" + s.getId() + " and `like`=true").size()));
+        }
 
         userList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -81,10 +85,7 @@ public class HomePageController {
             }
         });
 
-        topstore.getItems().setAll(StoreStat.Top3());
-        for (Store s : StoreStat.Top3()) {
-            pieChart.getData().add(new PieChart.Data(s.getName(), new UserLikesDislikes().findAll("`store_id`=" + s.getId() + " and `like`=true").size()));
-        }
+
 
     }
     @FXML
