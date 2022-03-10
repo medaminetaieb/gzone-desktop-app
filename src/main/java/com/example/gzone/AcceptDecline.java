@@ -1,6 +1,8 @@
 package com.example.gzone;
 
 import com.example.entity.JoinRequest;
+import com.example.entity.Team;
+import com.example.entity.Tournament;
 import com.example.service.JoinRequests;
 import com.example.service.Teams;
 import com.example.service.Tournaments;
@@ -13,7 +15,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -87,18 +88,35 @@ public class AcceptDecline implements Initializable {
             if (joinRequest.getUserId() != null) {
                 if (!joinRequest.isInvitation()) {
                     userId = joinRequest.getUserId();
+                    joinRequest.setMessage(
+                            new Teams().findById(joinRequest.getTeamId()).getName()
+                            + " accepted your join request"
+                    );
                 } else {
                     userId = new Teams().findById(joinRequest.getTeamId()).getAdminId();
+                    joinRequest.setMessage(
+                            new Users().findById(joinRequest.getUserId()).getFullName()
+                            + " accepted your invitation"
+                    );
                 }
             } else {
-                if (joinRequest.isInvitation()) {
-                    userId = new Tournaments().findById(joinRequest.getTournamentId()).getAdminId();
+                if (!joinRequest.isInvitation()) {
+                    Tournament t = new Tournaments().findById(joinRequest.getTournamentId());
+                    userId = t.getAdminId();
+                    joinRequest.setMessage(
+                            t.getName() + " accepted your team (" + new Teams().findById(joinRequest.getTeamId()).getName() + ") join request"
+                    );
                 } else {
-                    userId = new Teams().findById(joinRequest.getTeamId()).getAdminId();
+                    Team t = new Teams().findById(joinRequest.getTeamId());
+                    userId = t.getAdminId();
+                    joinRequest.setMessage(
+                            t.getName() + " accepted your tournament (" + new Tournaments().findById(joinRequest.getTournamentId()).getName()
+                            + ") invitation"
+                    );
                 }
             }
             try {
-                JoinRequestNotification.notifMail(new Users().findById(userId).getEmail(), joinRequest.getId());
+                JoinRequestNotification.notifMail(new Users().findById(userId).getEmail(), joinRequest);
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }

@@ -1,12 +1,7 @@
 package com.example.gzone;
 
 import com.example.entity.JoinRequest;
-import com.example.gzone.Id;
-import com.example.service.Games;
 import com.example.service.JoinRequests;
-import com.example.service.Stores;
-import com.example.service.UserGamePreferences;
-import com.example.service.Users;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -23,7 +18,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class JoinRequestNotification {
 
-    public static void notifMail(String recepient, Integer joinRequestId) throws Exception {
+    public static void notifMail(String recepient, JoinRequest jr) throws Exception {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -43,17 +38,15 @@ public class JoinRequestNotification {
         });
 
         //Prepare email message
-        Message message = prepareMessage(session, myAccountEmail, recepient, joinRequestId);
+        Message message = prepareMessage(session, myAccountEmail, recepient, jr);
 
         //Send mail
         Transport.send(message);
         System.out.println("Message sent successfully");
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String recepient, Integer joinRequestId) {
-        try {
-            JoinRequest jr = new JoinRequests().findById(joinRequestId);
-            
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient, JoinRequest jr) {
+        try {            
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
@@ -73,7 +66,7 @@ public class JoinRequestNotification {
                     + "     text-align:center;\n"
                     + "     font-weight: bold;\n"
                     + "}\n"
-                    + "</style>" + jr.toString();
+                    + "</style>" + jr.getMessage();
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {
