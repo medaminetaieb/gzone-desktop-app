@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="842.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.example.gzone.StatisticsGameController">
+    <stylesheets>
+        <URL value="@/styles/statisticsgame.css" />
+    </stylesheets>
+   <children>
+      <BarChart fx:id="BarChart" layoutX="38.0" layoutY="69.0" prefHeight="400.0" prefWidth="727.0">
+        <xAxis>
+          <CategoryAxis fx:id="X" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="Y" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="339.0" layoutY="24.0" text="Games Statistics">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
