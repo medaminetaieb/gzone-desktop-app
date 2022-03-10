@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -136,11 +135,6 @@
             <DropShadow />
          </effect>
       </Label>
-      <Hyperlink fx:id="report" layoutX="176.0" layoutY="195.0" onAction="#report" text="Report user" textFill="#e40e0e" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Hyperlink>
       <ListView fx:id="favorite_games" layoutX="194.0" layoutY="241.0" prefHeight="132.0" prefWidth="583.0" />
       <Button fx:id="deletebtn" layoutX="664.0" layoutY="566.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: red;" text="Delete account" textFill="WHITE">
          <font>

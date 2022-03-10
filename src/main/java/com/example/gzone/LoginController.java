@@ -3,8 +3,10 @@ package com.example.gzone;
 import com.example.entity.Role;
 import com.example.entity.User;
 import com.example.service.Users;
-import com.example.util.SendEmail;
-import static com.example.util.SendEmail.sendMail;
+import static com.example.util.Gzon.checkFile;
+import static com.example.util.Gzon.getPassword;
+import static com.example.util.Gzon.getUsername;
+import static com.example.util.Gzon.saveSession;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -51,7 +52,10 @@ public class LoginController {
     }
 
     public void initialize() {
-
+          if (checkFile() == true) {
+                    username.setText(getUsername());
+                    password.setText(getPassword());
+                }
     }
 
     @FXML
@@ -69,6 +73,9 @@ public class LoginController {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndDismiss(Duration.seconds(4));
+                if (checkFile() == false) {
+                    saveSession(username.getText(), password.getText());
+                }
 
             } else {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Profile.fxml"));
@@ -82,6 +89,9 @@ public class LoginController {
                 tray.setMessage(message);
                 tray.setNotificationType(notification);
                 tray.showAndDismiss(Duration.seconds(4));
+                if (checkFile() == false) {
+                    saveSession(username.getText(), password.getText());
+                }
             }
         } else {
             String title = "Something went wrong!";

@@ -2,6 +2,7 @@ package com.example.gzone;
 
 import com.example.entity.User;
 import com.example.service.Users;
+import static com.example.util.Gzon.saveSession;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -51,6 +52,7 @@ public class ChangePasswordController implements Initializable {
                     uu.isInvitable(),
                     uu.getRole()
             ));
+            saveSession(uu.getUsername(),newpassword.getText());
             
             String title = "Password changed";
             String message = "Your password was updated !";

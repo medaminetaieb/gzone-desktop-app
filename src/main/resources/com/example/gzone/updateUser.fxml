@@ -14,13 +14,13 @@
       <TextField fx:id="email" layoutX="27.0" layoutY="203.0" prefHeight="30.0" prefWidth="187.0" promptText="Email address" />
       <TextField fx:id="fullName" layoutX="27.0" layoutY="97.0" prefHeight="30.0" prefWidth="187.0" promptText="Full Name" />
       <TextField fx:id="phoneNumber" layoutX="27.0" layoutY="257.0" prefHeight="30.0" prefWidth="187.0" promptText="Phone number" />
-      <DatePicker fx:id="birthDate" layoutX="27.0" layoutY="306.0" prefHeight="30.0" prefWidth="187.0" />
+      <DatePicker fx:id="birthDate" layoutX="27.0" layoutY="309.0" prefHeight="30.0" prefWidth="187.0" />
       <Label fx:id="reglb" layoutX="160.0" layoutY="6.0" prefHeight="58.0" prefWidth="354.0" text="Update your account" textFill="#77b700">
          <font>
             <Font name="Courier New Bold" size="31.0" />
          </font>
       </Label>
-      <TextArea fx:id="bio" layoutX="301.0" layoutY="145.0" prefHeight="146.0" prefWidth="314.0" promptText="Bio" />
+      <TextArea fx:id="bio" layoutX="301.0" layoutY="156.0" prefHeight="146.0" prefWidth="314.0" promptText="Bio" />
       <TextField fx:id="photoURL" layoutX="336.0" layoutY="97.0" prefHeight="30.0" prefWidth="243.0" promptText="Photo" />
       <Label fx:id="control" layoutX="360.0" layoutY="350.0" prefHeight="20.0" prefWidth="196.0" text="Please fill the form correctly!" textFill="#fa0000">
          <font>
@@ -31,10 +31,45 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="update" layoutX="409.0" layoutY="308.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="104.0" style="-fx-background-color: #77b700;" text="Submit" textFill="WHITE">
+      <Button fx:id="update" layoutX="409.0" layoutY="313.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="104.0" style="-fx-background-color: #77b700;" text="Submit" textFill="WHITE">
          <font>
             <Font name="Consolas Bold" size="14.0" />
          </font>
       </Button>
+      <Label layoutX="97.0" layoutY="73.0" text="Fullname" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="235.0" text="Phone" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="182.0" text="Email" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="129.0" text="Username" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="438.0" layoutY="74.0" text="Photo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="290.0" text="Birth date" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="136.0" text="Bio" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
