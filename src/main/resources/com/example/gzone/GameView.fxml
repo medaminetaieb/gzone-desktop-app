@@ -59,7 +59,6 @@
                   <String fx:value="delete-button" />
                </styleClass></Button>
             <ListView fx:id="GameList" layoutX="22.0" layoutY="214.0" onMouseClicked="#UpdateNumberOfTournament" prefHeight="276.0" prefWidth="474.0" />
-            <ListView fx:id="Top5" layoutX="601.0" layoutY="252.0" prefHeight="200.0" prefWidth="164.0" />
             <Label fx:id="MyLabel" layoutX="287.0" layoutY="41.0" prefHeight="37.0" prefWidth="226.0" text="Our Games " textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="24.0" />
