@@ -1,11 +1,8 @@
 package com.example.gzone;
 
-import com.example.entity.Report;
 import com.example.entity.Store;
 import com.example.entity.Tournament;
 import com.example.entity.User;
-import com.example.service.Reports;
-
 import com.example.service.UserLikesDislikes;
 import com.example.service.Users;
 import com.example.util.StoreStat;
@@ -50,6 +47,7 @@ public class HomePageController {
 
     @FXML
     void initialize() {
+        userList.setVisible(false);
         datausers.clear();
         Top5.getItems().addAll(TournamentStat.TopFive());
         Users us = new Users();
@@ -94,6 +92,7 @@ public class HomePageController {
 
     @FXML
     private void search(KeyEvent event) {
+        userList.setVisible(true);
         userList.getItems().clear();
         new Users().findAll().stream().filter(u -> u.getFullName().contains(search.getText())).forEach(u -> userList.getItems().add(u.getUsername()));
         userList.refresh();
