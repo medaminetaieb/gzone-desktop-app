@@ -17,7 +17,7 @@ import org.json.JSONObject;
  */
 public class Gzon {
 
-    private final String path = System.getProperty("user.home") + "/.gzone.json";
+    private static final String path = System.getProperty("user.home") + "/.gzone.json";
 
     public static boolean checkFile() {
         File f = new File(path);
