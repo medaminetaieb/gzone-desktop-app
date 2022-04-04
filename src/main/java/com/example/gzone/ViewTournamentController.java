@@ -254,7 +254,7 @@ public class ViewTournamentController implements Initializable {
         Teams teams = new Teams();
         lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam1Id()));
         lvTeams.getItems().add(teams.findById(lvMatches.getSelectionModel().getSelectedItem().getTeam2Id()));
-        if ((lvMatches.getSelectionModel().getSelectedItem().getWinnerTeamId() != 0) || (lvMatches.getSelectionModel().getSelectedItem().getTeam2Id() == 0)) {
+        if ((lvMatches.getSelectionModel().getSelectedItem().getWinnerTeamId() != null) || (lvMatches.getSelectionModel().getSelectedItem().getTeam2Id() == null)) {
             bUpdateScore.setDisable(true);
         } else {
             bUpdateScore.setDisable(false);
