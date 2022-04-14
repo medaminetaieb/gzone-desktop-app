@@ -171,84 +171,84 @@ CREATE TABLE `reports` (
 
 ALTER TABLE `users` ADD CHECK (`phone_number` IS NOT NULL OR `email` IS NOT NULL);
 
-ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `user_game_preferences` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `happy_hours` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`);
+ALTER TABLE `happy_hours` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `happy_hours` ADD CHECK (`start_date` < `end_date`);
 
-ALTER TABLE `badges` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `badges` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `badge_ships` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`);
+ALTER TABLE `badge_ships` ADD FOREIGN KEY (`badge_id`) REFERENCES `badges` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `badge_ships` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `badge_ships` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `teams` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
+ALTER TABLE `teams` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `teams` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `teams` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `join_requests` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `join_requests` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `join_requests` ADD FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `join_requests` ADD FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `join_requests` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`);
+ALTER TABLE `join_requests` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `join_requests` ADD CHECK ((user_id IS NOT NULL OR tournament_id IS NOT NULL) AND NOT (user_id IS NOT NULL AND tournament_id IS NOT NULL));
 
-ALTER TABLE `tournaments` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
+ALTER TABLE `tournaments` ADD FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `tournaments` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `tournaments` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `tournaments` ADD CHECK (`required_teams` IN (4, 8, 16, 32));
 
-ALTER TABLE `tournament_reports` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`);
+ALTER TABLE `tournament_reports` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `tournament_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`);
+ALTER TABLE `tournament_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `matches` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`);
+ALTER TABLE `matches` ADD FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `matches` ADD FOREIGN KEY (`team1_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `matches` ADD FOREIGN KEY (`team1_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `matches` ADD FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `matches` ADD FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `matches` ADD FOREIGN KEY (`winner_team_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `matches` ADD FOREIGN KEY (`winner_team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `matches` ADD CHECK (`winner_team_id` IS NULL OR `winner_team_id` = `team1_id` OR `winner_team_id` = `team2_id`);
 
-ALTER TABLE `market_items` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`);
+ALTER TABLE `market_items` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `market_item_reports` ADD FOREIGN KEY (`market_item_id`) REFERENCES `market_items` (`id`);
+ALTER TABLE `market_item_reports` ADD FOREIGN KEY (`market_item_id`) REFERENCES `market_items` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `market_item_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`);
+ALTER TABLE `market_item_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `stores` ADD FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
+ALTER TABLE `stores` ADD FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `stores` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
+ALTER TABLE `stores` ADD FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `store_reports` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`);
+ALTER TABLE `store_reports` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `store_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`);
+ALTER TABLE `store_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `posts` ADD FOREIGN KEY (`poster_id`) REFERENCES `users` (`id`);
+ALTER TABLE `posts` ADD FOREIGN KEY (`poster_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `post_reports` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
+ALTER TABLE `post_reports` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `post_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`);
+ALTER TABLE `post_reports` ADD FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `comments` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
+ALTER TABLE `comments` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `comments` ADD FOREIGN KEY (`commenter_id`) REFERENCES `users` (`id`);
+ALTER TABLE `comments` ADD FOREIGN KEY (`commenter_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`);
+ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
+ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`);
+ALTER TABLE `user_likes_dislikes` ADD FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `user_likes_dislikes` ADD CHECK (`store_id` IS NOT NULL OR `post_id` IS NOT NULL OR `comment_id` IS NOT NULL AND NOT (`store_id` IS NOT NULL AND (`post_id` IS NOT NULL OR `comment_id` IS NOT NULL) OR `post_id` IS NOT NULL AND (`store_id` IS NOT NULL OR `comment_id` IS NOT NULL)  OR `comment_id` IS NOT NULL AND (`store_id` IS NOT NULL OR `post_id` IS NOT NULL)));
 
-ALTER TABLE `reports` ADD FOREIGN KEY (`reporter_id`) REFERENCES `users` (`id`);
+ALTER TABLE `reports` ADD FOREIGN KEY (`reporter_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
