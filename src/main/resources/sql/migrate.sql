@@ -10,7 +10,12 @@ CREATE TABLE `users` (
   `birth_date` date NOT NULL,
   `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `invitable` boolean NOT NULL DEFAULT true,
-  `role` ENUM('user','admin') NOT NULL DEFAULT 'admin'
+  `role` ENUM('user','admin') NOT NULL DEFAULT 'admin',
+  `activation_token` varchar(255) DEFAULT NULL,
+  `reset_token` varchar(255 ) DEFAULT NULL,
+  `disbale_token` varchar(255) DEFAULT NULL,
+  `verification_code` varchar(255) DEFAULT NULL,
+  `is_verified` tinyint(1) DEFAULT 'NONE'
 );
 
 CREATE TABLE `user_game_preferences` (
