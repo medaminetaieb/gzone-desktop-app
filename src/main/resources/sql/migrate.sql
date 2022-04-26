@@ -13,7 +13,7 @@ CREATE TABLE `users` (
   `role` ENUM('user','admin') NOT NULL DEFAULT 'admin',
   `activation_token` varchar(255) DEFAULT NULL,
   `reset_token` varchar(255 ) DEFAULT NULL,
-  `disbale_token` varchar(255) DEFAULT NULL,
+  `disable_token` varchar(255) DEFAULT NULL,
   `verification_code` varchar(255) DEFAULT NULL,
   `is_verified` tinyint(1)
 );
