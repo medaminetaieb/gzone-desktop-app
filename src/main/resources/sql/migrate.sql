@@ -15,7 +15,7 @@ CREATE TABLE `users` (
   `reset_token` varchar(255 ) DEFAULT NULL,
   `disbale_token` varchar(255) DEFAULT NULL,
   `verification_code` varchar(255) DEFAULT NULL,
-  `is_verified` tinyint(1),
+  `is_verified` tinyint(1) DEFAULT 'NONE',
 );
 
 CREATE TABLE `user_game_preferences` (
