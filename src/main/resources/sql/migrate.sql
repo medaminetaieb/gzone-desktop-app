@@ -70,7 +70,7 @@ CREATE TABLE `join_requests` (
   `tournament_id` int,
   `message` varchar(255),
   `request_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `accepted` boolean,
+  `accepted` boolean DEFAULT NULL,
   `response_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `invitation` boolean NOT NULL DEFAULT false
 );
