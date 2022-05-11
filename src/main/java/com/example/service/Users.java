@@ -174,7 +174,7 @@ public class Users implements AdvancedService<User> {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

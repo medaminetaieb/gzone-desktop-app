@@ -13,12 +13,13 @@ import java.sql.SQLException;
  * @author mat
  */
 public class MyConnection {
+
     private final String url = "jdbc:mysql://localhost:3306/gzonedb";
     private final String login = "root";
     private final String pwd = "";
     private Connection connection;
     private static MyConnection instance;
-    
+
     public MyConnection() {
         try {
             connection = DriverManager.getConnection(url, login, pwd);
@@ -26,16 +27,16 @@ public class MyConnection {
             System.err.println(ex.getMessage());
         }
     }
-    
+
     public Connection getConnection() {
         return connection;
     }
-    
+
     public static MyConnection getInstance() {
         if (instance == null) {
             instance = new MyConnection();
         }
-        
+
         return instance;
     }
 }

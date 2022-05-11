@@ -6,7 +6,7 @@ package com.example.gzone;
 
 /**
  *
- * @author chayma
+ * @author Mahdi
  */
 public class Id {
 
