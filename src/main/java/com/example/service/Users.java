@@ -9,7 +9,6 @@ import com.example.entity.User;
 import com.example.entity.Role;
 import static com.example.util.CryptWithMD5.cryptWithMD5;
 
-
 import com.example.util.MySQLValidator;
 
 import java.sql.ResultSet;
@@ -32,7 +31,7 @@ public class Users implements AdvancedService<User> {
     public Boolean modify(User u) {
         try {
             String req = "UPDATE `users` SET "
-                    + "`phone_number`=?, `email`=?, `username`=?, `password`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?"
+                    + "`phone_number`=?, `email`=?, `username`=?, `password`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?, `is_verified`=?"
                     + " WHERE `id`=" + u.getId();
             PreparedStatement ps = connection.prepareStatement(req);
             int i = 0;
@@ -47,6 +46,7 @@ public class Users implements AdvancedService<User> {
             ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
             ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
             ps.setString(++i, u.getRole().toString());
+            ps.setString(++i, u.getIsVerified().toString());
 
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -55,10 +55,11 @@ public class Users implements AdvancedService<User> {
 
         return false;
     }
-     public Boolean modifyWithoutPassword(User u) {
+
+    public Boolean modifyWithoutPassword(User u) {
         try {
             String req = "UPDATE `users` SET "
-                    + "`phone_number`=?, `email`=?, `username`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?"
+                    + "`phone_number`=?, `email`=?, `username`=?, `photo_url`=?, `full_name`=?, `bio`=?, `birth_date`=?, `join_date`=?, `invitable`=?, `role`=?, `is_verified`=?"
                     + " WHERE `id`=" + u.getId();
             PreparedStatement ps = connection.prepareStatement(req);
             int i = 0;
@@ -72,6 +73,7 @@ public class Users implements AdvancedService<User> {
             ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
             ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
             ps.setString(++i, u.getRole().toString());
+            ps.setString(++i, u.getIsVerified().toString());
 
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -85,9 +87,9 @@ public class Users implements AdvancedService<User> {
     public Boolean insert(User u) {
         try {
             String req = "INSERT INTO `users` ("
-                    + "`id`, `phone_number`, `email`, `username`, `password`, `photo_url`, `full_name`, `bio`, `birth_date`, `join_date`, `invitable`, `role`"
+                    + "`id`, `phone_number`, `email`, `username`, `password`, `photo_url`, `full_name`, `bio`, `birth_date`, `join_date`, `invitable`, `role`, `is_verified`"
                     + ") VALUES ("
-                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?"
                     + ")";
             PreparedStatement ps = connection.prepareStatement(req);
             Integer i = 0;
@@ -103,6 +105,7 @@ public class Users implements AdvancedService<User> {
             ps.setDate(++i, u.getJoinDate() != null ? new java.sql.Date(u.getJoinDate().getTime()) : null);
             ps.setObject(++i, u.isInvitable(), java.sql.Types.BOOLEAN);
             ps.setString(++i, u.getRole().toString());
+            ps.setString(++i, u.getIsVerified().toString());
 
             return ps.executeUpdate() > 0;
 
@@ -137,8 +140,9 @@ public class Users implements AdvancedService<User> {
                         rs.getDate("birth_date"),
                         rs.getDate("join_date"),
                         rs.getObject("invitable", Boolean.class),
-                        Role.valueOf(rs.getString("role"))
-                        ));
+                        Role.valueOf(rs.getString("role")),
+                        rs.getObject("is_verified",Integer.class))
+                );
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -165,14 +169,14 @@ public class Users implements AdvancedService<User> {
 
     public Integer checklogin(String username, String password) {
         try {
-            
+
             Statement st = connection.createStatement();
             String query = "SELECT `id` FROM `users` WHERE `username`='" + username + "' AND `password`='" + cryptWithMD5(password) + "'";
             ResultSet rs = st.executeQuery(query);
-            if (rs.next()){
-                return rs.getObject(1,Integer.class);
+            if (rs.next()) {
+                return rs.getObject(1, Integer.class);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,16 +10,16 @@ package com.example.entity;
  * @author Mahdi
  */
 public enum Role {
-    user {
+    ROLE_USER {
         @Override
         public String toString() {
-            return "user";
+            return "ROLE_USER";
         }        
     },
-    admin {
+    ROLE_ADMIN {
         @Override
         public String toString() {
-            return "admin";
+            return "ROLE_ADMIN";
         }
     }
 }

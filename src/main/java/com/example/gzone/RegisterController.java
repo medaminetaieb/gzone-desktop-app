@@ -108,9 +108,7 @@ public class RegisterController {
             Date permitted = sdf.parse("2010-01-01");
             Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
             Date bdate = Date.from(instant);
-            if ((bdate.after(permitted))) {
-                birthdatecontrol.setVisible(true);
-            } else if ((email.getText().isBlank())
+            if ((email.getText().isBlank())
                     || (username.getText().isBlank())
                     || (fullName.getText().isBlank())
                     || (password.getText().isBlank())) {
@@ -127,7 +125,8 @@ public class RegisterController {
                     bdate,
                     new java.util.Date(),
                     true,
-                    Role.user
+                    Role.ROLE_USER,
+                    1
             ))) {
 
                 String title = "Success!";

@@ -54,19 +54,19 @@ public class AdminReportController implements Initializable {
 
     @FXML
     private void deletereported(ActionEvent event) {
-        if (Id.report == new TournamentReports().findAll("`report_id`=" + Id.report).get(0).getReportId()) {
-            Integer tempId = new TournamentReports().findAll("`report_id`=" + Id.report).get(0).getTournamentId();
-            new TournamentReports().delete("`report_id`=" + Id.report);
+        if (Id.report == new TournamentReports().findAll("`report_id` REGEXP '" + Id.report + "'").get(0).getReportId()) {
+            Integer tempId = new TournamentReports().findAll("`report_id` REGEXP '" + Id.report + "'").get(0).getTournamentId();
+            new TournamentReports().delete("`report_id` REGEXP '" + Id.report + "'");
             new Reports().deleteById(Id.report);
             new Tournaments().deleteById(tempId);
-        } else if (Id.report == new StoreReports().findAll("`report_id`=" + Id.report).get(0).getReportId()) {
-            Integer tempId = new StoreReports().findAll("`report_id`=" + Id.report).get(0).getStoreId();
-            new StoreReports().delete("`report_id`=" + Id.report);
+        } else if (Id.report == new StoreReports().findAll("`report_id` REGEXP '" + Id.report + "'").get(0).getReportId()) {
+            Integer tempId = new StoreReports().findAll("`report_id` REGEXP '" + Id.report + "'").get(0).getStoreId();
+            new StoreReports().delete("`report_id` REGEXP '" + Id.report + "'");
             new Reports().deleteById(Id.report);
             new Stores().deleteById(tempId);
         } else {
-            Integer tempId = new PostReports().findAll("`report_is`=" + Id.report).get(0).getPostId();
-            new PostReports().delete("`report_id`=" + Id.report);
+            Integer tempId = new PostReports().findAll("`report_id` REGEXP '" + Id.report + "'").get(0).getReportId();
+            new PostReports().delete("`report_id` REGEXP '" + Id.report + "'");
             new Reports().deleteById(Id.report);
             new Posts().deleteById(tempId);
 

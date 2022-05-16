@@ -116,7 +116,9 @@ public class UpdateUserController implements Initializable {
                         bdate,
                         new java.util.Date(),
                         true,
-                        Role.user
+                        Role.ROLE_USER,
+                        1
+                        
                 ));
                 saveSession(username.getText());
                 String title = "Success!";

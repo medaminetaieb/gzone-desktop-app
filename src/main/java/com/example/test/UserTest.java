@@ -19,12 +19,12 @@ public class UserTest {
     private static final List<User> userlist = new ArrayList<>();
 
     static {
-        userlist.add(new User(null, "+216 99 856 236", "mahdi.soussi@gamil.com", "mahdi", "mahdi", "", "Mahdi Soussi", "Xd", new Date(0), new Date(), true, Role.admin));
-        userlist.add(new User(null, "+216 23 356 236", "mamine.taieb@gamil.com", "amine", "amine", "", "M. Amine Taieb", "Oppa", new Date(32), new Date(), true, Role.admin));
-        userlist.add(new User(null, "+216 50 345 236", "sami.benmeshlia@gamil.com", "samibm", "samibm", "", "Sami Ben Meshlia", "blabla", new Date(20), new Date(), false, Role.user));
-        userlist.add(new User(null, "+216 54 825 123", "firas.garci@gamil.com", "firas", "firas", "", "Firas Garci", "dfgdfg", new Date(40), new Date(), true, Role.user));
-        userlist.add(new User(null, "+216 92 826 936", "iheb.benahmed@gamil.com", "iheb", "iheb", "", "Iheb Ben Ahmed", "dfgdfg", new Date(10), new Date(), false, Role.admin));
-        userlist.add(new User(null, "+216 70 816 222", "chayma.dhahri@gamil.com", "chayma", "chayma", "", "Chayma Dhahri", "Xsdfd", new Date(5), new Date(), true, Role.user));
+        userlist.add(new User(null, "+216 99 856 236", "mahdi.soussi@gamil.com", "mahdi", "mahdi", "", "Mahdi Soussi", "Xd", new Date(0), new Date(), true, Role.ROLE_ADMIN,1));
+        userlist.add(new User(null, "+216 23 356 236", "mamine.taieb@gamil.com", "amine", "amine", "", "M. Amine Taieb", "Oppa", new Date(32), new Date(), true, Role.ROLE_ADMIN,1));
+        userlist.add(new User(null, "+216 50 345 236", "sami.benmeshlia@gamil.com", "samibm", "samibm", "", "Sami Ben Meshlia", "blabla", new Date(20), new Date(), false, Role.ROLE_ADMIN,1));
+        userlist.add(new User(null, "+216 54 825 123", "firas.garci@gamil.com", "firas", "firas", "", "Firas Garci", "dfgdfg", new Date(40), new Date(), true, Role.ROLE_USER,1));
+        userlist.add(new User(null, "+216 92 826 936", "iheb.benahmed@gamil.com", "iheb", "iheb", "", "Iheb Ben Ahmed", "dfgdfg", new Date(10), new Date(), false, Role.ROLE_ADMIN,1));
+        userlist.add(new User(null, "+216 70 816 222", "chayma.dhahri@gamil.com", "chayma", "chayma", "", "Chayma Dhahri", "Xsdfd", new Date(5), new Date(), true, Role.ROLE_USER,1));
     }
 
     public static void insertAll() {

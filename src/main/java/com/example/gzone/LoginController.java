@@ -62,7 +62,7 @@ public class LoginController {
     private void checkUser(ActionEvent event) throws IOException {
         if ((Id.user = new Users().checklogin(username.getText(), password.getText())) != null) {
             User u = new Users().findById(Id.user);
-            if (u.getRole().equals(Role.admin)) {
+            if (u.getRole().equals(Role.ROLE_ADMIN)) {
                 AnchorPane panee = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                 signinpane.getChildren().setAll(panee);
                 String title = "Welcome!";

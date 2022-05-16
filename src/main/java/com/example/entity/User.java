@@ -24,8 +24,8 @@ public class User {
     private Date joinDate;
     private Boolean invitable;
     private Role role;
-
-    public User(Integer id, String phoneNumber, String email, String username, String password, String photoURL, String fullName, String bio, Date birthDate, Date joinDate, Boolean invitable, Role role) {
+    private Integer isVerified;
+    public User(Integer id, String phoneNumber, String email, String username, String password, String photoURL, String fullName, String bio, Date birthDate, Date joinDate, Boolean invitable, Role role,Integer isVerified) {
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -38,6 +38,7 @@ public class User {
         this.joinDate = joinDate;
         this.invitable = invitable;
         this.role = role;
+        this.isVerified = isVerified;
     }
 
     public Integer getId() {
@@ -46,6 +47,14 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIsVerified() {
+        return isVerified;
+    }
+
+    public void setIsVerified(Integer isVerified) {
+        this.isVerified = isVerified;
     }
 
     public String getPhoneNumber() {
@@ -151,6 +160,7 @@ public class User {
                 ", joinDate=" + joinDate +
                 ", invitable=" + invitable +
                 ", role=" + role +
+                ", isVerified=" + isVerified +
                 '}';
     }
 

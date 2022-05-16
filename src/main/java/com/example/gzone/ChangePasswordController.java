@@ -50,7 +50,8 @@ public class ChangePasswordController implements Initializable {
                     uu.getBirthDate(),
                     uu.getJoinDate(),
                     uu.isInvitable(),
-                    uu.getRole()
+                    uu.getRole(),
+                    uu.getIsVerified()
             ));
             saveSession(uu.getUsername(),newpassword.getText());
             
